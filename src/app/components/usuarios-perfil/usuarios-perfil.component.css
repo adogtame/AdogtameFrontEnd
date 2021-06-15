@@ -1,0 +1,78 @@
+
+
+
+#pefilBasico {
+  float:center;
+  list-style-type:none;
+  margin:0 auto;
+  padding:0;
+  position:relative;
+
+  width: 50%;
+}
+
+#pefilBasico li {
+  float:center;
+  position:relative;
+  display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+#perfilPrim{
+
+  border-bottom: 2px solid rgb(20, 20, 20);
+}
+
+#espacio{
+
+  border-bottom: 3px solid white;
+}
+
+
+#pefilContenido{
+  float:center;
+  list-style-type:none;
+  margin:0 auto;
+  padding:0;
+  position:relative;
+  width: 50%;
+}
+
+
+.botonAnimales{
+  font-size:12px;
+  font-weight:bold;
+  color:black;
+  background:rgb(54, 153, 67);
+  border:0px;
+  width:100px;
+  height:30px;
+}
+
+
+#newAnimal{
+  color: blue;
+}
+
+
+#imagen-usuario-perfil{
+  height: 100px;
+  width: 100px;
+}
+
+
+#contenedor-usuario-perfil{
+  margin-top: 50px;
+  text-align: center;
+}
+
+#nombre-usuario-perfil{
+  font: bolder;
+  font-size: 26px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
