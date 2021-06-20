@@ -1,0 +1,130 @@
+
+
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="mb-3">
+                    <div class="card-header" style="background-color:darkcyan; color:lightcyan">
+                        <h3 style="text-align: center;">Registrarse</h3>
+                    </div>
+                    <div class="card-body" style="background-color:lightcyan;">
+                        <form (submit)="registrar()">
+                            <div class="mb-3">
+                                <input type="text"  name="tipo_perfil" [(ngModel)]="user.tipo_perfil" value="persona"
+                                     class="form-control"  hidden>
+                            </div>
+                            <div class="mb-3">
+                                <label for=""> <b> Nombre</b> </label>
+                                <input type="text" minlength="4" name="nombre" [(ngModel)]="user.nombre"
+                                    placeholder="Ingrese su Usuario" class="form-control"   
+                                    (focus)="limpiarNombre()" autofocus required>
+                            </div>
+                            <div [ngSwitch]="errorNombre">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Nombre muy largo</div>
+                                <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
+                                <div *ngSwitchCase="4">Error {{mensajeEnviado}}</div>                                
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for=""> <b> Apellido</b> </label>
+                                <input type="text" minlength="4" name="apellido" [(ngModel)]="user.apellido"
+                                    placeholder="Ingrese su  Apellido" class="form-control" (focus)="limpiarApellido()"  required>
+                            </div>
+                            <div [ngSwitch]="errorApellido">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Apellido muy largo</div>
+                                <div *ngSwitchCase="3">Apellido debe ser alfabetico</div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for=""> <b> Contraseña</b> </label>
+                                <input type="password" name="password" [(ngModel)]="user.password"
+                                    placeholder="Ingrese su  Contraseña" class="form-control" (focus)="limpiarPassword()"  required minlength="6">
+                            </div>                            
+                            <div [ngSwitch]="errrorPassword">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Contraseña muy larga</div>
+                                <div *ngSwitchCase="3">Contraseña debe ser alfanumerica y admite mayusculas.</div>
+                            </div>    
+
+
+                            <div class="mb-3">
+                                <label for=""> <b> Repita la contraseña</b> </label>
+                                <input type="password" name="repassword" [(ngModel)]="user.repassword"
+                                    placeholder="Repetir Contraseña" class="form-control" minlength="6" (focus)="limpiarRePassword()" required>
+                            </div>
+                            <div [ngSwitch]="errorRePassrword">
+                                <div *ngSwitchCase="1">Las contraseñas deben ser iguales</div>
+                            </div>  
+                
+
+                            <div class="mb-3">
+                                <label for=""> <b> E-mail</b> </label>
+                                <input type="email" name="email" [(ngModel)]="user.email" placeholder="Ingrese su Email"
+                                    class="form-control" minlength="10" (focus)="limpiarEmail()" required>
+                            </div>
+                            <div [ngSwitch]="errorEmail">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Email muy largo</div>
+                                <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
+                            </div>   
+
+                            <div class="mb-3">
+                                <label for=""> <b> DNI</b> </label>
+                                <input type="number" name="dni" [(ngModel)]="user.dni" placeholder="Ingrese su  Dni"
+                                    class="form-control" minlength="7" (focus)="limpiarDNI()" required>
+                            </div>
+                            <div [ngSwitch]="errorDNI">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">DNI muy largo</div>
+                                <div *ngSwitchCase="3">DNI debe ser numerico </div>
+                            </div>   
+
+                            <div class="mb-3">
+                                <label for=""> <b> Celular</b> </label>
+                                <input type="tel" name="nro_celular" [(ngModel)]="user.nro_celular"
+                                    placeholder="Ingrese su nro de celular" class="form-control" minlength="8" (focus)="limpiarCelular()"  required>
+                            </div>
+                            <div [ngSwitch]="errorCelular">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Celular muy largo</div>
+                                <div *ngSwitchCase="3">Celular debe ser numerico</div>
+                            </div> 
+
+                            <div class="mb-3">
+                                <label for=""> <b> Calle</b> </label>
+                                <input type="text" name="calle" [(ngModel)]="user.calle" placeholder="Ingrese calle"
+                                    class="form-control" minlength="4"  (focus)="limpiarCalle()" required>
+                            </div>
+                            <div [ngSwitch]="errorCalle">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Calle muy largo</div>
+                                <div *ngSwitchCase="3">Calle debe ser alfabetico</div>
+                            </div> 
+
+                            <div class="mb-3">
+                                <label for=""> <b> Altura</b> </label>
+                                <input type="text" name="nro_calle" [(ngModel)]="user.nro_calle"
+                                    placeholder="Ingrese altura" class="form-control" maxlength="5" (focus)="limpiarNro_calle()" required>
+                            </div>
+                            <div [ngSwitch]="errorNro_calle">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Altura muy largo</div>
+                                <div *ngSwitchCase="3">Altura debe ser numerico</div>
+                            </div> 
+
+                            <div class="mb-3">
+                                <button class="btn btn-success btn-block"  value="persona" (click)="verificarForm()">
+                                    Enviar</button>
+                                <input type="reset" value="Limpiar campos" class="btn btn-danger btn-block">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
