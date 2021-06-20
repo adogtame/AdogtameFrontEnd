@@ -77,7 +77,7 @@ export class NavigationComponent implements OnInit {
     this.revelar = false;
     
     this.UsuarioID = { user: "No logueado" };
-    
+    this.usuariosService.user.id = "";
     this.Usuario = [];
     //this.nombreSubscription.unsubscribe();
   }
@@ -118,6 +118,8 @@ export class NavigationComponent implements OnInit {
         this.usuariosService.buscarUsuario(this.UsuarioID.user).subscribe(
           res => {
             this.Usuario = res
+            
+            this.usuariosService.user.id = this.Usuario.id;
             console.log(this.Usuario); 
           },
           err => console.log(err) 
