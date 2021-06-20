@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class UsuariosService {
-	API_URI = 'http://localhost:3000/user';
+	API_URI = 'https://adogtame-app.herokuapp.com/user';
 
 	//http://localhost:3000/user
 
