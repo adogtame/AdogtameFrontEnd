@@ -23,3 +23,4 @@ describe('UsuariosIngresarComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
