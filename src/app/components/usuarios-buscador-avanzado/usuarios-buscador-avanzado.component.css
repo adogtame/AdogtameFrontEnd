@@ -1,0 +1,103 @@
+.boton1{
+    font-size:15px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:black;
+    background:rgb(179, 172, 169);
+    border:0px;
+    width:100px;
+    height:30px;
+}
+
+
+
+.boton2{
+    font-size:15px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:black;
+    background:rgb(89, 189, 110);
+    border:0px;
+    width:100px;
+    height:30px;
+}
+
+#menu {
+    float:center;
+    left:50%;
+    list-style-type:none;
+    margin:0 auto;
+    padding:0;
+    position:relative;
+
+}
+
+#menu li {
+    float:center;
+    position:relative;
+    right:50%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebar {
+    float:left;
+    height: 100%;
+    background-color: #f0eae8;
+    padding: 2rem 0;
+
+    width:200px;
+}
+
+.sidebar ul, .sidebar li{
+    margin:0;
+    padding:0;
+    list-style:none inside;
+}
+
+.sidebar ul {
+    margin: 4rem auto;
+    display: block;
+    width: 80%;
+    min-width:200px;
+}
+
+
+
+#container {
+    border:2px ;
+    overflow:hidden;
+    margin:15px;
+    padding: 15px;
+}
+
+#card-animal-principal{
+  margin:15px;
+  padding: 15px;
+  border: 15px;
+  text-align: center;
+  width: 800px !important;
+}
+#card-animales{
+  margin:15px;
+  padding: 15px;
+  text-align: center;
+  width: 900px;
+}
+
+#imagen-animal-principal{
+  height: 600px;
+  width: 820px;
+  margin: 15px;
+  padding: 15px;
+  align-items: center;
+}
+
+#titulo-animal-principal{
+  text-align: left;
+  font: bolder;
+  font-size: 48px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
