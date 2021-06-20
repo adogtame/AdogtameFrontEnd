@@ -1,0 +1,189 @@
+<nav class="navbar navbar-expand-lg navbar-outline-dark" id="navbar">
+
+ <div *ngIf="revelarBusRapida==true" >
+    <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+    <label for="abrir-cerrar" style="color: black;">&#9776; <span class="abrir">&gt;</span><span
+            class="cerrar">&lt;</span></label>
+    <div id="sidebar" class="sidebar">
+
+
+
+        <ul id="menu">
+            <br>
+            <br>
+            <li>
+                <button class="btn btn - boton" href="#">Organizaciones</button>
+
+            </li>
+            <br>
+            <br>
+            <li>
+                <button class="btn btn - boton" href="#">Crias</button>
+
+            </li>
+            <br>
+            <br>
+            <li>
+                <button class="btn btn - boton" href="#">Adultos</button>
+
+            </li>
+            <br>
+            <br>
+            <li><button class="btn btn - boton" href="#">Especiales</button>
+
+            </li>
+
+        </ul>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ </div>
+
+
+
+
+
+
+
+
+
+
+    <a class="navbar-brand" routerLink="usuarios/principal">
+        <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
+
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="navbar-brand" style="color: white;"> </div>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
+            &nbsp;
+            <button type="submit" style="background-color: grey">
+                <img src="https://media-public.canva.com/HYnZ0/MAEViGHYnZ0/1/s.svg" style="height: 25px;">
+
+            </button>
+        </form>
+
+        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/buscador-avanzado">Listados</button>
+        &nbsp;&nbsp;
+        {{Usuario.nombre}}
+        &nbsp;&nbsp;
+        <button class="btn btn - boton2" style="width: 150px; font-size:12px;" routerLink="usuarios/listar">Lista de usuarios</button>
+        
+        <ul class="navbar-nav ml-auto" *ngIf="revelar==false as user; else login">
+
+
+            <li class="nav-item" *ngIf="user">
+                <a class="btn btn - boton2" routerLink="usuarios/ingresar">Iniciar sesión
+
+                </a>
+            </li>
+            &nbsp;&nbsp;
+            <li class="nav-item" *ngIf="user">
+                <a class="btn btn - boton2" routerLink="usuarios/registrar">Registrarse
+
+
+                </a>
+            </li>
+        </ul>
+        <ng-template #login>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="btn btn - boton2" routerLink="">Campanita
+
+                    </a>
+                </li>
+                &nbsp;&nbsp;
+
+                <li class="nav-item">
+                    <a class="btn btn - boton2" routerLink="">Mas info
+
+                    </a>
+                </li>
+                &nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="btn btn - boton2" (click)="irAPerfil()">Perfil User
+
+                    </a>
+                </li>
+                &nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="btn btn - boton2" id="logout" (click)="logout()">Cerrar sesion</a>
+                </li>
+                <!-- &nbsp;&nbsp;
+                <li>
+
+
+
+
+                    <div class="btn-group mr-3">
+                        <a type="button" class="d-block link-dark text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false" id="dropdownUser1">
+                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+                                class="rounded-circle">
+                        </a>
+                        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                            <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
+                            <div class="dropdown-menu" ngbDropdownMenu>
+                                <button ngbDropdownItem>One</button>
+                                <button ngbDropdownItem>Two</button>
+                                <button ngbDropdownItem>Four!</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                          <li><a class="dropdown-item" href="/"> <i class="fas fa-paw"> Solicitudes
+                                enviadas</i></a></li>
+                          <li><a class="dropdown-item" href="/"> <i class="fas fa-paw"> Solicitudes
+                                recibidas</i></a></li>
+                          <li><a class="dropdown-item" href="/"><i class="fas fa-users-cog"> Configuracion</i></a></li>
+                          <li><a class="dropdown-item" href="/"><i class="fas fa-address-card"> Perfil</i></a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="/"> <i class="fas fa-sign-out-alt"> Sign out</i></a></li>
+                        </ul>
+                      </div> 
+
+
+
+                </li>
+
+
+                <li>
+
+                </li> -->
+
+
+            </ul>
+
+
+
+
+
+
+
+
+
+        </ng-template>
+
+
+
+    </div>
+</nav>

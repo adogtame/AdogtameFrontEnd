@@ -1,0 +1,117 @@
+#perfilABasico {
+  
+    float:center;
+    list-style-type:none;
+    margin:0 auto;
+    padding:0;
+    position:relative;
+    
+}
+
+#perfilABasico li {
+    float:center;
+    position:relative;
+    display: flex;
+    
+}
+
+
+#datosPrimeros {
+  
+  
+  
+  position:relative;
+  
+  
+
+  border-bottom: 3px solid rgb(114, 104, 104);
+
+}
+
+
+
+
+
+#corriendo{
+  
+  position: relative;
+  right: 4%;
+
+}
+
+#dador{
+
+  position: relative;
+  
+  left:183%;
+
+}
+
+#foto{
+
+  position: relative;
+  
+  left:38%;
+
+}
+
+#interes{
+  
+  position: relative;
+  
+  right:32%;
+}
+
+
+#espacio{
+  
+  border-bottom: 1px solid white;
+}
+
+
+.botonDador{
+  font-size:12px;
+  font-weight:bold;
+  color:black;
+  background:rgb(54, 153, 67);
+  border:0px;
+  width:100px;
+  height:30px;
+}
+
+.botonInteres{
+  font-size:14px;
+  font-weight:bold;
+  color:white;
+  background:rgb(165, 119, 13);
+  border:0px;
+  width:130px;
+  height:32px;
+}
+
+
+.botonEstado{
+  background-color: #74cf77; /* Green */
+  border: none;
+  color: rgb(42, 71, 28);
+  padding: 0.3px 44px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+
+
+.botonDatosMedicos {
+  background-color: #67b4d8; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
