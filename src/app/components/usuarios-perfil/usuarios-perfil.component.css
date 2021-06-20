@@ -1,0 +1,178 @@
+
+
+
+#pefilBasico {
+  float:center;
+  list-style-type:none;
+  margin:0 auto;
+  padding:0;
+  position:relative;
+
+  width: 50%;
+}
+
+#pefilBasico li {
+  float:center;
+  position:relative;
+  display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+#pefilContenido{
+  float:center;
+  list-style-type:none;
+  margin:0 auto;
+  padding:0;
+  position:relative;
+  width: 50%;
+}
+
+
+.botonAnimales{
+  font-size:12px;
+  font-weight:bold;
+  color:black;
+  background:rgb(54, 153, 67);
+  border:0px;
+  width:100px;
+  height:30px;
+}
+
+
+#newAnimal{
+  color: rgb(243, 176, 87);
+}
+
+
+#imagen-usuario-perfil{
+  height: 100px;
+  width: 100px;
+}
+
+
+#contenedor-usuario-perfil{
+  margin-top: 50px;
+  text-align: center;
+}
+
+#nombre-usuario-perfil{
+  font: bolder;
+  font-size: 26px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+#myTab{
+  
+ border-bottom: 2px solid black;
+
+
+}
+
+#myTabContent{
+  
+
+
+}
+
+
+.btn {
+  color: black;
+  padding: 7px 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.BotonMenu {
+  color: rgb(15, 15, 15);
+}
+
+.btn-outline-warning:active {
+  background-color: #a34506 !important;
+  color: white;
+
+}
+
+.btn-outline-warning:hover {
+  background-color: #a34506 ;
+  color: white;
+}
+
+.btn-outline-warning:focus {     
+  background-color:#a34506 ; 
+    
+}
+
+.btn-link{
+  color: blue;
+  box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.activo{
+
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5),
+            inset 5px 5px 8px rgba(0,0,0,0.5);
+
+}
+
+.noActivo{
+  box-shadow: none;
+}
+
+
+
+
+
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.contentNo {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+
+.content {
+
+  max-width: 100%;
+
+
+}
+
+
+
