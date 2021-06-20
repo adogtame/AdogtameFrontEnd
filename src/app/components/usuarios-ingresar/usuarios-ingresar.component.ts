@@ -18,14 +18,9 @@ export class UsuariosIngresarComponent implements OnInit {
 
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
-
-  
-
   ngOnInit(): void {
 
-
   }
-
 
 
   ingresar() {
@@ -48,22 +43,16 @@ export class UsuariosIngresarComponent implements OnInit {
         this.router.navigate(['usuarios/home']);
         
 
-
       },
       err => {
         console.log(err.error.message);
         this.reintentar=true;
         this.mensaje=err.error.message;
       }
-    )
-
-    
+    ) 
 
 
   }
-
-
-
 
   
   recargarForm(){
@@ -72,10 +61,6 @@ export class UsuariosIngresarComponent implements OnInit {
     this.user.password="";
 	this.mensaje="";
   }
-
-
-
-
 
 
 }
