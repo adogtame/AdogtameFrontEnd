@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 //import { Subscription } from 'rxjs';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 
 
@@ -31,7 +31,7 @@ export class NavigationComponent implements OnInit {
   // public user$: Observable<any>= this.revelar
 
 
-   //nombreSubscription: Subscription | any;
+  //nombreSubscription: Subscription | any;
 
 
 
@@ -64,9 +64,9 @@ export class NavigationComponent implements OnInit {
 
     
 
+
+
   }
-
-
 
 
 
@@ -138,7 +138,14 @@ export class NavigationComponent implements OnInit {
   irAPerfil(){
     
 
-    this.router.navigate(['usuarios/perfil/',this.Usuario.id]);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+     
+     this.router.navigate(['usuarios/perfil/',this.Usuario.id]);
+
+    }); 
+
+
+
   }
 
 

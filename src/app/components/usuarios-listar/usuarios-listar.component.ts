@@ -39,13 +39,24 @@ export class UsuariosListarComponent implements OnInit {
   irAPerfil(id: number){
     
     console.log("El id ",id)
-    this.router.navigate(['usuarios/perfil/',id]);
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+     
+      this.router.navigate(['usuarios/perfil/',id]);
+      
+    }); 
+
+
   }
   
   irAAnimal(id: number){
     
     console.log("El id ",id)
-    this.router.navigate(['usuarios/animal/',id]);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+     
+      this.router.navigate(['usuarios/animal/',id]);
+        
+    }); 
   }
 
 

@@ -1,0 +1,41 @@
+#card-animal-principal{
+  margin:15px;
+  padding: 15px;
+  border: 15px;
+  text-align: center;
+  width: 800px !important;
+}
+#card-animales{
+  text-align: center;
+  width: 824px;
+}
+
+#imagen-animal-principal{
+  height: 600px;
+  width: 822px;
+  align-items: center;
+}
+
+#titulo-animal-principal{
+  text-align: left;
+  font: bolder;
+  font-size: 48px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: darksalmon;
+}
+
+#texto-animal{
+  font-size:22px;
+  font-family:Verdana,Helvetica;
+  font-weight:bold;
+  color:black;
+  border:0px;
+  height:30px;
+  float: left;
+  margin-right: 25%;
+  text-align: center;
+}
+
+#body-animal{
+  background-color: gainsboro;
+}

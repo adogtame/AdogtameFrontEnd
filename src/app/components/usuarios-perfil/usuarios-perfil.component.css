@@ -1,53 +1,7 @@
-#pefilBasico {
-  float:center;
-  list-style-type:none;
-  margin:0 auto;
-  padding:0;
-  position:relative;
-
-  width: 50%;
-}
-
-#pefilBasico li {
-  float:center;
-  position:relative;
-  display: flex;
-justify-content: center;
-align-items: center;
-
-}
-
-#pefilContenido{
-  float:center;
-  list-style-type:none;
-  margin:0 auto;
-  padding:0;
-  position:relative;
-  width: 50%;
-}
-
-
-.botonAnimales{
-  font-size:12px;
-  font-weight:bold;
-  color:black;
-  background:rgb(54, 153, 67);
-  border:0px;
-  width:100px;
-  height:30px;
-}
-
-
-#newAnimal{
-  color: rgb(243, 176, 87);
-}
-
-
 #imagen-usuario-perfil{
   height: 100px;
   width: 100px;
 }
-
 
 #contenedor-usuario-perfil{
   margin-top: 50px;
@@ -60,15 +14,9 @@ align-items: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-
 #myTab{
-
  border-bottom: 2px solid black;
-
-
 }
-
 
 .btn {
   color: black;
@@ -80,22 +28,6 @@ align-items: center;
 
 .BotonMenu {
   color: rgb(15, 15, 15);
-}
-
-.btn-outline-warning:active {
-  background-color: #a34506 !important;
-  color: white;
-
-}
-
-.btn-outline-warning:hover {
-  background-color: #a34506 ;
-  color: white;
-}
-
-.btn-outline-warning:focus {
-  background-color:#a34506 ;
-
 }
 
 .btn-link{
@@ -140,14 +72,10 @@ align-items: center;
   background-color: #f1f1f1;
 }
 
-
 .content {
 
   max-width: 100%;
-
-
 }
-
 
 #registrar-nuevo-animal-btn{
   font: bolder;
@@ -182,8 +110,6 @@ align-items: center;
   font-size: 18px;
 }
 
-
-
 .content-select select{
     border-radius: 12px;
 }
@@ -191,6 +117,5 @@ align-items: center;
 .content-select select:hover{
 	background: #B1E8CD;
 }
-
 
 

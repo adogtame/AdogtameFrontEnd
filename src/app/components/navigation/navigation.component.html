@@ -1,113 +1,112 @@
 <nav class="navbar navbar-expand-lg navbar-outline-dark" id="navbar">
 
- <div *ngIf="revelarBusRapida==true" >
+  <div *ngIf="revelarBusRapida==true">
     <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
     <label for="abrir-cerrar" style="color: black;">&#9776; <span class="abrir">&gt;</span><span
-            class="cerrar">&lt;</span></label>
+        class="cerrar">&lt;</span></label>
     <div id="sidebar" class="sidebar">
 
+      <ul id="menu">
+        <br>
+        <br>
+        <li>
+          <button class="btn btn - boton" href="#">Organizaciones</button>
 
+        </li>
+        <br>
+        <br>
+        <li>
+          <button class="btn btn - boton" href="#">Crias</button>
 
-        <ul id="menu">
-            <br>
-            <br>
-            <li>
-                <button class="btn btn - boton" href="#">Organizaciones</button>
+        </li>
+        <br>
+        <br>
+        <li>
+          <button class="btn btn - boton" href="#">Adultos</button>
 
-            </li>
-            <br>
-            <br>
-            <li>
-                <button class="btn btn - boton" href="#">Crias</button>
+        </li>
+        <br>
+        <br>
+        <li><button class="btn btn - boton" href="#">Especiales</button>
 
-            </li>
-            <br>
-            <br>
-            <li>
-                <button class="btn btn - boton" href="#">Adultos</button>
+        </li>
 
-            </li>
-            <br>
-            <br>
-            <li><button class="btn btn - boton" href="#">Especiales</button>
-
-            </li>
-
-        </ul>
+      </ul>
     </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- </div>
+  </div>
 
+  <a class="navbar-brand" routerLink="usuarios/principal">
+    <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
 
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse">
 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="navbar-brand" style="color: white;"> </div>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
+      &nbsp;
+      <button type="submit" style="background-color: grey">
+        <img src="https://media-public.canva.com/HYnZ0/MAEViGHYnZ0/1/s.svg" style="height: 25px;">
 
+      </button>
+    </form>
 
-
-
-
-
-    <a class="navbar-brand" routerLink="usuarios/principal">
-        <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
-
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse">
-
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="navbar-brand" style="color: white;"> </div>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
-            &nbsp;
-            <button type="submit" style="background-color: grey">
-                <img src="https://media-public.canva.com/HYnZ0/MAEViGHYnZ0/1/s.svg" style="height: 25px;">
-
-            </button>
-        </form>
-
-        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-        <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/buscador-avanzado">Listados</button>
+    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    <button class="btn btn - boton2" style="height: 35px; font-size:16px;"
+      routerLink="usuarios/buscador-avanzado">Listados</button>
+    &nbsp;&nbsp;
+    {{Usuario.nombre}}
+    &nbsp;&nbsp;
+    <!-- <button class="btn btn - boton2" style="width: 150px; font-size:12px;" routerLink="usuarios/listar">Lista de usuarios</button>
+         -->
+    <ul class="navbar-nav ml-auto" *ngIf="revelar==false as user; else login">
+      <li class="nav-item" *ngIf="user">
+        <a class="btn btn - boton2" routerLink="usuarios/ingresar">Iniciar sesión</a>
+      </li>
+      &nbsp;&nbsp;
+      <li class="nav-item" *ngIf="user">
+        <a class="btn btn - boton2" routerLink="usuarios/registrar">Registrarse</a>
+      </li>
+    </ul>
+    <ng-template #login>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="btn btn - boton2"><i class="far fa-bell" id="campanita-icon"></i></a>
+        </li>
         &nbsp;&nbsp;
-        {{Usuario.nombre}}
+
+        <li class="nav-item">
+          <a class="btn btn - boton2">Mas info
+
+          </a>
+        </li>
         &nbsp;&nbsp;
-        <button class="btn btn - boton2" style="width: 150px; font-size:12px;" routerLink="usuarios/listar">Lista de usuarios</button>
-        
-        <ul class="navbar-nav ml-auto" *ngIf="revelar==false as user; else login">
 
-
-            <li class="nav-item" *ngIf="user">
-                <a class="btn btn - boton2" routerLink="usuarios/ingresar">Iniciar sesión
-
-                </a>
+        <div class="btn-group dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" id="perfil" (click)="irAPerfil()">Mi perfil</a>
             </li>
-            &nbsp;&nbsp;
-            <li class="nav-item" *ngIf="user">
-                <a class="btn btn - boton2" routerLink="usuarios/registrar">Registrarse
 
-
-                </a>
+            <li>
+              <hr class="dropdown-divider">
             </li>
-        </ul>
-        <ng-template #login>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="btn btn - boton2" routerLink="">Campanita
+            <li><a class="dropdown-item" id="logout" (click)="logout()"> <i class="fas fa-sign-out-alt">Cerrar
+                  sesion</i></a></li>
+          </ul>
+        </div>
 
-                    </a>
-                </li>
-                &nbsp;&nbsp;
-
-                <li class="nav-item">
-                    <a class="btn btn - boton2" routerLink="">Mas info
-
-                    </a>
-                </li>
-                &nbsp;&nbsp;
-                <li class="nav-item">
+        <!-- <li class="nav-item">
                     <a class="btn btn - boton2" (click)="irAPerfil()">Perfil User
 
                     </a>
@@ -115,12 +114,9 @@
                 &nbsp;&nbsp;
                 <li class="nav-item">
                     <a class="btn btn - boton2" id="logout" (click)="logout()">Cerrar sesion</a>
-                </li>
-                <!-- &nbsp;&nbsp;
+                </li> -->
+        <!-- &nbsp;&nbsp;
                 <li>
-
-
-
 
                     <div class="btn-group mr-3">
                         <a type="button" class="d-block link-dark text-decoration-none dropdown-toggle"
@@ -137,10 +133,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
 
                     <div class="dropdown text-end">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
@@ -159,31 +151,16 @@
                           </li>
                           <li><a class="dropdown-item" href="/"> <i class="fas fa-sign-out-alt"> Sign out</i></a></li>
                         </ul>
-                      </div> 
-
-
-
+                      </div>
                 </li>
 
 
                 <li>
 
                 </li> -->
+      </ul>
 
+    </ng-template>
 
-            </ul>
-
-
-
-
-
-
-
-
-
-        </ng-template>
-
-
-
-    </div>
+  </div>
 </nav>

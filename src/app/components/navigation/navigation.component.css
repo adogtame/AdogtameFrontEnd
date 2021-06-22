@@ -2,6 +2,14 @@
     cursor: pointer;
 }
 
+
+#perfil {
+
+
+    cursor: pointer;
+
+}
+
 .boton{
     font-size:14px;
     font-family:Verdana,Helvetica;
@@ -31,9 +39,9 @@
     margin:0 auto;
     padding:0;
     position:relative;
-    
+
 }
-   
+
 #menu li {
     float:center;
     position:relative;
@@ -144,7 +152,7 @@ input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
     font-size: 120%;
     color: #eee;
     text-decoration: none;
-    
+
 }
 
 .sidebar a:hover{
@@ -165,7 +173,7 @@ h1 {
 
 .abrir-cerrar {
     color: #2E88C7;
-    font-size:1rem;   
+    font-size:1rem;
 }
 
 .navbar {
@@ -173,20 +181,12 @@ background-color: #FAE2D7;
 border: rgb(175, 170, 167) 1px solid;
 }
 
+.dropdown-menu.pull-left {
+    left:auto;
+    right:0;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#campanita-icon{
+  font-size: 18px;
+}

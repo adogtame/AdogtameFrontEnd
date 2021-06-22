@@ -1,132 +1,33 @@
-<table id="perfilABasico">
+<div class="container" id="contenedor-animal-perfil">
+  <img id="imagen-animal-perfil" src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+  <p id="nombre-animal-perfil">{{Animal.nombre}}</p>
+</div>
 
-    
-   
-    <ul id="datosPrimeros">
-        <br>
-        <br>
-        <ul id="foto">
-        <li >
-        Foto
-        </li>
-        </ul>  
-        <br>
-        <br>
-        <br>
-        <br>
-        <li>
-
-            <ul>
-                
-                <a class="btn btn - botonInteres" id="interes">Mostrar interes</a>
-                
-            
-                &nbsp;&nbsp;
-
-            
-                <a class="btn btn - botonDador" id="dador" (click)="irADador()">Dador</a>
-                
-            
-
-            </ul>     
-        
-
-        </li>
-        <li >
-            <ul id="espacio">
-            </ul>
-            
-        </li>
-
-
-    </ul>
-    
-
-
-
-        <br>
-        <br>
-        <li >
-           
-            
-            <ul id="corriendo">
-                <li >
-                    
-                    Nombre: {{Animal.nombre}}
-                    
-                </li>
-                <li>                   
-
-                        Tipo: {{Animal.tipo}}
-                        
-                </li>
-                <li>
-                    
-
-                        Sexo: {{Animal.sexo}}
-                        
-                </li>
-                <li>
-                    
-
-                    Edad: {{Animal.fNac}}
-                    
-
-                </li>
-            </ul>
-            
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            <ul id="corriendo">
-                <li>
-                    
-
-                        Tamaño: {{Animal.tamano}}
-                        
-                </li>
-                <li>
-                    
-                        <!-- Direccion: -->
-                        Peso: {{Animal.peso}}
-                        
-                </li>
-                <br>
-                <li>
-                    
-
-                        Estado de adopcion: 
-                        &nbsp;&nbsp; <a class="btn btn - botonEstado" > Estado</a>
-                    
-                                        
-                </li>
-            </ul>
-            
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;
-            &nbsp;
-            <ul id="corriendo">
-                             
-
-                    <a class="btn btn - botonDatosMedicos" > Datos Medicos</a>
-                                  
-
-            </ul>
-
-
-        </li>
-
-        
-
-</table>
-
-
-
-
-
+<div class="container" style="margin-top: 50px;">
+  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button id="Interes-tab" class="nav-link active col-lg-4 float-left" type="button" role="tab">Mostrar
+        Interes</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button id="Dador-tab" role="tab" class="nav-link col-lg-4 float-right" type="button"
+        (click)="irADador()">Dador</button>
+    </li>
+  </ul>
+</div>
+<div class="container">
+  <ul id="data" role="tablist">
+    <li class=" col-lg-9 float-left">Nombre: {{Animal.nombre}}</li>
+    <li class=" col-lg-9 float-left">Tipo: {{Animal.tipo}} </li>
+    <li class=" col-lg-9 float-left">Sexo: {{Animal.sexo}} </li>
+    <li class=" col-lg-9 float-left">Fecha de Nacimiento: {{Animal.fNac}} </li>
+    <li class=" col-lg-9 float-left">Tamaño: {{Animal.tamano}} </li>
+    <li class=" col-lg-9 float-left">Peso: {{Animal.peso}} KG</li>
+    <li class=" col-lg-9 float-left">Estado de adopcion:
+      <a class="btn btn - botonEstado"> En adopcion</a>
+    </li>
+    <li class="col-lg-3 float-right">
+      <button class="btn btn - botonDatosMedicos"> Datos Medicos</button>
+    </li>
+  </ul>
+</div>
