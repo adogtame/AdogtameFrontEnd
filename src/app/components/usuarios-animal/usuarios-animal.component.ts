@@ -35,10 +35,10 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
   irADador(){
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    
       this.router.navigate(['usuarios/perfil/',this.Animal.idDador]);
 
-    });
+    
 
   }
 
