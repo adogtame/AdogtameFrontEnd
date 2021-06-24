@@ -1,31 +1,45 @@
 <div id="sidebar" class="sidebar">
   <ul id="menu">
-    <br><br><br><br>
-    <li><button class="btn btn - boton1" routerLink=".">> Filtros</button></li>
-    <br><br>
-    <li><button class="btn btn - boton1" routerLink=".">> Excluir</button></li>
-    <br><br>
-    <li><button class="btn btn - boton2">Aplicar</button></li>
+    <br>
+    <br>
+    <br>
+    <br>
+    <li>
+      <button class="btn btn - boton1" routerLink=".">> Filtros</button>
+
+    </li>
+    <br>
+    <br>
+    <li>
+      <button class="btn btn - boton1" routerLink=".">> Excluir</button>
+
+    </li>
+    <br>
+    <br>
+    <li><button class="btn btn - boton2">Aplicar</button>
+
+    </li>
+
   </ul>
 </div>
 <div class="container">
-  <br><br><br>
-  Aca empieza
+
+
+<div id="container">
+  Aca empieza<br><br><br>
   <div class="component">
     <div class="col-md-4" *ngFor=" let animal of animales" id="card-animal-principal">
       <div class="card" id="card-animales" (click)="irAAnimal(animal.id)">
         <div class="card-header" id="titulo-animal-principal">Nombre: {{animal.nombre}}</div>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6163cn5YzZo-mEUXuyLnevw_14Yv8rl4mwP7wnGf3BLV4lQ7KJQBm2FSYeSAtiXspcoI&usqp=CAU"
-          class="card-img-top" alt="..." id="imagen-animal-principal">
-        <div class="card-body" id="body-animal">
+        <img src="https://www.hola.com/imagenes/estar-bien/20200128159175/razas-de-perro-mestizo/0-775-302/razas-perro-mestizo-m.jpg" class="card-img-top" alt="..." id="imagen-animal-principal">
+        <div class="card-body">
           <!--{{usuario.nombre}}-->
-          <p class="card-text" id="texto-animal"><b>Dueño ID: {{animal.idDador}}</b></p>
-          <p class="card-text" id="texto-animal">Tipo: {{animal.tipo}} </p>
+          <p class="card-text"><b>Dueño ID: {{animal.idDador}} </b> Tipo: {{animal.tipo}}</p>
         </div>
       </div>
     </div>
   </div>
   <br>
   <p> Termino... es para ver si lo pone a la derecha de los botones</p>
+</div>
 </div>

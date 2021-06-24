@@ -138,7 +138,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
       res => {
         let result:any=res;
-        console.log(result.message);               
+        console.log(result);               
         //por ahora no funca porq hace falta recibir un id del animal recien creado y redireccionar con eso
         //this.router.navigate(['usuarios/animal/',result.id]);
       },

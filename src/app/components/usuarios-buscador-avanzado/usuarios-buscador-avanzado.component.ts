@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
 
@@ -27,7 +28,7 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
 
   irAAnimal(id: number){
-
+    
     console.log("El id ",id)
     this.router.navigate(['usuarios/animal/',id]);
   }

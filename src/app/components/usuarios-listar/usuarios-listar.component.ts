@@ -40,11 +40,8 @@ export class UsuariosListarComponent implements OnInit {
     
     console.log("El id ",id)
 
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
      
       this.router.navigate(['usuarios/perfil/',id]);
-      
-    }); 
 
 
   }
@@ -52,11 +49,9 @@ export class UsuariosListarComponent implements OnInit {
   irAAnimal(id: number){
     
     console.log("El id ",id)
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
      
       this.router.navigate(['usuarios/animal/',id]);
         
-    }); 
   }
 
 

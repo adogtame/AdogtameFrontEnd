@@ -61,9 +61,9 @@ export class NavigationComponent implements OnInit {
 
 
 
-
     
-
+    
+   
 
 
   }
@@ -115,11 +115,25 @@ export class NavigationComponent implements OnInit {
       res => {  
 
         this.UsuarioID=res;
+
+        console.log("Este es el id decodificado", this.UsuarioID); 
+
         this.usuariosService.buscarUsuario(this.UsuarioID.user).subscribe(
           res => {
             this.Usuario = res
             
+            console.log("Este es el id dasdasdsa",this.Usuario); 
+
+
             this.usuariosService.user.id = this.Usuario.id;
+
+            //Tengo q hacer el emit de los likes aca porq si estoy en animal primero cargan los comentarios y para cuando cargo el usuario cagaste
+            
+              this.usuariosService.coment$.emit()
+            //
+
+
+
             console.log(this.Usuario); 
           },
           err => console.log(err) 

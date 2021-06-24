@@ -1,33 +1,115 @@
+
 <div class="container" id="contenedor-animal-perfil">
-  <img id="imagen-animal-perfil" src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-  <p id="nombre-animal-perfil">{{Animal.nombre}}</p>
+  
+    <img id="imagen-animal-perfil" src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+    <p id="nombre-animal-perfil">{{Animal.nombre}}</p>
 </div>
 
 <div class="container" style="margin-top: 50px;">
-  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist" >
+       
     <li class="nav-item" role="presentation">
-      <button id="Interes-tab" class="nav-link active col-lg-4 float-left" type="button" role="tab">Mostrar
-        Interes</button>
+      <button  id="Interes-tab" 
+
+      class="nav-link active col-lg-4 float-left"
+      type="button" role="tab" >Mostrar Interes
+    </button>
     </li>
     <li class="nav-item" role="presentation">
-      <button id="Dador-tab" role="tab" class="nav-link col-lg-4 float-right" type="button"
-        (click)="irADador()">Dador</button>
+
+      <button  id="Dador-tab"
+
+      role="tab"
+      class="nav-link col-lg-4 float-right" type="button" (click)="irADador()">Dador
+     
+    </button>
     </li>
-  </ul>
+    </ul>
 </div>
-<div class="container">
-  <ul id="data" role="tablist">
-    <li class=" col-lg-9 float-left">Nombre: {{Animal.nombre}}</li>
-    <li class=" col-lg-9 float-left">Tipo: {{Animal.tipo}} </li>
-    <li class=" col-lg-9 float-left">Sexo: {{Animal.sexo}} </li>
-    <li class=" col-lg-9 float-left">Fecha de Nacimiento: {{Animal.fNac}} </li>
-    <li class=" col-lg-9 float-left">Tamaño: {{Animal.tamano}} </li>
-    <li class=" col-lg-9 float-left">Peso: {{Animal.peso}} KG</li>
-    <li class=" col-lg-9 float-left">Estado de adopcion:
-      <a class="btn btn - botonEstado"> En adopcion</a>
-    </li>
-    <li class="col-lg-3 float-right">
-      <button class="btn btn - botonDatosMedicos"> Datos Medicos</button>
-    </li>
-  </ul>
+
+
+<br> 
+<br> 
+<div class="container" >
+   
+        
+    <ul id="data" role="tablist" >
+       
+        <li class=" col-lg-9 float-left">
+        
+                
+            <b>Nombre:</b> {{Animal.nombre}}  
+            <br> 
+            <b>Tipo:</b> {{Animal.tipo}}
+            <br> 
+            <b>Sexo:</b> {{Animal.sexo}}
+            <br> 
+            <b>Edad:</b> {{Animal.fNac}}  
+            <br>  
+            <b>Tamaño:</b> {{Animal.tamano}}     
+            <br>                
+            <b>Peso:</b> {{Animal.peso}}         
+            <br>          
+            <b>Estado de adopcion:</b> &nbsp;&nbsp; <a class="btn btn - botonEstado" > Estado</a>
+
+        </li>
+
+        <li class="col-lg-3 float-right">
+        
+          
+
+            <a class="btn btn - botonDatosMedicos" > Datos Medicos</a>
+        </li>
+
+        </ul>
+
+
+
 </div>
+<br><br><br><br><br><br><br><br>
+<div class="container" id="animal-coment">
+  <br>
+  <b>Comentarios </b>
+  <br>
+  <br>
+
+  <input  type="text" id="comentario" name="comentario" [(ngModel)]="comentario.comentario" 
+  placeholder="Agrega un comentario público…">
+  &nbsp;<button class="btn btn-success" (click)="agregarComentario()">Comentar </button>
+  <br><br><br><br>             
+ 
+  <table *ngIf="comentarios.length > 0; else sinComentarios" >
+    
+    <ng-container *ngFor="let comentario of comentarios.reverse()">
+    <ul id="ulc" >
+        
+      <li>Usuario: {{comentario.idUsuario}}</li>
+        <li>Comentario: {{comentario.comentario}}</li>
+        <li>Fecha: {{comentario.fecha}}</li>
+        <li>Animal: {{comentario.idAnimal}}</li>
+        <li>
+         
+          <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          
+          {{comentario.likes}}&nbsp;<i id="like" [ngClass]="{'likeActivo' : comentario.like, 'likeNoActivo': !comentario.like}" 
+          class="fa fa-thumbs-up" (click)="like(comentario.id, comentario.like, comentario.dislike)"></i>
+          &nbsp;&nbsp;
+          {{comentario.dislikes}}&nbsp;<i id="dislike"  [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}" 
+          class="fa fa-thumbs-down" (click)="dislike(comentario.id, comentario.dislike, comentario.like)"></i>
+        </li>
+        <br><br><br><br>
+    </ul>
+    </ng-container>
+  </table>
+  <ng-template #sinComentarios>
+  
+   Se el primero en comentar!!!
+       
+</ng-template>
+
+
+
+
+</div>
+

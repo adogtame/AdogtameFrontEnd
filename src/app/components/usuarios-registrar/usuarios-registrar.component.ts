@@ -9,7 +9,7 @@ import { Router } from '@angular/router'
 })
 export class UsuariosRegistrarComponent implements OnInit {
 
-  user={  tipo_perfil:"", nombre:"",apellido:"", password:"",repassword:"",email:"",dni:"",nro_celular:"",calle:"",nro_calle:""};
+  user={  tipo_perfil:"persona", nombre:"",apellido:"", password:"",repassword:"",email:"",dni:"",nro_celular:"",calle:"",nro_calle:""};
 
 
   errorNombre=0;
@@ -116,7 +116,7 @@ export class UsuariosRegistrarComponent implements OnInit {
  
   //[A-Z][A-Za-z0-9]
   verificarPassword(password:any): number {
-    const patron=/^[a-z0-9]{6,20}$/;
+    const patron=/^[A-Za-z0-9]{6,20}$/;
     if(password.length==0)
       return 1;
     if(password.length>20)

@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 export class UsuariosIngresarComponent implements OnInit {
 
 
-  user = { id: "", password: "" };
+  user = { email: "", password: "" };
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -35,15 +35,17 @@ export class UsuariosIngresarComponent implements OnInit {
     this.usuariosService.ingresar(this.user).subscribe(
       res => {
 
-
-        this.usuariosService.user.id=this.user.id;
         
-        console.log( this.usuariosService.user.id);
+        
         let result: any = res;
+        
+        console.log(result);
+        this.usuariosService.user.id=result.message;
+        console.log( "quiero ver q se guarda en el usuariosservive", this.usuariosService.user.id);
         console.log(result.message);
         localStorage.setItem('token',result.token);      
-        //este dice q esta logueado, el si ese es al pepe  
-        this.usuariosService.logued$.emit('si')
+        //este dice q esta logueado
+        this.usuariosService.logued$.emit()
         
         this.router.navigate(['usuarios/home']);
         
@@ -68,7 +70,7 @@ export class UsuariosIngresarComponent implements OnInit {
   
   recargarForm(){
     this.reintentar=false;
-    this.user.id="";
+    this.user.email="";
     this.user.password="";
 	this.mensaje="";
   }
