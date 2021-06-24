@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class UsuariosService {
-	API_URI = 'https://adogtame-app.herokuapp.com/user';
+	API_URI = 'http://localhost:3000/user';
 
 	//http://localhost:3000/user
 
@@ -31,14 +31,20 @@ export class UsuariosService {
 
 
 	//
-	
+
 	//
 
 	user = { id: ""};
 	//
 
 
+	//cesar Jueves
 
+
+	coment$ = new EventEmitter<string>();
+	likes$ = new EventEmitter<string>();
+
+	//
 
 	listarUsuarios() {
 		//para expandir/especializar las variables usamos ` y no ' o "
@@ -130,4 +136,26 @@ export class UsuariosService {
 		
 	}
 
+
+
+	//Cesar Jueves
+	agregarComentario(comentario: any) {
+		return this.http.post(`${this.API_URI}/comentario`, comentario);
+	}
+
+
+	listarComentarios(id: string) {
+		return this.http.get(`${this.API_URI}/listComentarios/${id}`);
+		
+	}
+
+	listarUsuariosLikes(id: string) {
+		return this.http.get(`${this.API_URI}/listUsuariosLikes/${id}`);
+		
+	}
+
+
+	actualizarComentarioLikeDislike(idComentario: string, usuario: any): Observable<Usuario> {
+		return this.http.put(`${this.API_URI}/updateLikeDislikeComentario/${idComentario}`, usuario);
+	}
 }
