@@ -14,9 +14,8 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class UsuariosService {
-	API_URI = 'http://localhost:3000/user';
-
-	//http://localhost:3000/user
+	API_URI = 'https://adogtame-app.herokuapp.com/user';
+  //API_URI = 'http://localhost:3000/user';
 
 	constructor(private http: HttpClient, private router:Router) { }
 	
@@ -29,23 +28,13 @@ export class UsuariosService {
 	revelarBusquedaRapida$ = new EventEmitter<string>();
 	revelarBusquedaRapida: boolean = false;
 
-
-	//
-
-	//
-
 	user = { id: ""};
-	//
-
 
 	//cesar Jueves
-
-
 	coment$ = new EventEmitter<string>();
 	likes$ = new EventEmitter<string>();
 
 	//
-
 	listarUsuarios() {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto
@@ -62,8 +51,6 @@ export class UsuariosService {
 		//return this.http.get(this.API_URI+'/list');
 	}
 
-
-
 	listarAnimalesDelUsuario(id: string) {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto
@@ -71,7 +58,6 @@ export class UsuariosService {
 		//si no funciona usar 
 		//return this.http.get(this.API_URI+'/list');
 	}
-
 
 	buscarUsuario(id: string) {
 		return this.http.get(`${this.API_URI}/find/${id}`);
@@ -103,7 +89,6 @@ export class UsuariosService {
 		
 	}
 
-	
 	registrarAnimal(animal: any, id: string) {
 		animal.idDador=id;
 		console.log(animal.idDador)
@@ -135,7 +120,6 @@ export class UsuariosService {
 		return this.http.post(`${this.API_URI}/dToken`, token);
 		
 	}
-
 
 
 	//Cesar Jueves
