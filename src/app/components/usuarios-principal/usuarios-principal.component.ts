@@ -13,8 +13,7 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
 
   constructor(private usuariosService: UsuariosService) { }
 
-
-  
+  animales: any = [];
 
   ngOnInit(): void {
 
@@ -23,6 +22,13 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
     this.usuariosService.revelarBusquedaRapida$.emit('si')
     console.log( this.usuariosService.revelarBusquedaRapida);
 
+    this.usuariosService.listarAnimales().subscribe(
+      res => {
+        this.animales = res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
 
   }
 
