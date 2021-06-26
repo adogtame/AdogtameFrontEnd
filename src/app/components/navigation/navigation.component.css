@@ -52,13 +52,6 @@
 }
 
 
-
-
-
-
-
-
-
 body {
     font-family: "Segoe UI", sans-serif;
     font-size:100%;
@@ -182,16 +175,12 @@ border: rgb(175, 170, 167) 1px solid;
 }
 
 
-
-
-
-
-
-
-
 .dropdown-menu.pull-left {
     left:auto;
     right:0;
 }
 
 
+#campanita-icon{
+  font-size: 18px;
+}
