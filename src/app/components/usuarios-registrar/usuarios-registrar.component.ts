@@ -135,7 +135,7 @@ export class UsuariosRegistrarComponent implements OnInit {
   }
   
   verificarEmail(email:any): number {
-    const patron=/^[a-z0-9]{1,10}@[a-z0-9]{1,10}\.[a-z]{2,3}$/;
+    const patron=/^[a-z0-9]{1,20}@[a-z0-9]{1,10}\.[a-z]{2,3}$/;
     if(email.length==0)
       return 1;
     if(email.length>20)
