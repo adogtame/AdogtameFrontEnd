@@ -138,7 +138,7 @@ export class UsuariosRegistrarComponent implements OnInit {
     const patron=/^[a-z0-9]{1,20}@[a-z0-9]{1,10}\.[a-z]{2,3}$/;
     if(email.length==0)
       return 1;
-    if(email.length>20)
+    if(email.length>33)
       return 2;
     if(!patron.test(email))
       return 3;
