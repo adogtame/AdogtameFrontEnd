@@ -375,6 +375,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
         }
 
+        
+        console.log("Q onda q me cambia el orden", this.comentarios)
+
+        
+        
       },
       err => console.log(err)
     )
