@@ -4,10 +4,7 @@
 
 
 #perfil {
-
-
     cursor: pointer;
-
 }
 
 .boton{
@@ -65,7 +62,6 @@ input#abrir-cerrar {
     position: absolute;
     top: -9999px;
 }
-
 
 
 .cerrar {

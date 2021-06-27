@@ -44,3 +44,13 @@
 .component{
   margin-left: 55px!important;
 }
+
+#filtro-search{
+  width: 25%;
+  margin-left: 208px;
+  background-color: lightyellow;
+  font: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:navy;
+  margin-top: 15px;
+}
