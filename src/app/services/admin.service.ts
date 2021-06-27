@@ -55,6 +55,20 @@ export class AdminService {
 
 
 
+  eliminarComentario(id: string) {
+		return this.http.delete(`${this.API_URI}/deleteComentario/${id}`);
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

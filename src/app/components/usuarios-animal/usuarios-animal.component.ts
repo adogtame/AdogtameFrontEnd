@@ -5,6 +5,12 @@ import { Router } from '@angular/router'
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
 
+//cesar jueves
+
+import { AdminService } from '../../services/admin.service';
+
+//
+
 @Component({
   selector: 'app-usuarios-animal',
   templateUrl: './usuarios-animal.component.html',
@@ -43,11 +49,24 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
+  // admin
+  rol: any = "";
+  //
+
+
 
 
   //Fin de lo de cesar
 
-  constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
+  constructor(
+
+    private usuariosService: UsuariosService,
+    private router: Router,
+    private rutaActiva: ActivatedRoute,
+    //cesar
+    private adminService: AdminService
+    //
+    ) { }
 
   ngOnInit(): void {
 
@@ -79,20 +98,17 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
+      this.usuariosService.rol$.subscribe(log => {
+        
+      this.rol=this.usuariosService.rol;
+      
+      console.log("El rol del usuario es", this.usuariosService.rol); 
 
-
+      });
       //
 
 
     });
-
-
-
-
-
-
-
-
 
 
   }
@@ -185,6 +201,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.usuariosService.listarComentarios(this.AnimalID.id).subscribe(
       res => {
+
+
+
+        this.usuariosService.rol$.emit()
+
         this.comentarios = res;
         console.log(res);
 
@@ -198,6 +219,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
         this.usuarioLikes = [];
         this.listarUsuariosLikes();
+
 
       },
       err => console.log(err)
@@ -375,11 +397,10 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
         }
 
-        
+
         console.log("Q onda q me cambia el orden", this.comentarios)
 
-        
-        
+
       },
       err => console.log(err)
     )
@@ -855,6 +876,32 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
   //
+
+
+
+
+  eliminarComentario(comentario: any){
+
+    console.log(comentario);
+
+    this.adminService.eliminarComentario(comentario).subscribe(
+      res => {
+        
+        console.log(res);  
+
+        this.usuariosService.coment$.emit()
+        
+      },
+      err => {
+
+        console.log(err.error.message);
+
+      }
+    )
+
+    
+  }
+
 
 
 
