@@ -34,6 +34,12 @@ export class UsuariosService {
 	coment$ = new EventEmitter<string>();
 	likes$ = new EventEmitter<string>();
 
+
+	
+	rol$ = new EventEmitter<string>();
+	rol: any = "";
+
+
 	//
 	listarUsuarios() {
 		//para expandir/especializar las variables usamos ` y no ' o "

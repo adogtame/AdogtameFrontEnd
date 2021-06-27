@@ -4,10 +4,7 @@
 
 
 #perfil {
-
-
     cursor: pointer;
-
 }
 
 .boton{
@@ -27,7 +24,7 @@
     color:white;
     background:rgb(128, 49, 12);
     border:0px;
-    width:100px;
+    width:104px;
     height:30px;
 }
 
@@ -65,7 +62,6 @@ input#abrir-cerrar {
     position: absolute;
     top: -9999px;
 }
-
 
 
 .cerrar {

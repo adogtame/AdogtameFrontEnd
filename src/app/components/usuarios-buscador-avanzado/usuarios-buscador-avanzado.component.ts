@@ -13,7 +13,8 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
   animales: any = [];
-
+  filterPost = '';
+  
   ngOnInit(): void {
 
     this.usuariosService.listarAnimales().subscribe(

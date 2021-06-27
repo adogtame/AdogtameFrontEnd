@@ -80,13 +80,19 @@
  
   <table *ngIf="comentarios.length > 0; else sinComentarios" >
     
-    <ng-container *ngFor="let comentario of comentarios.reverse()">
+    <ng-container *ngFor="let comentario of comentarios">
     <ul id="ulc" >
         
       <li>Usuario: {{comentario.idUsuario}}</li>
         <li>Comentario: {{comentario.comentario}}</li>
         <li>Fecha: {{comentario.fecha}}</li>
         <li>Animal: {{comentario.idAnimal}}</li>
+        <li class="nav-item" *ngIf="rol=='administrador'; else noAdmin">
+          <br>
+          <button class="btn btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar comentario</button>
+          <br>
+        </li> 
+        <ng-template #noAdmin>
         <li>
          
           <link rel="stylesheet" 
@@ -98,6 +104,7 @@
           {{comentario.dislikes}}&nbsp;<i id="dislike"  [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}" 
           class="fa fa-thumbs-down" (click)="dislike(comentario.id, comentario.dislike, comentario.like)"></i>
         </li>
+        </ng-template>
         <br><br><br><br>
     </ul>
     </ng-container>

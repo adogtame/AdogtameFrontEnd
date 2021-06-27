@@ -34,6 +34,9 @@ export class NavigationComponent implements OnInit {
   //nombreSubscription: Subscription | any;
 
 
+  // admin
+  rol: any = "";
+  //
 
   ngOnInit(): void {
 
@@ -126,6 +129,12 @@ export class NavigationComponent implements OnInit {
 
 
             this.usuariosService.user.id = this.Usuario.id;
+
+
+            this.rol=this.Usuario.tipo_perfil;
+            this.usuariosService.rol=this.Usuario.tipo_perfil;
+            
+            console.log("El rol del usuario es", this.usuariosService.rol); 
 
             //Tengo q hacer el emit de los likes aca porq si estoy en animal primero cargan los comentarios y para cuando cargo el usuario cagaste
             
