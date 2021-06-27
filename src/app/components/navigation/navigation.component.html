@@ -1,32 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-outline-dark" id="navbar">
+    <div *ngIf="revelarBusRapida==true">
+        <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+        <label for="abrir-cerrar" class="btn btn-outline-dark">
+            <span class="abrir"><i class="fas fa-bars"></i> <i class="fas fa-chevron-right"></i></span>
+            <span class="cerrar"><i class="fas fa-chevron-left"></i><i class="fas fa-bars"></i></span>
+        </label>
+        <div id="sidebar" class="sidebar">
 
- <div *ngIf="revelarBusRapida==true" >
-    <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
-    <label for="abrir-cerrar" style="color: black;">&#9776; <span class="abrir">&gt;</span><span
-            class="cerrar">&lt;</span></label>
-    <div id="sidebar" class="sidebar">
-
-        <ul id="menu">
-            <br><br>
-            <li>
-                <button class="btn btn - boton" href="#">Organizaciones</button>
-            </li>
-            <br> <br>
-            <li>
-                <button class="btn btn - boton" href="#">Crias</button>
-            </li>
-            <br> <br>
-            <li>
-                <button class="btn btn - boton" href="#">Adultos</button>
-            </li>
-            <br> <br>
-            <li>
-              <button class="btn btn - boton" href="#">Especiales</button>
-            </li>
-        </ul>
+            <ul id="menu">
+                <br><br>
+                <li>
+                    <button class="btn btn - boton" href="#">Organizaciones</button>
+                </li>
+                <br> <br>
+                <li>
+                    <button class="btn btn - boton" href="#">Crias</button>
+                </li>
+                <br> <br>
+                <li>
+                    <button class="btn btn - boton" href="#">Adultos</button>
+                </li>
+                <br> <br>
+                <li>
+                    <button class="btn btn - boton" href="#">Especiales </button>
+                </li>
+            </ul>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- </div>
     <a class="navbar-brand" routerLink="usuarios/principal">
         <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
     </a>
@@ -38,16 +39,19 @@
     <div class="collapse navbar-collapse">
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="navbar-brand" style="color: white;"> </div>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
-            &nbsp;
-            <button type="submit" style="background-color: grey">
-                <img src="https://media-public.canva.com/HYnZ0/MAEViGHYnZ0/1/s.svg" style="height: 25px;">
-            </button>
-        </form>
+        <!-- 
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
+                &nbsp;
+                <button type="submit" style="background-color: grey">
+                    <img src="https://media-public.canva.com/HYnZ0/MAEViGHYnZ0/1/s.svg" style="height: 25px;">
+                </button>
+            </form>
+        -->
 
         &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-        <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/buscador-avanzado">Listados</button>
+        <button class="btn btn - boton2" style="height: 35px; font-size:16px;"
+            routerLink="usuarios/buscador-avanzado">Listados</button>
         &nbsp;&nbsp;
         {{Usuario.nombre}}
         &nbsp;&nbsp;
@@ -56,7 +60,7 @@
         <ul class="navbar-nav ml-auto" *ngIf="revelar==false as user; else login">
 
             <li class="nav-item" *ngIf="user">
-                <a class="btn btn - boton2" routerLink="usuarios/ingresar"> Iniciar sesión
+                <a class="btn btn - boton2" routerLink="usuarios/ingresar"> Iniciar sesión!
                 </a>
             </li>
             &nbsp;&nbsp;
@@ -69,7 +73,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="btn btn - boton2"><i class="far fa-bell" id="campanita-icon"></i></a>
-                </li>            
+                </li>
 
                 &nbsp;&nbsp;
 
@@ -78,26 +82,23 @@
                 </li>
                 &nbsp;&nbsp;
 
-
                 <div class="btn-group dropdown">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-                      data-bs-toggle="dropdown"   aria-expanded="false">
-                      <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
-                      
-                        
-                      <li><a class="dropdown-item" id="perfil" (click)="irAPerfil()">Mi perfil</a>
-                      </li>
-                      
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" id="logout" (click)="logout()"> <i class="fas fa-sign-out-alt">Cerrar sesion</i></a></li>
+                        <li><a class="dropdown-item" id="perfil" (click)="irAPerfil()">Mi perfil</a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" id="logout" (click)="logout()"> <i
+                                    class="fas fa-sign-out-alt">Cerrar sesion</i></a></li>
                     </ul>
-                </div>         
-  
-                   
+                </div>
+
                 <!-- <li class="nav-item">
                     <a class="btn btn - boton2" (click)="irAPerfil()">Perfil User
 
@@ -109,8 +110,6 @@
                 </li> -->
                 <!-- &nbsp;&nbsp;
                 <li>
-
-
                     <div class="btn-group mr-3">
                         <a type="button" class="d-block link-dark text-decoration-none dropdown-toggle"
                             data-bs-toggle="dropdown" aria-expanded="false" id="dropdownUser1">
@@ -126,7 +125,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="dropdown text-end">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
@@ -146,22 +144,13 @@
                           <li><a class="dropdown-item" href="/"> <i class="fas fa-sign-out-alt"> Sign out</i></a></li>
                         </ul>
                       </div> 
-
-
-
                 </li>
-
-
                 <li>
-
                 </li> -->
 
             </ul>
 
-
         </ng-template>
-
-
 
     </div>
 </nav>
