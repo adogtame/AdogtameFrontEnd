@@ -36,4 +36,15 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
     console.log(this.usuariosService.revelarBusquedaRapida);
   }
 
+
+
+  irAAnimal(id: number){
+    
+    console.log("El id ",id)
+    this.router.navigate(['usuarios/animal/',id]);
+  }
+
+
+
+
 }

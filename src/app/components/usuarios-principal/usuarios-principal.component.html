@@ -3,7 +3,7 @@
 <div class="container">
   <div class="component">
     <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost" id="card-animal-principal">
-      <div class="card" id="card-animales">
+      <div class="card" id="card-animales"  (click)="irAAnimal(animal.id)">
         <div class="card-header" id="titulo-animal-principal">Nombre: {{animal.nombre}}
         </div>
         <img
