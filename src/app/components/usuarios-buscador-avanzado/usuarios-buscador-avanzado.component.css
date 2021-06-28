@@ -60,43 +60,63 @@
     min-width:200px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+cambie lo q hay en el buscador con lo q hay en principal 
+para q en buscador aparezcan varios mientras q en principal 1 solo
+
+*/
+
+
+
 #card-animal-principal{
-  margin-bottom:15px;
-  padding-bottom: 15px;
-  margin-left: 120px;
+  margin: 15px;
   border: 15px;
   text-align: center;
-  width: 800px !important;
-  
+  width: 300px !important;
+  float:left;
 }
+
 #card-animales{
   text-align: center;
-  width: 722px;
+  width: 324px;
 }
 
 #imagen-animal-principal{
-  height: 400px;
-  width: 722px;
+  height: 200px;
+  width: 322px;
   align-items: center;
 }
 
 #titulo-animal-principal{
   text-align: left;
   font: bolder;
-  font-size: 48px;
+  font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: darksalmon;
 }
 
 #texto-animal{
-  font-size:22px;
+  font-size:14px;
   font-family:Verdana,Helvetica;
   font-weight:bold;
   color:black;
   border:0px;
-  height:30px;
+  height:10px;
   float: left;
-  margin-right: 25%;
+  margin-right: 5%;
   text-align: center;
 }
 
@@ -104,12 +124,27 @@
   background-color: gainsboro;
 }
 
-#container {
-  border: 2px;
-  overflow: hidden;
-  margin-left: 15px;
-  padding: 15px;
+.component{
+  margin-left: 55px!important;
 }
+
+
+
+
+
+
+
+/*
+
+
+
+cambie lo q hay en el buscador con lo q hay en principal 
+para q en buscador aparezcan varios mientras q en principal 1 solo
+
+*/
+
+
+
 
 #filtro-search{
   width: 25%;
