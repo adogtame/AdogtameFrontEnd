@@ -1,9 +1,9 @@
-<input type="text" class="form-control" id="filtro-search" name="filterPost" placeholder="Ingrese el nombre que desea filtrar"
-  [(ngModel)]="filterPost">
+<input type="text" class="form-control" id="filtro-search" name="filterPost"
+  placeholder="Ingrese el nombre que desea filtrar" [(ngModel)]="filterPost">
 <div class="container">
   <div class="component">
     <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost" id="card-animal-principal">
-      <div class="card" id="card-animales"  (click)="irAAnimal(animal.id)">
+      <div class="card" id="card-animales" (click)="irAAnimal(animal.id)">
         <div class="card-header" id="titulo-animal-principal">Nombre: {{animal.nombre}}
         </div>
         <img
@@ -15,5 +15,6 @@
           <p class="card-text" id="texto-animal">Tipo: {{animal.tipo}} </p>
         </div>
       </div>
+    </div>
   </div>
 </div>
