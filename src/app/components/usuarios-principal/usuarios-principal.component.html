@@ -1,7 +1,7 @@
-<input type="text" class="form-control" id="filtro-search" name="filterPost"
-  placeholder="Ingrese el nombre que desea filtrar" [(ngModel)]="filterPost">
 <div class="container">
   <div class="component">
+    <input type="text" class="form-control" id="filtro-search" name="filterPost"
+      placeholder="Ingrese el nombre que desea filtrar" [(ngModel)]="filterPost">
     <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost" id="card-animal-principal">
       <div class="card" id="card-animales" (click)="irAAnimal(animal.id)">
         <div class="card-header" id="titulo-animal-principal">Nombre: {{animal.nombre}}
