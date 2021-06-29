@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import {UsuariosListarComponent} from "./components/usuarios-listar/usuarios-listar.component";
 import {UsuariosIngresarComponent} from "./components/usuarios-ingresar/usuarios-ingresar.component";
 import {UsuariosRegistrarComponent} from "./components/usuarios-registrar/usuarios-registrar.component";
+import { UsuariosVerificarComponent } from './components/usuarios-verificar/usuarios-verificar.component';
+import { UsuariosVerificandoComponent } from './components/usuarios-verificando/usuarios-verificando.component';
+import { UsuariosVerificadoComponent } from './components/usuarios-verificado/usuarios-verificado.component';
+import { UsuariosVerificacionfallidaComponent } from './components/usuarios-verificacionfallida/usuarios-verificacionfallida.component';
 
 import { UsuariosPrincipalComponent } from "./components/usuarios-principal/usuarios-principal.component";
 import { UsuariosHomeComponent } from "./components/usuarios-home/usuarios-home.component";
@@ -33,6 +37,22 @@ const routes: Routes = [
 	{
 		path: 'usuarios/registrar',
 		component: UsuariosRegistrarComponent
+	},
+	{
+		path: 'usuarios/verificar/:token',
+		component: UsuariosVerificarComponent
+	},
+	{
+		path: 'usuarios/verificando',
+		component: UsuariosVerificandoComponent
+	},
+	{
+		path: 'usuarios/verificado',
+		component: UsuariosVerificadoComponent
+	},
+	{
+		path: 'usuarios/verificacionfallida',
+		component: UsuariosVerificacionfallidaComponent
 	},
 	{
 		path: 'usuarios/principal',

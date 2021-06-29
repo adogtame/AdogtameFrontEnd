@@ -33,34 +33,34 @@ export class UsuariosRegistrarComponent implements OnInit {
   }
 
   registrar(){
-		console.log("Sign Up");
-    console.log(this.user);
+	console.log("Sign Up");
+console.log('Cliente this.user => ', this.user);
 
-    this.usuariosService.registrar(this.user).subscribe(
+this.usuariosService.registrar(this.user).subscribe(
+	//TO DO: Modificar para que no redireccione, ni almacene el token
+  res => {
+	let result:any=res;
+	console.log('Cliente result.message => ',result.message);
+	//localStorage.setItem('token',result.token);        
+	//this.usuariosService.logued$.emit('si')
+	this.router.navigate(['usuarios/verificando']);
+  },
+  err => {
+	
+	console.log('Cliente error.message => ', err.error.message);
 
-      res => {
-        let result:any=res;
-        console.log(result.message);
-        localStorage.setItem('token',result.token);        
-        this.usuariosService.logued$.emit('si')
-        this.router.navigate(['usuarios/home']);
-      },
-      err => {
-        
-        console.log(err.error.message);
+	this.mensaje=err.error.message;
+	this.verificarNombre(this.user.nombre);
 
-        this.mensaje=err.error.message;
-        this.verificarNombre(this.user.nombre);
-
-      }
-
-
+  }
 
 
-    )
 
 
-	}
+)
+
+
+}
 
 
   verificarForm():boolean{

@@ -17,6 +17,10 @@ import { UsuariosBuscadorAvanzadoComponent } from './components/usuarios-buscado
 import { UsuariosPerfilComponent } from './components/usuarios-perfil/usuarios-perfil.component';
 import { UsuariosAnimalComponent } from './components/usuarios-animal/usuarios-animal.component';
 import { FilterPipe } from '../app/components/pipes/filter.pipe';
+import { UsuariosVerificandoComponent } from './components/usuarios-verificando/usuarios-verificando.component';
+import { UsuariosVerificarComponent } from './components/usuarios-verificar/usuarios-verificar.component';
+import { UsuariosVerificadoComponent } from './components/usuarios-verificado/usuarios-verificado.component';
+import { UsuariosVerificacionfallidaComponent } from './components/usuarios-verificacionfallida/usuarios-verificacionfallida.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +34,10 @@ import { FilterPipe } from '../app/components/pipes/filter.pipe';
     UsuariosPerfilComponent,
     UsuariosAnimalComponent,
     FilterPipe,
+    UsuariosVerificandoComponent,
+    UsuariosVerificarComponent,
+    UsuariosVerificadoComponent,
+    UsuariosVerificacionfallidaComponent,
   ],
   imports: [
     BrowserModule,

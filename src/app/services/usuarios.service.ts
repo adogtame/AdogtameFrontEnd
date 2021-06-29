@@ -94,6 +94,10 @@ export class UsuariosService {
 		return this.http.post(`${this.API_URI}/signup`, usuario);
 		
 	}
+	
+	verificar(token: any) {
+		return this.http.get(`${this.API_URI}/confirmar/${token}`);
+	}
 
 	registrarAnimal(animal: any, id: string) {
 		animal.idDador=id;
