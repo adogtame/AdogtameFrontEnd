@@ -884,7 +884,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     console.log(comentario);
 
-    this.adminService.eliminarComentario(comentario).subscribe(
+    this.usuariosService.eliminarComentario(comentario).subscribe(
       res => {
         
         console.log(res);  

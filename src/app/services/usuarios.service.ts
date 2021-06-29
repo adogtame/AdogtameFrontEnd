@@ -152,4 +152,16 @@ export class UsuariosService {
 	actualizarComentarioLikeDislike(idComentario: string, usuario: any): Observable<Usuario> {
 		return this.http.put(`${this.API_URI}/updateLikeDislikeComentario/${idComentario}`, usuario);
 	}
+
+
+
+
+
+
+
+	eliminarComentario(id: string) {
+		return this.http.delete(`${this.API_URI}/deleteComentario/${id}`);
+	}
+
+
 }
