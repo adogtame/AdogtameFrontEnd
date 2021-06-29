@@ -161,6 +161,7 @@ export class UsuariosService {
 
 	eliminarComentario(id: string) {
 		console.log("No me esta encontrando esto: ", `${this.API_URI}/deleteComentario/${id}`)
+		console.log("En el routes esta asi: this.router.delete('/deleteComentario/:id',userController.deleteComentario);")
 		return this.http.delete(`${this.API_URI}/deleteComentario/${id}`);
 	}
 
