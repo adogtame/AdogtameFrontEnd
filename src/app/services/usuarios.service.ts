@@ -160,6 +160,7 @@ export class UsuariosService {
 
 
 	eliminarComentario(id: string) {
+		console.log("No me esta encontrando esto: ", `${this.API_URI}/deleteComentario/${id}`)
 		return this.http.delete(`${this.API_URI}/deleteComentario/${id}`);
 	}
 
