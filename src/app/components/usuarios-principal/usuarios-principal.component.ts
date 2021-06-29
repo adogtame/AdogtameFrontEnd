@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Pipe } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-usuarios-principal',
@@ -10,7 +11,12 @@ import { Subscription } from 'rxjs';
 
 export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
 
-  constructor(private usuariosService: UsuariosService) { }
+  constructor(
+
+    private usuariosService: UsuariosService, 
+    private router: Router
+
+  ) { }
 
   animales: any = [];
   filterPost = '';
@@ -35,5 +41,16 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
     this.usuariosService.revelarBusquedaRapida$.emit('no')
     console.log(this.usuariosService.revelarBusquedaRapida);
   }
+
+
+
+  irAAnimal(id: number){
+    
+    console.log("El id ",id)
+    this.router.navigate(['usuarios/animal/',id]);
+  }
+
+
+
 
 }

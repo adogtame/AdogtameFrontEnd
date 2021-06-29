@@ -18,13 +18,13 @@ export class UsuariosService {
   //API_URI = 'http://localhost:3000/user';
 
 	constructor(private http: HttpClient, private router:Router) { }
-	
+
 	//Para comprobar si esta logueado el usuario
 	 logued$ = new EventEmitter<string>();
 
 	//Para comprobar si esta en principal, sino no esta la busqueda rapida
-	 
-	
+
+
 	revelarBusquedaRapida$ = new EventEmitter<string>();
 	revelarBusquedaRapida: boolean = false;
 
@@ -35,7 +35,7 @@ export class UsuariosService {
 	likes$ = new EventEmitter<string>();
 
 
-	
+
 	rol$ = new EventEmitter<string>();
 	rol: any = "";
 
@@ -45,7 +45,7 @@ export class UsuariosService {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto
 		return this.http.get(`${this.API_URI}/list`);
-		//si no funciona usar 
+		//si no funciona usar
 		//return this.http.get(this.API_URI+'/list');
 	}
 
@@ -53,7 +53,7 @@ export class UsuariosService {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto
 		return this.http.get(`${this.API_URI}/listAnimals`);
-		//si no funciona usar 
+		//si no funciona usar
 		//return this.http.get(this.API_URI+'/list');
 	}
 
@@ -61,7 +61,7 @@ export class UsuariosService {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto
 		return this.http.get(`${this.API_URI}/listAnimalsUser/${id}`);
-		//si no funciona usar 
+		//si no funciona usar
 		//return this.http.get(this.API_URI+'/list');
 	}
 
@@ -92,7 +92,7 @@ export class UsuariosService {
 	registrar(usuario: any) {
 		this.user = usuario;
 		return this.http.post(`${this.API_URI}/signup`, usuario);
-		
+
 	}
 	
 	verificar(token: any) {
@@ -112,7 +112,7 @@ export class UsuariosService {
 
 
 	logOut(){
-		
+
 		this.user = { id: "" };
 		localStorage.removeItem('token');
 		this.router.navigate(['usuarios/principal']);
@@ -124,11 +124,11 @@ export class UsuariosService {
 	}
 
 	decodificarToken(token: any) {
-		
+
 		console.log({message:"tokenAngular "+token});
-		
+
 		return this.http.post(`${this.API_URI}/dToken`, token);
-		
+
 	}
 
 
@@ -140,12 +140,12 @@ export class UsuariosService {
 
 	listarComentarios(id: string) {
 		return this.http.get(`${this.API_URI}/listComentarios/${id}`);
-		
+
 	}
 
 	listarUsuariosLikes(id: string) {
 		return this.http.get(`${this.API_URI}/listUsuariosLikes/${id}`);
-		
+
 	}
 
 
