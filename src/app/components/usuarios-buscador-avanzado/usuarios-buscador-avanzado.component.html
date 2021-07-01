@@ -3,8 +3,19 @@
 <div id="sidebar" class="sidebar">
   <ul id="menu">
     <br><br><br><br>
-    <li><button class="btn btn - boton1" routerLink=".">Filtros</button>
-    </li>
+    <label class="dropdown">
+    <li><button class="dd-button" routerLink=".">Filtros</button></li>
+
+    
+      <input type="checkbox" class="dd-input" id="test">
+    
+      <ul class="dd-menu">
+        <li>Filtro 1</li>
+        <li>Filtro 2</li>
+        <li>Filtro 3</li>
+      </ul>
+      
+    </label>
     <li>
       <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
       <label class="btn btn-outline-primary" for="btncheck1" id="label-checkbox">Crias</label>
