@@ -232,6 +232,22 @@ font-family: Georgia, 'Times New Roman', Times, serif;
   padding: 10px 20px;
 }
 
+/* 
+
+Por si queremos poner un divider
+
+en el html
+ <li class="divider"></li>
+    <li>
+      <a href="http://rane.io">Link to Rane.io</a>
+
+    </li>
+
+    en css lo de abajo
+
+    
+*/
+
 .dd-menu li.divider{
   padding: 0;
   border-bottom: 1px solid #cccccc;
