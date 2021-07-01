@@ -45,7 +45,8 @@
               <div [ngSwitch]="errrorPassword">
                 <div *ngSwitchCase="1">Debes completar el campo</div>
                 <div *ngSwitchCase="2">Contraseña muy larga</div>
-                <div *ngSwitchCase="3">Contraseña debe ser alfanumerica y admite mayusculas.</div>
+                <div *ngSwitchCase="3">Contraseña muy corta</div>
+                <div *ngSwitchCase="4">Contraseña debe ser alfanumerica y admite mayusculas.</div>
               </div>
 
               <div class="col-sm-6">

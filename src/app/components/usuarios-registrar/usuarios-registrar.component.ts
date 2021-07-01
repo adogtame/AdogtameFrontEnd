@@ -85,7 +85,7 @@ this.usuariosService.registrar(this.user).subscribe(
 
 
   verificarNombre(nombre:string):number {
-    const patron=/^[A-Za-z]{2,20}$/;
+    const patron=/^[A-Za-z]{1,20}$/;
     if(nombre.length==0)
       return 1;
     if(nombre.length>20)
@@ -104,7 +104,7 @@ this.usuariosService.registrar(this.user).subscribe(
   }
   
   verificarApellido(apellido:string):number {
-    const patron=/^[A-Za-z]{2,20}$/;
+    const patron=/^[A-Za-z]{1,20}$/;
     if(apellido.length==0)
       return 1;
     if(apellido.length>20)
@@ -121,12 +121,15 @@ this.usuariosService.registrar(this.user).subscribe(
       return 1;
     if(password.length>20)
       return 2;
+    if(password.length<6)
+        return 3;
     if(!patron.test(password))
-      return 3;    
+      return 4;    
     return 0;
     
   }
   
+
   verificarRePassword(password:any, repassword:any): number {
     if(password!=repassword){
       return 1;
@@ -147,7 +150,7 @@ this.usuariosService.registrar(this.user).subscribe(
 
 
   verificarCelular(nro_celular:string):number {
-    const patron=/^[0-9]{6,20}$/;
+    const patron=/^[0-9]{6,15}$/;
     if(nro_celular.length==0)
       return 1;
     if(nro_celular.length>20)
@@ -158,10 +161,10 @@ this.usuariosService.registrar(this.user).subscribe(
   }
 
   verificarCalle(calle:string):number {
-    const patron=/^[A-Za-z]{2,20}$/;
+    const patron=/^[A-Za-zÀ-ú0-9" "(\)°/.']{1,50}$/;
     if(calle.length==0)
       return 1;
-    if(calle.length>20)
+    if(calle.length>50)
       return 2;
     if(!patron.test(calle))
       return 3;
@@ -169,10 +172,10 @@ this.usuariosService.registrar(this.user).subscribe(
   }
 
   verificarNro_calle(nro_calle:string):number {
-    const patron=/^[0-9]{2,20}$/;
+    const patron=/^[0-9]{1,6}$/;
     if(nro_calle.length==0)
       return 1;
-    if(nro_calle.length>20)
+    if(nro_calle.length>6)
       return 2;
     if(!patron.test(nro_calle))
       return 3;
@@ -181,10 +184,10 @@ this.usuariosService.registrar(this.user).subscribe(
 
 
   verificarDNI(dni:string):number {
-    const patron=/^[0-9]{6,20}$/;
+    const patron=/^[0-9]{3,8}$/;
     if(dni.length==0)
       return 1;
-    if(dni.length>20)
+    if(dni.length>8)
       return 2;
     if(!patron.test(dni))
       return 3;
