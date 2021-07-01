@@ -200,11 +200,11 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .dd-menu {
-  position: absolute;
+  position: fixed;
   top: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 30px;
+  padding: 1px;
   margin: 2px 0 0 0;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
   background-color: #ff9797;
