@@ -98,7 +98,7 @@
                 <div class="mb-3">
                  
                   <div class="card-body" style="background-color:rgb(255, 248, 224);">
-                    <form (submit)="registrar()">
+                    <form >
     
                       <div class="mb-3">
                         <label for=""> <b> Nombre</b> </label>
@@ -109,7 +109,6 @@
                         <div class="content-select">
                           <label for=""> <b> Tipo</b> </label>
                           <select name="tipo" [(ngModel)]="animal.tipo" class="form-control">
-                            <option value="">Seleccione el tipo</option>
                             <option value="perro">Perro</option>
                             <option value="gato">Gato</option>
                           </select>
@@ -120,7 +119,6 @@
 
                           <label for=""> <b> Sexo</b> </label>
                           <select name="sexo" [(ngModel)]="animal.sexo" class="form-control ">
-                            <option value="">Seleccione el sexo</option>
                             <option value="macho">Macho</option>
                             <option value="hembra">Hembra</option>
                           </select>
@@ -135,7 +133,6 @@
                         <div class="content-select">
                           <label for=""> <b> Tamaño</b> </label>
                           <select name="tamano" [(ngModel)]="animal.tamano" class="form-control">
-                            <option value="">Seleccione el tamaño</option>
                             <option value="chico">Chico</option>
                             <option value="mediano">Mediano</option>
                             <option value="grande">Grande</option>
@@ -149,7 +146,7 @@
                       </div>
                       <br>
                       <div class="mb-3">
-                        <button class="btn btn-success btn-lg" value="animal" style="float: left;">
+                        <button class="btn btn-success btn-lg" aria-label="Close" value="animal" style="float: left; " (click)="registrar()"  data-bs-dismiss="modal">
                           Registrar</button>
                         <input type="reset" value="Limpiar campos" class="btn btn-danger btn-lg"
                           style="float: right;">
