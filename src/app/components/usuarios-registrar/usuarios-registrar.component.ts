@@ -184,10 +184,10 @@ this.usuariosService.registrar(this.user).subscribe(
 
 
   verificarDNI(dni:string):number {
-    const patron=/^[0-9]{3,8}$/;
+    const patron=/^[0-9]{4,8}$/;
     if(dni.length==0)
       return 1;
-    if(dni.length>8)
+    if(dni.length>8 || dni.length<4)
       return 2;
     if(!patron.test(dni))
       return 3;
