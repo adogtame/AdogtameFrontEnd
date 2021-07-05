@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
@@ -10,10 +10,17 @@ import { Router } from '@angular/router'
 })
 export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
-  constructor(private usuariosService: UsuariosService, private router: Router) { }
+  constructor(
+    private usuariosService: UsuariosService, 
+    private router: Router
+  ) { }
 
   animales: any = [];
   filterPost = '';
+
+  
+  filtroClick: boolean = false;
+  excluirClick: boolean = false;
   
   ngOnInit(): void {
 
@@ -35,5 +42,44 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
   }
 
 
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+clickEnFiltro() {
+  
+  if(this.filtroClick==true){
+
+    this.filtroClick=false;
+    console.log("Lo desactiva", this.filtroClick);
+  }
+  else
+  {
+    this.filtroClick=true;
+    console.log("Activado", this.filtroClick);
+  }
+
+}
+
+clickEnExcluir() {
+  
+  if(this.excluirClick==true){
+
+    this.excluirClick=false;
+    console.log("Lo desactiva", this.excluirClick);
+  }
+  else
+  {
+    this.excluirClick=true;
+    console.log("Activado", this.excluirClick);
+  }
+
+}
+
+
+clickEnAplicar() {
+  
+  //
+
+}
 
 }

@@ -3,16 +3,61 @@
     <br><br><br><br>
 
 
-    <li><button class="btn btn - boton1" routerLink=".">Filtro</button></li>
+    <li>
+        <!-- <button class="btn btn - boton1" routerLink=".">Filtro</button> -->
 
+      <div class="dropdown">
+        <button class="btn btn - boton1" (click)="clickEnFiltro()">Filtro</button>
+        <div id="myDropdown" [ngClass]="{'show' : filtroClick, 'noShow': !filtroClick}" class="dropdown-content">
+          <a><input type="checkbox" id="cria" name="cria" value="cria" class="check">&nbsp;
+          <label for="cria"> Edad Cria </label></a>
 
+          <a><input type="checkbox" id="adulto" name="adulto" value="adulto" class="check">&nbsp;
+          <label for="adulto"> Edad Adulto </label></a>
+
+          <a><input type="checkbox" id="grande" name="grande" value="grande" class="check"> &nbsp;
+          <label for="grande"> Tamaño Grande </label></a>
+
+          <a><input type="checkbox" id="mediano" name="mediano" value="mediano" class="check">&nbsp;
+          <label for="mediano"> Tamaño Mediano </label></a>
+
+          <a><input type="checkbox" id="chico" name="chico" value="chico" class="check">&nbsp;
+          <label for="chico"> Tamaño Chico </label></a>
+         
+        </div>
+      </div>
+    </li>
+
+    
     <br><br>
-    <li><button class="btn btn - boton1" routerLink=".">Exluir</button></li>
 
-    <br>
-
-    <br>
-    <li><button class="btn btn - boton2">Aplicar</button></li>
+    <li>
+      
+      <div class="dropdown">
+        <button class="btn btn - boton1" [ngClass]="{'baja' : filtroClick, 'sube' : !filtroClick}" (click)="clickEnExcluir()">Exluir</button>
+        <div id="myDropdown" [ngClass]="{'show' : excluirClick, 'noShow': !excluirClick}" class="dropdown-content">
+          <a><input type="checkbox" id="cria" name="cria" value="cria" class="check">&nbsp;
+            <label for="cria"> Edad Cria </label></a>
+  
+            <a><input type="checkbox" id="adulto" name="adulto" value="adulto" class="check">&nbsp;
+            <label for="adulto"> Edad Adulto </label></a>
+  
+            <a><input type="checkbox" id="grande" name="grande" value="grande" class="check"> &nbsp;
+            <label for="grande"> Tamaño Grande </label></a>
+  
+            <a><input type="checkbox" id="mediano" name="mediano" value="mediano" class="check">&nbsp;
+            <label for="mediano"> Tamaño Mediano </label></a>
+  
+            <a><input type="checkbox" id="chico" name="chico" value="chico" class="check">&nbsp;
+            <label for="chico"> Tamaño Chico </label></a>
+           
+        </div>
+      </div>
+      
+    </li>
+    
+    <br><br>
+    <li><button class="btn btn - boton2"  [ngClass]="{'baja' : excluirClick, 'sube': !excluirClick}" (click)="clickEnAplicar()">Aplicar</button></li>
   </ul>
 </div>
 
