@@ -116,7 +116,7 @@ para q en buscador aparezcan varios mientras q en principal 1 solo
 
 
 
-/* Dropdown button */
+/* Dropdown button (Filtro y excluir)*/
 
 .boton1{
   font-size:18px;
@@ -129,7 +129,7 @@ para q en buscador aparezcan varios mientras q en principal 1 solo
   height:40px;
 }
 
-/* Botones del buscador */
+/* Boton aplicar */
 
 .boton2{
   font-size:18px;
@@ -180,27 +180,48 @@ background-color:rgb(84, 141, 27);
 .dropdown-content a:hover {background-color: #ddd}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
 
-.noShow {display:none;}
+.show {
+  
+  /* Muestra el contenido del filtro o exlcuir*/
+
+  display:block;
+
+}
+
+.noShow {
+  
+  /* Oculta el contenido del filtro o exlcuir*/
+  display:none;
+
+}
 
 
 .baja {
+
+  /* Cuando clickeas un boton sea filtro o excluir esto hace q se bajen para abajo los otros botones*/
+
   margin-top:240px;
 }
 
 
 .sube {
+  
+  /*Esto lo vuelve a su posicion original */
+
   margin-top:0px;
+
 }
 
 .check{
 
 
   /* 
+
     Nose como cambiar el diseño del checkbox,
     hay q investigar en algun momento,
     vi q joan habia hecho uno pero lo borre  
+
   */
 
 }
