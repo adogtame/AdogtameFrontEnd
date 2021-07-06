@@ -24,57 +24,59 @@ export class AppModule { }
   templateUrl: './usuarios-buscador-avanzado.component.html',
   styleUrls: ['./usuarios-buscador-avanzado.component.css'],
   animations: [
-    trigger('clickContent', [
-      state('noShow', 
-        style({ 
-          
-          display: 'none',
-          height: '0px',
-          opacity: 0.6
 
-        })
-      ),
-      state('show', 
-        style({ 
-          display: 'block', 
-          height: '280px',
-          opacity: 1
-         })
-      ),
-      transition('show => noShow', [
-        animate('0s')
-      ]),
-      transition('noShow => show', [
-        animate('0.3s')
-      ])
-    ]),
+    
+    // trigger('clickContent', [
+    //   state('noShow', 
+    //     style({ 
+          
+    //       display: 'none',
+    //       height: '0px',
+    //       opacity: 0.6
+
+    //     })
+    //   ),
+    //   state('show', 
+    //     style({ 
+    //       display: 'block', 
+    //       height: '280px',
+    //       opacity: 1
+    //      })
+    //   ),
+    //   transition('show => noShow', [
+    //     animate('0s')
+    //   ]),
+    //   transition('noShow => show', [
+    //     animate('0.3s')
+    //   ])
+    // ]),
 
 
     
 
-    trigger('clickBTN', [
-      state('sube', 
-        style({ 
+    // trigger('clickBTN', [
+    //   state('sube', 
+    //     style({ 
           
 
-          'margin-top':'0px'
+    //       'margin-top':'0px'
 
-        })
-      ),
-      state('baja', 
-        style({ 
+    //     })
+    //   ),
+    //   state('baja', 
+    //     style({ 
           
-          'margin-top':'240px'
+    //       'margin-top':'240px'
 
-         })
-      ),
-      transition('sube => baja', [
-        animate('0.3s')
-      ]), 
-      transition('baja => sube', [
-        animate('0.3s')
-      ])
-    ]),
+    //      })
+    //   ),
+    //   transition('sube => baja', [
+    //     animate('0.3s')
+    //   ]), 
+    //   transition('baja => sube', [
+    //     animate('0.3s')
+    //   ])
+    // ]),
 
 
     trigger("dropDownMenu", [
@@ -126,11 +128,10 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
   filterPost = '';
 
   
-  filtroClick: boolean = false;
-  excluirClick: boolean = false;
 
   //
-  isOpen = false;
+  isOpenFiltro = false;
+  isOpenExcluir = false;
   //
   filtroAplica={cria:false, adulto:false, grande:false, mediano:false, chico:false}
   
@@ -161,35 +162,8 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-clickEnFiltro() {
-  
-  if(this.filtroClick==true){
 
-    this.filtroClick=false;
-    console.log("Lo desactiva", this.filtroClick);
-  }
-  else
-  {
-    this.filtroClick=true;
-    console.log("Activado", this.filtroClick);
-  }
 
-}
-
-clickEnExcluir() {
-  
-  if(this.excluirClick==true){
-
-    this.excluirClick=false;
-    console.log("Lo desactiva", this.excluirClick);
-  }
-  else
-  {
-    this.excluirClick=true;
-    console.log("Activado", this.excluirClick);
-  }
-
-}
 
 
 clickEnAplicar() {
