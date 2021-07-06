@@ -123,7 +123,7 @@ para q en buscador aparezcan varios mientras q en principal 1 solo
   font-family:Verdana,Helvetica;
   font-weight:bold;
   color:black;
-  background:rgb(179, 172, 169);
+  background:rgb(204, 171, 155);
   border:0px;
   width:180px;
   height:40px;
@@ -149,7 +149,7 @@ background-color:rgb(84, 141, 27);
 
 /* Dropdown button on hover & focus */
 .boton1:hover, .boton1:focus {
-  background-color: rgb(146, 141, 139);
+  background-color: rgb(170, 123, 101);
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -168,26 +168,33 @@ background-color:rgb(84, 141, 27);
   z-index: 1;
 }
 
+
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content label {
+  
   color: black;
-  padding: 12px 16px;
+  position:absolute;
   text-decoration: none;
-  display: block;
+  display: inline-block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
-
+.dropdown-content label:hover {
+  color: rgb(180, 156, 23)
+  
+}
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 
 .show {
   
   /* Muestra el contenido del filtro o exlcuir*/
 
-  display:block;
-
+  display:block; 
+  
 }
+
+
+
 
 .noShow {
   
@@ -197,21 +204,6 @@ background-color:rgb(84, 141, 27);
 }
 
 
-.baja {
-
-  /* Cuando clickeas un boton sea filtro o excluir esto hace q se bajen para abajo los otros botones*/
-
-  margin-top:240px;
-}
-
-
-.sube {
-  
-  /*Esto lo vuelve a su posicion original */
-
-  margin-top:0px;
-
-}
 
 .check{
 
@@ -225,3 +217,93 @@ background-color:rgb(84, 141, 27);
   */
 
 }
+
+
+/* 
+
+
+
+
+*/
+
+.menu-item label {
+  
+  color: black;
+  cursor: pointer;
+}
+.menu-item label:hover {
+  color: rgb(211, 146, 93);
+  cursor: pointer;
+  
+}
+
+.menu123 {
+  border-bottom: 1px solid #868080;
+  background: rgb(255, 225, 213);
+}
+
+.menu-item {
+  padding: 15px;
+  border-bottom: 1px solid #868080;
+  max-width: 300px;
+  margin: auto;
+  width: 100%;
+  cursor: pointer;
+}
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:hover {
+  color: #e2ab34;
+}
+
+.gg-chevron-right {
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+.gg-chevron-right::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(-45deg);
+  right: -20px;
+  top: 8px
+}
+
+.gg-chevron-down {
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+
+.gg-chevron-down::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  left: 15px;
+  top: 6px;
+}
+
+
+

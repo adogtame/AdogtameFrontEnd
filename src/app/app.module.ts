@@ -21,6 +21,11 @@ import { UsuariosVerificandoComponent } from './components/usuarios-verificando/
 import { UsuariosVerificarComponent } from './components/usuarios-verificar/usuarios-verificar.component';
 import { UsuariosVerificadoComponent } from './components/usuarios-verificado/usuarios-verificado.component';
 import { UsuariosVerificacionfallidaComponent } from './components/usuarios-verificacionfallida/usuarios-verificacionfallida.component';
+
+
+//Agregado para probar si funca
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +46,10 @@ import { UsuariosVerificacionfallidaComponent } from './components/usuarios-veri
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,    
   ],
   providers: [
     UsuariosService,

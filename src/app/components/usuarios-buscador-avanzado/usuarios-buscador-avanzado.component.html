@@ -1,63 +1,69 @@
 <div id="sidebar" class="sidebar">
   <ul id="menu">
     <br><br><br><br>
-
+    
 
     <li>
-        <!-- <button class="btn btn - boton1" routerLink=".">Filtro</button> -->
-
       <div class="dropdown">
-        <button class="btn btn - boton1" (click)="clickEnFiltro()">Filtro</button>
-        <div id="myDropdown" [ngClass]="{'show' : filtroClick, 'noShow': !filtroClick}" class="dropdown-content">
-          <a><input type="checkbox" id="cria" name="cria" value="cria" class="check">&nbsp;
-          <label for="cria"> Edad Cria </label></a>
+        <div class="btn btn - boton1" (click)="isOpen = !isOpen">
+          Filtro <i [ngClass]="isOpen ? 'gg-chevron-down' : 'gg-chevron-right'"></i>
+        </div>
+        <div class="menu123" *ngIf="isOpen" [@dropDownMenu]>
+          <div class="menu-item" >
+          
+          <input type="checkbox" id="cria" [(ngModel)]="filtroAplica.cria" name="cria" value="cria" class="check">&nbsp;
+          <label class="tran"  for="cria"> Edad Cria </label>
+          <hr>
 
-          <a><input type="checkbox" id="adulto" name="adulto" value="adulto" class="check">&nbsp;
-          <label for="adulto"> Edad Adulto </label></a>
-
-          <a><input type="checkbox" id="grande" name="grande" value="grande" class="check"> &nbsp;
-          <label for="grande"> Tamaño Grande </label></a>
-
-          <a><input type="checkbox" id="mediano" name="mediano" value="mediano" class="check">&nbsp;
-          <label for="mediano"> Tamaño Mediano </label></a>
-
-          <a><input type="checkbox" id="chico" name="chico" value="chico" class="check">&nbsp;
-          <label for="chico"> Tamaño Chico </label></a>
-         
+          <input type="checkbox" id="adulto" [(ngModel)]="filtroAplica.adulto" name="adulto" value="adulto" class="check">&nbsp;
+          <label class="tran" for="adulto"> Edad Adulto </label>
+          <hr>
+          <input type="checkbox" id="grande" [(ngModel)]="filtroAplica.grande" name="grande" value="grande" class="check"> &nbsp;
+          <label class="tran" for="grande"> Tamaño Grande </label>
+          <hr>
+          <input type="checkbox" id="mediano" [(ngModel)]="filtroAplica.mediano" name="mediano" value="mediano" class="check">&nbsp;
+          <label class="tran" for="mediano"> Tamaño Mediano </label>
+          <hr>
+          <input type="checkbox" id="chico" [(ngModel)]="filtroAplica.chico" name="chico" value="chico" class="check">&nbsp;
+          <label class="tran" for="chico"> Tamaño Chico </label>
+          
+          </div>
         </div>
       </div>
-    </li>
 
+    </li>  
+    
     
     <br><br>
 
     <li>
       
       <div class="dropdown">
-        <button class="btn btn - boton1" [ngClass]="{'baja' : filtroClick, 'sube' : !filtroClick}" (click)="clickEnExcluir()">Exluir</button>
-        <div id="myDropdown" [ngClass]="{'show' : excluirClick, 'noShow': !excluirClick}" class="dropdown-content">
-          <a><input type="checkbox" id="cria" name="cria" value="cria" class="check">&nbsp;
-            <label for="cria"> Edad Cria </label></a>
-  
-            <a><input type="checkbox" id="adulto" name="adulto" value="adulto" class="check">&nbsp;
-            <label for="adulto"> Edad Adulto </label></a>
-  
-            <a><input type="checkbox" id="grande" name="grande" value="grande" class="check"> &nbsp;
-            <label for="grande"> Tamaño Grande </label></a>
-  
-            <a><input type="checkbox" id="mediano" name="mediano" value="mediano" class="check">&nbsp;
-            <label for="mediano"> Tamaño Mediano </label></a>
-  
-            <a><input type="checkbox" id="chico" name="chico" value="chico" class="check">&nbsp;
-            <label for="chico"> Tamaño Chico </label></a>
-           
+        <button class="btn btn - boton1" [@clickBTN]="filtroClick ? 'baja' : 'sube'" (click)="clickEnExcluir()">Exluir</button>
+        <div id="myDropdown2"  [@clickContent]="excluirClick ? 'show' : 'noShow'" class="dropdown-content">
+          <br>&nbsp;
+          <input type="checkbox" id="cria2" [(ngModel)]="excluirAplica.cria" name="cria" value="true" class="check">&nbsp;
+            <label class="tran" for="cria2"> Edad Cria </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="adulto2" [(ngModel)]="excluirAplica.adulto" name="adulto" value="true" class="check">&nbsp;
+            <label class="tran" for="adulto2"> Edad Adulto </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="grande2" [(ngModel)]="excluirAplica.grande" name="grande" value="true" class="check"> &nbsp;
+            <label class="tran" for="grande2"> Tamaño Grande </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="mediano2" [(ngModel)]="excluirAplica.mediano" name="mediano" value="true" class="check">&nbsp;
+            <label class="tran" for="mediano2"> Tamaño Mediano </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="chico2" [(ngModel)]="excluirAplica.chico" name="chico" value="true" class="check">&nbsp;
+            <label class="tran" for="chico2"> Tamaño Chico </label>
+            <br><br>&nbsp;
         </div>
       </div>
       
     </li>
     
     <br><br>
-    <li><button class="btn btn - boton2"  [ngClass]="{'baja' : excluirClick, 'sube': !excluirClick}" (click)="clickEnAplicar()">Aplicar</button></li>
+    <li><button class="btn btn - boton2"  [@clickBTN]="excluirClick ? 'baja' : 'sube'" (click)="clickEnAplicar()">Aplicar</button></li>
   </ul>
 </div>
 
