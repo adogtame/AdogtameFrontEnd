@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class UsuariosService {
 	API_URI = 'https://adogtame-servidor.herokuapp.com/user';
-  //API_URI = 'http://localhost:3000/user';
+  	//API_URI = 'http://localhost:3000/user';
 
 	constructor(private http: HttpClient, private router:Router) { }
 
@@ -56,6 +56,17 @@ export class UsuariosService {
 		//si no funciona usar
 		//return this.http.get(this.API_URI+'/list');
 	}
+
+	listarAnimalesFiltrado(filtro: any) {
+		//para expandir/especializar las variables usamos ` y no ' o "
+		//Las variables salen pintadas de otro color diferente del de texto
+		
+		console.log({message:"filtro: ", filtro});
+		return this.http.post(`${this.API_URI}/listAnimalsFiltrado`, filtro);
+		//si no funciona usar
+		//return this.http.get(this.API_URI+'/list');
+	}
+
 
 	listarAnimalesDelUsuario(id: string) {
 		//para expandir/especializar las variables usamos ` y no ' o "

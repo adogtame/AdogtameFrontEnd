@@ -25,7 +25,7 @@ export class AppModule { }
   styleUrls: ['./usuarios-buscador-avanzado.component.css'],
   animations: [
 
-    
+
     // trigger('clickContent', [
     //   state('noShow', 
     //     style({ 
@@ -133,9 +133,9 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
   isOpenFiltro = false;
   isOpenExcluir = false;
   //
-  filtroAplica={cria:false, adulto:false, grande:false, mediano:false, chico:false}
+  filtroAplica={perroF:false, gatoF:false, criaF:false, adultoF:false, grandeF:false, medianoF:false, chicoF:false,
+                perroE:false, gatoE:false, criaE:false, adultoE:false, grandeE:false, medianoE:false, chicoE:false}
   
-  excluirAplica = {cria:false, adulto:false, grande:false, mediano:false, chico:false};
 
   
 
@@ -169,8 +169,17 @@ toggle between hiding and showing the dropdown content */
 clickEnAplicar() {
   
   //
+
   console.log("filtroAplica", this.filtroAplica);
-  console.log("excluirAplica", this.excluirAplica);
+
+   this.usuariosService.listarAnimalesFiltrado({filtro: this.filtroAplica}).subscribe(
+     res => {
+       this.animales = res;
+       console.log(res);
+     },
+     err => console.log(err)
+   )
+
 
 
 }
