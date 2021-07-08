@@ -168,7 +168,10 @@ toggle between hiding and showing the dropdown content */
 
 clickEnAplicar() {
   
-  //
+  //Tengo q ver si haciendo un for con animales puedo hacer 
+  //lo de los filtros sin tener q pegarle a la base cada vez
+  
+  
 
   console.log("filtroAplica", this.filtroAplica);
 
