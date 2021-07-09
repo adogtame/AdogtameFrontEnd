@@ -30,6 +30,19 @@ export class UsuariosService {
 
 	user = { id: ""};
 
+
+	
+  //Una cagada pero tengo q hacer estos emitt porq sino la base dice 
+  //q hay demasiadas cosas cargando al mismo tiempo
+  
+	cargarAnimal1$ = new EventEmitter<string>();
+	cargarAnimal2$ = new EventEmitter<string>();
+	cargarAnimal3$ = new EventEmitter<string>();
+	cargarAnimal4$ = new EventEmitter<string>();
+	cargarUserAnimal$ = new EventEmitter<string>();
+
+  //
+
 	//cesar Jueves
 	coment$ = new EventEmitter<string>();
 	likes$ = new EventEmitter<string>();
@@ -115,6 +128,22 @@ export class UsuariosService {
 		console.log(animal.idDador)
 		return this.http.post(`${this.API_URI}/signupAnimal`, animal);
 	}
+
+
+	//Interes
+	mostrarInteres(idAnimal: string, idInteresado: object) {
+		return this.http.post(`${this.API_URI}/mostrarInteres/${idAnimal}`, idInteresado);
+	}
+
+	quitarInteres(idAnimal: string, idInteresado: object) {
+		return this.http.post(`${this.API_URI}/quitarInteres/${idAnimal}`, idInteresado);
+	}
+
+	cargarInteres(idAnimal: string, idUsuario: object) {
+		return this.http.post(`${this.API_URI}/cargarInteres/${idAnimal}`, idUsuario);
+	}
+	//
+
 
 	isLoggedIn():Boolean{
 		return !!localStorage.getItem('token'); //Si existe token retorna true

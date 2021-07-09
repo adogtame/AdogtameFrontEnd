@@ -25,6 +25,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   moment: any = [];
 
+  interes: boolean = false;
 
 
 
@@ -55,7 +56,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-
   //Fin de lo de cesar
 
   constructor(
@@ -66,9 +66,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     //cesar
     private adminService: AdminService
     //
-    ) { }
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+
 
 
     this.rutaActiva.params.subscribe(routeParams => {
@@ -76,7 +78,9 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
       this.AnimalID = this.rutaActiva.snapshot.params
 
-      this.animalCargarDatos();
+
+
+      this.funcionesEnInit();
 
 
 
@@ -85,8 +89,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       //cesar Jueves     
 
 
-      this.cargarComentarios();
-
       this.usuariosService.coment$.subscribe(log => {
 
         this.cargarComentarios();
@@ -94,22 +96,20 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-      this.cargarLikes();
 
 
 
       this.usuariosService.rol$.subscribe(log => {
-        
-      this.rol=this.usuariosService.rol;
-      
-      console.log("El rol del usuario es", this.usuariosService.rol); 
+
+        this.rol = this.usuariosService.rol;
+
+        console.log("El rol del usuario es", this.usuariosService.rol);
 
       });
       //
 
 
     });
-
 
   }
 
@@ -124,6 +124,106 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   }
 
+
+  //
+
+  token: any = "";
+  UsuarioID: any = { user: "No logueado" };
+  Usuario: any = [];
+  TokenJSON = { token: "" };
+
+  sacarUsuario() {
+    this.token = this.usuariosService.getToken();
+    console.log(this.token);
+
+    this.TokenJSON = { token: this.token };
+
+    this.usuariosService.decodificarToken(this.TokenJSON).subscribe(
+      res => {
+        this.UsuarioID = res;
+        console.log("Este es el id decodificado", this.UsuarioID);
+
+        this.usuariosService.buscarUsuario(this.UsuarioID.user).subscribe(
+          res => {
+            this.Usuario = res
+            console.log("Este es el id dasdasdsa", this.Usuario);
+            this.usuariosService.user.id = this.Usuario.id;
+
+            //Hay q mejorar esto, lo q hago es cargar el componente (Animal) 
+            //despues de hacer este emit, porq aca es donde cargo al usuario
+
+            this.usuariosService.cargarUserAnimal$.emit()
+            //
+
+
+            this.rol = this.Usuario.tipo_perfil;
+            this.usuariosService.rol = this.Usuario.tipo_perfil;
+            console.log("El rol del usuario es", this.usuariosService.rol);
+            //Tengo q hacer el emit de los likes aca porq si estoy en animal primero cargan los comentarios y para cuando cargo el usuario cagaste
+            this.usuariosService.coment$.emit()
+            console.log(this.Usuario);
+          },
+          err => console.log(err)
+        );
+        console.log(this.UsuarioID.user);
+      },
+      err => console.log(err)
+    );
+  }
+
+
+
+  funcionesEnInit() {
+
+    this.sacarUsuario();
+
+    this.usuariosService.cargarUserAnimal$.subscribe(log => {
+
+      this.animalCargarDatos();
+
+    });
+
+    this.usuariosService.cargarAnimal1$.subscribe(log => {
+
+      this.cargarInteres();
+
+    });
+
+
+    this.usuariosService.cargarAnimal2$.subscribe(log => {
+
+
+      this.cargarComentarios();
+
+
+
+    });
+
+
+    this.usuariosService.cargarAnimal3$.subscribe(log => {
+
+
+      this.cargarLikes();
+
+
+    });
+
+
+
+    this.usuariosService.cargarAnimal4$.subscribe(log => {
+
+
+      this.listarUsuariosLikes();
+
+
+    });
+
+
+
+  }
+
+
+
   irADador() {
 
     this.router.navigate(['usuarios/perfil/', this.Animal.idDador]);
@@ -137,11 +237,91 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         this.Animal = res
         console.log(this.Animal);
 
+        this.usuariosService.cargarAnimal1$.emit()
       },
       err => console.log(err)
     );
 
+
+
   }
+
+
+
+  cargarInteres() {
+
+
+    console.log("El id del usuario es este de aca (interes)", this.usuariosService.user.id);
+
+
+    this.usuariosService.cargarInteres(this.AnimalID.id, { idUsuario: this.usuariosService.user.id }).subscribe(
+      res => {
+
+        console.log("Resultado del cargar interes", res);
+
+
+
+        if (res == 0 || res == null || res == undefined) {
+
+          this.interes = false;
+        }
+        else {
+
+          this.interes = true;
+        }
+
+
+        this.usuariosService.cargarAnimal2$.emit()
+      },
+      err => console.log(err)
+    );
+
+
+
+  }
+
+  mostrarInteres() {
+
+    if (this.interes == true) {
+
+      this.usuariosService.quitarInteres(this.AnimalID.id, { idInteresado: this.usuariosService.user.id }).subscribe(
+        res => {
+
+          this.interes = false;
+          console.log("Resultado", res);
+
+        },
+        err => console.log(err)
+      );
+
+      console.log("interes quitado");
+
+    }
+    else {
+
+      this.usuariosService.mostrarInteres(this.AnimalID.id, { idInteresado: this.usuariosService.user.id }).subscribe(
+        res => {
+
+          this.interes = true;
+          console.log("Resultado", res);
+
+        },
+        err => console.log(err)
+      );
+
+      console.log("interes enviado");
+
+    }
+
+
+
+
+
+
+
+  }
+
+
 
 
 
@@ -206,6 +386,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
         this.usuariosService.rol$.emit()
 
+        this.usuariosService.cargarAnimal3$.emit()
         this.comentarios = res;
         console.log(res);
 
@@ -218,7 +399,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
         this.usuarioLikes = [];
-        this.listarUsuariosLikes();
+
+        this.usuariosService.cargarAnimal4$.emit()
 
 
       },
@@ -880,17 +1062,17 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-  eliminarComentario(comentario: any){
+  eliminarComentario(comentario: any) {
 
     console.log(comentario);
 
     this.usuariosService.eliminarComentario(comentario).subscribe(
       res => {
-        
-        console.log(res);  
+
+        console.log(res);
 
         this.usuariosService.coment$.emit()
-        
+
       },
       err => {
 
@@ -899,7 +1081,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       }
     )
 
-    
+
   }
 
 

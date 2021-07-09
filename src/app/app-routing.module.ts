@@ -19,6 +19,7 @@ import {UsuariosAnimalComponent} from "./components/usuarios-animal/usuarios-ani
 
 import {AuthGuard} from './auth.guard';
 
+
 const routes: Routes = [
 	{
 		path: '',

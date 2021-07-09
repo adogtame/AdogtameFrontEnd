@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 //import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
 @Component({
 	selector: 'app-navigation',
 	templateUrl: './navigation.component.html',
@@ -10,6 +10,13 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
 
 	constructor(private usuariosService: UsuariosService, private router: Router) { }
+
+
+     
+    
+
+
+
 
 	token: any = "";
 	UsuarioID: any = { user: "No logueado" };
@@ -24,6 +31,8 @@ export class NavigationComponent implements OnInit {
 	rol: any = "";
 	//
 	ngOnInit(): void {
+		
+		this.logueado();
 		//this.nombreSubscription =
 		this.usuariosService.logued$.subscribe(log => {
 			this.revelar = true;
@@ -34,7 +43,6 @@ export class NavigationComponent implements OnInit {
 			this.revelarBusRapida = this.usuariosService.revelarBusquedaRapida;
 		});
 
-		this.logueado();
 	}
 	logout() {
 		//Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
@@ -73,6 +81,13 @@ export class NavigationComponent implements OnInit {
 						this.Usuario = res
 						console.log("Este es el id dasdasdsa", this.Usuario);
 						this.usuariosService.user.id = this.Usuario.id;
+
+						//Hay q mejorar esto, lo q hago es cargar el componente (Animal) 
+						//despues de hacer este emit, porq aca es donde cargo al usuario
+						
+						//
+						
+
 						this.rol = this.Usuario.tipo_perfil;
 						this.usuariosService.rol = this.Usuario.tipo_perfil;
 						console.log("El rol del usuario es", this.usuariosService.rol);
