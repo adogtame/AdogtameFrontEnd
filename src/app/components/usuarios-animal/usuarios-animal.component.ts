@@ -11,9 +11,13 @@ import { AdminService } from '../../services/admin.service';
 
 //
 
+
 @Component({
   selector: 'app-usuarios-animal',
+
+ 
   templateUrl: './usuarios-animal.component.html',
+
   styleUrls: ['./usuarios-animal.component.css']
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
@@ -28,6 +32,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   interes: boolean = false;
 
 
+  cargoPagina: boolean = false;
 
   //cesar Jueves
   comentario = { idUsuario: "", idAnimal: "", comentario: "", fecha: "" };
@@ -215,8 +220,17 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
       this.listarUsuariosLikes();
 
+    });
+
+
+
+    this.usuariosService.cargarAnimal5$.subscribe(log => {
+
+      setTimeout(()=>{ this.cargoPagina=true }, 2000)
+
 
     });
+
 
 
 
@@ -416,6 +430,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.usuariosService.listarUsuariosLikes(this.usuariosService.user.id).subscribe(
       res => {
 
+        
+
         this.usuarioLikes = res;
 
         let like;
@@ -518,7 +534,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-
         }
         else {
 
@@ -546,7 +561,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-
+        this.usuariosService.cargarAnimal5$.emit()
 
       },
       err => console.log(err)

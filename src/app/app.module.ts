@@ -22,9 +22,13 @@ import { UsuariosVerificarComponent } from './components/usuarios-verificar/usua
 import { UsuariosVerificadoComponent } from './components/usuarios-verificado/usuarios-verificado.component';
 import { UsuariosVerificacionfallidaComponent } from './components/usuarios-verificacionfallida/usuarios-verificacionfallida.component';
 
-
+//Spinner de carga
+import { SpinnerModule } from './shared/components/spinner/spinner.module';
+//
 //Agregado para probar si funca
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//El tipo del video puso @shared no ./
+import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
 //
 @NgModule({
   declarations: [
@@ -50,6 +54,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,    
+    SpinnerModule,
   ],
   providers: [
     UsuariosService,
@@ -58,7 +63,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi:true
-    }
+    },
+    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

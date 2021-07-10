@@ -39,6 +39,7 @@ export class UsuariosService {
 	cargarAnimal2$ = new EventEmitter<string>();
 	cargarAnimal3$ = new EventEmitter<string>();
 	cargarAnimal4$ = new EventEmitter<string>();
+	cargarAnimal5$ = new EventEmitter<string>();
 	cargarUserAnimal$ = new EventEmitter<string>();
 
   //

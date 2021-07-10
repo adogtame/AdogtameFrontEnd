@@ -1,3 +1,14 @@
+<div class="overlayAnimal" *ngIf="cargoPagina==false; else elseBlock">
+
+<div class="lds-heart"><div></div></div>
+</div>
+<ng-template #elseBlock>
+ 
+<!-- 
+  la idea es que se vea el contenido solo cuando termine de cargar todo 
+-->
+
+
 
 <div class="container" id="contenedor-animal-perfil">
   
@@ -115,9 +126,19 @@
    Se el primero en comentar!!!
        
 </ng-template>
-
-
-
-
 </div>
 
+
+
+
+
+
+
+
+<!-- 
+  
+  Este es el template de la carga
+  El contenido va arriba
+-->
+
+</ng-template>
