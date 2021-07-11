@@ -143,6 +143,11 @@ export class UsuariosService {
 	cargarInteres(idAnimal: string, idUsuario: object) {
 		return this.http.post(`${this.API_URI}/cargarInteres/${idAnimal}`, idUsuario);
 	}
+
+
+	cargarInteresados(idAnimal: string) {
+		return this.http.get(`${this.API_URI}/cargarInteresados/${idAnimal}`);
+	}
 	//
 
 

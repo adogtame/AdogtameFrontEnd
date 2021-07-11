@@ -44,6 +44,17 @@
 /*class="nav-link active col-lg-4 float-left" */
 
 
+
+.btnInteresados{
+  font-size:14px;
+  font-weight:bold;
+  color:white;
+  background:rgb(107, 81, 20);
+  border:0px;
+  float: left;
+width:140px;
+}
+
 .botoninteres{
   font-size:14px;
   font-weight:bold;
@@ -58,6 +69,7 @@
   color:white;
   background:rgb(58, 98, 190);
   border:0px;
+
 }
 
 .interesMostrar{
@@ -195,6 +207,80 @@ width: 40%;
 
 
 
+/*
+Diseño de dropdown
+
+*/
+
+
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+
+.dropdown-content label {
+  
+  color: black;
+  position:absolute;
+  text-decoration: none;
+  display: inline-block;
+  /* margin-top: 20px; */
+}
+
+
+.dropdown-content label:hover {
+  color: rgb(180, 156, 23)
+  
+}
+
+
+.show {
+  
+  
+
+  display:block; 
+  
+}
+
+.noShow {
+  
+  
+  display:none;
+
+}
+
+.gg-chevron-down {
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+
+.gg-chevron-down::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  left: 10px;
+  top: 4px;
+}
 
 
 
@@ -202,9 +288,10 @@ width: 40%;
 
 
 
+/*
+FIN Diseño de dropdown
 
-
-
+*/
 
 
 
@@ -234,7 +321,7 @@ Este es otro spinner
   width: 32px;
   height: 32px;
   background: rgb(216, 173, 108);
-  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: lds-heart 2.1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:after,
 .lds-heart div:before {
@@ -243,7 +330,7 @@ Este es otro spinner
   display: block;
   width: 32px;
   height: 32px;
-  background: rgb(216, 173, 108);
+  animation: lds-heartTop 2.1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:before {
   left: -24px;
@@ -253,25 +340,72 @@ Este es otro spinner
   top: -24px;
   border-radius: 50% 50% 0 0;
 }
+
 @keyframes lds-heart {
   0% {
-    transform: scale(0.95);
+    transform: scale(1.70);
+    background: rgb(174, 211, 216);
+    /* transform: scale(0.95); */
   }
   5% {
-    transform: scale(1.1);
+    transform: scale(2.3);
+    background: rgb(141, 208, 216);  
+    /* transform: scale(1.1); */
   }
   39% {
-    transform: scale(0.85);
+    transform: scale(1.40);
+    background: rgb(174, 211, 216);
+    /* transform: scale(0.85); */
   }
   45% {
-    transform: scale(1);
+    transform: scale(2.1);
+    background: rgb(255, 237, 180);
+    /* transform: scale(1); */
   }
   60% {
-    transform: scale(0.95);
+    transform: scale(1.8);
+    background: rgb(255, 226, 152);
+    /* transform: scale(0.95); */
   }
   100% {
-    transform: scale(0.9);
+    transform: scale(1.7);
+    background: rgb(174, 211, 216);
+    /* transform: scale(0.9); */
   }
+  
+
+
+}
+
+
+@keyframes lds-heartTop {
+  0% {
+    background: rgb(174, 211, 216);
+    /* transform: scale(0.95); */
+  }
+  5% {
+    background: rgb(141, 208, 216);  
+    /* transform: scale(1.1); */
+  }
+  39% {
+    background: rgb(174, 211, 216);  
+    /* transform: scale(0.85); */
+  }
+  45% {
+    background: rgb(255, 237, 180);
+    /* transform: scale(1); */
+  }
+  60% {
+    background: rgb(255, 226, 152);
+    /* transform: scale(0.95); */
+  }
+  100% {
+    background: rgb(174, 211, 216);
+    /* transform: scale(0.9); */
+  }
+  
+
+
 }
 
 
@@ -296,6 +430,9 @@ Este es otro spinner
 
 /*
 
-distinto al q se muestra en toda la pag, este solo se muestra aca, se podira cambiar al stylecss para q sea general
+FIN spinner
+
+distinto al q se muestra en toda la pag, este solo se muestra aca, 
+se podira cambiar al stylecss para q sea general
 
 */

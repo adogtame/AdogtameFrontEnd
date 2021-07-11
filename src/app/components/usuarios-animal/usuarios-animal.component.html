@@ -3,72 +3,95 @@
 <div class="lds-heart"><div></div></div>
 </div>
 <ng-template #elseBlock>
- 
-<!-- 
-  la idea es que se vea el contenido solo cuando termine de cargar todo 
+
+<!--
+  la idea es que se vea el contenido solo cuando termine de cargar todo
 -->
 
 
 
 <div class="container" id="contenedor-animal-perfil">
-  
+
     <img id="imagen-animal-perfil" src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
     <p id="nombre-animal-perfil">{{Animal.nombre}}</p>
 </div>
 
 <div class="container" style="margin-top: 50px;">
   <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist" >
-       
-    <li class="nav-item activecol-lg-4" role="presentation">
-      <button   class="nav-link"
+
+    <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!=Usuario.id; else dador" >
+    <button   class="nav-link"
       type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' " (click)="mostrarInteres()">
       <span *ngIf="interes==true" ><i class="fas fa-check" ></i> &nbsp; Interes Mostrado</span>
       <span *ngIf="interes==false" > Mostrar Interes </span>
-      
+
     </button>
-    </li>
+    </li> 
+
+
+   <ng-template #dador>
+      <li class="nav-item activecol-lg-4" role="presentation" >
+        <div class="dropdown">
+          <div class="nav-link" role="tab" class="btn btn - btnInteresados" (click)="isOpenInteresados = !isOpenInteresados">
+            <span> Interesados  </span><i [ngClass]="{'gg-chevron-down': isOpenInteresados} "></i>
+          </div>
+          <div class="menu123" [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="dropdown-content">
+            <div class="menu-item" >
+
+              <div *ngFor=" let interesado of interesados">
+                {{interesado.nombre}} {{interesado.apellido}}
+                <br>{{interesado.email}}
+                </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+      </li>
+    </ng-template> 
+
     <li class="nav-item" role="presentation">
 
       <button  id="Dador-tab"
 
       role="tab"
       class="nav-link col-lg-4 float-right" type="button" (click)="irADador()">Dador
-     
+
     </button>
     </li>
     </ul>
 </div>
 
 
-<br> 
-<br> 
+<br>
+<br>
 <div class="container" >
-   
-        
+
+
     <ul id="data" role="tablist" >
-       
+
         <li class=" col-lg-9 float-left">
-        
-                
-            <b>Nombre:</b> {{Animal.nombre}}  
-            <br> 
+
+
+            <b>Nombre:</b> {{Animal.nombre}}
+            <br>
             <b>Tipo:</b> {{Animal.tipo}}
-            <br> 
+            <br>
             <b>Sexo:</b> {{Animal.sexo}}
-            <br> 
-            <b>Edad:</b> {{Animal.fNac}}  
-            <br>  
-            <b>Tamaño:</b> {{Animal.tamano}}     
-            <br>                
-            <b>Peso:</b> {{Animal.peso}}         
-            <br>          
+            <br>
+            <b>Edad:</b> {{Animal.fNac}}
+            <br>
+            <b>Tamaño:</b> {{Animal.tamano}}
+            <br>
+            <b>Peso:</b> {{Animal.peso}}
+            <br>
             <b>Estado de adopcion:</b> &nbsp;&nbsp; <a class="btn btn - botonEstado" > Estado</a>
 
         </li>
 
         <li class="col-lg-3 float-right">
-        
-          
+
+
 
             <a class="btn btn - botonDatosMedicos" > Datos Medicos</a>
         </li>
@@ -85,16 +108,16 @@
   <br>
   <br>
 
-  <input  type="text" id="comentario" name="comentario" [(ngModel)]="comentario.comentario" 
+  <input  type="text" id="comentario" name="comentario" [(ngModel)]="comentario.comentario"
   placeholder="Agrega un comentario público…">
   &nbsp;<button class="btn btn-success" (click)="agregarComentario()">Comentar </button>
-  <br><br><br><br>             
- 
+  <br><br><br><br>
+
   <table *ngIf="comentarios.length > 0; else sinComentarios" >
-    
+
     <ng-container *ngFor="let comentario of comentarios">
     <ul id="ulc" >
-        
+
       <li>Usuario: {{comentario.idUsuario}}</li>
         <li>Comentario: {{comentario.comentario}}</li>
         <li>Fecha: {{comentario.fecha}}</li>
@@ -103,17 +126,17 @@
           <br>
           <button class="btn btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar comentario</button>
           <br>
-        </li> 
+        </li>
         <ng-template #noAdmin>
         <li>
-         
-          <link rel="stylesheet" 
+
+          <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          
-          {{comentario.likes}}&nbsp;<i id="like" [ngClass]="{'likeActivo' : comentario.like, 'likeNoActivo': !comentario.like}" 
+
+          {{comentario.likes}}&nbsp;<i id="like" [ngClass]="{'likeActivo' : comentario.like, 'likeNoActivo': !comentario.like}"
           class="fa fa-thumbs-up" (click)="like(comentario.id, comentario.like, comentario.dislike)"></i>
           &nbsp;&nbsp;
-          {{comentario.dislikes}}&nbsp;<i id="dislike"  [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}" 
+          {{comentario.dislikes}}&nbsp;<i id="dislike"  [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}"
           class="fa fa-thumbs-down" (click)="dislike(comentario.id, comentario.dislike, comentario.like)"></i>
         </li>
         </ng-template>
@@ -122,9 +145,9 @@
     </ng-container>
   </table>
   <ng-template #sinComentarios>
-  
+
    Se el primero en comentar!!!
-       
+
 </ng-template>
 </div>
 
@@ -135,8 +158,8 @@
 
 
 
-<!-- 
-  
+<!--
+
   Este es el template de la carga
   El contenido va arriba
 -->

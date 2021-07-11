@@ -12,7 +12,6 @@
   height: 64px;
   margin: 8px;
   border: 8px solid rgb(170, 128, 100);
-  border-color: rgb(161, 121, 76) transparent transparent transparent;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   /* border: 8px solid #fff;
@@ -31,8 +30,13 @@
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);
+    border-color: rgb(255, 239, 222) transparent transparent transparent;
+  }
+  50% {
+    border-color: rgb(63, 59, 54) transparent transparent transparent;
   }
   100% {
     transform: rotate(360deg);
+    border-color: rgb(255, 239, 222) transparent transparent transparent;
   }
 }

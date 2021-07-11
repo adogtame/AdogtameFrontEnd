@@ -9,8 +9,20 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { AdminService } from '../../services/admin.service';
 
+//Animations (Dropdown)
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,  
+  
+  query,
+  sequence,
+  stagger,
+  // ...
+} from '@angular/animations';
 //
-
 
 @Component({
   selector: 'app-usuarios-animal',
@@ -18,7 +30,38 @@ import { AdminService } from '../../services/admin.service';
  
   templateUrl: './usuarios-animal.component.html',
 
-  styleUrls: ['./usuarios-animal.component.css']
+  styleUrls: ['./usuarios-animal.component.css'],
+
+  animations: [
+
+     trigger('clickContent', [
+       state('noShow', 
+         style({ 
+          
+           display: 'none',
+           height: '0px',
+           opacity: 0.6
+
+         })
+       ),
+       state('show', 
+         style({ 
+          display: 'block', 
+           height: '280px',
+           'margin-top': '32px',
+           opacity: 1
+          })
+       ),
+       transition('show => noShow', [
+         animate('0s')
+       ]),
+       transition('noShow => show', [
+         animate('0.3s')
+       ])
+     ]),
+
+
+  ]
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
@@ -29,8 +72,12 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   moment: any = [];
 
+  
+  interesados: any = [];
+
   interes: boolean = false;
 
+  isOpenInteresados = false;
 
   cargoPagina: boolean = false;
 
@@ -190,7 +237,20 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.usuariosService.cargarAnimal1$.subscribe(log => {
 
-      this.cargarInteres();
+      if(this.Animal.idDador==this.usuariosService.user.id){
+
+        //si sos el dador
+        this.cargarInteresados();
+      }
+      else
+      {
+
+        this.cargarInteres();
+
+      }
+
+
+      
 
     });
 
@@ -261,7 +321,33 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
 
+  //si sos el dador
+  cargarInteresados() {
 
+
+    console.log("El id del usuario es este de aca (dador)", this.usuariosService.user.id);
+
+
+    this.usuariosService.cargarInteresados(this.AnimalID.id).subscribe(
+      res => {
+
+        console.log("Resultado del cargar interesados", res);
+
+        this.interesados=res;
+
+        console.log("Interesados del animal", this.interesados);
+
+        this.usuariosService.cargarAnimal2$.emit()
+      },
+      err => console.log(err)
+    );
+
+
+
+  }
+
+
+  //si sos un interesado
   cargarInteres() {
 
 
