@@ -11,9 +11,12 @@ export class SpinnerInterceptor implements HttpInterceptor{
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
+        
      this.spinnerSvc.show();
      return next.handle(req).pipe(
         finalize(()  => this.spinnerSvc.hide())
      ) 
+
+
     }
 }

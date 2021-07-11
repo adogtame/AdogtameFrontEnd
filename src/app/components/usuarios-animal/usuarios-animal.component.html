@@ -37,12 +37,31 @@
           </div>
           <div class="menu123" [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="dropdown-content">
             <div class="menu-item" >
+            
+            
+              <div *ngIf="interesados.length>0; else vacio">
+              
+                <div  *ngFor=" let interesado of interesados">
+                  <label>
+                  <!--
+                    La idea seria poner la foto de perfil (Redirecciona al perfil del usuario), 
+                    el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
+                  -->
 
-              <div *ngFor=" let interesado of interesados">
-                {{interesado.nombre}} {{interesado.apellido}}
-                <br>{{interesado.email}}
+                  <br>{{interesado.nombre}} {{interesado.apellido}}
+                  <br>{{interesado.email}}                 
+                  </label>
                 </div>
-              <hr>
+                
+              </div>
+
+
+              <ng-template #vacio>
+              <div style="text-align: center;">
+              <br>No hay interesados
+              </div>
+              </ng-template>
+
             </div>
           </div>
         </div>

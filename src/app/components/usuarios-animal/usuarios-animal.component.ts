@@ -47,16 +47,21 @@ import {
        state('show', 
          style({ 
           display: 'block', 
-           height: '280px',
-           'margin-top': '32px',
-           opacity: 1
+          
+          'min-height':'80px',
+
+
+          // height: '260px',
+
+          'margin-top': '32px',
+          opacity: 1
           })
        ),
        transition('show => noShow', [
          animate('0s')
        ]),
        transition('noShow => show', [
-         animate('0.3s')
+         animate('0s')
        ])
      ]),
 
@@ -70,8 +75,9 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   AnimalID: any = [];
 
+  //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
   moment: any = [];
-
+  //
   
   interesados: any = [];
 
@@ -122,9 +128,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-
-
-
     this.rutaActiva.params.subscribe(routeParams => {
 
 
@@ -170,10 +173,22 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
+
+
     this.AnimalID = [];
 
     this.Animal = [];
 
+    
+    this.comentarios = [];
+
+    this.usuarioLikes = [];
+
+    this.likes = [];
+
+    this.interesados = [];
+
+    
   }
 
 
@@ -241,6 +256,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
         //si sos el dador
         this.cargarInteresados();
+
+        console.log("interesados",this.interesados);
       }
       else
       {
@@ -289,6 +306,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       setTimeout(()=>{ this.cargoPagina=true }, 2000)
 
 
+      console.log("interesados",this.interesados);
     });
 
 

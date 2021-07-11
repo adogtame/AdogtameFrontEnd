@@ -35,12 +35,14 @@ export class UsuariosService {
   //Una cagada pero tengo q hacer estos emitt porq sino la base dice 
   //q hay demasiadas cosas cargando al mismo tiempo
   
+  //Componente usuarios-animal
 	cargarAnimal1$ = new EventEmitter<string>();
 	cargarAnimal2$ = new EventEmitter<string>();
 	cargarAnimal3$ = new EventEmitter<string>();
 	cargarAnimal4$ = new EventEmitter<string>();
 	cargarAnimal5$ = new EventEmitter<string>();
 	cargarUserAnimal$ = new EventEmitter<string>();
+
 
   //
 

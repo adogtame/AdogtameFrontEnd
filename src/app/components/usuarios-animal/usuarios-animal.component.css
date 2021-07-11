@@ -55,14 +55,6 @@
 width:140px;
 }
 
-.botoninteres{
-  font-size:14px;
-  font-weight:bold;
-  color:white;
-  background:rgb(165, 119, 13);
-  border:0px;
-}
-
 .interesMostrado{
   font-size:14px;
   font-weight:bold;
@@ -223,6 +215,8 @@ Diseño de dropdown
   min-width: 140px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  max-height:260px;
+  overflow-y: scroll; 
 }
 
 
@@ -230,15 +224,13 @@ Diseño de dropdown
 .dropdown-content label {
   
   color: black;
-  position:absolute;
   text-decoration: none;
   display: inline-block;
-  /* margin-top: 20px; */
 }
 
 
 .dropdown-content label:hover {
-  color: rgb(180, 156, 23)
+  color: rgb(122, 119, 95)
   
 }
 
@@ -368,7 +360,7 @@ Este es otro spinner
     /* transform: scale(0.95); */
   }
   100% {
-    transform: scale(1.7);
+    transform: scale(1.5);
     background: rgb(174, 211, 216);
     /* transform: scale(0.9); */
   }
@@ -436,3 +428,12 @@ distinto al q se muestra en toda la pag, este solo se muestra aca,
 se podira cambiar al stylecss para q sea general
 
 */
+
+/* 
+Probando a ver si puedo ocultar el overlay en navigation
+*/
+
+
+.overlay{
+  display:none;
+}
