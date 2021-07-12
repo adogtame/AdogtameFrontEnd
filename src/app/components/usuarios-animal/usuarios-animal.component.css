@@ -1,3 +1,16 @@
+a {
+  color: black;
+}
+
+a:hover {
+  cursor: pointer;
+  color: rgb(165, 79, 245);
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+
 #imagen-animal-perfil{
   height: 100px;
   width: 100px;
@@ -313,7 +326,7 @@ Este es otro spinner
   width: 32px;
   height: 32px;
   background: rgb(216, 173, 108);
-  animation: lds-heart 2.1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: lds-heart 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:after,
 .lds-heart div:before {
@@ -322,7 +335,7 @@ Este es otro spinner
   display: block;
   width: 32px;
   height: 32px;
-  animation: lds-heartTop 2.1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: lds-heartTop 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:before {
   left: -24px;
@@ -355,13 +368,13 @@ Este es otro spinner
     /* transform: scale(1); */
   }
   60% {
-    transform: scale(1.8);
+    transform: scale(1.9);
     background: rgb(255, 226, 152);
     /* transform: scale(0.95); */
   }
   100% {
     transform: scale(1.5);
-    background: rgb(174, 211, 216);
+    background: rgb(255, 237, 180);
     /* transform: scale(0.9); */
   }
   
@@ -392,7 +405,7 @@ Este es otro spinner
     /* transform: scale(0.95); */
   }
   100% {
-    background: rgb(174, 211, 216);
+    background: rgb(255, 237, 180);
     /* transform: scale(0.9); */
   }
   

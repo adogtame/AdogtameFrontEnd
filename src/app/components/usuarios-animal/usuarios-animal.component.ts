@@ -320,6 +320,19 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.router.navigate(['usuarios/perfil/', this.Animal.idDador]);
 
+  } 
+
+  irAInteresado(id: number){
+    
+    console.log("El id ",id)
+    const url = this.router.serializeUrl(this.router.createUrlTree(['usuarios/perfil/',id]));
+    window.open(url, '_blank');
+    //this.router.navigate(['usuarios/perfil/',id])
+  }
+
+  comenzarChat(id: number){
+    
+    console.log("El id ",id)
   }
 
   animalCargarDatos() {

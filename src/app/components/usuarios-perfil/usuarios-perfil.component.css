@@ -77,7 +77,7 @@
   max-width: 100%;
 }
 
-#registrar-nuevo-animal-btn{
+/* #registrar-nuevo-animal-btn{
   font: bolder;
   font-size: 22px;
   font-family: 'Times New Roman';
@@ -92,7 +92,7 @@
 
 #registrar-nuevo-animal-btn:active {
   color: #110933;
-}
+} */
 
 #form-registar{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -104,8 +104,32 @@
     border-radius: 12px;
 }
 
-.content-select select:hover{
-	background: #B1E8CD;
+.content-select select:focus{
+  background: #a7f8e7;
+	/* Color de antes
+  background: #B1E8CD; */
 }
 
 
+
+
+/*
+Registrar animal boton
+*/
+
+#regAnimal {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  color: #0792bd;
+  cursor: pointer;
+  font-size: 18px;
+  background-size: 0% 2px;
+  transition: background-size .3s;
+}
+
+#regAnimal:hover, #regAnimal:focus {
+  background-size: 100% 2px;
+  color: #0155a3;
+}

@@ -40,17 +40,17 @@
             
             
               <div *ngIf="interesados.length>0; else vacio">
-              
+                <br>
                 <div  *ngFor=" let interesado of interesados">
-                  <label>
+                  
                   <!--
                     La idea seria poner la foto de perfil (Redirecciona al perfil del usuario), 
                     el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
                   -->
 
-                  <br>{{interesado.nombre}} {{interesado.apellido}}
-                  <br>{{interesado.email}}                 
-                  </label>
+                  <a (click)="comenzarChat(interesado.id)">{{interesado.nombre}} {{interesado.apellido}}</a>
+                  <br><a (click)="irAInteresado(interesado.id)">{{interesado.email}}</a>             
+                  <br><br>
                 </div>
                 
               </div>
