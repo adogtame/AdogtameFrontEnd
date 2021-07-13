@@ -207,24 +207,10 @@ width: 40%;
 }
 
 
-
-
-
-
-
-
-
-
-
 /*
 Diseño de dropdown
 
 */
-
-
-
-
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -235,9 +221,6 @@ Diseño de dropdown
   max-height:260px;
   overflow-y: scroll; 
 }
-
-
-
 .dropdown-content label {
   
   color: black;
@@ -292,23 +275,10 @@ Diseño de dropdown
 }
 
 
-
-
-
-
-
 /*
 FIN Diseño de dropdown
 
 */
-
-
-
-
-
-
-
-
 
 /*
 
@@ -458,8 +428,6 @@ Este es otro spinner
   visibility: hidden;
 }
 
-
-
 @keyframes rot1 {
   0% {
     visibility: hidden;
@@ -476,9 +444,6 @@ Este es otro spinner
 
 
 }
-
-
-
 @keyframes rot2 {
   0% {
     visibility: hidden;
@@ -496,8 +461,6 @@ Este es otro spinner
 
 
 }
-
-
 @keyframes rot3 {
   0% {
     visibility: hidden;
@@ -516,8 +479,6 @@ Este es otro spinner
 
 }
 
-
-
 .overlayAnimal{
   position: fixed;
   width: 100%;
@@ -530,9 +491,6 @@ Este es otro spinner
   justify-content: center;
   
 }
-
-
-
 
 
 /*

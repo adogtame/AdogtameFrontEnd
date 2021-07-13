@@ -1,6 +1,4 @@
 
-
-
 /* 
 
 Esto es del corazon spinner
@@ -108,3 +106,199 @@ Esto es del corazon spinner
 } 
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Esto estaba en buscador avanzado
+
+
+
+
+ //Dropdown Content (Hidden by Default)// 
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+// Links inside the dropdown // 
+.dropdown-content label {
+  
+  color: black;
+  position:absolute;
+  text-decoration: none;
+  display: inline-block;
+}
+
+// Change color of dropdown links on hover // 
+.dropdown-content label:hover {
+  color: rgb(180, 156, 23)
+  
+}
+// Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) // 
+
+.show {
+  
+  //  Muestra el contenido del filtro o exlcuir// 
+
+  display:block; 
+  
+}
+
+.noShow {
+  
+  //  Oculta el contenido del filtro o exlcuir// 
+  display:none;
+
+}
+
+
+
+
+TYPESCRIPT
+
+
+//En animations//
+
+trigger('clickContent', [
+      state('noShow', 
+        style({ 
+          
+          display: 'none',
+          height: '0px',
+          opacity: 0.6
+
+        })
+      ),
+      state('show', 
+        style({ 
+          display: 'block', 
+          height: '280px',
+          opacity: 1
+         })
+      ),
+      transition('show => noShow', [
+        animate('0s')
+      ]),
+      transition('noShow => show', [
+        animate('0.3s')
+      ])
+    ]),
+
+
+    
+
+    trigger('clickBTN', [
+      state('sube', 
+        style({ 
+          
+
+          'margin-top':'0px'
+
+        })
+      ),
+      state('baja', 
+        style({ 
+          
+          'margin-top':'240px'
+
+         })
+      ),
+      transition('sube => baja', [
+        animate('0.3s')
+      ]), 
+      transition('baja => sube', [
+        animate('0.3s')
+      ])
+    ]),
+
+    ////
+
+
+
+
+
+filtroClick: boolean = false;
+
+clickEnFiltro() {
+  
+  if(this.filtroClick==true){
+
+    this.filtroClick=false;
+    console.log("Lo desactiva", this.filtroClick);
+  }
+  else
+  {
+    this.filtroClick=true;
+    console.log("Activado", this.filtroClick);
+  }
+
+}
+
+
+
+
+
+excluirClick: boolean = false;
+
+clickEnExcluir() {
+  
+  if(this.excluirClick==true){
+
+    this.excluirClick=false;
+    console.log("Lo desactiva", this.excluirClick);
+  }
+  else
+  {
+    this.excluirClick=true;
+    console.log("Activado", this.excluirClick);
+  }
+
+}
+
+
+
+
+HTML
+
+<div class="dropdown">
+        <button class="btn btn - boton1" [@clickBTN]="filtroClick ? 'baja' : 'sube'" (click)="clickEnExcluir()">Exluir</button>
+        <div id="myDropdown2"  [@clickContent]="excluirClick ? 'show' : 'noShow'" class="dropdown-content">
+          <br>&nbsp;
+          <input type="checkbox" id="cria2" [(ngModel)]="excluirAplica.cria" name="cria" value="true" class="check">&nbsp;
+            <label class="tran" for="cria2"> Edad Cria </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="adulto2" [(ngModel)]="excluirAplica.adulto" name="adulto" value="true" class="check">&nbsp;
+            <label class="tran" for="adulto2"> Edad Adulto </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="grande2" [(ngModel)]="excluirAplica.grande" name="grande" value="true" class="check"> &nbsp;
+            <label class="tran" for="grande2"> Tamaño Grande </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="mediano2" [(ngModel)]="excluirAplica.mediano" name="mediano" value="true" class="check">&nbsp;
+            <label class="tran" for="mediano2"> Tamaño Mediano </label>
+            <br><br>&nbsp;
+            <input type="checkbox" id="chico2" [(ngModel)]="excluirAplica.chico" name="chico" value="true" class="check">&nbsp;
+            <label class="tran" for="chico2"> Tamaño Chico </label>
+            <br><br>&nbsp;
+        </div>
+      </div> 
+      
+      
+      
+      */

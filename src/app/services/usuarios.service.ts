@@ -148,6 +148,8 @@ export class UsuariosService {
 
 
 	cargarInteresados(idAnimal: string) {
+		
+		console.log("cargarInteresados ");
 		return this.http.get(`${this.API_URI}/cargarInteresados/${idAnimal}`);
 	}
 	//
