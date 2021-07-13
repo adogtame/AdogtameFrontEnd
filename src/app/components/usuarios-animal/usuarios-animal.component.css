@@ -68,6 +68,11 @@ a:hover {
 width:140px;
 }
 
+.btnInteresados:hover{
+  background:rgb(85, 64, 14);
+}
+
+
 .interesMostrado{
   font-size:14px;
   font-weight:bold;
@@ -108,6 +113,11 @@ width:140px;
 }
 
 
+.botonEstado:hover{
+  background-color: #284429; /* Green */
+  color: rgb(208, 224, 200);
+}
+
 
 .botonDatosMedicos {
   background-color: #67b4d8; 
@@ -124,7 +134,10 @@ width:140px;
 
 
 
-
+.botonDatosMedicos:hover{
+  background-color: rgb(60, 124, 115); 
+  color: rgb(200, 224, 220);
+}
 
 
 
@@ -311,7 +324,210 @@ FIN Diseño de dropdown
 Este es otro spinner
 
 */
-.lds-heart {
+
+
+.paw {
+  width:100px;
+  height:100px;
+  position: relative;
+  border-radius: 50%;
+  background: #fff;
+   -webkit-transition: all .5s cubic-bezier(0,.73,.73,1.52);
+          transition: all .5s cubic-bezier(0,.73,.73,1.52);
+  
+}  
+
+.paw:before,
+.paw:after {
+  position: absolute;
+  z-index: 10;
+}
+  
+.paw:before {
+  content:'';
+  display:block;
+  width: 22%;
+  height: 32%;
+  background:rgb(148, 92, 45);
+  border-radius:50%  50%  50%  50%  / 60%   60%   40%  40%;
+  left:25%;
+  top:10%;
+  transform:rotate(-15deg)
+}
+
+.paw:after {
+  content:'';
+  display:block;
+  width: 22%;
+  height: 32%;
+  background:rgb(148, 92, 45);
+  border-radius:50%  50%  50%  50%  / 60%   60%   40%  40%;
+  right:25%;
+  top:10%;
+  transform:rotate(15deg)
+}
+
+
+.inner {
+  width:100%;
+  height:100%;
+  position: relative;
+}
+
+.inner:before,
+.inner:after {
+  position: absolute;
+  z-index: 10;
+}
+    
+.inner:before {
+  content:'';
+  display:block;
+  width: 18%;
+  height: 30%;
+  background:rgb(148, 92, 45);
+  border-radius:50%  50%  50%  50%  / 60%   60%   40%  40%;
+  left:10%;
+  top:32%;
+  transform:rotate(-30deg)
+}
+
+.inner:after {
+  content:'';
+  display:block;
+  width: 18%;
+  height: 30%;
+  background:rgb(148, 92, 45);
+  border-radius:50%  50%  50%  50%  / 60%   60%   40%  40%;
+  right:10%;
+  top:32%;
+  transform:rotate(30deg)
+}
+  
+
+.bottom {
+  width: 48%;
+  height: 30%;
+  background:rgb(148, 92, 45);
+  border-radius:70%  70%  50%  50%  / 90%   90%   50%  50%;
+  position: absolute;
+  bottom:12%;
+  left:26%;
+}
+
+.bottom:before {
+  content:'';
+  position: absolute;
+  bottom:-11%;
+  left:0;
+  background: rgb(148, 92, 45);
+  width:50%;
+  height:75%;
+  border-radius: 55% 105% 68% 79% / 60% 60% 29% 50%;
+  z-index: 1000;
+}
+  
+.bottom:after {
+  content:'';
+  position: absolute;
+  bottom:-11%;
+  right:0;
+  background: rgb(148, 92, 45);
+  width:50%;
+  height:75%;
+  border-radius:105% 55% 79% 68% / 60% 60% 50% 29%;
+  z-index: 1000;
+}
+
+.rot1 {
+   
+  transform:rotate(90deg);
+    
+  animation: rot1 3s infinite;
+
+  animation-delay: 1s;
+  visibility: hidden;
+}
+  
+.rot2 {
+   
+  transform:rotate(90deg);
+    
+  animation: rot1 3s infinite;
+  animation-delay: 1.5s;
+  visibility: hidden;
+}
+
+.rot3 {
+   
+  transform:rotate(90deg);
+    
+  animation: rot1 3s infinite;
+  animation-delay: 2s;
+  visibility: hidden;
+}
+
+
+@keyframes rot1 {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  20% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  } 
+
+
+}
+
+
+
+@keyframes rot2 {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  20% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  } 
+
+
+}
+
+
+@keyframes rot3 {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  20% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  } 
+
+
+}
+
+
+
+
+/* .lds-heart {
   display: inline-block;
   position: relative;
   width: 80px;
@@ -350,32 +566,32 @@ Este es otro spinner
   0% {
     transform: scale(1.70);
     background: rgb(174, 211, 216);
-    /* transform: scale(0.95); */
+    /* transform: scale(0.95); *//*
   }
   5% {
     transform: scale(2.3);
     background: rgb(141, 208, 216);  
-    /* transform: scale(1.1); */
+    /* transform: scale(1.1); *//*
   }
   39% {
     transform: scale(1.40);
     background: rgb(174, 211, 216);
-    /* transform: scale(0.85); */
+    /* transform: scale(0.85); *//*
   }
   45% {
     transform: scale(2.1);
     background: rgb(255, 237, 180);
-    /* transform: scale(1); */
+    /* transform: scale(1); *//*
   }
   60% {
     transform: scale(1.9);
     background: rgb(255, 226, 152);
-    /* transform: scale(0.95); */
+    /* transform: scale(0.95); *//*
   }
   100% {
     transform: scale(1.5);
     background: rgb(255, 237, 180);
-    /* transform: scale(0.9); */
+    /* transform: scale(0.9); *//*
   }
   
 
@@ -386,32 +602,33 @@ Este es otro spinner
 @keyframes lds-heartTop {
   0% {
     background: rgb(174, 211, 216);
-    /* transform: scale(0.95); */
+    /* transform: scale(0.95); *//*
   }
   5% {
     background: rgb(141, 208, 216);  
-    /* transform: scale(1.1); */
+    /* transform: scale(1.1); *//*
   }
   39% {
     background: rgb(174, 211, 216);  
-    /* transform: scale(0.85); */
+    /* transform: scale(0.85); *//*
   }
   45% {
     background: rgb(255, 237, 180);
-    /* transform: scale(1); */
+    /* transform: scale(1); *//*
   }
   60% {
     background: rgb(255, 226, 152);
-    /* transform: scale(0.95); */
+    /* transform: scale(0.95); *//*
   }
   100% {
     background: rgb(255, 237, 180);
-    /* transform: scale(0.9); */
+    /* transform: scale(0.9); *//*
   }
   
 
 
-}
+} 
+*/
 
 
 
