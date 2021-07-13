@@ -37,11 +37,6 @@
     min-width:200px;
 }
 
-/*
-cambie lo q hay en el buscador con lo q hay en principal
-para q en buscador aparezcan varios mientras q en principal 1 solo
-*/
-
 
 #card-animal-principal{
   margin: 15px;
@@ -85,13 +80,6 @@ para q en buscador aparezcan varios mientras q en principal 1 solo
 #body-animal{
   background-color: gainsboro;
 }
-
-
-/*
-cambie lo q hay en el buscador con lo q hay en principal
-para q en buscador aparezcan varios mientras q en principal 1 solo
-
-*/
 
 
 #filtro-search{
@@ -159,26 +147,6 @@ background-color:rgb(84, 141, 27);
 }
 
 
-.check{
-
-
-  /* 
-
-    Nose como cambiar el diseño del checkbox,
-    hay q investigar en algun momento,
-    vi q joan habia hecho uno pero lo borre  
-
-  */
-
-}
-
-
-/* 
-
-
-
-
-*/
 
 .menu-item label {
   
@@ -258,17 +226,5 @@ background-color:rgb(84, 141, 27);
   left: 15px;
   top: 6px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
