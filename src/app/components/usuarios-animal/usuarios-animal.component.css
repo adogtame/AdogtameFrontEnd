@@ -92,15 +92,6 @@ width:140px;
 
 
 
-.botonDador{
-
-}
-
-.botonInteres{
-
-}
-
-
 .botonEstado{
   background-color: #74cf77; /* Green */
   border: none;
@@ -524,113 +515,6 @@ Este es otro spinner
 
 
 }
-
-
-
-
-/* .lds-heart {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-  transform: rotate(45deg);
-  transform-origin: 40px 40px;
-}
-.lds-heart div {
-  top: 32px;
-  left: 32px;
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  background: rgb(216, 173, 108);
-  animation: lds-heart 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.lds-heart div:after,
-.lds-heart div:before {
-  content: " ";
-  position: absolute;
-  display: block;
-  width: 32px;
-  height: 32px;
-  animation: lds-heartTop 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.lds-heart div:before {
-  left: -24px;
-  border-radius: 50% 0 0 50%;
-}
-.lds-heart div:after {
-  top: -24px;
-  border-radius: 50% 50% 0 0;
-}
-
-@keyframes lds-heart {
-  0% {
-    transform: scale(1.70);
-    background: rgb(174, 211, 216);
-    /* transform: scale(0.95); *//*
-  }
-  5% {
-    transform: scale(2.3);
-    background: rgb(141, 208, 216);  
-    /* transform: scale(1.1); *//*
-  }
-  39% {
-    transform: scale(1.40);
-    background: rgb(174, 211, 216);
-    /* transform: scale(0.85); *//*
-  }
-  45% {
-    transform: scale(2.1);
-    background: rgb(255, 237, 180);
-    /* transform: scale(1); *//*
-  }
-  60% {
-    transform: scale(1.9);
-    background: rgb(255, 226, 152);
-    /* transform: scale(0.95); *//*
-  }
-  100% {
-    transform: scale(1.5);
-    background: rgb(255, 237, 180);
-    /* transform: scale(0.9); *//*
-  }
-  
-
-
-}
-
-
-@keyframes lds-heartTop {
-  0% {
-    background: rgb(174, 211, 216);
-    /* transform: scale(0.95); *//*
-  }
-  5% {
-    background: rgb(141, 208, 216);  
-    /* transform: scale(1.1); *//*
-  }
-  39% {
-    background: rgb(174, 211, 216);  
-    /* transform: scale(0.85); *//*
-  }
-  45% {
-    background: rgb(255, 237, 180);
-    /* transform: scale(1); *//*
-  }
-  60% {
-    background: rgb(255, 226, 152);
-    /* transform: scale(0.95); *//*
-  }
-  100% {
-    background: rgb(255, 237, 180);
-    /* transform: scale(0.9); *//*
-  }
-  
-
-
-} 
-*/
-
 
 
 
