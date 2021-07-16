@@ -1,196 +1,238 @@
 <div class="overlayAnimal" *ngIf="cargoPagina==false; else elseBlock">
-<div  class="rot1">
-  <div class="paw">    
-  <div class="inner"></div>
-  <div class="bottom"></div>
+  <div  class="rot1">
+    <div class="paw">    
+    <div class="inner"></div>
+    <div class="bottom"></div>
+    </div>
   </div>
-</div>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<div  class="rot2">
-  <div class="paw">    
-  <div class="inner"></div>
-  <div class="bottom"></div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div  class="rot2">
+    <div class="paw">    
+    <div class="inner"></div>
+    <div class="bottom"></div>
+    </div>
   </div>
-</div>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<div  class="rot3">
-  <div class="paw">    
-  <div class="inner"></div>
-  <div class="bottom"></div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div  class="rot3">
+    <div class="paw">    
+    <div class="inner"></div>
+    <div class="bottom"></div>
+    </div>
   </div>
-</div>
-
-
-  <!-- <div class="lds-heart"><div></div></div> -->
-</div>
-<ng-template #elseBlock>
+  
+  
+    <!-- <div class="lds-heart"><div></div></div> -->
+  </div>
+  <ng-template #elseBlock>
 
   <!--
-  la idea es que se vea el contenido solo cuando termine de cargar todo
--->
+    la idea es que se vea el contenido solo cuando termine de cargar todo
+  -->
 
 
+    <!-- COMIENZA EL GRID-->
+<div class="grid-container">
+  
+    <!-- GRID HEADER-->
+  <div class="grid-item grid-header">    
+    
+    <div class="animal-imagen">
+  
+      <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+      <p class="animal-nombre">{{Animal.nombre}}</p>
+    </div>
 
-  <div class="container" id="contenedor-animal-perfil">
-
-    <img id="imagen-animal-perfil" src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-    <p id="nombre-animal-perfil">{{Animal.nombre}}</p>
   </div>
-
-  <div class="container" style="margin-top: 50px;">
-    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-
-      <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!=Usuario.id; else dador">
-        <button class="nav-link" type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' "
-          (click)="mostrarInteres()">
-          <span *ngIf="interes==true"><i class="fas fa-check"></i> &nbsp; Interes Mostrado</span>
-          <span *ngIf="interes==false"> Mostrar Interes </span>
-
-        </button>
-      </li>
-
-
-      <ng-template #dador>
-        <li class="nav-item activecol-lg-4" role="presentation">
-          <div class="dropdown">
-            <div class="nav-link" role="tab" class="btn btn - btnInteresados"
-              (click)="isOpenInteresados = !isOpenInteresados">
-              <span> Interesados </span><i [ngClass]="{'gg-chevron-down': isOpenInteresados} "></i>
-            </div>
-            <div class="menu123" [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="dropdown-content">
-              <div class="menu-item">
-
-                
-
-                <div *ngIf="interesados.length>0; else vacio">
-                  <br>
-                  <div *ngFor=" let interesado of interesados">
-
-                    <!--
-                    La idea seria poner la foto de perfil (Redirecciona al perfil del usuario), 
-                    el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
-                  -->
-
-                    <a (click)="comenzarChat(interesado.id)">{{interesado.nombre}} {{interesado.apellido}}</a>
-                    <br><a (click)="irAInteresado(interesado.id)">{{interesado.email}}</a>
-                    <br><br>
+  
+    <!-- GRID SUBHEADER-->
+  <div class="grid-item grid-subheader">    
+   
+    <div class="animal-subheader">
+      <ul class="nav nav-tabs nav-fill" role="tablist">
+  
+        <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!=Usuario.id; else dador">
+          <button class="nav-link" type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' "
+            (click)="mostrarInteres()">
+            <p class="interes-mostrado-text" *ngIf="interes==true"><i class="fas fa-check"></i> Interes Mostrado</p>
+            <p class="mostrar-interes-text" *ngIf="interes==false"> Mostrar Interes </p>
+  
+          </button>
+        </li>
+  
+  
+        <ng-template #dador>
+          <li class="nav-item activecol-lg-4" role="presentation">
+            <div class="dropdown">
+              <div class="nav-link" role="tab" class="btn btn - btnInteresados"
+                (click)="isOpenInteresados = !isOpenInteresados">
+                <span> Interesados </span><i [ngClass]="{'gg-chevron-down': isOpenInteresados} "></i>
+              </div>
+              <div class="menu123" [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="interesados-dropdown-content">
+                <div class="interesados-item">
+  
+  
+  
+                  <div *ngIf="interesados.length>0; else vacio">
+                    <div class="interesado-data" *ngFor=" let interesado of interesados">
+  
+                      <!--
+                      La idea seria poner la foto de perfil (Redirecciona al perfil del usuario), 
+                      el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
+                    -->
+                      <a class="imagen-interesado" (click)="irAInteresado(interesado.id)">
+                      <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
+                      </a>
+                      <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido)">{{interesado.nombre}} {{interesado.apellido}}</a>
+                      
+                    </div>
+  
                   </div>
-
+  
+  
+                  <ng-template #vacio>
+                    <div style="text-align: center;">
+                      <br>No hay interesados
+                    </div>
+                  </ng-template>
+  
                 </div>
-
-
-                <ng-template #vacio>
-                  <div style="text-align: center;">
-                    <br>No hay interesados
-                  </div>
-                </ng-template>
-
               </div>
             </div>
-          </div>
-
-        </li>
-      </ng-template>
-
-      <li class="nav-item" role="presentation">
-
-        <button id="Dador-tab" role="tab" class="nav-link col-lg-4 float-right" type="button" (click)="irADador()">Dador
-
-        </button>
-      </li>
-    </ul>
-  </div>
-
-
-  <br>
-  <br>
-  <div class="container">
-
-
-    <ul id="data" role="tablist">
-
-      <li class=" col-lg-9 float-left">
-
-
-        <b>Nombre:</b> {{Animal.nombre}}
-        <br>
-        <b>Tipo:</b> {{Animal.tipo}}
-        <br>
-        <b>Sexo:</b> {{Animal.sexo}}
-        <br>
-        <b>Edad:</b> {{Animal.fNac}}
-        <br>
-        <b>Tamaño:</b> {{Animal.tamano}}
-        <br>
-        <b>Peso:</b> {{Animal.peso}}
-        <br>
-        <b>Estado de adopcion:</b> &nbsp;&nbsp; <a class="btn btn - botonEstado"> Estado</a>
-
-      </li>
-
-      <li class="col-lg-3 float-right">
-
-
-
-        <a class="btn btn - botonDatosMedicos"> Datos Medicos</a>
-      </li>
-
-    </ul>
-
-
-
-  </div>
-  <br><br><br><br><br><br><br><br>
-  <div class="container" id="animal-coment">
-    <br>
-    <b>Comentarios </b>
-    <br>
-    <br>
-
-    <input type="text" id="comentario" name="comentario" [(ngModel)]="comentario.comentario"
-      placeholder="Agrega un comentario público…">
-    &nbsp;<button class="btn btn-success" (click)="agregarComentario()">Comentar </button>
-    <br><br><br><br>
-
-    <table *ngIf="comentarios.length > 0; else sinComentarios">
-
-      <ng-container *ngFor="let comentario of comentarios">
-        <ul id="ulc">
-
-          <li>Usuario: {{comentario.idUsuario}}</li>
-          <li>Comentario: {{comentario.comentario}}</li>
-          <li>Fecha: {{comentario.fecha}}</li>
-          <li>Animal: {{comentario.idAnimal}}</li>
-          <li class="nav-item" *ngIf="rol=='administrador'; else noAdmin">
-            <br>
-            <button class="btn btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar comentario</button>
-            <br>
+  
           </li>
-          <ng-template #noAdmin>
-            <li>
+        </ng-template>
+  
+        <li class="nav-item" role="presentation">
+  
+          <button id="boton-dador" role="tab" class="nav-link col-lg-4 float-right" type="button" (click)="irADador()"> 
+            
+            <div  class="patita-dador">
+              <div class="paw">    
+              <div class="inner"></div>
+              <div class="bottom"></div>
+              </div>
+            </div>
 
-              <link rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <p class="dador-text">Dador</p>
+  
+          </button>
+        </li>
+      </ul>
+    </div>
 
-              {{comentario.likes}}&nbsp;<i id="like"
-                [ngClass]="{'likeActivo' : comentario.like, 'likeNoActivo': !comentario.like}" class="fa fa-thumbs-up"
-                (click)="like(comentario.id, comentario.like, comentario.dislike)"></i>
-              &nbsp;&nbsp;
-              {{comentario.dislikes}}&nbsp;<i id="dislike"
-                [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}"
-                class="fa fa-thumbs-down" (click)="dislike(comentario.id, comentario.dislike, comentario.like)"></i>
-            </li>
-          </ng-template>
-          <br><br><br><br>
-        </ul>
-      </ng-container>
-    </table>
-    <ng-template #sinComentarios>
-
-      Se el primero en comentar!!!
-
-    </ng-template>
   </div>
+  
+    <!-- GRID ANIMALMAIN-->
+  <div class="grid-item grid-animalMain">
+    <div class="animal-main">
+  
+  
+      <div class="grid-main-item animal-datos">
+  
+  
+        <div class="data-item">
+
+          <b>Nombre:</b> {{Animal.nombre}}
+
+        </div>
+
+        <div class="data-item">
+
+          <b>Tipo:</b> {{Animal.tipo}}
+
+        </div>
+        <div class="data-item">
+
+          <b>Sexo:</b> {{Animal.sexo}}
+
+        </div>
+        <div class="data-item">
+
+          <b>Edad:</b> {{Animal.fNac}}
+        
+        </div>
+        <div class="data-item">
+
+          <b>Tamaño:</b> {{Animal.tamano}}
+
+        </div>
+        <div class="data-item">
+
+          <b>Peso:</b> {{Animal.peso}}
+
+        </div>
+
+        <div class="data-estado">
+          
+          <b>Estado de adopcion: &nbsp;&nbsp; </b><a class="btn btn - botonEstado"> Estado</a>
+
+        </div>
+  
+      </div>
+  
+      <div class="grid-main-item datos-medicos">
+          <a class="btn btn - botonDatosMedicos"> Datos Medicos</a>
+      </div>
+  
+  
+    </div>
+  </div>
+  <!-- GRID COMENTARIOS-->
+  <div class="grid-item grid-comentarios">    
+    <div class="animal-comentarios">
+      <br>
+      <b>Comentarios </b>
+      <br>
+      <br>
+  
+      <input type="text" class="comentario-input" name="comentario" [(ngModel)]="comentario.comentario"
+        placeholder="Agrega un comentario público…">
+      &nbsp;<button class="btn btn-success" (click)="agregarComentario()">Comentar </button>
+      <br><br><br><br>
+  
+      <table *ngIf="comentarios.length > 0; else sinComentarios">
+  
+        <ng-container *ngFor="let comentario of comentarios">
+          <ul class="comentario-data">
+  
+            <li>Usuario: {{comentario.idUsuario}}</li>
+            <li>Comentario: {{comentario.comentario}}</li>
+            <li>Fecha: {{comentario.fecha}}</li>
+            <li>Animal: {{comentario.idAnimal}}</li>
+            <li class="nav-item" *ngIf="rol=='administrador'; else noAdmin">
+              <br>
+              <button class="btn btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar comentario</button>
+              <br>
+            </li>
+            <ng-template #noAdmin>
+              <li>
+  
+                <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+                {{comentario.likes}}&nbsp;<i id="like"
+                  [ngClass]="{'likeActivo' : comentario.like, 'likeNoActivo': !comentario.like}" class="fa fa-thumbs-up"
+                  (click)="like(comentario.id, comentario.like, comentario.dislike)"></i>
+                &nbsp;&nbsp;
+                {{comentario.dislikes}}&nbsp;<i id="dislike"
+                  [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}"
+                  class="fa fa-thumbs-down" (click)="dislike(comentario.id, comentario.dislike, comentario.like)"></i>
+              </li>
+            </ng-template>
+            <br><br><br><br>
+          </ul>
+        </ng-container>
+      </table>
+      <ng-template #sinComentarios>
+  
+        Se el primero en comentar!!!
+  
+      </ng-template>
+    </div>
+  </div>
+  <!-- GRID FOOTER-->
+  <div class="grid-item grid-footer">footer</div>
+</div>
 
 
 
@@ -199,10 +241,39 @@
 
 
 
+
+
+  <!-- NO ES DEL GRID ANTERIOR, ES EL CHAT  -->
+  <div class="chat" *ngIf="chatAbierto==true">
+    
+    <div class="chat-item chat-header">
+
+      <a class="interesado-seleccionado-img">
+        <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
+      </a>
+      <a>{{this.seleccionadoName}} {{this.seleccionadoApellido}}</a>
+      <button type="button" class="btn btn-cerrarChat" (click)="cerrarChat()">&#10006;</button>
+
+    </div>
+  
+  
+    <div class="chat-item chat-main"></div>
+
+
+    <!-- <div class="chat-item chat-aside"></div>  -->
+
+  </div>
+  
+  
+  
+  
+  
+  
   <!--
+  
+    Este es el template de la carga
+    El contenido va arriba
 
-  Este es el template de la carga
-  El contenido va arriba
--->
-
-</ng-template>
+  -->
+  
+  </ng-template>

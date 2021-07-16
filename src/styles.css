@@ -18,3 +18,9 @@ body {
     justify-content: center;
     
 }
+
+
+::selection {
+    background-color: #c05643;
+    color: white;
+}

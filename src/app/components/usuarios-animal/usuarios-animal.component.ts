@@ -75,6 +75,18 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   AnimalID: any = [];
 
+
+  //interesado seleccionado
+
+    
+  seleccionadoName: string = "";
+  seleccionadoApellido: string = "";
+
+  chatAbierto: boolean = false;
+
+  //
+
+
   //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
   moment: any = [];
   //
@@ -330,9 +342,24 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     //this.router.navigate(['usuarios/perfil/',id])
   }
 
-  comenzarChat(id: number){
+  comenzarChat(id: number, nombre: string, apellido: string){
+    
+    this.seleccionadoName = nombre;
+    this.seleccionadoApellido = apellido;
+
+    this.chatAbierto = true;
     
     console.log("El id ",id)
+
+
+  }
+
+
+  cerrarChat(){
+    this.seleccionadoName = "";
+    this.seleccionadoApellido = "";
+
+    this.chatAbierto = false;
   }
 
   animalCargarDatos() {

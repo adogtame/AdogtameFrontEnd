@@ -1,282 +1,18 @@
-a {
-  color: black;
-}
-
-a:hover {
-  cursor: pointer;
-  color: rgb(165, 79, 245);
-  text-decoration: none;
-  display: inline-block;
-}
 
 
 
-#imagen-animal-perfil{
-  height: 100px;
-  width: 100px;
-}
-
-
-#contenedor-animal-perfil{
-  margin-top: 50px;
-  text-align: center;
-}
-
-#nombre-animal-perfil{
-  font: bolder;
-  font-size: 26px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-
-
-#myTab{
-  
- border-bottom: 2px solid black;
-
-
-}
-
-
-
-#data{
-  list-style:none;
-}
-
-#Dador-tab{
-  font-size:12px;
-  font-weight:bold;
-  color:black;
-  background:rgb(54, 153, 67);
-  border:0px;
-  width:20%;
-  float: left;
-
-}
-
-/*class="nav-link active col-lg-4 float-left" */
-
-
-
-.btnInteresados{
-  font-size:14px;
-  font-weight:bold;
-  color:white;
-  background:rgb(107, 81, 20);
-  border:0px;
-  float: left;
-width:140px;
-}
-
-.btnInteresados:hover{
-  background:rgb(85, 64, 14);
-}
-
-
-.interesMostrado{
-  font-size:14px;
-  font-weight:bold;
-  color:white;
-  background:rgb(58, 98, 190);
-  border:0px;
-
-}
-
-.interesMostrar{
-  font-size:14px;
-  font-weight:bold;
-  color:white;
-  background:rgb(165, 119, 13);
-  border:0px;
-}
-
-
-
-.botonEstado{
-  background-color: #74cf77; /* Green */
-  border: none;
-  color: rgb(42, 71, 28);
-  padding: 0.3px 44px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-}
-
-
-.botonEstado:hover{
-  background-color: #284429; /* Green */
-  color: rgb(208, 224, 200);
-}
-
-
-.botonDatosMedicos {
-  background-color: #67b4d8; 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+:root{
   font-size: 16px;
-  position: absolute;
-  float: right;
-}
-
-
-
-.botonDatosMedicos:hover{
-  background-color: rgb(60, 124, 115); 
-  color: rgb(200, 224, 220);
-}
-
-
-
-
-/* Cesar Jueves */
-
-#animal-coment{
-
-  border-top: 2px solid black;
-}
-
-#comentario{
-width: 40%;
-
-}
-
-#ulc{
-  list-style:none;
   
-}
-
-#like {
-
-
-  cursor: pointer;
- 
-}
-
-#dislike {
-  
-
-  cursor: pointer;
- 
-}
-
-
-#like:hover {
-
-  color: #5558dd; 
-
-  cursor: pointer;
- 
-}
-
-#dislike:hover {
-  
-  color: #e96857; 
-
-  cursor: pointer;
- 
-}
-
-
-.likeActivo{
-  color: #5558dd; 
-  
-}
-
-.likeNoActivo{
-  color: #131318; 
+  height: 16px;
+  width: 16px;
 }
 
 
 
-.dislikeActivo{
-  color: #e96857;  
-}
-
-.dislikeNoActivo{
-  color: #131318; 
-}
 
 
-/*
 
-Fin cesar
-
-Diseño de dropdown
-
-*/
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  max-height:260px;
-  overflow-y: scroll; 
-}
-.dropdown-content label {
-  
-  color: black;
-  text-decoration: none;
-  display: inline-block;
-}
-
-
-.dropdown-content label:hover {
-  color: rgb(122, 119, 95)
-  
-}
-
-
-.show {
-  
-  
-
-  display:block; 
-  
-}
-
-.noShow {
-  
-  
-  display:none;
-
-}
-
-.gg-chevron-down {
-  box-sizing: border-box;
-  position: relative;
-  transform: scale(var(--ggs, 1));
-  width: 22px;
-  height: 22px;
-  border: 2px solid transparent;
-  border-radius: 100px;
-}
-
-.gg-chevron-down::after {
-  content: "";
-  display: block;
-  box-sizing: border-box;
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
-  transform: rotate(45deg);
-  left: 10px;
-  top: 4px;
-}
-
-
-/*
-FIN Diseño de dropdown
-
-*/
 
 /*
 
@@ -289,11 +25,7 @@ Este es otro spinner
   width:100px;
   height:100px;
   position: relative;
-  border-radius: 50%;
-  background: #fff;
-   -webkit-transition: all .5s cubic-bezier(0,.73,.73,1.52);
-          transition: all .5s cubic-bezier(0,.73,.73,1.52);
-  
+  border-radius: 50%;  
 }  
 
 .paw:before,
@@ -491,6 +223,8 @@ Este es otro spinner
 }
 
 
+
+
 /*
 
 FIN spinner
@@ -500,6 +234,699 @@ se podira cambiar al stylecss para q sea general
 
 */
 
+
+
+
+
+
+
+
+
+
+
+
+.grid-container{
+  margin: 1em;
+  display: grid;
+  grid-template-areas: 
+  "header header header"
+  "subheader subheader subheader"
+  "animalMain animalMain animalMain"
+  "comentarios comentarios comentarios"
+  "footer footer footer";
+  grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+/* ul li {
+display: inline-block;
+} */
+
+.grid-item{}
+
+
+.grid-header{
+  height: 12em;
+  grid-area: header;
+  
+
+  
+}
+
+.grid-subheader{
+  
+  grid-area: subheader;
+
+  margin: 0em 10em;
+
+  border-bottom: 3px solid rgba(105, 105, 105, 0.541);
+
+
+}
+
+.grid-animalMain{
+  
+  margin: 2em 10em 4em;
+  
+  min-height: 20em;
+  grid-area: animalMain;
+
+  
+}
+
+.grid-comentarios{
+  
+  min-height: 10em;
+  grid-area: comentarios;
+
+
+  
+}
+
+
+.grid-footer{
+  
+  
+  height: 2em;
+  grid-area: footer;
+
+
+  
+}
+
+
+
+/*  GRID HEADER */
+
+
+.animal-imagen{
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+.animal-imagen img{
+  height: 8em;
+  width: 8em;
+  
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.animal-nombre{
+  font: bolder;
+  font-size: 1.4em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+
+/* GRID SUBHEADER */
+
+.animal-subheader{
+  margin-top: 2.4em;
+}
+
+
+.animal-subheader ul{
+  border: none;
+}
+
+
+.imagen-interesado img{
+  height: 1.5em;
+  width: 1.5em;
+  margin-left: 0.2em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translatey(-0.14em);
+}
+
+.interesado-data{
+  padding:0.6em 0.25em 0.6em 0.25em;  
+  text-align: left;
+  border-bottom: 0.05em solid rgba(185, 175, 175, 0.685);
+}
+
+
+#boton-dador{
+  font-size:0.75rem;
+  font-weight:bold;
+  color:black;
+  background:rgb(54, 153, 67);
+  border:0px;
+  width:8em;
+  height: 2.7em;
+  float: left;
+  margin-bottom: 0.04em;
+}
+
+.dador-text{ 
+  transform: translate(0.75em, 0.1em);
+}
+
+.patita-dador{
+  display: inline-block;
+  position: absolute;
+  transform: translate(-6em,-3.3em) scale(.15);
+}
+
+
+.patita-dador > .paw {
+
+  border-radius: 50%;  
+}  
+
+.patita-dador > .paw:before {
+ 
+  background:black;
+}
+
+.patita-dador > .paw:after {
+  
+  background:black;
+}
+
+
+.patita-dador > .paw > .inner:before {
+
+  background:black;
+}
+
+.patita-dador > .paw > .inner:after {
+ 
+  background:black;
+}
+  
+
+.patita-dador > .paw > .bottom {
+
+  background:black;
+}
+
+.patita-dador > .paw > .bottom:before {
+
+  background: black;
+}
+  
+.patita-dador > .paw > .bottom:after {
+
+  background: black;
+}
+
+
+
+
+.btnInteresados{
+  font-size:14px;
+  font-weight:bold;
+  color:white;
+  background:rgb(107, 81, 20);
+  border:0px;
+  float: left;
+  width:140px;
+}
+
+.btnInteresados:hover{
+  background:rgb(85, 64, 14);
+}
+
+
+.interesMostrado{
+  font-size:0.8em;
+  font-weight:bold;
+  color:white;
+  background:rgb(58, 98, 190);
+  border:0px;
+
+  clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 15% 100%, 0% 50%, 15% 0%);
+  
+  width: 12em;
+  height: 2.5em;
+
+  margin-left: 0.8em;
+  
+  margin-bottom: 0.3em;
+
+
+}
+
+.interesMostrar{
+  font-size:0.8em;
+  font-weight:bold;
+  color:white;
+  background:rgb(165, 119, 13);
+  border:0px;
+
+
+
+  height: 2.5em;
+ 
+  margin-top: 0.04em;
+}
+
+.interes-mostrado-text{
+  
+  font-size:0.9em;
+  transform: translatey(-0.12em);
+}
+.interes-mostrado-text i{
+  transform: translate( -0.25em, 0em);
+}
+
+.mostrar-interes-text{
+  transform: translatey(-0.15em);
+}
+
+/* Diseño de dropdown */
+
+.interesados-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #eec27c;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  max-height:260px;
+  overflow: auto; 
+}
+.interesados-dropdown-content label {
+  
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+.interesados-dropdown-content label:hover {
+  color: rgb(122, 119, 95)
+  
+}
+
+
+.show {
+  
+  
+
+  display:block; 
+  
+}
+
+.noShow {
+  
+  
+  display:none;
+
+}
+
+.gg-chevron-down {
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+
+.gg-chevron-down::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  left: 10px;
+  top: 4px;
+}
+
+
+
+
+
+.interesado-data > a {
+  color: black;
+}
+
+.interesado-data > a:hover {
+  cursor: pointer;
+  color: rgb(148, 73, 2);
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+
+/*
+FIN Diseño de dropdown
+
+*/
+
+
+
+
+
+
+/* GRID ANIMALMAIN */
+
+.animal-main{
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  
+  grid-auto-columns: 1fr;
+
+}
+
+.grid-main-item{
+  
+  padding: 2em;
+}
+
+.animal-datos{
+  list-style:none;
+  display: inline;
+
+}
+
+.animal-datos > .data-item{ 
+  color: #000;
+  
+  padding: 0em 0.4em 0em 0em;
+}
+
+.animal-datos > .data-item b{
+ 
+  cursor: context-menu;
+  color: rgb(67, 109, 93);
+
+}
+
+
+.animal-datos > .data-item:hover b{ 
+  color: #ffffff;
+}
+
+.animal-datos > .data-item:hover{ 
+  border-radius: 0.2em;
+  background-color: rgb(67, 109, 93);
+  width:max-content ;
+}
+
+.animal-datos > .data-item{
+  margin-bottom: 1em;
+}
+
+.animal-datos > .data-estado b{
+ 
+  cursor: context-menu;
+
+}
+
+
+
+.datos-medicos{
+
+  justify-self: right;
+}
+
+.botonDatosMedicos {
+  background-color: #67b4d8; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+
+}
+
+
+
+.botonEstado{
+  background-color: #74cf77; /* Green */
+  border: none;
+  color: rgb(42, 71, 28);
+  padding: 0.3px 44px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+
+.botonEstado:hover{
+  background-color: #284429; /* Green */
+  color: rgb(208, 224, 200);
+}
+
+
+
+
+
+.botonDatosMedicos:hover{
+  background-color: rgb(60, 124, 115); 
+  color: rgb(200, 224, 220);
+}
+
+
+
+
+/* GRID COMENTARIOS */
+
+
+
+/* Cesar Jueves */
+
+.animal-comentarios{
+
+  border-top: 2px solid rgba(105, 105, 105, 0.541);
+}
+
+.comentario-input{
+width: 40%;
+
+}
+
+.comentario-data{
+  list-style:none;
+  
+}
+
+#like {
+
+
+  cursor: pointer;
+ 
+}
+
+#dislike {
+  
+
+  cursor: pointer;
+ 
+}
+
+
+#like:hover {
+
+  color: #5558dd; 
+
+  cursor: pointer;
+ 
+}
+
+#dislike:hover {
+  
+  color: #e96857; 
+
+  cursor: pointer;
+ 
+}
+
+
+.likeActivo{
+  color: #5558dd; 
+  
+}
+
+.likeNoActivo{
+  color: #131318; 
+}
+
+
+
+.dislikeActivo{
+  color: #e96857;  
+}
+
+.dislikeNoActivo{
+  color: #131318; 
+}
+
+
+
+
+/*Fin cesar*/
+
+/* GRID FOOTER 
+
+
+
+
+a {
+  color: black;
+}
+
+a:hover {
+  cursor: pointer;
+  color: rgb(165, 79, 245);
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+
+
+
+
+/*class="nav-link active col-lg-4 float-left" */
+
+
+
+
+
+
+
+
+
+
+
+/* 
+Probando chat
+*/
+
+
+
+
+
+.chat{
+
+  background-color: #ffebc6;
+  min-width: 22em;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  max-width:22em;
+  min-height: 24em;
+  max-height:24em;
+
+
+  
+  position: fixed;
+  
+  right: 0;
+
+  bottom: 0;
+
+  
+  display: grid;
+  grid-template-areas: 
+  "header header header"
+  "main main main";
+  grid-template-rows: repeat(auto-fill, 1fr);
+  margin-right: 5em;
+  border-top-right-radius: 0.4em;
+  border-top-left-radius:  0.4em;
+
+  box-shadow: 3px 3px 4px rgba(149, 141, 141, 0.692),
+  -3px 3px 5px rgba(149, 141, 141, 0.692),
+  0px 0px 10px rgba(149, 141, 141, 0.692) ;
+
+
+}
+
+.chat-item{
+
+  /* border-bottom: 1px solid rgba(105, 105, 105, 0.541); */
+
+}
+
+
+.chat-header{
+  height: 3em;
+  grid-area: header;
+  
+
+  border-bottom: 1px solid rgba(138, 127, 127, 0.472);
+ 
+
+}
+
+
+
+
+.chat-header a{
+  padding: 0.2em;
+  cursor: pointer;
+  color: black;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.45em;
+  margin-left: 0.4em;
+}
+
+/* .chat-aside{
+  
+  width: 10em;
+  height: 22.5em;
+  grid-area: aside;
+
+
+} */
+
+.chat-main{
+    
+  width: 22em;
+  height: 22.5em;
+  grid-area: main;
+
+  
+}
+
+
+.interesado-seleccionado-img img{
+
+  height: 2em;
+  width: 2em;
+
+  /* margin-left: 0.2em;
+  margin-right: 0.5em; */
+
+  margin-bottom: 0.2em;
+  border-radius: 50%;
+  object-fit: cover;
+
+  /* transform: translatey(-0.14em); */
+
+
+}
+
+
+
+.btn-cerrarChat{
+  float: right;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+
 /* 
 Probando a ver si puedo ocultar el overlay en navigation
 */
@@ -508,3 +935,5 @@ Probando a ver si puedo ocultar el overlay en navigation
 .overlay{
   display:none;
 }
+
+
