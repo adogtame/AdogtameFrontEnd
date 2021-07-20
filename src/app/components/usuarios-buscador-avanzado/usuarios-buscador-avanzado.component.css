@@ -9,31 +9,31 @@
   margin: 1em;
   display: grid;
   grid-template-areas: 
-  "header header header header header header header header header header"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "aside main main main main main main main main main"
-  "footer footer footer footer footer footer footer footer footer footer";
+  "header header header header header header header header header header header header header header header header header header header header"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "aside main main main main main main main main main main main main main main main main main main main"
+  "footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer";
   grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 ul li {
-display: inline-block;
+  display: inline-block;
 }
 
 .grid-header{
   height: 4em;
   grid-area: header;
+  margin-bottom: 2em;
 }
 
 .grid-aside{
@@ -58,6 +58,7 @@ display: inline-block;
 }
 
 
+/* GRID HEADER */
 
 .animal-buscador{
   margin-left: 2.0em;
@@ -67,7 +68,7 @@ display: inline-block;
   min-width: 16em;
   outline: none;
   border:none;
-  background-color: rgb(235, 213, 178);
+  background-color: rgb(255, 235, 199);
   font-size: 1.1em;
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -94,139 +95,8 @@ display: inline-block;
 }
 
 
-.container-animales{
 
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-  grid-gap: 1em;
-  margin: 1em;
-  grid-auto-flow: dense;
-}
-
-/* 
-
-#card-animal-principal{
-  margin: 1em;
-  border: 1em;
-  text-align: center;
-  width: 20em;
-  float:left;
-} */
-
-.animal-cont{
-  
-  text-align: center;
-  width: 16em;
-}
-
-.image-animal img{
-  width: 100%;
-  vertical-align: top;
-  align-items: center;
-  object-fit: cover;
-  
-}
-
-.image-animal{
-
-  position: relative;  
-  height: 11em;
-  width: 16em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  z-index: 50;
-}
-
-/* .image-animal:after {
-  
-  content: '\A';
-  position: absolute;
-  width: 100%; height:100%;
-  top:0; left:0;
-  background:rgba(0,0,0,0.6);
-  opacity: 0;
-  
-} */
-
-.image-animal:hover:after {
- 
-  transform: scale(1.2);
-  opacity: 1;
-}
-
-.data-content{
-  display: none;
-  position: absolute;
-  color:rgb(236, 220, 220);
-  z-index: 100;
-}
-
-.image-animal:hover >  img{
-
-  transform: scale(1.2);
-}
-
-
-.animal-name{
-  cursor: pointer;
-  display: none;
-  position: absolute;
-  z-index: 100;
-
-  transform: translate(-11.5em, -0.4em);
-}
-
-.image-animal:hover > .animal-name{
-  position: absolute;
-  display: inline;
-  font: bolder;  
-  color:rgb(63, 61, 57);
-  font-size: 1.5em;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  
-  background:rgba(255, 222, 168, 0.733);
-  border-radius: 2em;
-  border: 0.5px solid rgba(56, 53, 53, 0.726);
-  
-}
-
-.animal-name > b{
-  
-  margin: 1em 0.5em;
-  
-}
-
-
-
-.animal-data{
-  margin-left: 1.2em;
-  font-size:0.8em;
-  font-family:Verdana,Helvetica;
-  font-weight:bold;
-  color:rgb(255, 255, 255);
-  border:0px;
-  height:0.6em;
-  float: left;
-  margin-right: 5%;
-  text-align: center;
-}
-
-.animal-body{
-  height: 1.2em;
-  width: 16em;
-  opacity: 0.8;
-  background:rgb(54, 50, 42);
-}
-
-
-
-.animal-data > b{
-  font-size:0.9em;
-  color: rgb(243, 184, 136);
-}
-
-
-
+/* GRID ASIDE */
 
 
 /* Dropdown button (Filtro y excluir)*/
@@ -254,8 +124,9 @@ display: inline-block;
   width:180px;
   height:50px;
 }
+
 .boton2:hover{
-background-color:rgb(84, 141, 27);
+  background-color:rgb(84, 141, 27);
 }
 
 
@@ -356,7 +227,159 @@ background-color:rgb(84, 141, 27);
 
 
 
+/* GRID MAIN */
 
+
+
+
+.container-animales{
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+  /* grid-gap: 2.5em; */
+  grid-auto-flow: dense;
+}
+
+/* 
+
+#card-animal-principal{
+  margin: 1em;
+  border: 1em;
+  text-align: center;
+  width: 20em;
+  float:left;
+} */
+
+.animal-cont{
+  
+  text-align: center;
+  width: 16em;
+  margin: 0em 1em 5em 0em;
+}
+
+.container-animales:first-child{
+  
+  margin: 1.4em 0em 0em 0em;
+}
+
+
+.image-animal img{
+  width: 100%;
+  vertical-align: top;
+  align-items: center;
+  object-fit: cover;
+  
+  position: absolute;
+}
+
+.image-animal{
+
+  position: relative;  
+  height: 11em;
+  width: 16em;
+  /* margin-bottom: 0.5em; */
+  z-index: 50; 
+  display: grid;
+}
+
+/* .image-animal:after {
+  
+  content: '\A';
+  position: absolute;
+  width: 100%; height:100%;
+  top:0; left:0;
+  background:rgba(0,0,0,0.6);
+  opacity: 0;
+  
+} */
+
+
+
+.data-content{
+  display: none;
+  position: absolute;
+  color:rgb(236, 220, 220);
+  z-index: 100;
+}
+
+.image-animal:hover{
+
+  /* transform: scale(1.2); */
+  margin: none;
+  position: absolute;
+  transform: scale(1.2) translatey(.5em);
+}
+
+.animal-name{
+  cursor: pointer;
+  display: none;
+  opacity: 0.8;
+  position: relative;
+  z-index: 100;
+  min-width: 30%;
+  max-width: 100%;
+}
+.animal-name b{
+  margin: 0em 0.5em 0em 0.5em;
+}
+
+.image-animal:hover > .animal-name{
+  display: inline-block;
+  font: bolder;  
+  color:rgb(214, 212, 207);
+  font-size:1em;
+  font-family:Times, serif, 'Times New Roman';
+  
+  position: absolute;
+  background:rgb(54, 50, 42);
+  transform: translatey(-1.45em);
+  /* border-radius: 2em; */
+  
+}
+
+
+
+.animal-data{
+  margin-left: 1.2em;
+  font-size:0.8em;
+  font-family:Verdana,Helvetica;
+  font-weight:bold;
+  color:rgb(255, 255, 255);
+  border:0px;
+  height:0.6em;
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+}
+
+.animal-body{
+  height: 1.2em;
+  width: 16em;
+  opacity: 0.8;
+  background:rgb(54, 50, 42);
+  
+  transform: translatey(11.05em);
+}
+
+
+
+.animal-data > b{
+  font-size:0.9em;
+  color: rgb(243, 184, 136);
+}
+
+
+
+
+/* GRID FOOTER */
+
+
+
+
+
+
+
+/* GRID RESPONSIVE */
 
 
 @media screen and (max-width: 750px) {
@@ -404,8 +427,10 @@ background-color:rgb(84, 141, 27);
     height: 2em;
     grid-area: footer;
   }
-
-
+  
+  /* GRID ASIDE */
+  
+  
   .boton1{
     display: block;
     width: 14em;
@@ -426,6 +451,8 @@ background-color:rgb(84, 141, 27);
 
   }
 
+  
+  /* GRID HEADER */
 
   .animal-buscador{
     margin-left: none;
@@ -437,19 +464,9 @@ background-color:rgb(84, 141, 27);
     
   
   }
-    
   
+  /* GRID MAIN */
   
-
-
-
-  .menu-item {
-   
-    text-align: center;
-  }
-
-
-
 
 
   .container-animales{
@@ -468,24 +485,18 @@ background-color:rgb(84, 141, 27);
   
     height: 5.7em;
     width: 8em;
-    margin-top: 0.1em;
-    margin-bottom: 0.1em;
   }
   
   
   .image-animal:hover:after {
    
-    transform: scale(1.2);
-    opacity: 1;
   }
   
   .image-animal:hover >  img{
   
-    transform: scale(1.2);
   }
   
   .animal-name{  
-    transform: translate(-13.8em, -0.27em);
   }
 
   .image-animal:hover > .animal-name{
@@ -501,14 +512,6 @@ background-color:rgb(84, 141, 27);
     border: 0.5px solid rgba(56, 53, 53, 0.726); */
     
   }
-  
-  
-  .animal-name > b{
-    
-    margin: 1em 0.5em;
-    
-  }
-  
   
   
   .animal-data{
@@ -530,6 +533,8 @@ background-color:rgb(84, 141, 27);
     width: 8em;
     opacity: 0.8;
     background:rgb(54, 50, 42);
+    
+    transform: translatey(5.55em);
   }
   
   
@@ -541,6 +546,25 @@ background-color:rgb(84, 141, 27);
   
   
   
+
+  /* GRID FOOTER */
+
+
+ 
+    
+  
+  
+
+
+
+  .menu-item {
+   
+    text-align: center;
+  }
+
+
+
+
 
 
 
