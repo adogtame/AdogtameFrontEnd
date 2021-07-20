@@ -130,35 +130,35 @@
       <div class="grid-main-item animal-datos">
   
   
-        <div class="data-item">
+        <div class="data-item data-1">
 
-          <b>Nombre:</b> {{Animal.nombre}}
-
-        </div>
-
-        <div class="data-item">
-
-          <b>Tipo:</b> {{Animal.tipo}}
+          <span class="span-1" data-title="Nombre:">Nombre:</span> {{Animal.nombre}}
 
         </div>
-        <div class="data-item">
 
-          <b>Sexo:</b> {{Animal.sexo}}
+        <div class="data-item data-2">
+
+          <span class="span-1" data-title="Tipo:">Tipo:</span> {{Animal.tipo}}
 
         </div>
-        <div class="data-item">
+        <div class="data-item data-1">
 
-          <b>Edad:</b> {{Animal.fNac}}
+          <span class="span-1" data-title="Sexo:">Sexo:</span> {{Animal.sexo}}
+
+        </div>
+        <div class="data-item data-2">
+
+          <span class="span-1" data-title="Edad:">Edad:</span> {{Animal.fNac}}
         
         </div>
-        <div class="data-item">
+        <div class="data-item data-1">
 
-          <b>Tamaño:</b> {{Animal.tamano}}
+          <span class="span-1" data-title="Tamaño:">Tamaño:</span> {{Animal.tamano}}
 
         </div>
-        <div class="data-item">
+        <div class="data-item data-2">
 
-          <b>Peso:</b> {{Animal.peso}}
+          <span class="span-1" data-title="Peso:">Peso:</span> {{Animal.peso}}
 
         </div>
 
@@ -257,7 +257,15 @@
     </div>
   
   
-    <div class="chat-item chat-main"></div>
+    <div class="chat-item chat-main">
+
+      <p> ¿Comenzar a chatear? </p>
+
+      <div class="chat-resp">
+        <button class="chat-si">Si</button><button class="chat-no">No</button>
+      </div>
+
+    </div>
 
 
     <!-- <div class="chat-item chat-aside"></div>  -->

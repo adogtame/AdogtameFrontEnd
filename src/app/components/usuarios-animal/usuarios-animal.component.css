@@ -607,36 +607,49 @@ FIN Diseño de dropdown
 
 .animal-datos{
   list-style:none;
-  display: inline;
 
 }
 
 .animal-datos > .data-item{ 
   color: #000;
   
-  padding: 0em 0.4em 0em 0em;
+  display: block;
+  padding: 0.8em 0em 0.8em 0.5em;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.animal-datos > .data-item b{
+.data-item span{
  
   cursor: context-menu;
-  color: rgb(67, 109, 93);
-
+  color: rgb(117, 73, 44);
+  position: relative;
 }
 
-
-.animal-datos > .data-item:hover b{ 
-  color: #ffffff;
+.data-item span::before{
+  content: attr(data-title);
+  position: absolute;
+  top: -.19em;
+  left: .07em;
+  color: rgb(41, 112, 65);
 }
 
-.animal-datos > .data-item:hover{ 
+.data-1:hover { 
   border-radius: 0.2em;
-  background-color: rgb(67, 109, 93);
-  width:max-content ;
+  background-color: rgb(212, 212, 212);
+ 
+}
+.data-2:hover { 
+  border-radius: 0.2em;
+  background-color: rgb(173, 173, 173);
+ 
 }
 
-.animal-datos > .data-item{
-  margin-bottom: 1em;
+.data-estado{
+  
+  font-size: 1.1em;
+  margin-top: 2em;
+  padding: 0.8em 0em 0.8em 0.5em;
+
 }
 
 .animal-datos > .data-estado b{
@@ -917,6 +930,41 @@ Probando chat
 }
 
 
+.chat-main p{
+    
+  margin-top: 4em;
+  margin-bottom: 2em;
+  text-align: center;
+  font-size: 1em;
+  color: #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+}
+
+
+.chat-resp{  
+  text-align: center;  
+}
+
+.chat-resp button{  
+  color: #000;
+  border: none;
+  width: 2.5em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.chat-resp > .chat-si{  
+  background-color: #74cf77;
+  margin-right: 2em;
+}
+
+.chat-resp > .chat-no{  
+  margin-left: 2em;
+  background-color: #e96857;
+}
+
 
 .btn-cerrarChat{
   float: right;
@@ -924,6 +972,8 @@ Probando chat
   box-shadow: none;
   border: none;
 }
+
+
 
 
 
