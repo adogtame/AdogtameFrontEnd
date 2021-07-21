@@ -126,7 +126,7 @@ Registrar animal boton
   cursor: pointer;
   font-size: 18px;
   background-size: 0% 2px;
-  transition: background-size .3s;
+  transition:  .1s;
 }
 
 #regAnimal:hover, #regAnimal:focus {
