@@ -1103,6 +1103,11 @@ Probando a ver si puedo ocultar el overlay en navigation
 
 }
 
+.adoptante-a-seleccionar:last-child{
+  margin-bottom: 1.5em;
+}
+
+
 
 .adoptante-data{
   
