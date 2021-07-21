@@ -82,7 +82,7 @@
                       <a class="imagen-interesado" (click)="irAInteresado(interesado.id)">
                       <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
                       </a>
-                      <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido)">{{interesado.nombre}} {{interesado.apellido}}</a>
+                      <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido, interesado.nro_celular)">{{interesado.nombre}} {{interesado.apellido}}</a>
                       
                     </div>
   
@@ -162,9 +162,9 @@
 
         </div>
 
-        <div class="data-estado">
+        <div class="data-estado" >
           
-          <b>Estado de adopcion: &nbsp;&nbsp; </b><a class="btn btn - botonEstado"> Estado</a>
+          <b>Estado de adopcion: &nbsp;&nbsp; </b><a class="btn btn - botonEstado" (click)="abrirEleccion()"> Estado</a>
 
         </div>
   
@@ -261,8 +261,8 @@
 
       <p> ¿Comenzar a chatear? </p>
 
-      <div class="chat-resp">
-        <button class="chat-si">Si</button><button class="chat-no">No</button>
+      <div class="chat-resp"  (click)="abrirWhats()">        
+        <img class="chat-si" src="../assets/img/whatsapp-logo-11.png" alt="imagen whatsapp">
       </div>
 
     </div>
@@ -274,6 +274,54 @@
   
   
   
+
+
+
+
+
+  <!--  ES EL MODAL DE ELECCION   *ngIf="modalEleccionAbierto==true" -->
+
+  <div class="overlay-eleccion-adoptante">
+
+    <div class="modal-eleccion-adoptante">
+      
+      <div class="eleccion-item eleccion-header">
+
+
+        <button type="button" class="btn btn-cerrarModalEleccion" (click)="cerrarModalEleccion()">&#10006;</button>
+        
+        <p>Elija al adoptante final</p>
+
+
+
+      </div>
+    
+    
+      <div class="eleccion-item eleccion-main">
+
+        <div class="adoptante-a-seleccionar" *ngFor=" let adoptante of interesados">
+
+          <div class="adoptante-data">
+            
+            <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
+
+            <div class="adoptante-nombre">{{adoptante.nombre}} {{adoptante.apellido}}</div>
+
+            <div class="enviar-formulario"> <p>Enviar formulario</p> </div>
+
+          </div>
+
+        </div>
+    
+        
+      </div>
+
+
+      
+
+    </div>
+
+  </div>
   
   
   

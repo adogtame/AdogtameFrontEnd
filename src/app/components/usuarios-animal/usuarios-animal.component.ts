@@ -81,7 +81,9 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     
   seleccionadoName: string = "";
   seleccionadoApellido: string = "";
+  seleccionadoNum: string = "";
 
+  modalEleccionAbierto: boolean = false;
   chatAbierto: boolean = false;
 
   //
@@ -342,10 +344,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     //this.router.navigate(['usuarios/perfil/',id])
   }
 
-  comenzarChat(id: number, nombre: string, apellido: string){
+  comenzarChat(id: number, nombre: string, apellido: string, num: string){
     
     this.seleccionadoName = nombre;
     this.seleccionadoApellido = apellido;
+    this.seleccionadoNum = num;
 
     this.chatAbierto = true;
     
@@ -358,8 +361,37 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   cerrarChat(){
     this.seleccionadoName = "";
     this.seleccionadoApellido = "";
+    this.seleccionadoNum = "";
 
     this.chatAbierto = false;
+  }
+
+
+  abrirWhats(){
+
+    const ind = "54";
+    const num = this.seleccionadoNum;
+    const url = `https://api.whatsapp.com/send?phone=${ind}${num}`;
+
+    console.log(url)
+
+    window.open(url, '_blank');
+     
+  } 
+
+  abrirEleccion(){
+
+    console.log("Se abrio el modal")
+    this.modalEleccionAbierto=true;
+
+  }
+
+  
+  cerrarModalEleccion(){
+
+    console.log("Se cerro el modal")
+    this.modalEleccionAbierto = false;
+
   }
 
   animalCargarDatos() {

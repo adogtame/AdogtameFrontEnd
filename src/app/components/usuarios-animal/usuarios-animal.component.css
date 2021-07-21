@@ -954,8 +954,15 @@ Probando chat
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.chat-resp img{  
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+}
 
-.chat-resp > .chat-si{  
+
+
+/* .chat-resp > .chat-si{  
   background-color: #74cf77;
   margin-right: 2em;
 }
@@ -964,7 +971,7 @@ Probando chat
   margin-left: 2em;
   background-color: #e96857;
 }
-
+ */
 
 .btn-cerrarChat{
   float: right;
@@ -985,5 +992,177 @@ Probando a ver si puedo ocultar el overlay en navigation
 .overlay{
   display:none;
 }
+
+
+
+
+/*
+
+
+*/
+
+
+
+.overlay-eleccion-adoptante{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(98, 98, 98, 0.644);
+  /* background-color: rgba(117, 117, 117, 0.8); */
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  
+}
+
+
+.modal-eleccion-adoptante{
+
+  
+  background-color: #ffebc6;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+  min-width: 30em;
+  max-width:30em;
+  min-height: 20em;
+  max-height:20em;
+
+
+  
+  position: fixed;
+  
+  display: grid;
+  grid-template-areas: 
+  "header header header"
+  "main main main"
+  "main main main"
+  "main main main"
+  "main main main"
+  "main main main"
+  "main main main";
+  grid-template-rows: repeat(auto-fill, 1fr);
+  border-top-right-radius: 0.4em;
+  border-top-left-radius:  0.4em;
+
+  box-shadow: 3px 3px 4px rgba(149, 141, 141, 0.692),
+  -3px 3px 5px rgba(149, 141, 141, 0.692),
+  0px 0px 10px rgba(149, 141, 141, 0.692) ;
+
+
+  overflow: auto; 
+
+}
+
+
+.eleccion-header{
+
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+
+  grid-area: header;
+
+  border-bottom: 0.1em solid rgb(168, 168, 168);
+
+  min-height: 3.5em;
+  max-height: 3.5em;
+
+
+}
+
+
+.eleccion-header p{
+
+  margin-top: 1.5em;
+
+}
+
+
+.eleccion-main{
+
+  text-align: center;
+
+  grid-area: main;
+
+}
+
+
+.adoptante-a-seleccionar{
+
+  background-color: #b66f36;
+
+  text-align: left;
+  margin: 1.6em 2em 0em 2em;
+  height: 3.5em;
+
+}
+
+
+.adoptante-data{
+  
+  padding: 0.8em 0em 0em 1em;
+
+
+}
+
+.adoptante-data img{
+
+  height: 2em;
+  width: 2em;
+
+  /* margin-left: 0.2em;
+  margin-right: 0.5em; */
+
+  margin-bottom: 0.2em;
+  border-radius: 50%;
+  object-fit: cover;
+
+  /* transform: translatey(-0.14em); */
+  display:inline-block;
+
+}
+
+.adoptante-data > .adoptante-nombre{
+  
+  padding: 0em 1em 0em 0.8em;
+  display: inline-block;
+
+}
+
+.enviar-formulario{
+
+  background-color: #eec27c;
+  text-align: center;
+
+  width: 10em;
+  height: 2em;
+  float: right;
+  margin-right: 1em ;
+  display: inline-block;
+  cursor: pointer;
+
+}
+
+.enviar-formulario p{
+
+  margin-top: 0.3em;
+
+}
+
+
+
+.btn-cerrarModalEleccion{
+  float: right;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
 
 
