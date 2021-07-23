@@ -253,13 +253,14 @@ ul li {
 .animal-cont{
   
   text-align: center;
-  width: 16em;
-  margin: 0em 1em 5em 0em;
+  margin: 0em 1em 3em 0em;
+  transform: scale(0.86);
 }
 
 .container-animales:first-child{
   
   margin: 1.4em 0em 0em 0em;
+
 }
 
 
@@ -307,7 +308,7 @@ ul li {
   /* transform: scale(1.2); */
   margin: none;
   position: absolute;
-  transform: scale(1.2) translatey(.5em);
+  transform: scale(1.2) translatey(1.2em);
 }
 
 .animal-name{
