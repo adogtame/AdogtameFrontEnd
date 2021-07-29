@@ -2,10 +2,58 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 //import { Subscription } from 'rxjs';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
+
+//Animations (Dropdown)
+import {
+	trigger,
+	state,
+	style,
+	animate,
+	transition,  
+	
+	query,
+	sequence,
+	stagger,
+	// ...
+  } from '@angular/animations';
+  //
+
+
 @Component({
 	selector: 'app-navigation',
 	templateUrl: './navigation.component.html',
-	styleUrls: ['./navigation.component.css']
+	styleUrls: ['./navigation.component.css'],
+	
+	animations: [
+
+		trigger('clickNoti', [
+		  state('noShowNoti', 
+			style({ 
+			 
+			  display: 'none',
+			  height: '0px'
+   
+			})
+		  ),
+		  state('showNoti', 
+			style({ 
+			 display: 'block', 
+			 
+			 'min-height':'10em',
+   
+   
+			 })
+		  ),
+		  transition('showNoti => noShowNoti', [
+			animate('0s')
+		  ]),
+		  transition('noShowNoti => showNoti', [
+			animate('0s')
+		  ])
+		]),
+   
+   
+	]
 })
 export class NavigationComponent implements OnInit {
 
@@ -27,6 +75,14 @@ export class NavigationComponent implements OnInit {
 	revelarBusRapida: boolean = this.usuariosService.revelarBusquedaRapida;
 	// public user$: Observable<any>= this.revelar
 	//nombreSubscription: Subscription | any;
+
+	//Notificacion
+	notificacion: boolean = false;
+	isOpenNoti: boolean = false;
+	notificacionesInteresados: any = [];
+
+
+
 	// admin
 	rol: any = "";
 	//
@@ -43,7 +99,16 @@ export class NavigationComponent implements OnInit {
 			this.revelarBusRapida = this.usuariosService.revelarBusquedaRapida;
 		});
 
+
+		this.usuariosService.notificaciones$.subscribe(log => {
+
+			this.notificaciones();
+
+		});
+	
+	
 	}
+
 	logout() {
 		//Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
 		this.usuariosService.logOut();
@@ -94,6 +159,13 @@ export class NavigationComponent implements OnInit {
 						//Tengo q hacer el emit de los likes aca porq si estoy en animal primero cargan los comentarios y para cuando cargo el usuario cagaste
 						this.usuariosService.coment$.emit()
 						console.log(this.Usuario);
+
+
+						//Activar noti
+						this.usuariosService.notificaciones$.emit()
+						//
+
+
 					},
 					err => console.log(err)
 				);
@@ -108,5 +180,44 @@ export class NavigationComponent implements OnInit {
 			this.router.navigate(['usuarios/perfil/', this.Usuario.id]);
 		});
 	}
+
+
+
+
+	notificaciones() {
+
+		this.usuariosService.notificacionesListarInteresadosDeAnimalNoVistos(this.UsuarioID.user).subscribe(
+			res => {
+				
+				console.log(res)
+				this.notificacionesInteresados=res;	
+
+				this.notificacion=true;
+
+			},
+			err => console.log(err)
+		);
+		console.log(this.UsuarioID.user);
+
+
+		
+	}
+
+	irAInteresado(idInteresado: string) {
+
+
+		console.log("Ir al interesado de la notificacion", idInteresado);
+		
+		this.router.navigate(['usuarios/perfil/', idInteresado]);
+	}
+
+	irAAnimal(idAnimal: string) {
+		
+		console.log("Ir al animal de la notificacion", idAnimal);
+		
+		this.router.navigate(['usuarios/animal/', idAnimal]);
+	}
+
+
 }
 

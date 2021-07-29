@@ -1,3 +1,7 @@
+
+  
+
+
 #logout{
     cursor: pointer;
 }
@@ -166,20 +170,202 @@ h1 {
 }
 
 .navbar {
-background-color: #FAE2D7;
-border: rgb(175, 170, 167) 1px solid;
+    background-color: #FAE2D7;
+    border: rgb(175, 170, 167) 1px solid;
+    
+    /*El :root no funciona en angular asiq creo las variables aca*/
+    --circulo-boton-nav: 2.5em;
+    width: 100vw;
+  
 }
 
+.posicion-derecha{
+    position: absolute;
+    right: 0px;
+    margin-right: 1.5em;
+}
 
 .dropdown-menu.pull-left {
     left:auto;
     right:0;
 }
 
+.img-navbar{
+
+    border-radius: 50%;
+    width: var(--circulo-boton-nav);
+    height: var(--circulo-boton-nav);
+    object-fit: cover;
+
+}
+
+
+
+
+.botonCampana{
+    
+    background-color: rgb(209, 209, 209); 
+    width: var(--circulo-boton-nav);
+    height: var(--circulo-boton-nav);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 1em;
+}
 
 #campanita-icon{
-  font-size: 18px;
+    font-size: 1.5em;
+    transform: translate(-0.12em, 0em);
 }
+
+
+
+#alert-icon{
+    font-size: 1.2em;
+    color: rgb(214, 52, 52);
+    transform: translate(0.9em, -2.1em);
+}
+
+
+#info-icon{
+    font-size: 1.5em;
+    transform: translate(0em, 0em);
+}
+
+
+
+.notificaciones-container {
+    display: none;
+    position: absolute;
+    background-color: #e5d6be;
+    min-width: 25em;
+    max-width:25em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 70vh;
+    margin-top: 0.2em;
+
+    right: 9em;
+    
+
+    overflow: auto; 
+}
+
+.notificaciones-container p{
+
+    margin-top: 5em;
+    text-align: center;
+
+}
+
+.notificaciones-data {
+  display: grid; 
+  grid-template-areas: 
+  "interesado parrafo animal";
+  grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+
+.notificaciones-grid-interesado{
+    grid-area: interesado;
+    
+}
+  
+.notificaciones-grid-parrafo{    
+    grid-area: parrafo;
+}  
+
+.notificaciones-grid-animal{    
+    grid-area: animal;
+}
+
+.notificaciones-data label{
+    font-size: 0.9em;
+}
+
+.notificaciones-grid-parrafo > .primeroP{
+    margin-top: 0.5em;
+}
+
+.notificaciones-grid-parrafo > .segundoP{
+    transform: translatey(-1em);
+}
+
+.imagen-interesado-noti img{
+
+    left: 0;
+    height: 2.6em;
+    width: 2.6em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.imagen-animal-noti img{
+
+    right: 0;
+    height: 2.6em;
+    width: 2.6em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.ir-a-perfil{
+
+    cursor: pointer;
+    height: 2.5em;
+    padding: 0.3em 0em 0.3em 0em;
+
+}
+
+
+.ir-a-perfil img{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    margin-left: 1em;
+    margin-right: 0.4em;
+
+}
+
+.ir-a-perfil a{
+
+    color: black;
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+.ir-a-perfil:hover{
+
+    background-color: rgba(192, 192, 192, 0.424);
+
+}
+
+
+
+@media screen and (max-width: 750px) {
+  
+
+  
+}
+  
+  
+  
+
+
+
+
+
+
 
 
 

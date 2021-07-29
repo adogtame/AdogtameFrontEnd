@@ -67,7 +67,7 @@
                 (click)="isOpenInteresados = !isOpenInteresados">
                 <span> Interesados </span><i [ngClass]="{'gg-chevron-down': isOpenInteresados} "></i>
               </div>
-              <div class="menu123" [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="interesados-dropdown-content">
+              <div [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="interesados-dropdown-content">
                 <div class="interesados-item">
   
   

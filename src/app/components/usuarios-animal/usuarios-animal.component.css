@@ -1,17 +1,6 @@
 
 
 
-:root{
-  font-size: 16px;
-  
-  height: 16px;
-  width: 16px;
-}
-
-
-
-
-
 
 
 /*
@@ -363,7 +352,7 @@ display: inline-block;
 }
 
 .interesado-data{
-  padding:0.6em 0.25em 0.6em 0.25em;  
+  padding:0.6em 0.6em 0.6em 0.25em;  
   text-align: left;
   border-bottom: 0.05em solid rgba(185, 175, 175, 0.685);
 }
@@ -459,7 +448,7 @@ display: inline-block;
   background:rgb(58, 98, 190);
   border:0px;
 
-  clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 15% 100%, 0% 50%, 15% 0%);
+  clip-path: polygon(100% 0%, 93% 50%, 100% 100%, 12% 100%, 0% 50%, 12% 0%);
   
   width: 12em;
   height: 2.5em;

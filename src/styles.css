@@ -2,6 +2,8 @@
 body {
     background-color: #FEECE4;
    
+    /*Esto es para q no haya scroll horizontal*/
+    overflow-x: hidden;
 }
 
 .overlay{
@@ -24,3 +26,27 @@ body {
     background-color: #c05643;
     color: white;
 }
+
+
+::-webkit-scrollbar {
+    width: 1em;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #FEECE4; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(126, 114, 98); 
+    border-radius: 1em;
+    width: 10%;
+    border: 0.25em solid #FEECE4;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(187, 170, 149); 
+  }

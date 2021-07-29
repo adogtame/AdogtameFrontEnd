@@ -29,7 +29,7 @@ export class UsuariosService {
 	revelarBusquedaRapida: boolean = false;
 
 	user = { id: ""};
-
+	
 
 	
   //Una cagada pero tengo q hacer estos emitt porq sino la base dice 
@@ -56,7 +56,22 @@ export class UsuariosService {
 	rol: any = "";
 
 
+	//Notificaciones - Navigations
+
+	//El obsevable de navigations
+	notificaciones$ = new EventEmitter<string>();
+
+	notificacionesListarInteresadosDeAnimalNoVistos(id: string) {
+		
+		//Buscar los id de los animales del usuario logueado
+		return this.http.get(`${this.API_URI}/notificacionesListarInteresadosDeAnimalNoVistos/${id}`);
+		
+	}
+	
 	//
+
+
+
 	listarUsuarios() {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto

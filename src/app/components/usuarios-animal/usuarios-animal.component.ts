@@ -48,7 +48,7 @@ import {
          style({ 
           display: 'block', 
           
-          'min-height':'80px',
+          'min-height':'45px',
 
 
           // height: '260px',
@@ -97,7 +97,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   interes: boolean = false;
 
-  isOpenInteresados = false;
+  isOpenInteresados: boolean = false;
 
   cargoPagina: boolean = false;
 
@@ -493,7 +493,9 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         res => {
 
           this.interes = true;
+          
           console.log("Resultado", res);
+
 
         },
         err => console.log(err)
