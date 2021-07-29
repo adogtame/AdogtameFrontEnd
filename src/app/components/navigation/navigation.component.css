@@ -250,6 +250,12 @@ h1 {
     overflow: auto; 
 }
 
+.notificaciones-data:hover{
+    
+    background-color: #d4c3a8;
+
+}
+
 .notificaciones-container p{
 
     margin-top: 5em;
