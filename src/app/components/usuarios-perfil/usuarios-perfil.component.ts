@@ -17,37 +17,22 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   Usuario: any = [];
 
-
-  
   animales: any = [];
-  
+
   UsuarioID: any = [];
-  
+
 
   toggleInformacion = true;
-  
-  
-
   toggleSiguiendo = false;
-  
-  
-
   toggleSeguidores = false;
-   
-  
-
-
   toggleAnimales = false;
 
-  // statusAnimales = 'Disable'; 
-  
+  // statusAnimales = 'Disable';
+
 
 
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
-
-
-
 
 
   mensaje: string = "Vacio";
@@ -55,25 +40,21 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   mensajeEnviado: string = "";
 
 
-  
-
-
-
-  ngOnInit(): void {  
+  ngOnInit(): void {
 
     this.rutaActiva.params.subscribe(routeParams => {
 
-      
-      
+
+
       this.UsuarioID = this.rutaActiva.snapshot.params
 
 
-      console.log("Estoy en el usuario",this.UsuarioID.id); 
+      console.log("Estoy en el usuario",this.UsuarioID.id);
       this.usuarioCargarDatos();
 
 
       console.log("Usuario", this.UsuarioID);
-      
+
 
     });
 
@@ -84,14 +65,14 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-    
-    console.log("Se cierra el usuario",this.UsuarioID.id); 
+
+    console.log("Se cierra el usuario",this.UsuarioID.id);
 
     this.UsuarioID = [];
 
     this.Usuario = [];
 
-    
+
     console.log("Se cerro el usuario",this.UsuarioID.id);
 
   }
@@ -103,10 +84,10 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.usuariosService.buscarUsuario(this.UsuarioID.id).subscribe(
       res => {
         this.Usuario = res
-        console.log(this.Usuario); 
-    
+        console.log(this.Usuario);
+
       },
-      err => console.log(err) 
+      err => console.log(err)
     );
 
     this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.id).subscribe(
@@ -121,10 +102,8 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
 
-
- 
   irAAnimal(id: number){
-    
+
     console.log("El id ",id)
     this.router.navigate(['usuarios/animal/',id]);
   }
@@ -132,22 +111,22 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   registrar(){
 		console.log("Registrando animal");
     console.log(this.animal);
-    
+
 
     this.usuariosService.registrarAnimal(this.animal, this.usuariosService.user.id).subscribe(
 
       res => {
         let result:any=res;
-        console.log(result);               
+        console.log(result);
         //por ahora no funca porq hace falta recibir un id del animal recien creado y redireccionar con eso
         this.router.navigate(['usuarios/animal/',result.id]);
       },
       err => {
-        
+
         console.log(err.error.message);
 
         this.mensaje=err.error.message;
-        
+
 
       }
 
@@ -163,7 +142,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   Informacion(){
 
-     
+
 
     this.toggleInformacion = true;
     this.toggleSiguiendo = false;
@@ -186,7 +165,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   Seguidores(){
 
-     
+
 
     this.toggleInformacion = false;
     this.toggleSiguiendo = false;
@@ -203,7 +182,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.toggleSiguiendo = false;
     this.toggleSeguidores = false;
     this.toggleAnimales = true;
-    
+
 
   }
 

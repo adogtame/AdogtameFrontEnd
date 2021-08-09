@@ -1,6 +1,6 @@
 :root{
   font-size: 16px;
-  
+
   height: 16px;
   width: 16px;
 }
@@ -8,7 +8,7 @@
 .grid-container{
   margin: 1em;
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
   "header header header header header header header header header header header header header header header header header header header header"
   "aside main main main main main main main main main main main main main main main main main main main"
   "aside main main main main main main main main main main main main main main main main main main main"
@@ -37,7 +37,7 @@ ul li {
 }
 
 .grid-aside{
-  
+
   min-height: 50em;
   min-width: 15em;
   max-width: 21em;
@@ -45,14 +45,14 @@ ul li {
 }
 
 .grid-main{
-  
+
   min-height: 50em;
   grid-area: main;
 }
 
 .grid-footer{
-  
-  
+
+
   height: 2em;
   grid-area: footer;
 }
@@ -83,14 +83,14 @@ ul li {
   transition: 1s;
 
 }
-  
+
 
 
 .animal-buscador:focus{
   width: 40%;
   /* margin-bottom: -1px;
   border-bottom: 1px solid black; */
-  
+
   background-size: 100% 1px;
 }
 
@@ -145,14 +145,14 @@ ul li {
 
 
 .menu-item label {
-  
+
   color: black;
   cursor: pointer;
 }
 .menu-item label:hover {
   color: rgb(211, 146, 93);
   cursor: pointer;
-  
+
 }
 
 .menu123 {
@@ -238,12 +238,12 @@ ul li {
   grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
   /* grid-gap: 2.5em; */
   grid-auto-flow: dense;
-  
+
   grid-column-gap: 0em;
   grid-row-gap: 3.5em;
 }
 
-/* 
+/*
 
 #card-animal-principal{
   margin: 1em;
@@ -254,13 +254,13 @@ ul li {
 } */
 
 .container-animales:first-child{
-  
+
   margin: 1.4em 0em 0em 0em;
 
 }
 
 .animal-cont{
-  
+
   text-align: center;
 }
 
@@ -272,29 +272,29 @@ ul li {
   vertical-align: top;
   align-items: center;
   object-fit: cover;
-  
+
   position: absolute;
 }
 
 .image-animal{
 
-  position: relative;  
+  position: relative;
   height: 10em;
   width: 13.5em;
   /* margin-bottom: 0.5em; */
-  z-index: 50; 
+  z-index: 50;
   display: grid;
 }
 
 /* .image-animal:after {
-  
+
   content: '\A';
   position: absolute;
   width: 100%; height:100%;
   top:0; left:0;
   background:rgba(0,0,0,0.6);
   opacity: 0;
-  
+
 } */
 
 
@@ -329,16 +329,16 @@ ul li {
 
 .image-animal:hover > .animal-name{
   display: inline-block;
-  font: bolder;  
+  font: bolder;
   color:rgb(214, 212, 207);
   font-size:1em;
   font-family:Times, serif, 'Times New Roman';
-  
+
   position: absolute;
   background:rgb(54, 50, 42);
   transform: translatey(-1.45em);
   /* border-radius: 2em; */
-  
+
 }
 
 
@@ -361,7 +361,7 @@ ul li {
   width: 13.5em;
   opacity: 0.8;
   background:rgb(54, 50, 42);
-  
+
   transform: translatey(9.3em);
 }
 
@@ -371,8 +371,6 @@ ul li {
   font-size:0.9em;
   color: rgb(243, 184, 136);
 }
-
-
 
 
 /* GRID FOOTER */
@@ -387,13 +385,13 @@ ul li {
 
 
 @media screen and (max-width: 750px) {
-  
 
-    
+
+
   .grid-container{
     margin: none;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
     "aside aside aside"
     "header header header"
     "main main main"
@@ -424,17 +422,17 @@ ul li {
   }
 
   .grid-footer{
-    
+
     width: 20em;
     max-width: 20em;
-    
+
     height: 2em;
     grid-area: footer;
   }
-  
+
   /* GRID ASIDE */
-  
-  
+
+
   .boton1{
     display: block;
     width: 14em;
@@ -455,7 +453,7 @@ ul li {
 
   }
 
-  
+
   /* GRID HEADER */
 
   .animal-buscador{
@@ -465,12 +463,12 @@ ul li {
     width: 18em;
     min-width: 18em;
     font-size: 0.8em;
-    
-  
+
+
   }
-  
+
   /* GRID MAIN */
-  
+
 
 
   .container-animales{
@@ -478,46 +476,46 @@ ul li {
     grid-gap: 0.1em;
     margin: 0.1em;
   }
-  
-  
+
+
   .animal-cont{
-    
+
     width: 8em;
   }
-  
+
   .image-animal{
-  
+
     height: 5.7em;
     width: 8em;
   }
-  
-  
+
+
   .image-animal:hover:after {
-   
+
   }
-  
+
   .image-animal:hover >  img{
-  
+
   }
-  
-  .animal-name{  
+
+  .animal-name{
   }
 
   .image-animal:hover > .animal-name{
     /* position: absolute;
     display: inline;
-    font: bolder;  
+    font: bolder;
     color:rgb(63, 61, 57); */
     font-size: 0.6em;
     /* font-family: Georgia, 'Times New Roman', Times, serif;
-    
+
     background:rgba(255, 222, 168, 0.733);
     border-radius: 2em;
     border: 0.5px solid rgba(56, 53, 53, 0.726); */
-    
+
   }
-  
-  
+
+
   .animal-data{
     margin-top: 0.5em;
     margin-left: 0.5em;
@@ -531,43 +529,35 @@ ul li {
     margin-right: none;
     text-align: center;
   }
-  
+
   .animal-body{
     height: 1.2em;
     width: 8em;
     opacity: 0.8;
     background:rgb(54, 50, 42);
-    
+
     transform: translatey(5.55em);
   }
-  
-  
-  
+
+
+
   .animal-data > b{
     font-size:1.em;
     color: rgb(243, 184, 136);
   }
-  
-  
-  
+
+
+
 
   /* GRID FOOTER */
 
 
- 
-    
-  
-  
-
 
 
   .menu-item {
-   
+
     text-align: center;
   }
-
-
-
 
 
 

@@ -1,21 +1,15 @@
 
 <div class="grid-container">
   <div class="grid-item grid-header">
-    
-  
     <div>
       <input type="text" class="animal-buscador" name="filterPost"
         placeholder="Ingrese el nombre que desea filtrar" [(ngModel)]="filterPost">
-    
     </div>
-
-
   </div>
+
   <div class="grid-item grid-aside">
-    
     <ul id="menu">
       <br>
-  
       <li>
         <div class="dropdown">
           <div class="btn btn - boton1" (click)="isOpenFiltro = !isOpenFiltro">
@@ -26,15 +20,15 @@
             <input type="checkbox" id="perroF" [(ngModel)]="filtroAplica.perroF" name="perroF" class="check">&nbsp;
             <label class="tran"  for="perroF"> Tipo Perro </label>
             <hr>
-    
+
             <input type="checkbox" id="gatoF" [(ngModel)]="filtroAplica.gatoF" name="gatoF" class="check">&nbsp;
-            <label class="tran"  for="gatoF"> Tipo Gato </label>
+            <label class="tran" for="gatoF"> Tipo Gato </label>
             <hr>
-  
+
             <input type="checkbox" id="criaF" [(ngModel)]="filtroAplica.criaF" name="criaF" class="check">&nbsp;
             <label class="tran"  for="criaF"> Edad Cria </label>
             <hr>
-  
+
             <input type="checkbox" id="adultoF" [(ngModel)]="filtroAplica.adultoF" name="adultoF"  class="check">&nbsp;
             <label class="tran" for="adultoF"> Edad Adulto </label>
             <hr>
@@ -46,37 +40,34 @@
             <hr>
             <input type="checkbox" id="chicoF" [(ngModel)]="filtroAplica.chicoF" name="chicoF" class="check">&nbsp;
             <label class="tran" for="chicoF"> Tamaño Chico </label>
-            
+
             </div>
           </div>
         </div>
-  
-      </li>  
-      
-      
+      </li>
+
       <br><br>
-  
+
       <li>
-        
         <div class="dropdown">
           <div class="btn btn - boton1" (click)="isOpenExcluir = !isOpenExcluir">
             Excluir <i [ngClass]="isOpenExcluir ? 'gg-chevron-down' : 'gg-chevron-right'"></i>
           </div>
           <div class="menu123" *ngIf="isOpenExcluir" [@dropDownMenu]>
             <div class="menu-item" >
-  
+
             <input type="checkbox" id="perroE" [(ngModel)]="filtroAplica.perroE" name="perroE" class="check">&nbsp;
             <label class="tran"  for="perroE"> Tipo Perro </label>
             <hr>
-  
+
             <input type="checkbox" id="gatoE" [(ngModel)]="filtroAplica.gatoE" name="gatoE" class="check">&nbsp;
             <label class="tran"  for="gatoE"> Tipo Gato </label>
             <hr>
-  
+
             <input type="checkbox" id="criaE" [(ngModel)]="filtroAplica.criaE" name="criaE" class="check">&nbsp;
             <label class="tran"  for="criaE"> Edad Cria </label>
             <hr>
-  
+
             <input type="checkbox" id="adultoE" [(ngModel)]="filtroAplica.adultoE" name="adultoE" class="check">&nbsp;
             <label class="tran" for="adultoE"> Edad Adulto </label>
             <hr>
@@ -88,23 +79,19 @@
             <hr>
             <input type="checkbox" id="chicoE" [(ngModel)]="filtroAplica.chicoE" name="chicoE"  class="check">&nbsp;
             <label class="tran" for="chicoE"> Tamaño Chico </label>
-            
+
             </div>
           </div>
         </div>
-  
-        
       </li>
-      
+
       <br><br>
+
       <li><button class="btn btn - boton2" (click)="clickEnAplicar()">Aplicar</button></li>
     </ul>
 
-
-
   </div>
   <div class="grid-item grid-main">
-  
       <div class="container-animales">
         <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost" id="card-animal-principal">
           <div class="animal-cont">
@@ -120,16 +107,17 @@
             </div>
             </div>
             <!-- <p class="animal-name"></p> -->
-          
+
           </div>
         </div>
       </div>
-
-
-
-  </div>
+    </div>
   <div class="grid-item grid-footer">footer</div>
 </div>
+
+<footer id="foot" style="float: right; width:100%; text-align:center;" class="bg-light text-dark">
+  <p><b> Copyright © Adogtame </b></p>
+</footer>
 
 
 

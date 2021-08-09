@@ -133,3 +133,17 @@ Registrar animal boton
   background-size: 100% 2px;
   color: #0155a3;
 }
+
+.card-text{
+  font: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serifs;
+  font-size: 26px;
+
+}
+
+.spa{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+  font: bold;
+  color: white;
+}
