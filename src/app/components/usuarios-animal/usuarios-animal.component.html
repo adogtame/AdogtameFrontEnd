@@ -231,7 +231,9 @@
     </div>
   </div>
   <!-- GRID FOOTER-->
-  <div class="grid-item grid-footer">footer</div>
+  <div class="grid-item grid-footer">
+    
+  </div>
 </div>
 
 
@@ -307,7 +309,7 @@
 
             <div class="adoptante-nombre">{{adoptante.nombre}} {{adoptante.apellido}}</div>
 
-            <div class="enviar-formulario"> <p>Enviar formulario</p> </div>
+            <div class="elejir-adoptante" (click)="abirConfirmarAdopcion()"> <p>Elejir Adoptante</p> </div>
 
           </div>
 
@@ -322,7 +324,42 @@
     </div>
 
   </div>
+    
+  <!-- Modal confirmar adopcion  -->
   
+  <div class="overlay-confirmar-adopcion" *ngIf="modalConfirmarAdopcionAbierto==true">
+    
+    <div class="modal-confirmar-adopcion">
+
+
+      <div class="confirmar-head">
+
+        <p>¿Seguro quiere dar en adopcion?</p>
+
+      </div>
+
+
+
+      <div class="confirmar-main">
+
+
+      <a class="btn-confirmar" (click)="confirmarAdopcion()">
+        Confirmar
+      </a>
+
+
+      <a class="btn-cancelar" (click)="cerrarModalConfirmarAdopcion()">
+        Cancelar
+      </a>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
   
   
   <!--

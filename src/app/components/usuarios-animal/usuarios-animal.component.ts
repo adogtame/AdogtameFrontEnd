@@ -84,6 +84,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   seleccionadoNum: string = "";
 
   modalEleccionAbierto: boolean = false;
+  modalConfirmarAdopcionAbierto: boolean = false;
   chatAbierto: boolean = false;
 
   //
@@ -379,18 +380,39 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
      
   } 
 
+
   abrirEleccion(){
 
-    console.log("Se abrio el modal")
+    console.log("Se abrio el modal Elejir Adoptante")
     this.modalEleccionAbierto=true;
 
   }
 
-  
   cerrarModalEleccion(){
 
-    console.log("Se cerro el modal")
+    console.log("Se cerro el modal Elejir Adoptante")
     this.modalEleccionAbierto = false;
+
+  }
+
+
+  abirConfirmarAdopcion(){
+
+    console.log("Se abrio el modal Confirmar Adopcion")
+    this.modalConfirmarAdopcionAbierto=true;
+
+  }
+
+  cerrarModalConfirmarAdopcion(){
+
+    console.log("Se cerro el modal Confirmar Adopcion")
+    this.modalConfirmarAdopcionAbierto = false;
+
+  }
+
+  confirmarAdopcion(){
+
+    console.log("Confirmar Adopcion")
 
   }
 

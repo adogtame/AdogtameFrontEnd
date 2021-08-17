@@ -51,7 +51,7 @@ ul li {
 }
 
 .grid-footer{
-
+  margin-top: 2em;
 
   height: 2em;
   grid-area: footer;
@@ -379,6 +379,13 @@ ul li {
 
 
 
+.copyright-footer{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1em;
+}
+
+
 
 
 /* GRID RESPONSIVE */
@@ -554,10 +561,6 @@ ul li {
 
 
 
-  .menu-item {
-
-    text-align: center;
-  }
 
 
 

@@ -987,7 +987,7 @@ Probando a ver si puedo ocultar el overlay en navigation
 
 /*
 
-
+Modal en estado de animal
 */
 
 
@@ -1129,7 +1129,7 @@ Probando a ver si puedo ocultar el overlay en navigation
 
 }
 
-.enviar-formulario{
+.elejir-adoptante{
 
   background-color: #eec27c;
   text-align: center;
@@ -1143,7 +1143,7 @@ Probando a ver si puedo ocultar el overlay en navigation
 
 }
 
-.enviar-formulario p{
+.elejir-adoptante p{
 
   margin-top: 0.3em;
 
@@ -1160,3 +1160,117 @@ Probando a ver si puedo ocultar el overlay en navigation
 
 
 
+.overlay-confirmar-adopcion{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(98, 98, 98, 0.644);
+  /* background-color: rgba(117, 117, 117, 0.8); */
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  
+}
+
+.modal-confirmar-adopcion{  
+  background-color: #fff2db;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 200;
+  min-width: 20em;
+  max-width:20em;
+  min-height: 10em;
+  max-height:10em;
+
+
+  
+  position: fixed;
+  
+  display: grid;
+  grid-template-areas: 
+  "headerC headerC headerC"
+  "mainC mainC mainC"
+  "mainC mainC mainC"
+  "mainC mainC mainC"
+  "mainC mainC mainC"
+  "mainC mainC mainC"
+  "mainC mainC mainC";
+  grid-template-rows: repeat(auto-fill, 1fr);
+  border-top-right-radius: 0.4em;
+  border-top-left-radius:  0.4em;
+
+  box-shadow: 3px 3px 4px rgba(149, 141, 141, 0.692),
+  -3px 3px 5px rgba(149, 141, 141, 0.692),
+  0px 0px 10px rgba(149, 141, 141, 0.692) ;
+
+
+  overflow: none; 
+
+}
+
+.confirmar-head{
+  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+
+  grid-area: headerC;
+
+  border-bottom: 0.1em solid rgb(168, 168, 168);
+
+  min-height: 3em;
+  max-height: 3em;
+
+}
+
+.confirmar-head p{
+  margin-top: .8em;
+}
+
+.confirmar-main{
+  
+  text-align: center;
+
+  grid-area: mainC;
+
+}
+
+
+.btn-confirmar{
+
+  cursor: pointer;
+  color: #000;
+  height: 1.5em;
+  width: 4.8em;
+  background-color: #74cf77;
+
+  margin-right: 1.7em;
+  margin-top: 2.6em;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.btn-cancelar{
+  border-radius: 3px;
+  margin-top: 2.6em;
+  cursor: pointer;
+  color: #000;
+  margin-left: 1.7em;
+  height: 1.5em;
+  width: 4.8em;
+  background-color: #e96857;
+  display: inline-block;
+
+}
+
+.btn-confirmar:hover{
+  text-decoration: none;
+}
+
+.btn-cancelar:hover{
+  text-decoration: none;
+}

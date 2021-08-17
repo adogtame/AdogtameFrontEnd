@@ -117,6 +117,10 @@ export class NavigationComponent implements OnInit {
 		this.UsuarioID = { user: "No logueado" };
 		this.usuariosService.user.id = "";
 		this.Usuario = [];
+		
+		//notificacion
+		this.notificacion=false;
+		this.notificacionesInteresados=[];	
 		//this.nombreSubscription.unsubscribe();
 	}
 
@@ -192,7 +196,15 @@ export class NavigationComponent implements OnInit {
 				console.log(res)
 				this.notificacionesInteresados=res;	
 
-				this.notificacion=true;
+				if(this.notificacionesInteresados.length>0){
+
+					this.notificacion=true;
+				}
+				else
+				{
+					
+					this.notificacion=false;
+				}
 
 			},
 			err => console.log(err)
