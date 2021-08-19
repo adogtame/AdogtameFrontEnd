@@ -147,6 +147,13 @@ export class UsuariosService {
 		return this.http.post(`${this.API_URI}/signupAnimal`, animal);
 	}
 
+	//Dar en adopcion
+	comenzarAdopcion(idAnimal: string, idUsuario: string) {
+		const adopcionData={id_animal: idAnimal, id_usuario: idUsuario}
+		return this.http.post(`${this.API_URI}/comenzarAdopcion`, adopcionData);
+	}
+	//
+
 
 	//Interes
 	mostrarInteres(idAnimal: string, idInteresado: object) {

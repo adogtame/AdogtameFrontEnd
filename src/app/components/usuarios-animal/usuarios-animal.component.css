@@ -1198,7 +1198,6 @@ Modal en estado de animal
   "mainC mainC mainC"
   "mainC mainC mainC"
   "mainC mainC mainC"
-  "mainC mainC mainC"
   "mainC mainC mainC";
   grid-template-rows: repeat(auto-fill, 1fr);
   border-top-right-radius: 0.4em;
@@ -1222,13 +1221,14 @@ Modal en estado de animal
 
   border-bottom: 0.1em solid rgb(168, 168, 168);
 
-  min-height: 3em;
-  max-height: 3em;
+  min-height: 3.1em;
+  max-height: 3.1em;
 
 }
 
 .confirmar-head p{
   margin-top: .8em;
+  font-size: 0.8em;
 }
 
 .confirmar-main{

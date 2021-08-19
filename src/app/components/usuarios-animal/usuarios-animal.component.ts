@@ -94,6 +94,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   moment: any = [];
   //
   
+  interesadoSeleccionado: any = [];
+
   interesados: any = [];
 
   interes: boolean = false;
@@ -396,10 +398,14 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
 
-  abirConfirmarAdopcion(){
+  abirConfirmarAdopcion(nombre: string, apellido: string, id: string){
 
     console.log("Se abrio el modal Confirmar Adopcion")
     this.modalConfirmarAdopcionAbierto=true;
+
+    this.interesadoSeleccionado={id: id, nombre: nombre, apellido: apellido};
+
+    console.log("El interesado Seleccionado", this.interesadoSeleccionado);
 
   }
 
@@ -410,9 +416,23 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   }
 
-  confirmarAdopcion(){
+  confirmarAdopcion(idUsuario: string){
 
     console.log("Confirmar Adopcion")
+
+    this.usuariosService.comenzarAdopcion(this.AnimalID.id, idUsuario).subscribe(
+      res => {
+
+        
+        this.modalEleccionAbierto = false;
+        this.modalConfirmarAdopcionAbierto = false;
+        console.log(res)
+
+
+        
+      },
+      err => console.log(err)
+    );
 
   }
 

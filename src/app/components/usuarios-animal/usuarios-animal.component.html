@@ -309,7 +309,7 @@
 
             <div class="adoptante-nombre">{{adoptante.nombre}} {{adoptante.apellido}}</div>
 
-            <div class="elejir-adoptante" (click)="abirConfirmarAdopcion()"> <p>Elejir Adoptante</p> </div>
+            <div class="elejir-adoptante" (click)="abirConfirmarAdopcion(adoptante.nombre,adoptante.apellido,adoptante.id)"> <p>Elejir Adoptante</p> </div>
 
           </div>
 
@@ -334,7 +334,7 @@
 
       <div class="confirmar-head">
 
-        <p>¿Seguro quiere dar en adopcion?</p>
+        <p>¿Seguro quiere darle su animal en adopcion a {{interesadoSeleccionado.nombre}} {{interesadoSeleccionado.apellido}}?</p>
 
       </div>
 
@@ -343,7 +343,7 @@
       <div class="confirmar-main">
 
 
-      <a class="btn-confirmar" (click)="confirmarAdopcion()">
+      <a class="btn-confirmar" (click)="confirmarAdopcion(interesadoSeleccionado.id)">
         Confirmar
       </a>
 
