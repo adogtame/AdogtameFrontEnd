@@ -84,9 +84,10 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   seleccionadoNum: string = "";
   
   estadoDelAnimal: any = [];
-
+  
   modalEleccionAbierto: boolean = false;
   modalConfirmarAdopcionAbierto: boolean = false;
+  modalAdopcionPendienteAbierto: boolean = false;
   chatAbierto: boolean = false;
 
   //
@@ -320,7 +321,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   irAInteresado(id: number){
     
-    console.log("El id ",id)
+    console.log("El id ",id);
     const url = this.router.serializeUrl(this.router.createUrlTree(['usuarios/perfil/',id]));
     window.open(url, '_blank');
     //this.router.navigate(['usuarios/perfil/',id])
@@ -334,7 +335,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.chatAbierto = true;
     
-    console.log("El id ",id)
+    console.log("El id ",id);
 
 
   }
@@ -355,31 +356,79 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     const num = this.seleccionadoNum;
     const url = `https://api.whatsapp.com/send?phone=${ind}${num}`;
 
-    console.log(url)
+    console.log(url);
 
     window.open(url, '_blank');
      
   } 
 
 
-  abrirEleccion(){
+  abrirDisponibleYPendiente(){
 
-    console.log("Se abrio el modal Elejir Adoptante")
-    this.modalEleccionAbierto=true;
+
+
+    if(this.estadoDelAnimal.estado=="Disponible"){
+
+      console.log("Se abrio el modal Elejir Adoptante");
+      this.modalEleccionAbierto=true;
+    }
+  
+    if(this.estadoDelAnimal.estado=="Pendiente"){
+
+      console.log("Se abrio  el modal adopcion pendiente");
+      this.modalAdopcionPendienteAbierto = true;
+    }
+
+
 
   }
 
-  cerrarModalEleccion(){
+  cerrarModalDisponibleYPendiente(){
 
-    console.log("Se cerro el modal Elejir Adoptante")
-    this.modalEleccionAbierto = false;
+    if(this.estadoDelAnimal.estado=="Disponible"){
+
+      console.log("Se cerro el modal Elejir Adoptante");
+      this.modalEleccionAbierto = false;
+    }
+  
+    if(this.estadoDelAnimal.estado=="Pendiente"){
+
+      console.log("Se cerro el modal adopcion pendiente");
+      this.modalAdopcionPendienteAbierto = false;
+    }
+
+
 
   }
+
+
+  cancelarProcesoAdopcion(){
+
+    console.log("Cancelar adopcion");
+
+
+    this.usuariosService.cancelarProcesoAdopcion(this.AnimalID.id).subscribe(
+      res => {
+
+        
+        this.modalAdopcionPendienteAbierto = false;
+        console.log(res)
+
+
+        this.usuariosService.cargarAnimalEstado$.emit()
+
+      },
+      err => console.log(err)
+    );
+
+  }
+
+
 
 
   abirConfirmarAdopcion(nombre: string, apellido: string, id: string){
 
-    console.log("Se abrio el modal Confirmar Adopcion")
+    console.log("Se abrio el modal Confirmar Adopcion");
     this.modalConfirmarAdopcionAbierto=true;
 
     this.interesadoSeleccionado={id: id, nombre: nombre, apellido: apellido};
@@ -390,14 +439,14 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   cerrarModalConfirmarAdopcion(){
 
-    console.log("Se cerro el modal Confirmar Adopcion")
+    console.log("Se cerro el modal Confirmar Adopcion");
     this.modalConfirmarAdopcionAbierto = false;
 
   }
 
   confirmarAdopcion(idUsuario: string){
 
-    console.log("Confirmar Adopcion")
+    console.log("Confirmar Adopcion");
 
     this.usuariosService.comenzarAdopcion(this.AnimalID.id, idUsuario).subscribe(
       res => {

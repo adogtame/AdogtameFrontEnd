@@ -677,6 +677,7 @@ FIN Diseño de dropdown
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
+  cursor: pointer;
 }
 
 
@@ -686,7 +687,45 @@ FIN Diseño de dropdown
 }
 
 
+.botonEstadoPendiente{
+  background-color: #cfc174; 
+  border: none;
+  padding: 0.3px 44px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  color: rgb(71, 56, 28);
+  cursor: pointer;
 
+}
+
+
+.botonEstadoPendiente:hover{
+  background-color: #a39858; 
+  color: rgb(224, 221, 200);
+}
+
+
+
+.botonEstadoAdoptado{
+  background-color: #d13434; 
+  border: none;
+  padding: 0.3px 44px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  color: #5a2424;
+  cursor:default;
+
+}
+
+
+.botonEstadoAdoptado:hover{
+  background-color: #af1d1d; 
+  color: rgb(224, 200, 200);
+}
 
 
 .botonDatosMedicos:hover{
@@ -1073,7 +1112,7 @@ Modal en estado de animal
 
 
 
-.btn-cerrarModalEleccion{
+.btn-cerrarModalX{
   float: right;
   outline: none;
   box-shadow: none;
@@ -1196,3 +1235,116 @@ Modal en estado de animal
 .btn-cancelar:hover{
   text-decoration: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Estado pendiente modal
+*/
+
+
+
+.overlay-adopcion-pendiente{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(98, 98, 98, 0.644);
+  /* background-color: rgba(117, 117, 117, 0.8); */
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  
+}
+
+.modal-adopcion-pendiente{  
+  background-color: #fff2db;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 220;
+  min-width: 20em;
+  max-width:20em;
+  min-height: 10em;
+  max-height:10em;
+
+
+  
+  position: fixed;
+  
+  display: grid;
+  grid-template-areas: 
+  "headerP headerP headerP"
+  "mainP mainP mainP"
+  "mainP mainP mainP"
+  "mainP mainP mainP"
+  "mainP mainP mainP"
+  "mainP mainP mainP";
+  grid-template-rows: repeat(auto-fill, 1fr);
+  border-top-right-radius: 0.4em;
+  border-top-left-radius:  0.4em;
+
+  box-shadow: 3px 3px 4px rgba(149, 141, 141, 0.692),
+  -3px 3px 5px rgba(149, 141, 141, 0.692),
+  0px 0px 10px rgba(149, 141, 141, 0.692) ;
+
+
+  overflow: none; 
+
+}
+
+.pendiente-head{
+  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+
+  grid-area: headerP;
+
+  border-bottom: 0.1em solid rgb(168, 168, 168);
+
+  min-height: 3.4em;
+  max-height: 3.4em;
+
+}
+
+.pendiente-head p{
+  margin-top: .8em;
+  font-size: 0.8em;
+}
+
+.pendiente-main{
+  
+  text-align: center;
+
+  grid-area: mainP;
+
+}
+
+
+.btn-cancelar-proceso{
+  border-radius: 3px;
+  margin-top: 2.6em;
+  cursor: pointer;
+  color: #000;
+  margin-left: 1em;
+  height: 1.5em;
+  width: 10em;
+  background-color: #e96857;
+  display: inline-block;
+
+  text-decoration: none;
+}
+

@@ -149,6 +149,12 @@ export class UsuariosService {
 	}
 
 
+	//Cancelar adopcion
+	cancelarProcesoAdopcion(idAnimal: string) {
+		return this.http.delete(`${this.API_URI}/cancelarProcesoAdopcion/${idAnimal}`);
+	}
+
+
 	//Sacar el estado del Animal
 
 	

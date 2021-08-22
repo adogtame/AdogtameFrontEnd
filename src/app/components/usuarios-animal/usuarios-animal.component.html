@@ -164,7 +164,9 @@
 
         <div class="data-estado" >
           
-          <b>Estado de adopcion: &nbsp;&nbsp; </b><a class="btn btn - botonEstado" (click)="abrirEleccion()">{{estadoDelAnimal.estado}}</a>
+          <b>Estado de adopcion: &nbsp;&nbsp; </b>
+          <a [ngClass]="{'botonEstado' : estadoDelAnimal.estado === 'Disponible' , 'botonEstadoPendiente': estadoDelAnimal.estado === 'Pendiente', 'botonEstadoAdoptado': estadoDelAnimal.estado === 'Adoptado'}"  
+          (click)="abrirDisponibleYPendiente()">{{estadoDelAnimal.estado}}</a>
 
         </div>
   
@@ -238,7 +240,7 @@
       <div class="eleccion-item eleccion-header">
 
 
-        <button type="button" class="btn btn-cerrarModalEleccion" (click)="cerrarModalEleccion()">&#10006;</button>
+        <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
         
         <p>Elija al adoptante final</p>
 
@@ -282,6 +284,7 @@
 
       <div class="confirmar-head">
 
+       
         <p>¿Seguro quiere darle su animal en adopcion a {{interesadoSeleccionado.nombre}} {{interesadoSeleccionado.apellido}}?</p>
 
       </div>
@@ -310,6 +313,51 @@
 
   
   
+
+
+  <!-- Modal adopcion pendiente  -->
+  
+   
+  <div class="overlay-adopcion-pendiente" *ngIf="modalAdopcionPendienteAbierto==true">
+    
+    <div class="modal-adopcion-pendiente">
+
+
+      <div class="pendiente-head">
+
+        <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
+
+        <p>Proceso de adopcion en espera de la aceptacion del interesado seleccionado</p>
+
+      </div>
+
+
+
+      <div class="pendiente-main">
+
+
+
+        <a class="btn-cancelar-proceso" (click)="cancelarProcesoAdopcion()">
+          Cancelar proceso
+        </a>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  
+  
+
+
+  
+  <!--  -->
+
+
+
   <!--
   
     Este es el template de la carga
