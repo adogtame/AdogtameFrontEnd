@@ -36,10 +36,10 @@ export class UsuariosService {
   //q hay demasiadas cosas cargando al mismo tiempo
   
   //Componente usuarios-animal
-	cargarAnimal1$ = new EventEmitter<string>();
+	cargarAnimalDatos$ = new EventEmitter<string>();
+	cargarAnimalIntereses$ = new EventEmitter<string>();
 	cargarTerminado$ = new EventEmitter<string>();
 	cargarAnimalEstado$ = new EventEmitter<string>();
-	cargarUserAnimal$ = new EventEmitter<string>();
 
 
 	//

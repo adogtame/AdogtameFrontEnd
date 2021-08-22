@@ -241,7 +241,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
             //Hay q mejorar esto, lo q hago es cargar el componente (Animal) 
             //despues de hacer este emit, porq aca es donde cargo al usuario
 
-            this.usuariosService.cargarUserAnimal$.emit()
+            this.usuariosService.cargarAnimalDatos$.emit()
             //
 
 
@@ -264,13 +264,16 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.sacarUsuario();
 
-    this.usuariosService.cargarUserAnimal$.subscribe(log => {
+
+    this.estadoAnimal();
+
+    this.usuariosService.cargarAnimalDatos$.subscribe(log => {
 
       this.animalCargarDatos();
 
     });
 
-    this.usuariosService.cargarAnimal1$.subscribe(log => {
+    this.usuariosService.cargarAnimalIntereses$.subscribe(log => {
 
       if(this.Animal.idDador==this.usuariosService.user.id){
 
@@ -405,6 +408,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         console.log(res)
 
 
+        this.usuariosService.cargarAnimalEstado$.emit()
 
       },
       err => console.log(err)
@@ -419,7 +423,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         this.Animal = res
         console.log(this.Animal);
 
-        this.usuariosService.cargarAnimal1$.emit()
+        this.usuariosService.cargarAnimalIntereses$.emit()
       },
       err => console.log(err)
     );
@@ -445,7 +449,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
         console.log("Interesados del animal", this.interesados);
 
-        this.usuariosService.cargarAnimalEstado$.emit()
+        this.usuariosService.cargarTerminado$.emit()
       },
       err => console.log(err)
     );
@@ -479,7 +483,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         }
 
 
-        this.usuariosService.cargarAnimalEstado$.emit()
+        this.usuariosService.cargarTerminado$.emit()
       },
       err => console.log(err)
     );
