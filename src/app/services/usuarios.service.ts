@@ -37,19 +37,14 @@ export class UsuariosService {
   
   //Componente usuarios-animal
 	cargarAnimal1$ = new EventEmitter<string>();
-	cargarAnimal2$ = new EventEmitter<string>();
-	cargarAnimal3$ = new EventEmitter<string>();
-	cargarAnimal4$ = new EventEmitter<string>();
-	cargarAnimal5$ = new EventEmitter<string>();
+	cargarTerminado$ = new EventEmitter<string>();
+	cargarAnimalEstado$ = new EventEmitter<string>();
 	cargarUserAnimal$ = new EventEmitter<string>();
 
 
-  //
+	//
 
-	//cesar Jueves
-	coment$ = new EventEmitter<string>();
-	likes$ = new EventEmitter<string>();
-
+	//admin
 
 
 	rol$ = new EventEmitter<string>();
@@ -152,6 +147,17 @@ export class UsuariosService {
 		const adopcionData={id_animal: idAnimal, id_usuario: idUsuario}
 		return this.http.post(`${this.API_URI}/comenzarAdopcion`, adopcionData);
 	}
+
+
+	//Sacar el estado del Animal
+
+	
+	estadoAnimal(idAnimal: string) {
+		
+		return this.http.get(`${this.API_URI}/estadoAnimal/${idAnimal}`);
+		
+	}
+
 	//
 
 
@@ -202,31 +208,6 @@ export class UsuariosService {
 		return this.http.post(`${this.API_URI}/dToken`, token);
 
 	}
-
-
-	//Cesar Jueves
-	agregarComentario(comentario: any) {
-		return this.http.post(`${this.API_URI}/comentario`, comentario);
-	}
-
-
-	listarComentarios(id: string) {
-		return this.http.get(`${this.API_URI}/listComentarios/${id}`);
-
-	}
-
-	listarUsuariosLikes(id: string) {
-		return this.http.get(`${this.API_URI}/listUsuariosLikes/${id}`);
-
-	}
-
-
-	actualizarComentarioLikeDislike(idComentario: string, usuario: any): Observable<Usuario> {
-		return this.http.put(`${this.API_URI}/updateLikeDislikeComentario/${idComentario}`, usuario);
-	}
-
-
-
 
 
 

@@ -164,7 +164,7 @@
 
         <div class="data-estado" >
           
-          <b>Estado de adopcion: &nbsp;&nbsp; </b><a class="btn btn - botonEstado" (click)="abrirEleccion()"> Estado</a>
+          <b>Estado de adopcion: &nbsp;&nbsp; </b><a class="btn btn - botonEstado" (click)="abrirEleccion()">{{estadoDelAnimal.estado}}</a>
 
         </div>
   
@@ -177,59 +177,7 @@
   
     </div>
   </div>
-  <!-- GRID COMENTARIOS-->
-  <div class="grid-item grid-comentarios">    
-    <div class="animal-comentarios">
-      <br>
-      <b>Comentarios </b>
-      <br>
-      <br>
-  
-      <input type="text" class="comentario-input" name="comentario" [(ngModel)]="comentario.comentario"
-        placeholder="Agrega un comentario público…">
-      &nbsp;<button class="btn btn-success" (click)="agregarComentario()">Comentar </button>
-      <br><br><br><br>
-  
-      <table *ngIf="comentarios.length > 0; else sinComentarios">
-  
-        <ng-container *ngFor="let comentario of comentarios">
-          <ul class="comentario-data">
-  
-            <li>Usuario: {{comentario.idUsuario}}</li>
-            <li>Comentario: {{comentario.comentario}}</li>
-            <li>Fecha: {{comentario.fecha}}</li>
-            <li>Animal: {{comentario.idAnimal}}</li>
-            <li class="nav-item" *ngIf="rol=='administrador'; else noAdmin">
-              <br>
-              <button class="btn btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar comentario</button>
-              <br>
-            </li>
-            <ng-template #noAdmin>
-              <li>
-  
-                <link rel="stylesheet"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-                {{comentario.likes}}&nbsp;<i id="like"
-                  [ngClass]="{'likeActivo' : comentario.like, 'likeNoActivo': !comentario.like}" class="fa fa-thumbs-up"
-                  (click)="like(comentario.id, comentario.like, comentario.dislike)"></i>
-                &nbsp;&nbsp;
-                {{comentario.dislikes}}&nbsp;<i id="dislike"
-                  [ngClass]="{'dislikeActivo' : comentario.dislike, 'dislikeNoActivo': !comentario.dislike}"
-                  class="fa fa-thumbs-down" (click)="dislike(comentario.id, comentario.dislike, comentario.like)"></i>
-              </li>
-            </ng-template>
-            <br><br><br><br>
-          </ul>
-        </ng-container>
-      </table>
-      <ng-template #sinComentarios>
-  
-        Se el primero en comentar!!!
-  
-      </ng-template>
-    </div>
-  </div>
+ 
   <!-- GRID FOOTER-->
   <div class="grid-item grid-footer">
     

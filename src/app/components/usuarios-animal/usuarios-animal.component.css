@@ -241,7 +241,6 @@ se podira cambiar al stylecss para q sea general
   "header header header"
   "subheader subheader subheader"
   "animalMain animalMain animalMain"
-  "comentarios comentarios comentarios"
   "footer footer footer";
   grid-template-rows: repeat(auto-fill, 1fr);
 }
@@ -697,83 +696,6 @@ FIN Diseño de dropdown
 
 
 
-
-/* GRID COMENTARIOS */
-
-
-
-/* Cesar Jueves */
-
-.animal-comentarios{
-
-  border-top: 2px solid rgba(105, 105, 105, 0.541);
-}
-
-.comentario-input{
-width: 40%;
-
-}
-
-.comentario-data{
-  list-style:none;
-  
-}
-
-#like {
-
-
-  cursor: pointer;
- 
-}
-
-#dislike {
-  
-
-  cursor: pointer;
- 
-}
-
-
-#like:hover {
-
-  color: #5558dd; 
-
-  cursor: pointer;
- 
-}
-
-#dislike:hover {
-  
-  color: #e96857; 
-
-  cursor: pointer;
- 
-}
-
-
-.likeActivo{
-  color: #5558dd; 
-  
-}
-
-.likeNoActivo{
-  color: #131318; 
-}
-
-
-
-.dislikeActivo{
-  color: #e96857;  
-}
-
-.dislikeNoActivo{
-  color: #131318; 
-}
-
-
-
-
-/*Fin cesar*/
 
 /* GRID FOOTER 
 
