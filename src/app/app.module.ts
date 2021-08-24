@@ -7,7 +7,7 @@ import { UsuariosIngresarComponent } from './components/usuarios-ingresar/usuari
 import { UsuariosRegistrarComponent } from './components/usuarios-registrar/usuarios-registrar.component';
 import { UsuariosListarComponent } from './components/usuarios-listar/usuarios-listar.component';
 import {UsuariosService} from './services/usuarios.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { UsuariosPrincipalComponent } from './components/usuarios-principal/usuarios-principal.component';
 import { UsuariosHomeComponent } from './components/usuarios-home/usuarios-home.component';
@@ -30,6 +30,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //El tipo del video puso @shared no ./
 import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
 //
+
+//Subir a firebase
+import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import { UploadListComponent } from './components/upload-list/upload-list.component';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
+
+// Modulos de firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,14 +60,20 @@ import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
     UsuariosVerificarComponent,
     UsuariosVerificadoComponent,
     UsuariosVerificacionfallidaComponent,
+    UploadFormComponent,
+    UploadListComponent,
+    UploadDetailsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,    
+    FormsModule,
     SpinnerModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
   providers: [
     UsuariosService,
