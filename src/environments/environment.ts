@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   firebase: {
-
     apiKey: "AIzaSyBH18IJG1H-nlGuJauW-bcRZL4b1jRsTOA",
     authDomain: "adogtame-efa8f.firebaseapp.com",
     databaseURL: 'https://adogtame-c281c.appspot.com',

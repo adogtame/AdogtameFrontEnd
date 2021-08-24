@@ -29,7 +29,6 @@ import { SpinnerModule } from './shared/components/spinner/spinner.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //El tipo del video puso @shared no ./
 import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
-//
 
 //Subir a firebase
 import { UploadFormComponent } from './components/upload-form/upload-form.component';
@@ -43,6 +42,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
 
+//
 @NgModule({
   declarations: [
     AppComponent,
