@@ -80,6 +80,17 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.Usuario = [];
 
 
+
+
+
+
+    this.animalesSiguiendo = [];
+    this.animalesInteresPendienteMe = [];
+    this.animalesInteresAdoptadoMe = [];
+    this.animalesInteresDisponible = [];
+    this.animalesInteresPendienteAdoptadoOtro = [];
+
+
     console.log("Se cerro el usuario",this.UsuarioID.id);
 
   }
@@ -316,6 +327,13 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
 
 
+    //Limpiando arrays de siguiendo
+    this.animalesSiguiendo = [];
+    this.animalesInteresPendienteMe = [];
+    this.animalesInteresAdoptadoMe = [];
+    this.animalesInteresDisponible = [];
+    this.animalesInteresPendienteAdoptadoOtro = [];
+
 
   }
 
@@ -338,6 +356,13 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.toggleSeguidores = true;
     this.toggleAnimales = false;
 
+
+    //Limpiando arrays de siguiendo
+    this.animalesSiguiendo = [];
+    this.animalesInteresPendienteMe = [];
+    this.animalesInteresAdoptadoMe = [];
+    this.animalesInteresDisponible = [];
+    this.animalesInteresPendienteAdoptadoOtro = [];
     // this.statusSeguidores = this.toggleSeguidores ? 'Enable' : 'Disable';
 
   }
@@ -350,6 +375,13 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.toggleAnimales = true;
 
 
+
+    //Limpiando arrays de siguiendo
+    this.animalesSiguiendo = [];
+    this.animalesInteresPendienteMe = [];
+    this.animalesInteresAdoptadoMe = [];
+    this.animalesInteresDisponible = [];
+    this.animalesInteresPendienteAdoptadoOtro = [];
   }
 
 
