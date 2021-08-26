@@ -74,6 +74,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   Animal: any = [];
 
   AnimalID: any = [];
+  userAhora: string="";
 
 
   //interesado seleccionado
@@ -299,6 +300,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     
 
     this.usuariosService.cargarTerminado$.subscribe(log => {
+
+      this.userAhora=this.usuariosService.user.id;
 
       setTimeout(()=>{ this.cargoPagina=true }, 2000)
 

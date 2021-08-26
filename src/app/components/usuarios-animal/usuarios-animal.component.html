@@ -233,7 +233,7 @@
 
   <!--  ES EL MODAL DE ELECCION   *ngIf="modalEleccionAbierto==true" -->
 
-  <div class="overlay-eleccion-adoptante" *ngIf="modalEleccionAbierto==true">
+  <div class="overlay-eleccion-adoptante" *ngIf="modalEleccionAbierto==true && this.Animal.idDador==this.userAhora">
 
     <div class="modal-eleccion-adoptante">
       
@@ -277,7 +277,7 @@
     
   <!-- Modal confirmar adopcion  -->
   
-  <div class="overlay-confirmar-adopcion" *ngIf="modalConfirmarAdopcionAbierto==true">
+  <div class="overlay-confirmar-adopcion" *ngIf="modalConfirmarAdopcionAbierto==true && this.Animal.idDador==this.userAhora">
     
     <div class="modal-confirmar-adopcion">
 
@@ -318,7 +318,7 @@
   <!-- Modal adopcion pendiente  -->
   
    
-  <div class="overlay-adopcion-pendiente" *ngIf="modalAdopcionPendienteAbierto==true">
+  <div class="overlay-adopcion-pendiente" *ngIf="modalAdopcionPendienteAbierto==true && this.Animal.idDador==this.userAhora">
     
     <div class="modal-adopcion-pendiente">
 
