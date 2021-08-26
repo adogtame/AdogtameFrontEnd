@@ -1,26 +1,26 @@
 <div class="overlayAnimal" *ngIf="cargoPagina==false; else elseBlock">
   <div  class="rot1">
-    <div class="paw">    
+    <div class="paw">
     <div class="inner"></div>
     <div class="bottom"></div>
     </div>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <div  class="rot2">
-    <div class="paw">    
+    <div class="paw">
     <div class="inner"></div>
     <div class="bottom"></div>
     </div>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <div  class="rot3">
-    <div class="paw">    
+    <div class="paw">
     <div class="inner"></div>
     <div class="bottom"></div>
     </div>
   </div>
-  
-  
+
+
     <!-- <div class="lds-heart"><div></div></div> -->
   </div>
   <ng-template #elseBlock>
@@ -32,34 +32,35 @@
 
     <!-- COMIENZA EL GRID-->
 <div class="grid-container">
-  
+
     <!-- GRID HEADER-->
-  <div class="grid-item grid-header">    
-    
+  <div class="grid-item grid-header">
+
     <div class="animal-imagen">
-  
+
       <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
       <p class="animal-nombre">{{Animal.nombre}}</p>
+      <app-upload-form></app-upload-form>
     </div>
 
   </div>
-  
+
     <!-- GRID SUBHEADER-->
-  <div class="grid-item grid-subheader">    
-   
+  <div class="grid-item grid-subheader">
+
     <div class="animal-subheader">
       <ul class="nav nav-tabs nav-fill" role="tablist">
-  
+
         <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!=Usuario.id; else dador">
           <button class="nav-link" type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' "
             (click)="mostrarInteres()">
             <p class="interes-mostrado-text" *ngIf="interes==true"><i class="fas fa-check"></i> Interes Mostrado</p>
             <p class="mostrar-interes-text" *ngIf="interes==false"> Mostrar Interes </p>
-  
+
           </button>
         </li>
-  
-  
+
+
         <ng-template #dador>
           <li class="nav-item activecol-lg-4" role="presentation">
             <div class="dropdown">
@@ -69,67 +70,67 @@
               </div>
               <div [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="interesados-dropdown-content">
                 <div class="interesados-item">
-  
-  
-  
+
+
+
                   <div *ngIf="interesados.length>0; else vacio">
                     <div class="interesado-data" *ngFor=" let interesado of interesados">
-  
+
                       <!--
-                      La idea seria poner la foto de perfil (Redirecciona al perfil del usuario), 
+                      La idea seria poner la foto de perfil (Redirecciona al perfil del usuario),
                       el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
                     -->
                       <a class="imagen-interesado" (click)="irAInteresado(interesado.id)">
                       <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
                       </a>
                       <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido, interesado.nro_celular)">{{interesado.nombre}} {{interesado.apellido}}</a>
-                      
+
                     </div>
-  
+
                   </div>
-  
-  
+
+
                   <ng-template #vacio>
                     <div style="text-align: center;">
                       <br>No hay interesados
                     </div>
                   </ng-template>
-  
+
                 </div>
               </div>
             </div>
-  
+
           </li>
         </ng-template>
-  
+
         <li class="nav-item" role="presentation">
-  
-          <button id="boton-dador" role="tab" class="nav-link col-lg-4 float-right" type="button" (click)="irADador()"> 
-            
+
+          <button id="boton-dador" role="tab" class="nav-link col-lg-4 float-right" type="button" (click)="irADador()">
+
             <div  class="patita-dador">
-              <div class="paw">    
+              <div class="paw">
               <div class="inner"></div>
               <div class="bottom"></div>
               </div>
             </div>
 
             <p class="dador-text">Dador</p>
-  
+
           </button>
         </li>
       </ul>
     </div>
 
   </div>
-  
+
     <!-- GRID ANIMALMAIN-->
   <div class="grid-item grid-animalMain">
     <div class="animal-main">
-  
-  
+
+
       <div class="grid-main-item animal-datos">
-  
-  
+
+
         <div class="data-item data-1">
 
           <span class="span-1" data-title="Nombre:">Nombre:</span> {{Animal.nombre}}
@@ -149,7 +150,7 @@
         <div class="data-item data-2">
 
           <span class="span-1" data-title="Edad:">Edad:</span> {{Animal.fNac}}
-        
+
         </div>
         <div class="data-item data-1">
 
@@ -163,26 +164,26 @@
         </div>
 
         <div class="data-estado" >
-          
+
           <b>Estado de adopcion: &nbsp;&nbsp; </b>
-          <a [ngClass]="{'botonEstado' : estadoDelAnimal.estado === 'Disponible' , 'botonEstadoPendiente': estadoDelAnimal.estado === 'Pendiente', 'botonEstadoAdoptado': estadoDelAnimal.estado === 'Adoptado'}"  
+          <a [ngClass]="{'botonEstado' : estadoDelAnimal.estado === 'Disponible' , 'botonEstadoPendiente': estadoDelAnimal.estado === 'Pendiente', 'botonEstadoAdoptado': estadoDelAnimal.estado === 'Adoptado'}"
           (click)="abrirDisponibleYPendiente()">{{estadoDelAnimal.estado}}</a>
 
         </div>
-  
+
       </div>
-  
+
       <div class="grid-main-item datos-medicos">
           <a class="btn btn - botonDatosMedicos"> Datos Medicos</a>
       </div>
-  
-  
+
+
     </div>
   </div>
- 
+
   <!-- GRID FOOTER-->
   <div class="grid-item grid-footer">
-    
+
   </div>
 </div>
 
@@ -197,7 +198,7 @@
 
   <!-- NO ES DEL GRID ANTERIOR, ES EL CHAT  -->
   <div class="chat" *ngIf="chatAbierto==true">
-    
+
     <div class="chat-item chat-header">
 
       <a class="interesado-seleccionado-img">
@@ -207,13 +208,13 @@
       <button type="button" class="btn btn-cerrarChat" (click)="cerrarChat()">&#10006;</button>
 
     </div>
-  
-  
+
+
     <div class="chat-item chat-main">
 
       <p> ¿Comenzar a chatear? </p>
 
-      <div class="chat-resp"  (click)="abrirWhats()">        
+      <div class="chat-resp"  (click)="abrirWhats()">
         <img class="chat-si" src="../assets/img/whatsapp-logo-11.png" alt="imagen whatsapp">
       </div>
 
@@ -223,9 +224,9 @@
     <!-- <div class="chat-item chat-aside"></div>  -->
 
   </div>
-  
-  
-  
+
+
+
 
 
 
@@ -236,25 +237,25 @@
   <div class="overlay-eleccion-adoptante" *ngIf="modalEleccionAbierto==true">
 
     <div class="modal-eleccion-adoptante">
-      
+
       <div class="eleccion-item eleccion-header">
 
 
         <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
-        
+
         <p>Elija al adoptante final</p>
 
 
 
       </div>
-    
-    
+
+
       <div class="eleccion-item eleccion-main">
 
         <div class="adoptante-a-seleccionar" *ngFor=" let adoptante of interesados">
 
           <div class="adoptante-data">
-            
+
             <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
 
             <div class="adoptante-nombre">{{adoptante.nombre}} {{adoptante.apellido}}</div>
@@ -264,27 +265,27 @@
           </div>
 
         </div>
-    
-        
+
+
       </div>
 
 
-      
+
 
     </div>
 
   </div>
-    
+
   <!-- Modal confirmar adopcion  -->
-  
+
   <div class="overlay-confirmar-adopcion" *ngIf="modalConfirmarAdopcionAbierto==true">
-    
+
     <div class="modal-confirmar-adopcion">
 
 
       <div class="confirmar-head">
 
-       
+
         <p>¿Seguro quiere darle su animal en adopcion a {{interesadoSeleccionado.nombre}} {{interesadoSeleccionado.apellido}}?</p>
 
       </div>
@@ -311,15 +312,15 @@
 
   </div>
 
-  
-  
+
+
 
 
   <!-- Modal adopcion pendiente  -->
-  
-   
+
+
   <div class="overlay-adopcion-pendiente" *ngIf="modalAdopcionPendienteAbierto==true">
-    
+
     <div class="modal-adopcion-pendiente">
 
 
@@ -349,20 +350,20 @@
 
   </div>
 
-  
-  
 
 
-  
+
+
+
   <!--  -->
 
 
 
   <!--
-  
+
     Este es el template de la carga
     El contenido va arriba
 
   -->
-  
+
   </ng-template>

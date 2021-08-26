@@ -16,15 +16,21 @@ export class FileUploadService {
 
   pushFileToStorage(fileUpload: FileUpload): Observable<number | undefined> {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
+    console.log("file path" + filePath);
     const storageRef = this.storage.ref(filePath);
+    console.log("storage ref" + storageRef);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
+    console.log("task" + uploadTask);
 
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           fileUpload.url = downloadURL;
+          console.log("down url: " + downloadURL);
           fileUpload.name = fileUpload.file.name;
+          console.log("name " + fileUpload.name);
           this.saveFileData(fileUpload);
+          console.log("save data " +this.saveFileData);
         });
       })
     ).subscribe();
