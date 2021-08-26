@@ -148,6 +148,9 @@ export class UsuariosService {
 		return this.http.post(`${this.API_URI}/comenzarAdopcion`, adopcionData);
 	}
 
+	confirmarAdopcion(idAnimal: string, idUsuario: object) {
+		return this.http.post(`${this.API_URI}/confirmarAdopcion/${idAnimal}`, idUsuario);
+	}
 
 	//Cancelar adopcion
 	cancelarProcesoAdopcion(idAnimal: string) {
@@ -186,6 +189,21 @@ export class UsuariosService {
 		console.log("cargarInteresados ");
 		return this.http.get(`${this.API_URI}/cargarInteresados/${idAnimal}`);
 	}
+
+
+
+	// //
+	listarAnimalesConInteres() {
+	 	//Sacar los animales a los q le diste interes y cargarlos a tu perfil
+	 	return this.http.get(`${this.API_URI}/listarAnimalesConInteres`);
+	}
+
+	siguiendoAnimales(idUsuario: string) {
+		
+		console.log("cargar animales siguiendo");
+		return this.http.get(`${this.API_URI}/siguiendoAnimales/${idUsuario}`);
+	}
+
 	//
 
 

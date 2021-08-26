@@ -1,11 +1,13 @@
-#imagen-usuario-perfil{
-  height: 100px;
-  width: 100px;
-}
-
-#contenedor-usuario-perfil{
+.contenedor-usuario-perfil{
   margin-top: 50px;
   text-align: center;
+}
+
+.contenedor-usuario-perfil img{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin-bottom: 0.5em;
 }
 
 #nombre-usuario-perfil{
@@ -146,4 +148,125 @@ Registrar animal boton
   font-size: 24px;
   font: bold;
   color: white;
+}
+
+.animales-con-interes{
+  margin-top: 2em;
+}
+
+.animales-con-interes img{
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  margin-left: 0.5em;
+  margin-right: 0.7em;
+}
+
+.animales-pendientes{
+  background-color: rgb(255, 229, 196);
+}
+
+.animales-adoptados{
+  background-color: rgb(217, 255, 192);
+
+}
+
+.animales-disponibles{
+  background-color: rgb(212, 212, 212);
+
+}
+
+.animales-no-disponibles{
+  background-color: rgb(255, 197, 189);
+
+}
+
+.ani-item{
+  padding: 0.2em 0.1em;
+  padding: 0em 0em 0.5em 0em;
+  margin-bottom: 2em;
+}
+
+.ani-item-adentro{
+  padding: 0.5em 0em 0.5em 0em;
+}
+.animales-pendientes-adentro:hover{
+  background-color: rgb(209, 186, 156);
+}
+
+.animales-adoptados-adentro:hover{
+  background-color: rgb(180, 209, 161);
+
+}
+
+.animales-disponibles-adentro:hover{
+  background-color: rgb(180, 180, 180);
+
+}
+
+.animales-no-disponibles-adentro:hover{
+  background-color: rgb(207, 160, 154);
+
+}
+
+
+.ani-item p{  
+  padding: 0.3em 0.2em;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.animales-pendientes p{
+  color: rgb(250, 236, 192);
+  background-color: rgb(128, 109, 49);
+
+}
+
+.animales-adoptados p{
+  color: rgb(210, 255, 198);
+  background-color: rgb(44, 95, 32);
+
+}
+
+.animales-disponibles p{
+  color: rgb(221, 217, 217);
+  background-color: rgb(61, 61, 61);
+
+}
+
+.animales-no-disponibles p{
+  color: rgb(248, 176, 176);
+  background-color: rgb(105, 16, 16);
+
+}
+
+.estado-item{
+  float: right;
+  padding: 0.15em 0.25em;
+  border-radius: 0.4em;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+.confirmar-pendiente{
+  color: rgb(29, 65, 21);
+  background-color: rgb(156, 223, 140);
+
+}
+
+.rechazar-pendiente{
+  color: rgb(82, 15, 15);
+  background-color: rgb(221, 83, 83);
+}
+
+.eliminar-pendiente{
+  color: rgb(82, 15, 15);
+  background-color: rgb(230, 62, 62);
+  
+}
+
+
+.ani-int-pointer{
+  cursor: pointer;
+  display: inline-block;
 }
