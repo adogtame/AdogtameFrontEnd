@@ -13,6 +13,8 @@ export class UploadDetailsComponent implements OnInit {
   constructor(private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
+    console.log("Este es el file upload de details",this.fileUpload);
+
   }
 
   deleteFileUpload(fileUpload: FileUpload): void {

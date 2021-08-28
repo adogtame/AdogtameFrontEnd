@@ -42,9 +42,24 @@ export class FileUploadService {
     this.db.list(this.basePath).push(fileUpload);
   }
 
+  // getFiles(numberItems: number): AngularFireList<FileUpload> {
+  //   return this.db.list(this.basePath, ref =>
+  //     ref.limitToLast(numberItems));
+  // }
+  
   getFiles(numberItems: number): AngularFireList<FileUpload> {
     return this.db.list(this.basePath, ref =>
       ref.limitToLast(numberItems));
+
+  }
+
+  getUserProfileImage() {
+    const fileName="gato1.jpg";
+
+
+    return this.db.list(this.basePath , ref =>
+      ref.orderByChild('name').equalTo('gato1.jpg')).valueChanges();
+
   }
 
   deleteFile(fileUpload: FileUpload): void {
