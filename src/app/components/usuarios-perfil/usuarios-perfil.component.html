@@ -69,7 +69,7 @@
         <div class="card-body">
           <h2 class="card-title">Animales a los que sigo</h2>
 
-          
+
 
           <div class="animales-con-interes">
 
@@ -77,12 +77,12 @@
             <div class="ani-item animales-pendientes" *ngIf="animalesInteresPendienteMe.length>0">
               <p>Pendientes por aceptar</p>
               <div class="ani-item-adentro animales-pendientes-adentro" *ngFor="let AniPend of animalesInteresPendienteMe">
-                
+
                 <div class="ani-int-pointer" (click)="irAAnimal(AniPend.id)">
                   <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniPend.nombre}} 
+                  {{AniPend.nombre}}
                 </div>
-                
+
                 <div class="estado-item rechazar-pendiente" (click)="rechazarPendiente(AniPend)">Rechazar</div>
                 <div class="estado-item confirmar-pendiente" (click)="confirmarPendiente(AniPend)">Confirmar</div>
               </div>
@@ -90,12 +90,12 @@
 
             <div class="ani-item animales-adoptados" *ngIf="animalesInteresAdoptadoMe.length>0">
               <p>Adoptados</p>
-                
+
               <div class="ani-item-adentro animales-adoptados-adentro" *ngFor="let AniAdopt of animalesInteresAdoptadoMe">
-                
+
                 <div class="ani-int-pointer" (click)="irAAnimal(AniAdopt.id)">
                   <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniAdopt.nombre}} 
+                  {{AniAdopt.nombre}}
                 </div>
                 <!-- <div class="estado-item estado-adoptado">{{AniAdopt.estado}}</div>                 -->
               </div>
@@ -103,12 +103,12 @@
 
             <div class="ani-item animales-disponibles" *ngIf="animalesInteresDisponible.length>0">
               <p>Disponible</p>
-              
-              <div class="ani-item-adentro animales-disponibles-adentro" *ngFor="let AniDisp of animalesInteresDisponible"> 
-                
+
+              <div class="ani-item-adentro animales-disponibles-adentro" *ngFor="let AniDisp of animalesInteresDisponible">
+
                 <div class="ani-int-pointer" (click)="irAAnimal(AniDisp.id)">
                   <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniDisp.nombre}} 
+                  {{AniDisp.nombre}}
                 </div>
 
                 <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniDisp.id)">Eliminar</div>
@@ -117,21 +117,21 @@
 
             <div class="ani-item animales-no-disponibles" *ngIf="animalesInteresPendienteAdoptadoOtro.length>0">
               <p>Ya adoptado o en pendiente para otro</p>
-                
+
               <div class="ani-item-adentro animales-no-disponibles-adentro" *ngFor="let AniPAO of animalesInteresPendienteAdoptadoOtro">
-                
+
                 <div class="ani-int-pointer" (click)="irAAnimal(AniPAO.id)">
                   <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniPAO.nombre}} 
+                  {{AniPAO.nombre}}
                 </div>
-                
-                <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniPAO.id)">Eliminar</div>           
+
+                <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniPAO.id)">Eliminar</div>
               </div >
             </div>
-          
+
 
           </div>
-           
+
 
         </div>
       </div>
@@ -209,6 +209,9 @@
                         <label for=""> <b> Peso (kg)</b> </label>
                         <input type="number" name="peso" [(ngModel)]="animal.peso" placeholder="Ingrese el peso"
                           class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                        <app-upload-form></app-upload-form>
                       </div>
                       <br>
                       <div class="mb-3">
