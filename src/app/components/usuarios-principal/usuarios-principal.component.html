@@ -1,20 +1,43 @@
 <div class="container">
-  <div class="component">
-    <input type="text" class="form-control" id="filtro-search" name="filterPost"
-      placeholder="Ingrese el nombre que desea filtrar" [(ngModel)]="filterPost">
-    <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost" id="card-animal-principal">
-      <div class="card" id="card-animales" (click)="irAAnimal(animal.id)">
-        <div class="card-header" id="titulo-animal-principal">Nombre: {{animal.nombre}}
+  <input type="text" class="animal-buscador" name="filterPost" placeholder="Ingrese el nombre que desea filtrar"
+    [(ngModel)]="filterPost">
+  <div class="container-animales">
+    <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost">
+      <div class="animal-cont">
+        <div class="image-animal">
+          <img
+            src="https://www.centrodeinformes.com.ar/wp-content/uploads/2021/03/LXP67FGCI5CFJOEIUWDXE6NE3M-1024x627.jpg"
+            alt="">
+          <p class="animal-name" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </p>
+          <div class="animal-body">
+            <p class="animal-data">{{animal.tipo}} </p>
+            <p class="animal-data">{{animal.tamano}} </p>
+            <p class="animal-data">{{animal.sexo}} </p>
+            <p class="animal-data">{{animal.peso}} KG </p>
+          </div>
         </div>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6163cn5YzZo-mEUXuyLnevw_14Yv8rl4mwP7wnGf3BLV4lQ7KJQBm2FSYeSAtiXspcoI&usqp=CAU"
-          class="card-img-top" alt="..." id="imagen-animal-principal">
-        <div class="card-body" id="body-animal">
-          <!--{{usuario.nombre}}-->
-          <p class="card-text" id="texto-animal"><b>Dueño ID: {{animal.idDador}}</b></p>
-          <p class="card-text" id="texto-animal">Tipo: {{animal.tipo}} </p>
-        </div>
+        <!-- <p class="animal-name"></p> -->
       </div>
     </div>
+  </div>
+</div>
+
+
+<ul class="container" *ngFor="let file of fileUploads">
+  <div *ngIf="file.name === 'gato2.jpg'">
+    <li class="list-group-item">
+      <h4>Gato 2</h4>
+      <a href="{{ file.url }}"> Nombre: {{ file.name }}</a>
+      <img src="{{ file.url }}" alt="">
+      <button (click)="deleteFileUpload(fileUpload)" class="btn btn-danger btn-sm" style="float: right">
+        Delete
+      </button>
+    </li>
+  </div>
+</ul>
+
+<div class="grid-item grid-footer">
+  <div class="copyright-footer">
+    <p><b>Copyright © Adogtame </b></p>
   </div>
 </div>

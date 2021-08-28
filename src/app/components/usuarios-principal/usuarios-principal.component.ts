@@ -1,7 +1,10 @@
-import { Component, OnInit, OnDestroy, Pipe } from '@angular/core';
+import { Component, OnInit, OnDestroy, Pipe, Input } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router'
+import { FileUploadService } from 'src/app/services/file-upload.service';
+import { map } from 'rxjs/operators';
+import { FileUpload } from 'src/app/models/file-upload.model';
 
 @Component({
   selector: 'app-usuarios-principal',
@@ -10,11 +13,14 @@ import { Router } from '@angular/router'
 })
 
 export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
+  fileUploads?: any[];
+  @Input() fileUpload!: FileUpload;
 
   constructor(
 
-    private usuariosService: UsuariosService, 
-    private router: Router
+    private usuariosService: UsuariosService,
+    private router: Router,
+    private uploadService: FileUploadService
 
   ) { }
 
@@ -22,8 +28,18 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
   filterPost = '';
 
   ngOnInit(): void {
+
+    this.uploadService.getFiles(6).snapshotChanges().pipe(
+      map(changes =>
+        // store the key
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    ).subscribe(fileUploads => {
+      this.fileUploads = fileUploads;
+    });
+
     this.usuariosService.revelarBusquedaRapida = true;
-    //este dice q si esta en principal 
+    //este dice q si esta en principal
     this.usuariosService.revelarBusquedaRapida$.emit('si')
     console.log(this.usuariosService.revelarBusquedaRapida);
     this.usuariosService.listarAnimales().subscribe(
@@ -33,6 +49,7 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
       },
       err => console.log(err)
     )
+
   }
 
   ngOnDestroy(): void {
@@ -45,12 +62,14 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
 
 
   irAAnimal(id: number){
-    
+
     console.log("El id ",id)
     this.router.navigate(['usuarios/animal/',id]);
   }
 
-
+  deleteFileUpload(fileUpload: FileUpload): void {
+    this.uploadService.deleteFile(fileUpload);
+  }
 
 
 }

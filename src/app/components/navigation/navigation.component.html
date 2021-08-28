@@ -6,7 +6,7 @@
             <span class="cerrar"><i class="fas fa-chevron-left"></i><i class="fas fa-bars"></i></span>
         </label>
         <div id="sidebar" class="sidebar">
-            
+
 
             <ul id="menu">
                 <br><br>
@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse">
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="navbar-brand" style="color: white;"> </div>
-        <!-- 
+        <!--
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
                 &nbsp;
@@ -53,7 +53,7 @@
         &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
         <button class="btn btn - boton2" style="height: 35px; font-size:16px;"
             routerLink="usuarios/buscador-avanzado">Listados</button>
-   
+
         <!-- <button class="btn btn - boton2" style="width: 150px; font-size:12px;" routerLink="usuarios/listar">Lista de usuarios</button>
          -->
         <ul class="navbar-nav posicion-derecha" *ngIf="revelar==false as user; else login">
@@ -78,29 +78,29 @@
                         <!-- *ngIf="notificacion==true" -->
 
                     </a>
-                    
+
                     <div class="notificaciones-container" [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti'">
 
 
                         <div *ngIf="notificacionesInteresados.length>0; else sinNoti">
-                            
+
                             <div class="notificaciones-data" *ngFor=" let noti of notificacionesInteresados">
-                               
+
                                 <div class="notificaciones-grid-interesado">
                                     <a class="imagen-interesado-noti" (click)="irAInteresado(noti.idInteresado)">
                                         <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
                                     </a>
                                 </div>
-                               
-                                
+
+
                                 <div class="notificaciones-grid-parrafo">
 
                                     <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
                                     <label class="segundoP">{{noti.fecha_interes}}</label>
-                                    
+
 
                                 </div>
-                               
+
 
                                 <div class="notificaciones-grid-animal">
 
@@ -109,16 +109,16 @@
                                     </a>
 
                                 </div>
-                               
-                                    
+
+
 
                             </div>
-                        
+
                         </div>
 
-                        
 
-                        <ng-template #sinNoti>                            
+
+                        <ng-template #sinNoti>
                         <p>Aca aparecen las notificaciones<p>
                         </ng-template>
 
@@ -141,11 +141,9 @@
                     <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
                         <li>
 
-                            <div class="ir-a-perfil">
-                                
+                            <div class="ir-a-perfil" (click)="irAPerfil()">
                                 <img src="https://github.com/mdo.png">
-                                <a (click)="irAPerfil()"> {{Usuario.nombre}}</a>
-
+                                <a> <b>{{Usuario.nombre}} </b></a>
                             </div>
 
                         </li>
@@ -202,7 +200,7 @@
                           </li>
                           <li><a class="dropdown-item" href="/"> <i class="fas fa-sign-out-alt"> Sign out</i></a></li>
                         </ul>
-                      </div> 
+                      </div>
                 </li>
                 <li>
                 </li> -->
