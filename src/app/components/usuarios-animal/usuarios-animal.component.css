@@ -311,12 +311,10 @@ display: inline-block;
   text-align: center;
 }
 
-.animal-imagen img{
-  height: 8em;
-  width: 8em;
-  
-  border-radius: 50%;
-  object-fit: cover;
+.animal-imagen > .imagenC{}
+
+.animal-imagen p{
+  margin-left: 1.8em;
 }
 
 .animal-nombre{

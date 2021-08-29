@@ -1,13 +1,8 @@
-<!--
-<a href="{{ fileUpload.url }}"> Nombre: {{ fileUpload.name }}</a>
-<img src="{{ fileUpload.url }}" alt="">
+<div class="perfil">
+  <img src="{{ fileUpload.url }}" alt=""  *ngIf="Pertenece=='Perfil'">
 
+</div>
+<div class="buscadorA">
 
-<button (click)="deleteFileUpload(fileUpload)"
-  class="btn btn-danger btn-sm" style="float: right">
-  Delete
-</button>
--->
-
-<img src="{{ fileUpload.url }}" alt="">
-
+  <img src="{{ fileUpload.url }}" alt="" *ngIf="Pertenece=='BuscadorA'">
+</div>

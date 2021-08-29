@@ -92,6 +92,9 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   chatAbierto: boolean = false;
 
   //
+  //ubi para saber como hacer la img del firebase
+  
+  ubi: string="Perfil";
 
 
   //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
@@ -123,9 +126,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     private usuariosService: UsuariosService,
     private router: Router,
     private rutaActiva: ActivatedRoute,
-    //cesar
-    private adminService: AdminService
-    //
+
+    
   ) { }
 
   ngOnInit() {
@@ -479,6 +481,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       },
       err => console.log(err)
     );
+
+
 
 
 

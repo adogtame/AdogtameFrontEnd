@@ -100,9 +100,12 @@
         <div class="animal-cont">
           <div class="image-animal">
             <p class="animal-name" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </p>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6163cn5YzZo-mEUXuyLnevw_14Yv8rl4mwP7wnGf3BLV4lQ7KJQBm2FSYeSAtiXspcoI&usqp=CAU"
-              alt="...">
+            
+   
+            <div class="imagenC">
+              <app-upload-list class="imagenC" [AnimalID]='animal.id' [Pertenece]='ubi'></app-upload-list> 
+            </div>
+
             <div class="animal-body">
               <!--{{usuario.nombre}}-->
               <p class="animal-data"><b>Tipo:</b> {{animal.tipo}} </p>

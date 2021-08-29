@@ -240,7 +240,7 @@ ul li {
   grid-auto-flow: dense;
 
   grid-column-gap: 0em;
-  grid-row-gap: 3.5em;
+  grid-row-gap: 1.5em;
 }
 
 
@@ -257,24 +257,48 @@ ul li {
 
 
 
-
-.image-animal img{
-  width: 100%;
-  vertical-align: top;
-  align-items: center;
-  object-fit: cover;
-
-  position: absolute;
-}
-
 .image-animal{
 
   position: relative;
-  height: 10em;
-  width: 13.5em;
+  min-height: 11em;
+  min-width: 13.5em;
+  max-height: 11em;
+  max-width: 13.5em;
   /* margin-bottom: 0.5em; */
   z-index: 50;
   display: grid;
+}
+
+.imagenC{
+  min-height: 8.3em;
+  min-width: 13.5em;
+  max-height: 8.3em;
+  max-width: 13.5em;
+}
+
+.animal-body{
+  min-height: 1.2em;
+  min-width: 13.5em;
+  max-height: 1.2em;
+  max-width: 13.5em;
+  opacity: 0.8;
+  background:rgb(54, 50, 42);
+
+  transform: translatey(-.9em);
+}
+
+
+
+.animal-name{
+  cursor: pointer;
+  display: none;
+  opacity: 0.8;
+  position: relative;
+  z-index: 100;
+  min-height: 1.5em;
+  max-height: 1.5em;
+  min-width: 30%;
+  max-width: 100%;
 }
 
 /* .image-animal:after {
@@ -303,16 +327,6 @@ ul li {
   margin: none;
   position: absolute;
   transform: scale(1.2) translatey(0.7em);
-}
-
-.animal-name{
-  cursor: pointer;
-  display: none;
-  opacity: 0.8;
-  position: relative;
-  z-index: 100;
-  min-width: 30%;
-  max-width: 100%;
 }
 .animal-name b{
   margin: 0em 0.5em 0em 0.5em;
@@ -346,16 +360,6 @@ ul li {
   margin-right: 5%;
   text-align: center;
 }
-
-.animal-body{
-  height: 1.2em;
-  width: 13.5em;
-  opacity: 0.8;
-  background:rgb(54, 50, 42);
-
-  transform: translatey(9.3em);
-}
-
 
 
 .animal-data > b{

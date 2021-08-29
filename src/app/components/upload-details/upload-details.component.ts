@@ -9,6 +9,7 @@ import { FileUpload } from 'src/app/models/file-upload.model';
 })
 export class UploadDetailsComponent implements OnInit {
   @Input() fileUpload!: FileUpload;
+  @Input() Pertenece!: string;
 
   constructor(private uploadService: FileUploadService) { }
 

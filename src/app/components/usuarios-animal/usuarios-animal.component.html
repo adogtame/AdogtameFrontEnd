@@ -37,8 +37,15 @@
   <div class="grid-item grid-header">
 
     <div class="animal-imagen">
+ <!-- 
+      <app-upload-list [AnimalID]='AnimalID.id'></app-upload-list>  -->
+      
+        
+      <div class="imagenC">
+        <app-upload-list [AnimalID]='AnimalID.id' [Pertenece]='ubi'></app-upload-list> 
+      </div>
 
-      <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+      <!-- <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt=""> -->
       <p class="animal-nombre">{{Animal.nombre}}</p>
     </div>
 
@@ -80,7 +87,11 @@
                       el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
                     -->
                       <a class="imagen-interesado" (click)="irAInteresado(interesado.id)">
-                      <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
+
+
+                      <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg"> 
+
+
                       </a>
                       <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido, interesado.nro_celular)">{{interesado.nombre}} {{interesado.apellido}}</a>
 

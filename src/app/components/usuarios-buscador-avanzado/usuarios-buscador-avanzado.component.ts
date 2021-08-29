@@ -4,6 +4,10 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
 
 
+
+
+
+
 import {
   trigger,
   state,
@@ -137,6 +141,9 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
                 perroE:false, gatoE:false, criaE:false, adultoE:false, grandeE:false, medianoE:false, chicoE:false}
   
 
+
+  // ubicaion para saber el tamaño de la img
+  ubi: string="BuscadorA";
   
 
   ngOnInit(): void {
@@ -181,11 +188,10 @@ clickEnAplicar() {
        console.log(res);
      },
      err => console.log(err)
-   )
-
-
+  )
 
 }
+
 
 
 

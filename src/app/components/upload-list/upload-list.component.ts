@@ -1,5 +1,5 @@
 import { FileUpload } from './../../models/file-upload.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { map } from 'rxjs/operators';
 
@@ -9,6 +9,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./upload-list.component.css']
 })
 export class UploadListComponent implements OnInit {
+  @Input() AnimalID!: string;
+  @Input() Pertenece!: string;
+
   fileUploads?: any[];
 
 
@@ -18,7 +21,7 @@ export class UploadListComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.uploadService.getUserProfileImage().subscribe(fileUploads => {
+    this.uploadService.getUserProfileImage(this.AnimalID).subscribe(fileUploads => {
       this.fileUploads = fileUploads;
     });
 

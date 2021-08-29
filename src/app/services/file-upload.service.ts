@@ -5,8 +5,6 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { FileUpload } from '../models/file-upload.model';
-import { UsuariosService } from '../services/usuarios.service';
-import { } from '../services/usuarios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -48,19 +46,20 @@ export class FileUploadService {
   //   return this.db.list(this.basePath, ref =>
   //     ref.limitToLast(numberItems));
   // }
-  
+
   getFiles(numberItems: number): AngularFireList<FileUpload> {
     return this.db.list(this.basePath, ref =>
       ref.limitToLast(numberItems));
 
   }
 
-  getUserProfileImage() {
-    const fileName="gato1.jpg";
+  getUserProfileImage(animalID: string) {
 
+    // return this.db.list(this.basePath , ref =>
+    //   ref.orderByChild('name').equalTo('ani1.jpg')).valueChanges();
 
     return this.db.list(this.basePath , ref =>
-      ref.orderByChild('name').equalTo('gato1.jpg')).valueChanges();
+      ref.orderByChild('name').equalTo('ani'+animalID+'.jpg')).valueChanges();
 
   }
 

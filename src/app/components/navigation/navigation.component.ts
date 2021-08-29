@@ -211,6 +211,9 @@ export class NavigationComponent implements OnInit {
 
 
 		
+
+
+		
 	}
 
 	irAInteresado(idInteresado: string) {
