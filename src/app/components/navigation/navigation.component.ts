@@ -168,6 +168,7 @@ export class NavigationComponent implements OnInit {
 						//despues de hacer este emit, porq aca es donde cargo al usuario
 						
 
+						
 						//
 						this.cargoID=true;
 						//
