@@ -30,7 +30,10 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <a class="navbar-brand" routerLink="usuarios/principal">
+
+       
         <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
+
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,13 +139,20 @@
                 <div class="btn-group dropdown">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" class="img-navbar">
+                        
+                        <div class="imagenC1"  *ngIf="cargoID==true">
+                            <app-upload-list [sujetoID]='Usuario.id' [Pertenece]='ubi'></app-upload-list> 
+                        </div>
+                        <!-- <img src="https://github.com/mdo.png" class="img-navbar"> -->
                     </a>
                     <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
                         <li>
 
                             <div class="ir-a-perfil" (click)="irAPerfil()">
-                                <img src="https://github.com/mdo.png">
+                                <div class="imagenC2"  *ngIf="cargoID==true">
+                                    
+                                    <app-upload-list [sujetoID]='Usuario.id ' [Pertenece]='ubi2'></app-upload-list> 
+                                </div>
                                 <a> <b>{{Usuario.nombre}} </b></a>
                             </div>
 

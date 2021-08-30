@@ -36,8 +36,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   // statusAnimales = 'Disable';
 
-
-
+  //firebase
+  ubi: string="PerfilU";
+  //
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
 

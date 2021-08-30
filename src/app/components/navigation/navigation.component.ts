@@ -69,6 +69,10 @@ export class NavigationComponent implements OnInit {
 	token: any = "";
 	UsuarioID: any = { user: "No logueado" };
 	Usuario: any = [];
+
+	idUsuario: string = "";
+
+
 	TokenJSON = { token: "" };
 	//Revela y oculta botones si esta logueado el usuario
 	revelar: boolean = false;
@@ -80,6 +84,16 @@ export class NavigationComponent implements OnInit {
 	notificacion: boolean = false;
 	isOpenNoti: boolean = false;
 	notificacionesInteresados: any = [];
+
+
+
+
+	//ubi para saber como hacer la img del firebase
+	
+	ubi: string="PerfilNav";
+	ubi2: string="PerfilNav2";
+	cargoID: boolean=false;
+	//
 
 
 
@@ -150,10 +164,13 @@ export class NavigationComponent implements OnInit {
 						this.Usuario = res
 						console.log("Este es el id dasdasdsa", this.Usuario);
 						this.usuariosService.user.id = this.Usuario.id;
-
 						//Hay q mejorar esto, lo q hago es cargar el componente (Animal) 
 						//despues de hacer este emit, porq aca es donde cargo al usuario
 						
+
+						
+						//
+						this.cargoID=true;
 						//
 						
 

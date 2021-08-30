@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./upload-list.component.css']
 })
 export class UploadListComponent implements OnInit {
-  @Input() AnimalID!: string;
+  @Input() sujetoID!: string;
   @Input() Pertenece!: string;
 
   fileUploads?: any[];
@@ -21,9 +21,26 @@ export class UploadListComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.uploadService.getUserProfileImage(this.AnimalID).subscribe(fileUploads => {
-      this.fileUploads = fileUploads;
-    });
+    
+    if(this.Pertenece=="PerfilU" || this.Pertenece=="PerfilNav" || this.Pertenece=="PerfilNav2"){
+
+      console.log("Pertenece a ", this.Pertenece)
+      console.log("El usuario es", this.sujetoID)
+
+      this.uploadService.getUserProfileImage(this.sujetoID).subscribe(fileUploads => {
+        this.fileUploads = fileUploads;
+      });
+    }
+    else
+    {
+
+      this.uploadService.getAnimalProfileImage(this.sujetoID).subscribe(fileUploads => {
+        this.fileUploads = fileUploads;
+      });
+  
+    }
+
+
 
 
 

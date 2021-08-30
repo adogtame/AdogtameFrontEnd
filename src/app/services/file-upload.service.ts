@@ -53,10 +53,20 @@ export class FileUploadService {
 
   }
 
-  getUserProfileImage(animalID: string) {
+
+  
+  getUserProfileImage(userID: string) {
 
     // return this.db.list(this.basePath , ref =>
     //   ref.orderByChild('name').equalTo('ani1.jpg')).valueChanges();
+
+    return this.db.list(this.basePath , ref =>
+      ref.orderByChild('name').equalTo('per'+userID+'.jpg')).valueChanges();
+
+  }
+
+
+  getAnimalProfileImage(animalID: string) {
 
     return this.db.list(this.basePath , ref =>
       ref.orderByChild('name').equalTo('ani'+animalID+'.jpg')).valueChanges();

@@ -1,6 +1,15 @@
 
-  
 
+.imagenC1{
+    
+  display: inline-block;
+}
+.imagenC2{
+    
+    display: inline-block;
+    margin-left: .5em;
+    margin-right: .4em;
+  }
 
 #logout{
     cursor: pointer;
