@@ -1,0 +1,9 @@
+body{
+  background-image:url(src\assets\img\registro.png);
+}
+
+.errorField {
+	color: red;
+	font-size: 0.8rem;
+	font-family: Verdana;
+}

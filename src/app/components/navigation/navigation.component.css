@@ -1,0 +1,385 @@
+
+.imagenC1{
+    
+  display: inline-block;
+}
+.imagenC2{
+    
+    display: inline-block;
+    margin-left: .5em;
+    margin-right: .4em;
+  }
+
+#logout{
+    cursor: pointer;
+}
+
+
+#perfil {
+    cursor: pointer;
+}
+
+.boton{
+    font-size:14px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:rgb(12, 161, 37);
+    border:0px;
+    width:140px;
+    height:40px;
+}
+
+.boton2{
+    font-size:12px;
+    font-weight:bold;
+    color:white;
+    background:rgb(128, 49, 12);
+    border:0px;
+    width:104px;
+    height:30px;
+}
+
+
+#menu {
+    float:center;
+    left:50%;
+    list-style-type:none;
+    margin:0 auto;
+    padding:0;
+    position:relative;
+    
+}
+   
+#menu li {
+    float:center;
+    position:relative;
+    right:50%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    font-size:100%;
+    margin:0;
+    padding:0;
+}
+
+
+input#abrir-cerrar {
+    visibility:hidden;
+    position: absolute;
+    top: -9999px;
+}
+
+
+.cerrar {
+    display:none;
+}
+
+#sidebar {
+    width:0;
+}
+
+#contenido {
+    margin-left:0;
+}
+
+input#abrir-cerrar:checked ~ #sidebar {
+    width:200px;
+}
+
+input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
+    margin-left:200px;
+    transition: margin-left .4s;
+}
+
+
+input#abrir-cerrar:checked + label[for="abrir-cerrar"] .cerrar {
+    display:inline;
+}
+
+input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
+    display:none;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #FAE2D7;
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding: 1rem 0;
+    box-sizing:border-box;
+    border:  rgb(175, 170, 167) 1px solid;
+}
+
+.sidebar .boton-cerrar {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    display: block;
+    padding: 0;
+    line-height: 1.5rem;
+    margin: 0;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+}
+
+.sidebar ul, .sidebar li{
+    margin:0;
+    padding:0;
+    list-style:none inside;
+}
+
+.sidebar ul {
+    margin: 4rem auto;
+    display: block;
+    width: 80%;
+    min-width:200px;
+}
+
+.sidebar a {
+    display: block;
+    font-size: 120%;
+    color: #eee;
+    text-decoration: none;
+    
+}
+
+.sidebar a:hover{
+    color:#fff;
+    background-color: #f90;
+
+}
+
+h1 {
+    color:#f90;
+    font-size:180%;
+    font-weight:normal;
+}
+#contenido {
+    transition: margin-left .4s;
+    padding: 1rem;
+}
+
+.abrir-cerrar {
+    color: #2E88C7;
+    font-size:1rem;   
+}
+
+.navbar {
+    background-color: #FAE2D7;
+    border: rgb(175, 170, 167) 1px solid;
+    
+    /*El :root no funciona en angular asiq creo las variables aca*/
+    --circulo-boton-nav: 2.5em;
+    width: 100vw;
+  
+}
+
+.posicion-derecha{
+    position: absolute;
+    right: 0px;
+    margin-right: 1.5em;
+}
+
+.dropdown-menu.pull-left {
+    left:auto;
+    right:0;
+}
+
+.img-navbar{
+
+    border-radius: 50%;
+    width: var(--circulo-boton-nav);
+    height: var(--circulo-boton-nav);
+    object-fit: cover;
+
+}
+
+
+
+
+.botonCampana{
+    
+    background-color: rgb(209, 209, 209); 
+    width: var(--circulo-boton-nav);
+    height: var(--circulo-boton-nav);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 1em;
+}
+
+#campanita-icon{
+    font-size: 1.5em;
+    transform: translate(-0.12em, 0em);
+}
+
+
+
+#alert-icon{
+    font-size: 1.2em;
+    color: rgb(214, 52, 52);
+    transform: translate(0.9em, -2.1em);
+}
+
+
+#info-icon{
+    font-size: 1.5em;
+    transform: translate(0em, 0em);
+}
+
+
+
+.notificaciones-container {
+    display: none;
+    position: absolute;
+    background-color: #e5d6be;
+    min-width: 25em;
+    max-width:25em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 70vh;
+    margin-top: 0.2em;
+
+    right: 9em;
+    
+
+    overflow: auto; 
+}
+
+.notificaciones-data:hover{
+    
+    background-color: #d4c3a8;
+
+}
+
+.notificaciones-container p{
+
+    margin-top: 5em;
+    text-align: center;
+
+}
+
+.notificaciones-data {
+  display: grid; 
+  grid-template-areas: 
+  "interesado parrafo animal";
+  grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+
+.notificaciones-grid-interesado{
+    grid-area: interesado;
+    
+}
+  
+.notificaciones-grid-parrafo{    
+    grid-area: parrafo;
+}  
+
+.notificaciones-grid-animal{    
+    grid-area: animal;
+}
+
+.notificaciones-data label{
+    font-size: 0.9em;
+}
+
+.notificaciones-grid-parrafo > .primeroP{
+    margin-top: 0.5em;
+}
+
+.notificaciones-grid-parrafo > .segundoP{
+    transform: translatey(-1em);
+}
+
+.imagen-interesado-noti img{
+
+    left: 0;
+    height: 2.6em;
+    width: 2.6em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.imagen-animal-noti img{
+
+    right: 0;
+    height: 2.6em;
+    width: 2.6em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.ir-a-perfil{
+
+    cursor: pointer;
+    height: 2.5em;
+    padding: 0.3em 0em 0.3em 0em;
+
+}
+
+
+.ir-a-perfil img{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    margin-left: 1em;
+    margin-right: 0.4em;
+
+}
+
+.ir-a-perfil a{
+
+    color: black;
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+.ir-a-perfil:hover{
+
+    background-color: rgba(192, 192, 192, 0.424);
+
+}
+
+
+
+@media screen and (max-width: 750px) {
+  
+
+  
+}
+  
+  
+  
+
+
+
+
+
+
+
+
+

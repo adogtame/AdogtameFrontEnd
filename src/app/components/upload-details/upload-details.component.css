@@ -1,0 +1,35 @@
+.perfil img{
+  height: 8em;
+  width: 8em;
+    
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.buscadorA img{
+  min-height: 8.3em;
+  min-width: 13.5em;
+  max-height: 8.3em;
+  max-width: 13.5em;
+  vertical-align: top;
+  align-items: center;
+  object-fit: cover;
+  position: relative;
+}
+
+.miniNav img{
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.miniNav2 img{
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+

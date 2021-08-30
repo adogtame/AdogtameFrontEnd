@@ -1,0 +1,82 @@
+<div class="component" *ngIf="revelar">
+    <div class="col-md-4" *ngFor=" let usuario of usuarios">
+        <!--{{usuario.nombre}}-->
+        <p *ngIf="usuario.tipo_perfil=='administrador'; else user">{{usuario.nombre}} <b>es el admin ;)</b></p>
+        <ng-template #user>
+
+             <a (click)="irAPerfil(usuario.id)">
+                {{usuario.nombre}} 
+            </a>
+
+            <b>es el user :D</b></ng-template>
+    </div>   
+</div>
+<table border="1">
+    <thead>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>password</th>
+        <th>Accion</th>
+    </thead>
+    <tbody *ngIf="usuarios.length > 0; else fila">
+        <tr *ngFor=" let usuario of usuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.password}}</td>
+            <td><a class="btn btn-danger" href="/user/delete/{{usuario.id}}">Eliminar</a></td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+<br>
+<form action="../user/procesar" method="post">
+    <table border="1">
+        <thead>
+            <th>Accion</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>password</th>
+        </thead>
+        <tbody *ngIf="usuarios.length > 0; else fila">
+            <tr *ngFor=" let usuario of usuarios">
+                <td>
+                    <input type="checkbox" name="usuario" value="{{usuario.id}}">
+                </td>
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.password}}</td>
+            </tr>
+        </tbody>
+        <ng-template #fila>
+            <tbody>
+                <tr>
+                    <td colspan="4">No hay mas filas</td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+    <button class="">Enviar</button>
+</form>
+<br>
+<br>
+<br>
+<div class="component" *ngIf="revelar">
+    <div class="col-md-4" *ngFor=" let animal of animales">
+        <!--{{usuario.nombre}}-->
+        <p>Nombre: 
+            
+            <a (click)="irAAnimal(animal.id)">
+                
+                {{animal.nombre}} 
+            </a>
+            
+        <b>DueñoID: {{animal.idDador}} </b> Tipo: {{animal.tipo}} </p>
+       
+    </div>   
+</div>
