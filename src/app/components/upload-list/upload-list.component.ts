@@ -21,6 +21,7 @@ export class UploadListComponent implements OnInit {
 
   ngOnInit(): void {
     
+    
     if(this.Pertenece=="PerfilU" || this.Pertenece=="PerfilNav" || this.Pertenece=="PerfilNav2"){
 
       console.log("Pertenece a ", this.Pertenece)
