@@ -17,8 +17,8 @@ import {
   state,
   style,
   animate,
-  transition,  
-  
+  transition,
+
   query,
   sequence,
   stagger,
@@ -34,19 +34,19 @@ import {
 
 
     trigger('clickContent', [
-      state('noShow', 
-        style({ 
-         
+      state('noShow',
+        style({
+
           display: 'none',
           height: '0px',
           opacity: 0.6
 
         })
       ),
-      state('show', 
-        style({ 
-         display: 'block', 
-         
+      state('show',
+        style({
+         display: 'block',
+
          'min-height':'80px',
 
 
@@ -71,17 +71,17 @@ import {
 })
 export class UsuariosHomeComponent implements OnInit{
 
- 
- 
+
+
 
   constructor(
 
-    
+
   ) { }
 
   ngOnInit() {
 
-    
+
   }
 
 
@@ -91,12 +91,12 @@ export class UsuariosHomeComponent implements OnInit{
 
 
 
-    
+
   }
 
 
-  
-  
+
+
 
 
 

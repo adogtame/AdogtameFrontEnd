@@ -1,11 +1,6 @@
 import { Component, OnInit, HostBinding   } from '@angular/core';
-
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
-
-
-
-
 
 
 import {
@@ -13,8 +8,8 @@ import {
   state,
   style,
   animate,
-  transition,  
-  
+  transition,
+
   query,
   sequence,
   stagger,
@@ -31,18 +26,18 @@ export class AppModule { }
 
 
     // trigger('clickContent', [
-    //   state('noShow', 
-    //     style({ 
-          
+    //   state('noShow',
+    //     style({
+
     //       display: 'none',
     //       height: '0px',
     //       opacity: 0.6
 
     //     })
     //   ),
-    //   state('show', 
-    //     style({ 
-    //       display: 'block', 
+    //   state('show',
+    //     style({
+    //       display: 'block',
     //       height: '280px',
     //       opacity: 1
     //      })
@@ -56,27 +51,27 @@ export class AppModule { }
     // ]),
 
 
-    
+
 
     // trigger('clickBTN', [
-    //   state('sube', 
-    //     style({ 
-          
+    //   state('sube',
+    //     style({
+
 
     //       'margin-top':'0px'
 
     //     })
     //   ),
-    //   state('baja', 
-    //     style({ 
-          
+    //   state('baja',
+    //     style({
+
     //       'margin-top':'240px'
 
     //      })
     //   ),
     //   transition('sube => baja', [
     //     animate('0.3s')
-    //   ]), 
+    //   ]),
     //   transition('baja => sube', [
     //     animate('0.3s')
     //   ])
@@ -98,7 +93,7 @@ export class AppModule { }
           ])
         ])
       ]),
-    
+
       transition(":leave", [
         style({ height: "*", overflow: "hidden" }),
         query(".menu-item", [style({ opacity: 1, transform: "none" })]),
@@ -124,14 +119,14 @@ export class AppModule { }
 export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
   constructor(
-    private usuariosService: UsuariosService, 
+    private usuariosService: UsuariosService,
     private router: Router
   ) { }
 
   animales: any = [];
   filterPost = '';
 
-  
+
 
   //
   isOpenFiltro = false;
@@ -139,12 +134,12 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
   //
   filtroAplica={perroF:false, gatoF:false, criaF:false, adultoF:false, grandeF:false, medianoF:false, chicoF:false,
                 perroE:false, gatoE:false, criaE:false, adultoE:false, grandeE:false, medianoE:false, chicoE:false}
-  
+
 
 
   // ubicaion para saber el tamaño de la img
   ubi: string="BuscadorA";
-  
+
 
   ngOnInit(): void {
 
@@ -160,7 +155,7 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
 
   irAAnimal(id: number){
-    
+
     console.log("El id ",id)
     this.router.navigate(['usuarios/animal/',id]);
   }
@@ -174,11 +169,11 @@ toggle between hiding and showing the dropdown content */
 
 
 clickEnAplicar() {
-  
-  //Tengo q ver si haciendo un for con animales puedo hacer 
+
+  //Tengo q ver si haciendo un for con animales puedo hacer
   //lo de los filtros sin tener q pegarle a la base cada vez
-  
-  
+
+
 
   console.log("filtroAplica", this.filtroAplica);
 

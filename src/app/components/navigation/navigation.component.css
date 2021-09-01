@@ -1,11 +1,11 @@
 
 
 .imagenC1{
-    
+
   display: inline-block;
 }
 .imagenC2{
-    
+
     display: inline-block;
     margin-left: .5em;
     margin-right: .4em;
@@ -37,9 +37,22 @@
     color:white;
     background:rgb(128, 49, 12);
     border:0px;
-    width:104px;
+    width:130px;
     height:30px;
 }
+
+.boton3{
+  font-size:12px;
+  font-weight:bold;
+  color:white;
+  background:rgb(128, 49, 12);
+  border:0px;
+  width:110px;
+  height:30px;
+  margin-left: 70px;
+}
+
+
 
 
 #menu {
@@ -49,9 +62,9 @@
     margin:0 auto;
     padding:0;
     position:relative;
-    
+
 }
-   
+
 #menu li {
     float:center;
     position:relative;
@@ -154,7 +167,7 @@ input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
     font-size: 120%;
     color: #eee;
     text-decoration: none;
-    
+
 }
 
 .sidebar a:hover{
@@ -175,17 +188,17 @@ h1 {
 
 .abrir-cerrar {
     color: #2E88C7;
-    font-size:1rem;   
+    font-size:1rem;
 }
 
 .navbar {
     background-color: #FAE2D7;
     border: rgb(175, 170, 167) 1px solid;
-    
+
     /*El :root no funciona en angular asiq creo las variables aca*/
     --circulo-boton-nav: 2.5em;
     width: 100vw;
-  
+
 }
 
 .posicion-derecha{
@@ -212,8 +225,8 @@ h1 {
 
 
 .botonCampana{
-    
-    background-color: rgb(209, 209, 209); 
+
+    background-color: rgb(209, 209, 209);
     width: var(--circulo-boton-nav);
     height: var(--circulo-boton-nav);
     border-radius: 50%;
@@ -254,13 +267,13 @@ h1 {
     margin-top: 0.2em;
 
     right: 9em;
-    
 
-    overflow: auto; 
+
+    overflow: auto;
 }
 
 .notificaciones-data:hover{
-    
+
     background-color: #d4c3a8;
 
 }
@@ -273,8 +286,8 @@ h1 {
 }
 
 .notificaciones-data {
-  display: grid; 
-  grid-template-areas: 
+  display: grid;
+  grid-template-areas:
   "interesado parrafo animal";
   grid-template-rows: repeat(auto-fill, 1fr);
 }
@@ -282,14 +295,14 @@ h1 {
 
 .notificaciones-grid-interesado{
     grid-area: interesado;
-    
-}
-  
-.notificaciones-grid-parrafo{    
-    grid-area: parrafo;
-}  
 
-.notificaciones-grid-animal{    
+}
+
+.notificaciones-grid-parrafo{
+    grid-area: parrafo;
+}
+
+.notificaciones-grid-animal{
     grid-area: animal;
 }
 
@@ -368,13 +381,13 @@ h1 {
 
 
 @media screen and (max-width: 750px) {
-  
 
-  
+
+
 }
-  
-  
-  
+
+
+
 
 
 

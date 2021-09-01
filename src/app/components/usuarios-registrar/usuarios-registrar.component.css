@@ -1,9 +1,16 @@
-body{
-  background-image:url(src\assets\img\registro.png);
+.image{
+  background-image:url(https://t1.ea.ltmcdn.com/es/images/8/1/2/adoptar_mascotas_por_internet_1218_600.jpg);
+  background-repeat:repeat;
 }
 
 .errorField {
 	color: red;
 	font-size: 0.8rem;
 	font-family: Verdana;
+}
+
+.copyright-footer{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1em;
 }

@@ -210,7 +210,7 @@ Registrar animal boton
 }
 
 
-.ani-item p{  
+.ani-item p{
   padding: 0.3em 0.2em;
   display: block;
   margin-bottom: 1em;
@@ -262,11 +262,15 @@ Registrar animal boton
 .eliminar-pendiente{
   color: rgb(82, 15, 15);
   background-color: rgb(230, 62, 62);
-  
+
 }
 
 
 .ani-int-pointer{
   cursor: pointer;
   display: inline-block;
+}
+
+.pointer{
+  cursor: pointer;
 }

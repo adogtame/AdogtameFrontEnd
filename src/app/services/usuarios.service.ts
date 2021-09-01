@@ -29,12 +29,12 @@ export class UsuariosService {
 	revelarBusquedaRapida: boolean = false;
 
 	user = { id: ""};
-	
 
-	
-  //Una cagada pero tengo q hacer estos emitt porq sino la base dice 
+
+
+  //Una cagada pero tengo q hacer estos emitt porq sino la base dice
   //q hay demasiadas cosas cargando al mismo tiempo
-  
+
   //Componente usuarios-animal
 	cargarAnimalDatos$ = new EventEmitter<string>();
 	cargarAnimalIntereses$ = new EventEmitter<string>();
@@ -57,12 +57,12 @@ export class UsuariosService {
 	notificaciones$ = new EventEmitter<string>();
 
 	notificacionesListarInteresadosDeAnimalNoVistos(id: string) {
-		
+
 		//Buscar los id de los animales del usuario logueado
 		return this.http.get(`${this.API_URI}/notificacionesListarInteresadosDeAnimalNoVistos/${id}`);
-		
+
 	}
-	
+
 	//
 
 
@@ -86,7 +86,7 @@ export class UsuariosService {
 	listarAnimalesFiltrado(filtro: any) {
 		//para expandir/especializar las variables usamos ` y no ' o "
 		//Las variables salen pintadas de otro color diferente del de texto
-		
+
 		console.log({message:"filtro: ", filtro});
 		return this.http.post(`${this.API_URI}/listAnimalsFiltrado`, filtro);
 		//si no funciona usar
@@ -131,7 +131,7 @@ export class UsuariosService {
 		return this.http.post(`${this.API_URI}/signup`, usuario);
 
 	}
-	
+
 	verificar(token: any) {
 		return this.http.get(`${this.API_URI}/confirmar/${token}`);
 	}
@@ -160,11 +160,11 @@ export class UsuariosService {
 
 	//Sacar el estado del Animal
 
-	
+
 	estadoAnimal(idAnimal: string) {
-		
+
 		return this.http.get(`${this.API_URI}/estadoAnimal/${idAnimal}`);
-		
+
 	}
 
 	//
@@ -185,7 +185,7 @@ export class UsuariosService {
 
 
 	cargarInteresados(idAnimal: string) {
-		
+
 		console.log("cargarInteresados ");
 		return this.http.get(`${this.API_URI}/cargarInteresados/${idAnimal}`);
 	}
@@ -199,10 +199,12 @@ export class UsuariosService {
 	}
 
 	siguiendoAnimales(idUsuario: string) {
-		
+
 		console.log("cargar animales siguiendo");
 		return this.http.get(`${this.API_URI}/siguiendoAnimales/${idUsuario}`);
 	}
+
+
 
 	//
 
