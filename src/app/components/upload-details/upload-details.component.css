@@ -1,7 +1,7 @@
 .perfil img{
   height: 8em;
   width: 8em;
-    
+
   border-radius: 50%;
   object-fit: cover;
 }
@@ -15,6 +15,11 @@
   align-items: center;
   object-fit: cover;
   position: relative;
+}
+
+.buscadorHome img{
+  height: 100%;
+  width: 100%;
 }
 
 .miniNav img{

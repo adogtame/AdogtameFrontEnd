@@ -23,8 +23,8 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
     private uploadService: FileUploadService
 
   ) { }
-
   animales: any = [];
+  ubi: string="BuscadorHome";
   filterPost = '';
 
   ngOnInit(): void {

@@ -1,40 +1,16 @@
 <div class="container">
   <input type="text" class="animal-buscador" name="filterPost" placeholder="Ingrese el nombre que desea filtrar"
     [(ngModel)]="filterPost">
-  <div class="container-animales">
-    <div class="col-md-4" *ngFor=" let animal of animales | filter:filterPost">
-      <div class="animal-cont">
-        <div class="image-animal">
-          <img
-            src="https://www.centrodeinformes.com.ar/wp-content/uploads/2021/03/LXP67FGCI5CFJOEIUWDXE6NE3M-1024x627.jpg"
-            alt="">
-          <p class="animal-name" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </p>
-          <div class="animal-body">
-            <p class="animal-data">{{animal.tipo}} </p>
-            <p class="animal-data">{{animal.tamano}} </p>
-            <p class="animal-data">{{animal.sexo}} </p>
-            <p class="animal-data">{{animal.peso}} KG </p>
-          </div>
-        </div>
-        <!-- <p class="animal-name"></p> -->
-      </div>
+  <div class="col-md-12" *ngFor=" let animal of animales | filter:filterPost" (click)="irAAnimal(animal.id)">
+    <div class="image-animal">
+      <p class="animal-name" ><b>{{animal.nombre}}</b> </p>
+      <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi'></app-upload-list>
+        <p class="datos">│ Tipo: {{animal.tipo}}. │  │ Tamaño: {{animal.tamano}}. │  │ Sexo: {{animal.sexo}}. │ │ Peso: {{animal.peso}} KG │</p>
     </div>
   </div>
 </div>
 
 
-<ul class="container" *ngFor="let file of fileUploads">
-  <div *ngIf="file.name === 'gato2.jpg'">
-    <li class="list-group-item">
-      <h4>Gato 2</h4>
-      <a href="{{ file.url }}"> Nombre: {{ file.name }}</a>
-      <img src="{{ file.url }}" alt="">
-      <button (click)="deleteFileUpload(fileUpload)" class="btn btn-danger btn-sm" style="float: right">
-        Delete
-      </button>
-    </li>
-  </div>
-</ul>
 
 <div class="grid-item grid-footer">
   <div class="copyright-footer">
