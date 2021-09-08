@@ -22,6 +22,11 @@
   width: 100%;
 }
 
+.buscadorAdoptados img{
+  height: 350px;
+  width: 500px;
+}
+
 .miniNav img{
   height: 40px;
   width: 40px;

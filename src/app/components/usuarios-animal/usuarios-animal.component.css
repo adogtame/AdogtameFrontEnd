@@ -1,28 +1,99 @@
+.backdrop{
+  background-color:rgba(0,0,0,0.6);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  }
+
+  .modal-content{
+    margin-top: 25%;
+  }
+
+  .modal-header{
+    background-color:  rgb(250, 218, 170);
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+  .modal-body{
+    background-color: blanchedalmond;
+
+  }
+
+  .modal-footer{
+    background-color: rgb(248, 232, 205);
+
+  }
+
+#input-modal-medico{
+  width: 50px;
+}
+
+#parrafo-modal-medico{
+  font-size: 22px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+label{
+  font: bolder;
+  font-size: 26px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-left: 15px;
+}
+
+.list-group-item{
+  font: bolder;
+  font-size: 24px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: blanchedalmond;
+}
+
+.list-group-item:hover{
+background-color: burlywood;
+}
+
+#tamano-check{
+  width: 30px;
+  height: 30px;
+  margin-left: 0.2px;
+}
+
+#text-check{
+  padding-left: 50px;
+}
 
 
+#text-radio{
+  font: bolder;
+  font-size: 24px !important;
+  font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
 
+#inlineRadio2{
+  width: 30px;
+  height: 30px;
+}
 
-
-/*
-
-Este es otro spinner
-
-*/
-
+#inlineRadio1{
+  margin-left: 30px !important;
+  width: 30px;
+  height: 30px ;
+}
 
 .paw {
   width:100px;
   height:100px;
   position: relative;
-  border-radius: 50%;  
-}  
+  border-radius: 50%;
+}
 
 .paw:before,
 .paw:after {
   position: absolute;
   z-index: 10;
 }
-  
+
 .paw:before {
   content:'';
   display:block;
@@ -59,7 +130,7 @@ Este es otro spinner
   position: absolute;
   z-index: 10;
 }
-    
+
 .inner:before {
   content:'';
   display:block;
@@ -83,7 +154,7 @@ Este es otro spinner
   top:32%;
   transform:rotate(30deg)
 }
-  
+
 
 .bottom {
   width: 48%;
@@ -106,7 +177,7 @@ Este es otro spinner
   border-radius: 55% 105% 68% 79% / 60% 60% 29% 50%;
   z-index: 1000;
 }
-  
+
 .bottom:after {
   content:'';
   position: absolute;
@@ -120,28 +191,28 @@ Este es otro spinner
 }
 
 .rot1 {
-   
+
   transform:rotate(90deg);
-    
+
   animation: rot1 3s infinite;
 
   animation-delay: 1s;
   visibility: hidden;
 }
-  
+
 .rot2 {
-   
+
   transform:rotate(90deg);
-    
+
   animation: rot1 3s infinite;
   animation-delay: 1.5s;
   visibility: hidden;
 }
 
 .rot3 {
-   
+
   transform:rotate(90deg);
-    
+
   animation: rot1 3s infinite;
   animation-delay: 2s;
   visibility: hidden;
@@ -159,7 +230,7 @@ Este es otro spinner
   100% {
     visibility: hidden;
     opacity: 0;
-  } 
+  }
 
 
 }
@@ -176,7 +247,7 @@ Este es otro spinner
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 2s, opacity 2s linear;
-  } 
+  }
 
 
 }
@@ -193,7 +264,7 @@ Este es otro spinner
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 2s, opacity 2s linear;
-  } 
+  }
 
 
 }
@@ -208,7 +279,7 @@ Este es otro spinner
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 
@@ -218,7 +289,7 @@ Este es otro spinner
 
 FIN spinner
 
-distinto al q se muestra en toda la pag, este solo se muestra aca, 
+distinto al q se muestra en toda la pag, este solo se muestra aca,
 se podira cambiar al stylecss para q sea general
 
 */
@@ -237,7 +308,7 @@ se podira cambiar al stylecss para q sea general
 .grid-container{
   margin: 1em;
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
   "header header header"
   "subheader subheader subheader"
   "animalMain animalMain animalMain"
@@ -255,13 +326,13 @@ display: inline-block;
 .grid-header{
   height: 12em;
   grid-area: header;
-  
 
-  
+
+
 }
 
 .grid-subheader{
-  
+
   grid-area: subheader;
 
   margin: 0em 10em;
@@ -272,33 +343,33 @@ display: inline-block;
 }
 
 .grid-animalMain{
-  
+
   margin: 2em 10em 4em;
-  
+
   min-height: 20em;
   grid-area: animalMain;
 
-  
+
 }
 
 .grid-comentarios{
-  
+
   min-height: 10em;
   grid-area: comentarios;
 
 
-  
+
 }
 
 
 .grid-footer{
-  
-  
+
+
   height: 2em;
   grid-area: footer;
 
 
-  
+
 }
 
 
@@ -348,7 +419,7 @@ display: inline-block;
 }
 
 .interesado-data{
-  padding:0.6em 0.6em 0.6em 0.25em;  
+  padding:0.6em 0.6em 0.6em 0.25em;
   text-align: left;
   border-bottom: 0.05em solid rgba(185, 175, 175, 0.685);
 }
@@ -366,7 +437,7 @@ display: inline-block;
   margin-bottom: 0.04em;
 }
 
-.dador-text{ 
+.dador-text{
   transform: translate(0.75em, 0.1em);
 }
 
@@ -379,16 +450,16 @@ display: inline-block;
 
 .patita-dador > .paw {
 
-  border-radius: 50%;  
-}  
+  border-radius: 50%;
+}
 
 .patita-dador > .paw:before {
- 
+
   background:black;
 }
 
 .patita-dador > .paw:after {
-  
+
   background:black;
 }
 
@@ -399,10 +470,10 @@ display: inline-block;
 }
 
 .patita-dador > .paw > .inner:after {
- 
+
   background:black;
 }
-  
+
 
 .patita-dador > .paw > .bottom {
 
@@ -413,7 +484,7 @@ display: inline-block;
 
   background: black;
 }
-  
+
 .patita-dador > .paw > .bottom:after {
 
   background: black;
@@ -445,12 +516,12 @@ display: inline-block;
   border:0px;
 
   clip-path: polygon(100% 0%, 93% 50%, 100% 100%, 12% 100%, 0% 50%, 12% 0%);
-  
+
   width: 12em;
   height: 2.5em;
 
   margin-left: 0.8em;
-  
+
   margin-bottom: 0.3em;
 
 
@@ -466,12 +537,12 @@ display: inline-block;
 
 
   height: 2.5em;
- 
+
   margin-top: 0.04em;
 }
 
 .interes-mostrado-text{
-  
+
   font-size:0.9em;
   transform: translatey(-0.12em);
 }
@@ -493,10 +564,10 @@ display: inline-block;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   max-height:260px;
-  overflow: auto; 
+  overflow: auto;
 }
 .interesados-dropdown-content label {
-  
+
   color: black;
   text-decoration: none;
   display: inline-block;
@@ -505,21 +576,21 @@ display: inline-block;
 
 .interesados-dropdown-content label:hover {
   color: rgb(122, 119, 95)
-  
+
 }
 
 
 .show {
-  
-  
 
-  display:block; 
-  
+
+
+  display:block;
+
 }
 
 .noShow {
-  
-  
+
+
   display:none;
 
 }
@@ -580,13 +651,13 @@ FIN Diseño de dropdown
 .animal-main{
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  
+
   grid-auto-columns: 1fr;
 
 }
 
 .grid-main-item{
-  
+
   padding: 2em;
 }
 
@@ -595,16 +666,16 @@ FIN Diseño de dropdown
 
 }
 
-.animal-datos > .data-item{ 
+.animal-datos > .data-item{
   color: #000;
-  
+
   display: block;
   padding: 0.8em 0em 0.8em 0.5em;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .data-item span{
- 
+
   cursor: context-menu;
   color: rgb(117, 73, 44);
   position: relative;
@@ -618,19 +689,19 @@ FIN Diseño de dropdown
   color: rgb(41, 112, 65);
 }
 
-.data-1:hover { 
+.data-1:hover {
   border-radius: 0.2em;
   background-color: rgb(212, 212, 212);
- 
+
 }
-.data-2:hover { 
+.data-2:hover {
   border-radius: 0.2em;
   background-color: rgb(173, 173, 173);
- 
+
 }
 
 .data-estado{
-  
+
   font-size: 1.1em;
   margin-top: 2em;
   padding: 0.8em 0em 0.8em 0.5em;
@@ -638,7 +709,7 @@ FIN Diseño de dropdown
 }
 
 .animal-datos > .data-estado b{
- 
+
   cursor: context-menu;
 
 }
@@ -651,7 +722,7 @@ FIN Diseño de dropdown
 }
 
 .botonDatosMedicos {
-  background-color: #67b4d8; 
+  background-color: #67b4d8;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -659,7 +730,7 @@ FIN Diseño de dropdown
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  
+
 
 }
 
@@ -673,8 +744,9 @@ FIN Diseño de dropdown
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
+  font-size: 24px;
   cursor: pointer;
+
 }
 
 
@@ -685,13 +757,13 @@ FIN Diseño de dropdown
 
 
 .botonEstadoPendiente{
-  background-color: #cfc174; 
+  background-color: #cfc174;
   border: none;
   padding: 0.3px 44px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
+  font-size: 24px;
   color: rgb(71, 56, 28);
   cursor: pointer;
 
@@ -699,41 +771,40 @@ FIN Diseño de dropdown
 
 
 .botonEstadoPendiente:hover{
-  background-color: #a39858; 
+  background-color: #a39858;
   color: rgb(224, 221, 200);
 }
 
 
 
 .botonEstadoAdoptado{
-  background-color: #d13434; 
+  background-color: #d13434;
   border: none;
   padding: 0.3px 44px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
+  font-size: 24px;
   color: #5a2424;
   cursor:default;
-
 }
 
 
 .botonEstadoAdoptado:hover{
-  background-color: #af1d1d; 
+  background-color: #af1d1d;
   color: rgb(224, 200, 200);
 }
 
 
 .botonDatosMedicos:hover{
-  background-color: rgb(60, 124, 115); 
+  background-color: rgb(60, 124, 115);
   color: rgb(200, 224, 220);
 }
 
 
 
 
-/* GRID FOOTER 
+/* GRID FOOTER
 
 
 
@@ -766,7 +837,7 @@ a:hover {
 
 
 
-/* 
+/*
 Probando chat
 */
 
@@ -785,16 +856,16 @@ Probando chat
   max-height:24em;
 
 
-  
+
   position: fixed;
-  
+
   right: 0;
 
   bottom: 0;
 
-  
+
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
   "header header header"
   "main main main";
   grid-template-rows: repeat(auto-fill, 1fr);
@@ -819,10 +890,10 @@ Probando chat
 .chat-header{
   height: 3em;
   grid-area: header;
-  
+
 
   border-bottom: 1px solid rgba(138, 127, 127, 0.472);
- 
+
 
 }
 
@@ -841,7 +912,7 @@ Probando chat
 }
 
 /* .chat-aside{
-  
+
   width: 10em;
   height: 22.5em;
   grid-area: aside;
@@ -850,12 +921,12 @@ Probando chat
 } */
 
 .chat-main{
-    
+
   width: 22em;
   height: 22.5em;
   grid-area: main;
 
-  
+
 }
 
 
@@ -878,7 +949,7 @@ Probando chat
 
 
 .chat-main p{
-    
+
   margin-top: 4em;
   margin-bottom: 2em;
   text-align: center;
@@ -890,18 +961,18 @@ Probando chat
 }
 
 
-.chat-resp{  
-  text-align: center;  
+.chat-resp{
+  text-align: center;
 }
 
-.chat-resp button{  
+.chat-resp button{
   color: #000;
   border: none;
   width: 2.5em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.chat-resp img{  
+.chat-resp img{
   cursor: pointer;
   width: 2em;
   height: 2em;
@@ -909,12 +980,12 @@ Probando chat
 
 
 
-/* .chat-resp > .chat-si{  
+/* .chat-resp > .chat-si{
   background-color: #74cf77;
   margin-right: 2em;
 }
 
-.chat-resp > .chat-no{  
+.chat-resp > .chat-no{
   margin-left: 2em;
   background-color: #e96857;
 }
@@ -931,7 +1002,7 @@ Probando chat
 
 
 
-/* 
+/*
 Probando a ver si puedo ocultar el overlay en navigation
 */
 
@@ -960,18 +1031,18 @@ Modal en estado de animal
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
-  
+
 }
 
 
 .modal-eleccion-adoptante{
 
-  
+
   background-color: #ffebc6;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 100;
@@ -981,11 +1052,11 @@ Modal en estado de animal
   max-height:20em;
 
 
-  
+
   position: fixed;
-  
+
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
   "header header header"
   "main main main"
   "main main main"
@@ -1002,7 +1073,7 @@ Modal en estado de animal
   0px 0px 10px rgba(149, 141, 141, 0.692) ;
 
 
-  overflow: auto; 
+  overflow: auto;
 
 }
 
@@ -1057,7 +1128,7 @@ Modal en estado de animal
 
 
 .adoptante-data{
-  
+
   padding: 0.8em 0em 0em 1em;
 
 
@@ -1081,7 +1152,7 @@ Modal en estado de animal
 }
 
 .adoptante-data > .adoptante-nombre{
-  
+
   padding: 0em 1em 0em 0.8em;
   display: inline-block;
 
@@ -1128,15 +1199,15 @@ Modal en estado de animal
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
-  
+
 }
 
-.modal-confirmar-adopcion{  
+.modal-confirmar-adopcion{
   background-color: #fff2db;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 200;
@@ -1146,11 +1217,11 @@ Modal en estado de animal
   max-height:10em;
 
 
-  
+
   position: fixed;
-  
+
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
   "headerC headerC headerC"
   "mainC mainC mainC"
   "mainC mainC mainC"
@@ -1166,12 +1237,12 @@ Modal en estado de animal
   0px 0px 10px rgba(149, 141, 141, 0.692) ;
 
 
-  overflow: none; 
+  overflow: none;
 
 }
 
 .confirmar-head{
-  
+
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
 
@@ -1190,7 +1261,7 @@ Modal en estado de animal
 }
 
 .confirmar-main{
-  
+
   text-align: center;
 
   grid-area: mainC;
@@ -1261,15 +1332,15 @@ Estado pendiente modal
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
-  
+
 }
 
-.modal-adopcion-pendiente{  
+.modal-adopcion-pendiente{
   background-color: #fff2db;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 220;
@@ -1279,11 +1350,11 @@ Estado pendiente modal
   max-height:10em;
 
 
-  
+
   position: fixed;
-  
+
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
   "headerP headerP headerP"
   "mainP mainP mainP"
   "mainP mainP mainP"
@@ -1299,12 +1370,12 @@ Estado pendiente modal
   0px 0px 10px rgba(149, 141, 141, 0.692) ;
 
 
-  overflow: none; 
+  overflow: none;
 
 }
 
 .pendiente-head{
-  
+
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
 
@@ -1323,7 +1394,7 @@ Estado pendiente modal
 }
 
 .pendiente-main{
-  
+
   text-align: center;
 
   grid-area: mainP;

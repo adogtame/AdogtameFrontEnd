@@ -1,3 +1,10 @@
+span{
+  font: bolder;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+}
+
+
 .contenedor-usuario-perfil{
   margin-top: 50px;
   text-align: center;

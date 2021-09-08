@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
-
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -28,7 +27,10 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   // statusAnimales = 'Disable';
   //firebase
   ubi: string="PerfilU";
+
   //
+
+  fechaAdoptado: any = [];
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
   mensaje: string = "Vacio";
@@ -41,6 +43,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       console.log("Estoy en el usuario",this.UsuarioID.id);
       this.usuarioCargarDatos();
       console.log("Usuario", this.UsuarioID);
+
+      this.fechaAdoptados();
+      console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
     });
 
   }
@@ -80,6 +85,17 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     )
 
 
+  }
+
+  fechaAdoptados(){
+    this.usuariosService.fechaAdoptados().subscribe(
+      res => {
+        this.fechaAdoptado = res
+        console.log("Aca guardo datos proceso ", this.fechaAdoptado);
+
+      },
+      err => console.log(err)
+    );
   }
 
 

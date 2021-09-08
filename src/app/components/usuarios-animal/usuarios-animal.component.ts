@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
 
+
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -15,8 +16,8 @@ import {
   state,
   style,
   animate,
-  transition,  
-  
+  transition,
+
   query,
   sequence,
   stagger,
@@ -27,7 +28,7 @@ import {
 @Component({
   selector: 'app-usuarios-animal',
 
- 
+
   templateUrl: './usuarios-animal.component.html',
 
   styleUrls: ['./usuarios-animal.component.css'],
@@ -35,19 +36,19 @@ import {
   animations: [
 
      trigger('clickContent', [
-       state('noShow', 
-         style({ 
-          
+       state('noShow',
+         style({
+
            display: 'none',
            height: '0px',
            opacity: 0.6
 
          })
        ),
-       state('show', 
-         style({ 
-          display: 'block', 
-          
+       state('show',
+         style({
+          display: 'block',
+
           'min-height':'45px',
 
 
@@ -79,13 +80,13 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   //interesado seleccionado
 
-    
+
   seleccionadoName: string = "";
   seleccionadoApellido: string = "";
   seleccionadoNum: string = "";
-  
+
   estadoDelAnimal: any = [];
-  
+
   modalEleccionAbierto: boolean = false;
   modalConfirmarAdopcionAbierto: boolean = false;
   modalAdopcionPendienteAbierto: boolean = false;
@@ -93,14 +94,14 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   //
   //ubi para saber como hacer la img del firebase
-  
+
   ubi: string="Perfil";
 
 
   //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
   moment: any = [];
   //
-  
+
   interesadoSeleccionado: any = [];
 
   interesados: any = [];
@@ -117,7 +118,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   rol: any = "";
   //
 
-
+  display='none';
 
   //Fin de lo de cesar
 
@@ -127,7 +128,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     private router: Router,
     private rutaActiva: ActivatedRoute,
 
-    
+
   ) { }
 
   ngOnInit() {
@@ -150,15 +151,15 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       this.usuariosService.cargarAnimalEstado$.subscribe(log => {
 
         this.estadoAnimal();
-      
+
 
       });
-  
-  
 
 
 
-    
+
+
+
 
 
 
@@ -185,11 +186,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.AnimalID = [];
 
-    this.Animal = [];    
+    this.Animal = [];
 
     this.interesados = [];
 
-    
+
   }
 
 
@@ -202,7 +203,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
         this.estadoDelAnimal=res;
-        
+
 
 
         this.usuariosService.cargarTerminado$.emit()
@@ -215,7 +216,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
 
-  } 
+  }
 
 
   //
@@ -242,7 +243,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
             console.log("Este es el id dasdasdsa", this.Usuario);
             this.usuariosService.user.id = this.Usuario.id;
 
-            //Hay q mejorar esto, lo q hago es cargar el componente (Animal) 
+            //Hay q mejorar esto, lo q hago es cargar el componente (Animal)
             //despues de hacer este emit, porq aca es donde cargo al usuario
 
             this.usuariosService.cargarAnimalDatos$.emit()
@@ -251,7 +252,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
             this.rol = this.Usuario.tipo_perfil;
             this.usuariosService.rol = this.Usuario.tipo_perfil;
-            console.log("El rol del usuario es", this.usuariosService.rol);            
+            console.log("El rol del usuario es", this.usuariosService.rol);
             console.log(this.Usuario);
           },
           err => console.log(err)
@@ -294,12 +295,12 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       }
 
 
-      
+
 
     });
 
 
-    
+
 
     this.usuariosService.cargarTerminado$.subscribe(log => {
 
@@ -322,10 +323,10 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.router.navigate(['usuarios/perfil/', this.Animal.idDador]);
 
-  } 
+  }
 
   irAInteresado(id: number){
-    
+
     console.log("El id ",id);
     const url = this.router.serializeUrl(this.router.createUrlTree(['usuarios/perfil/',id]));
     window.open(url, '_blank');
@@ -333,13 +334,13 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
   comenzarChat(id: number, nombre: string, apellido: string, num: string){
-    
+
     this.seleccionadoName = nombre;
     this.seleccionadoApellido = apellido;
     this.seleccionadoNum = num;
 
     this.chatAbierto = true;
-    
+
     console.log("El id ",id);
 
 
@@ -364,8 +365,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     console.log(url);
 
     window.open(url, '_blank');
-     
-  } 
+
+  }
 
 
   abrirDisponibleYPendiente(){
@@ -377,7 +378,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       console.log("Se abrio el modal Elejir Adoptante");
       this.modalEleccionAbierto=true;
     }
-  
+
     if(this.estadoDelAnimal.estado=="Pendiente"){
 
       console.log("Se abrio  el modal adopcion pendiente");
@@ -395,7 +396,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       console.log("Se cerro el modal Elejir Adoptante");
       this.modalEleccionAbierto = false;
     }
-  
+
     if(this.estadoDelAnimal.estado=="Pendiente"){
 
       console.log("Se cerro el modal adopcion pendiente");
@@ -415,7 +416,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.usuariosService.cancelarProcesoAdopcion(this.AnimalID.id).subscribe(
       res => {
 
-        
+
         this.modalAdopcionPendienteAbierto = false;
         console.log(res)
 
@@ -456,7 +457,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.usuariosService.comenzarAdopcion(this.AnimalID.id, idUsuario).subscribe(
       res => {
 
-        
+
         this.modalEleccionAbierto = false;
         this.modalConfirmarAdopcionAbierto = false;
         console.log(res)
@@ -571,32 +572,26 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         res => {
 
           this.interes = true;
-          
+
           console.log("Resultado", res);
 
 
         },
         err => console.log(err)
       );
-
       console.log("interes enviado");
-
     }
-
-
-
-
-
-
-
   }
 
 
 
+  openModal(){
+    this.display='block';
+ }
 
-
-
-
+ onCloseHandled(){
+  this.display='none';
+}
 
 
 

@@ -5,7 +5,6 @@ import { Router } from '@angular/router'
 import { ActivatedRoute, Params } from '@angular/router';
 import { AdminService } from '../../services/admin.service';
 
-
 import {
   trigger,
   state,
@@ -52,13 +51,15 @@ import {
 })
 export class UsuariosHomeComponent implements OnInit{
 
+
   constructor(
     private usuariosService: UsuariosService,
     private router: Router
   ) { }
 
   animales: any = [];
-  ubi: string="BuscadorHome";
+  ubi: string="buscadorAdoptados";
+
 
   ngOnInit() {
     this.usuariosService.listarAnimalesAdoptados().subscribe(

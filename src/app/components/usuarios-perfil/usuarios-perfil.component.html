@@ -1,4 +1,5 @@
 
+
 <div class="contenedor-usuario-perfil" >
 
   <div class="imagenC">
@@ -83,6 +84,7 @@
 
                 <div class="ani-int-pointer" (click)="irAAnimal(AniPend.id)">
                   <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+
                   {{AniPend.nombre}}
                 </div>
 
@@ -95,10 +97,19 @@
               <p>Adoptados</p>
 
               <div class="ani-item-adentro animales-adoptados-adentro" *ngFor="let AniAdopt of animalesInteresAdoptadoMe">
-
-                <div class="ani-int-pointer" (click)="irAAnimal(AniAdopt.id)">
-                  <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+                <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
+                <span>
                   {{AniAdopt.nombre}}
+                </span>
+                <div class="ani-int-pointer" (click)="irAAnimal(AniAdopt.id)">
+                  <div *ngFor="let fecha of fechaAdoptado">
+                    <div *ngIf= "fecha.id_animal === AniAdopt.id">
+                      <span>
+                        fue adoptado por {{Usuario.nombre}} en el dia: {{fecha.fecha_fin}}
+                      </span>
+                    </div>
+
+                  </div>
                 </div>
                 <!-- <div class="estado-item estado-adoptado">{{AniAdopt.estado}}</div>                 -->
               </div>

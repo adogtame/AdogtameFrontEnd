@@ -1,7 +1,14 @@
 <div class="container">
   <h1>Los que ya tienen un hogar</h1>
-  <div class="col-md-4" id="contenedorAnimales" *ngFor=" let animal of animales" (click)="irAAnimal(animal.id)">
+  <div id="contenedorAnimales" *ngFor=" let animal of animales" (click)="irAAnimal(animal.id)">
     <p class="animal-name" >{{animal.nombre}} </p>
     <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi'></app-upload-list>
   </div>
 </div>
+
+
+
+
+
+
+
