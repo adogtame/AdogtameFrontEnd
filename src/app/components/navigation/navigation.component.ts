@@ -92,6 +92,12 @@ export class NavigationComponent implements OnInit {
 	
 	ubi: string="PerfilNav";
 	ubi2: string="PerfilNav2";
+
+
+	ubiI: string="NavNotiI";
+	
+	ubiA: string="NavNotiA";
+
 	cargoID: boolean=false;
 	//
 

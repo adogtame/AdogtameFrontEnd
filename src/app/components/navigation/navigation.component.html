@@ -90,27 +90,42 @@
                             <div class="notificaciones-data" *ngFor=" let noti of notificacionesInteresados">
 
                                 <div class="notificaciones-grid-interesado">
-                                    <a class="imagen-interesado-noti" (click)="irAInteresado(noti.idInteresado)">
-                                        <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
-                                    </a>
+                                        <div class="imagenC1"   (click)="irAInteresado(noti.interesado)">
+                                            <app-upload-list [sujetoID]='noti.interesado' [Pertenece]='ubiI'></app-upload-list> 
+                                        </div>                                    
                                 </div>
 
 
-                                <div class="notificaciones-grid-parrafo">
+                                <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
 
                                     <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
-                                    <label class="segundoP">{{noti.fecha_interes}}</label>
-
+                                    <label class="segundoP">{{noti.fecha}}</label>
 
                                 </div>
+
+                                <div class="notificaciones-grid-parrafo" *ngIf="noti.est==1">
+
+                                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} te a dado su aprobacion para la adopcion</label>
+                                    <label class="segundoP">{{noti.fecha}}</label>
+
+                                </div>
+
+                                <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
+
+                                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} a confirmado la adopcion</label>
+                                    <label class="segundoP">{{noti.fecha}}</label>
+
+                                </div>
+
+
+
 
 
                                 <div class="notificaciones-grid-animal">
-
-                                    <a  class="imagen-animal-noti" (click)="irAAnimal(noti.idAnimal)">
-                                        <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
-                                    </a>
-
+                                  
+                                    <div class="imagenC1"   (click)="irAAnimal(noti.animal)">
+                                        <app-upload-list [sujetoID]='noti.animal' [Pertenece]='ubiA'></app-upload-list> 
+                                    </div>     
                                 </div>
 
 
