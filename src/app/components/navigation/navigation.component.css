@@ -9,7 +9,7 @@
     display: inline-block;
     margin-left: .5em;
     margin-right: .4em;
-  }
+}
 
 #logout{
     cursor: pointer;
@@ -245,7 +245,7 @@ h1 {
 .notificaciones-container {
     display: none;
     position: absolute;
-    background-color: #e5d6be;
+    /* background-color: #e5d6be; */
     min-width: 25em;
     max-width:25em;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -259,11 +259,14 @@ h1 {
     overflow: auto; 
 }
 
-.notificaciones-data:hover{
+
+
+
+/* .notificaciones-data:hover{
     
     background-color: #d4c3a8;
 
-}
+} */
 
 .notificaciones-container p{
 
@@ -272,37 +275,87 @@ h1 {
 
 }
 
-.notificaciones-data {
-  display: grid; 
-  grid-template-areas: 
-  "interesado parrafo animal";
-  grid-template-rows: repeat(auto-fill, 1fr);
+.notificaciones-data-interes{
+    
+    display: grid; 
+    grid-template-areas: 
+    "interesado parrafo animal";
+    grid-template-rows: repeat(auto-fill, 1fr);
+    background-color: #d9ebf0;
+    border: solid 0.5px rgba(77, 76, 76, 0.171);
+
+} 
+
+
+.notificaciones-data-pendiente{
+    
+    display: grid; 
+    grid-template-areas: 
+    "interesado parrafo animal";
+    grid-template-rows: repeat(auto-fill, 1fr);
+    background-color: #bff0c3;
+    border: solid 0.5px rgba(77, 76, 76, 0.171);
+
+} 
+
+
+.notificaciones-data-adoptado{
+    
+    display: grid; 
+    grid-template-areas: 
+    "interesado parrafo animal";
+    grid-template-rows: repeat(auto-fill, 1fr);
+    background-color: #e4c0c0;
+    border: solid 0.5px rgba(77, 76, 76, 0.171);
+
+} 
+
+
+.notificaciones-data-interes:hover{
+    
+    background-color: #abb9bd;
+
 }
+
+.notificaciones-data-pendiente:hover{
+    
+    background-color: #98be9b;
+
+}
+
+.notificaciones-data-adoptado:hover{
+    
+    background-color: #c3a8a8;
+    
+} 
 
 
 .notificaciones-grid-interesado{
     grid-area: interesado;
     
+    margin: 0.6em 0em 0.9em 0em;
 }
   
 .notificaciones-grid-parrafo{    
     grid-area: parrafo;
+    margin: 0.6em 0em 0.9em 0em;
 }  
 
 .notificaciones-grid-animal{    
     grid-area: animal;
+    margin: 0.6em 0em 0.9em 0em;
 }
 
-.notificaciones-data label{
-    font-size: 0.9em;
+.notificaciones-container label{
+    font-size: 1em; 
+    padding: 0.3em;   
 }
 
 .notificaciones-grid-parrafo > .primeroP{
-    margin-top: 0.5em;
 }
 
 .notificaciones-grid-parrafo > .segundoP{
-    transform: translatey(-1em);
+    margin-top: 0.4em;
 }
 
 .imagen-interesado-noti img{

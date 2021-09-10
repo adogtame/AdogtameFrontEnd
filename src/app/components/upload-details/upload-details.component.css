@@ -45,6 +45,7 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  border: solid 0.5px rgba(77, 76, 76, 0.356);
 }
 
 .navNotiA img{
@@ -57,4 +58,5 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  border: solid 0.5px rgba(77, 76, 76, 0.356);
 }

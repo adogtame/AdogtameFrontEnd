@@ -126,6 +126,34 @@ export class NavigationComponent implements OnInit {
 
 		});
 	
+
+		document.addEventListener('mouseup', (e) => {
+			
+			var container2: any = document.getElementById('campanita');
+			if (container2.contains(e.target)) {	
+							
+				this.isOpenNoti=!this.isOpenNoti;
+				
+			}	
+			else
+			{
+			
+				var container: any = document.getElementById('notificaciones');
+				if (!container.contains(e.target)) {	
+								
+					this.isOpenNoti=false;
+					
+				}
+			}
+			
+		
+
+
+			
+
+		});
+
+
 	
 	}
 
