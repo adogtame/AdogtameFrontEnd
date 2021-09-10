@@ -189,6 +189,33 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.interesados = [];
 
+    this.seleccionadoName = "";
+    this.seleccionadoApellido = "";
+    this.seleccionadoNum = "";
+    
+    this.estadoDelAnimal = [];
+    
+    this.modalEleccionAbierto = false;
+    this.modalConfirmarAdopcionAbierto = false;
+    this.modalAdopcionPendienteAbierto = false;
+    this.chatAbierto = false;
+  
+    
+  
+    this.moment = [];
+
+    this.interesadoSeleccionado = [];
+  
+    this.interesados = [];
+  
+    this.interes = false;
+  
+    this.isOpenInteresados = false;
+  
+    this.cargoPagina = false;
+  
+
+
     
   }
 

@@ -243,15 +243,21 @@ export class NavigationComponent implements OnInit {
 
 
 		console.log("Ir al interesado de la notificacion", idInteresado);
-		
-		this.router.navigate(['usuarios/perfil/', idInteresado]);
+		this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+			this.router.navigate(['usuarios/perfil/', idInteresado]);
+		});
+
+
 	}
 
 	irAAnimal(idAnimal: string) {
 		
 		console.log("Ir al animal de la notificacion", idAnimal);
-		
-		this.router.navigate(['usuarios/animal/', idAnimal]);
+		this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+			this.router.navigate(['usuarios/animal/', idAnimal]);
+		});
+
+
 	}
 
 
