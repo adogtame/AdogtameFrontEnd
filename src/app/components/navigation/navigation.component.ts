@@ -84,8 +84,10 @@ export class NavigationComponent implements OnInit {
 	notificacion: boolean = false;
 	isOpenNoti: boolean = false;
 	notificacionesInteresados: any = [];
+	notificacionesContador: any = [];
 
 
+	notificacionesCargadas: boolean=false;
 
 
 	//ubi para saber como hacer la img del firebase
@@ -122,7 +124,8 @@ export class NavigationComponent implements OnInit {
 
 		this.usuariosService.notificaciones$.subscribe(log => {
 
-			this.notificaciones();
+
+			this.notificacionesConteo();
 
 		});
 	
@@ -214,7 +217,7 @@ export class NavigationComponent implements OnInit {
 						console.log(this.Usuario);
 
 
-						//Activar noti
+						//Activar noti conteo
 						this.usuariosService.notificaciones$.emit()
 						//
 
@@ -235,18 +238,17 @@ export class NavigationComponent implements OnInit {
 	}
 
 
+	notificacionesConteo(){
 
-
-	notificaciones() {
-
-		this.usuariosService.notificacionesListarInteresadosDeAnimalNoVistos(this.UsuarioID.user).subscribe(
+		this.usuariosService.notificacionesConteo(this.UsuarioID.user).subscribe(
 			res => {
-				
+				this.notificacionesContador=res;
 				console.log(res)
-				this.notificacionesInteresados=res;	
+				console.log("Notificaciones Contador", this.notificacionesContador.SumCount)
 
-				if(this.notificacionesInteresados.length>0){
 
+				if(this.notificacionesContador.SumCount>0){
+	
 					this.notificacion=true;
 				}
 				else
@@ -255,14 +257,58 @@ export class NavigationComponent implements OnInit {
 					this.notificacion=false;
 				}
 
+
+
 			},
 			err => console.log(err)
 		);
-		console.log(this.UsuarioID.user);
+
+	}
+
+	notificaciones() {
+
+		if(this.notificacionesCargadas==false){
 
 
+			this.usuariosService.notificacionesListar(this.UsuarioID.user).subscribe(
+				res => {
+					
+					console.log(res)
+					this.notificacionesInteresados=res;	
+	
+				},
+				err => console.log(err)
+			);
+			console.log(this.UsuarioID.user);
+	
+
+			this.notificacionesCargadas=true;
+
+			
+		}
+		
 		
 
+		if(this.notificacion==true){
+
+			setTimeout(()=>{ 
+			
+				this.usuariosService.notificacionesVistas(this.UsuarioID.user).subscribe(
+					res => {
+		
+							
+						this.notificacion=false;				
+		
+		
+					},
+					err => console.log(err)
+				);
+	
+			}, 100)
+			
+		}
+		
+		
 
 		
 	}
