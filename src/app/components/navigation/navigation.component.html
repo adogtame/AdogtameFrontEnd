@@ -77,7 +77,7 @@
                     <a class="btn btn - botonCampana" id="campanita" (click)="notificaciones()">
                         <i class="fas fa-bell" id="campanita-icon"></i>
                         
-                        <div class="alerta-notificaciones" >
+                        <div class="alerta-notificaciones" *ngIf="notificacion==true">
                             <p>{{notificacionesContador.SumCount}}</p>
                         </div>
 
@@ -89,6 +89,8 @@
 
                     <div class="notificaciones-container" id="notificaciones" [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti' ">
 
+
+                        <app-spinner></app-spinner>
 
                         <div *ngIf="notificacionesInteresados.length>0; else sinNoti">
 

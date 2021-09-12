@@ -1,17 +1,36 @@
+.overlay{
+  position: fixed;
+  width: 25em;
+  height: 70vh;
+  
+  /* background-color: rgba(214, 214, 214, 0.8); */
+  background-color: rgb(253, 232, 204); 
+  z-index: 10;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  z-index: 1001;
+}
+
+
 .lds-ring {
+  z-index: 1002;
   display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+  position: relative; 
+  width: 40px;
+  height: 40px;
 }
 .lds-ring div {
+  z-index: 1002;
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid rgb(170, 128, 100);
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  border: 4px solid rgb(170, 128, 100);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   /* border: 8px solid #fff;
@@ -30,13 +49,14 @@
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);
-    border-color: rgb(255, 239, 222) transparent transparent transparent;
+   
+    border-color: rgb(63, 59, 54) transparent transparent transparent;
   }
   50% {
     border-color: rgb(63, 59, 54) transparent transparent transparent;
   }
   100% {
     transform: rotate(360deg);
-    border-color: rgb(255, 239, 222) transparent transparent transparent;
+    border-color: rgb(63, 59, 54) transparent transparent transparent;
   }
 }

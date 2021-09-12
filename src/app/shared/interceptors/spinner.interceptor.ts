@@ -14,9 +14,8 @@ export class SpinnerInterceptor implements HttpInterceptor{
         
      this.spinnerSvc.show();
      return next.handle(req).pipe(
-        finalize(()  => this.spinnerSvc.hide())
+        finalize(()  =>  setTimeout(()=>{ this.spinnerSvc.hide() }, 2000) )
      ) 
-
 
     }
 }

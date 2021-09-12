@@ -298,7 +298,7 @@ export class NavigationComponent implements OnInit {
 		
 							
 						this.notificacion=false;				
-		
+						console.log("Notificaciones",this.notificacion);
 		
 					},
 					err => console.log(err)
