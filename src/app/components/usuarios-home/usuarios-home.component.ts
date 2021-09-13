@@ -59,7 +59,7 @@ export class UsuariosHomeComponent implements OnInit{
 
   animales: any = [];
   ubi: string="buscadorAdoptados";
-
+  filterPost = '';
 
   ngOnInit() {
     this.usuariosService.listarAnimalesAdoptados().subscribe(

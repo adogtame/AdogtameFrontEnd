@@ -1,6 +1,9 @@
 <div class="container">
   <h1>Los que ya tienen un hogar</h1>
-  <div id="contenedorAnimales" *ngFor=" let animal of animales" (click)="irAAnimal(animal.id)">
+  <input type="text" class="animal-buscador" name="filterPost" placeholder="Ingrese el nombre que desea filtrar"
+  [(ngModel)]="filterPost">
+  <br>
+  <div id="contenedorAnimales" *ngFor=" let animal of animales | filter:filterPost" (click)="irAAnimal(animal.id)">
     <p class="animal-name" >{{animal.nombre}} </p>
     <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi'></app-upload-list>
   </div>

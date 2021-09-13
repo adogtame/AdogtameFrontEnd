@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 //import { Subscription } from 'rxjs';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 //Animations (Dropdown)
 import {
@@ -9,8 +10,7 @@ import {
 	state,
 	style,
 	animate,
-	transition,  
-	
+	transition,
 	query,
 	sequence,
 	stagger,
@@ -18,30 +18,22 @@ import {
   } from '@angular/animations';
   //
 
-
 @Component({
 	selector: 'app-navigation',
 	templateUrl: './navigation.component.html',
 	styleUrls: ['./navigation.component.css'],
-	
 	animations: [
-
 		trigger('clickNoti', [
-		  state('noShowNoti', 
-			style({ 
-			 
+		  state('noShowNoti',
+			style({
 			  display: 'none',
 			  height: '0px'
-   
 			})
 		  ),
-		  state('showNoti', 
-			style({ 
-			 display: 'block', 
-			 
+		  state('showNoti',
+			style({
+			 display: 'block',
 			 'min-height':'10em',
-   
-   
 			 })
 		  ),
 		  transition('showNoti => noShowNoti', [
@@ -51,90 +43,69 @@ import {
 			animate('0s')
 		  ])
 		]),
-   
-   
 	]
 })
 export class NavigationComponent implements OnInit {
 
-	constructor(private usuariosService: UsuariosService, private router: Router) { }
-
-
-     
-    
-
-
-
-
+	constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
 	token: any = "";
 	UsuarioID: any = { user: "No logueado" };
 	Usuario: any = [];
-
 	idUsuario: string = "";
-
-
 	TokenJSON = { token: "" };
 	//Revela y oculta botones si esta logueado el usuario
 	revelar: boolean = false;
 	revelarBusRapida: boolean = this.usuariosService.revelarBusquedaRapida;
 	// public user$: Observable<any>= this.revelar
 	//nombreSubscription: Subscription | any;
-
 	//Notificacion
 	notificacion: boolean = false;
 	isOpenNoti: boolean = false;
 	notificacionesInteresados: any = [];
-
-
-
-
 	//ubi para saber como hacer la img del firebase
-	
 	ubi: string="PerfilNav";
 	ubi2: string="PerfilNav2";
 	cargoID: boolean=false;
-	//
-
-
-
 	// admin
 	rol: any = "";
-	//
+	animales: any = [];
+
+
 	ngOnInit(): void {
-		
-		this.logueado();
-		//this.nombreSubscription =
+
+    this.logueado();
+
 		this.usuariosService.logued$.subscribe(log => {
 			this.revelar = true;
 			this.sacarUsuario();
 		});
 
+
 		this.usuariosService.revelarBusquedaRapida$.subscribe(log => {
 			this.revelarBusRapida = this.usuariosService.revelarBusquedaRapida;
-		});
+    });
 
 
 		this.usuariosService.notificaciones$.subscribe(log => {
-
 			this.notificaciones();
-
 		});
-	
-	
+
+   // Muestra solo el 5, no pude pasarle el parametro del usuario logueado
+   // Tambien lo lleva al animal pero no cambia la imagen del animal
+    this.listarAnimalesDelUsuario();
+
 	}
 
 	logout() {
 		//Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
 		this.usuariosService.logOut();
 		this.revelar = false;
-
 		this.UsuarioID = { user: "No logueado" };
 		this.usuariosService.user.id = "";
 		this.Usuario = [];
-		
 		//notificacion
 		this.notificacion=false;
-		this.notificacionesInteresados=[];	
+		this.notificacionesInteresados=[];
 		//this.nombreSubscription.unsubscribe();
 	}
 
@@ -164,31 +135,20 @@ export class NavigationComponent implements OnInit {
 						this.Usuario = res
 						console.log("Este es el id dasdasdsa", this.Usuario);
 						this.usuariosService.user.id = this.Usuario.id;
-						//Hay q mejorar esto, lo q hago es cargar el componente (Animal) 
+						//Hay q mejorar esto, lo q hago es cargar el componente (Animal)
 						//despues de hacer este emit, porq aca es donde cargo al usuario
-						
-
-						
-						//
 						this.cargoID=true;
-						//
-						
-
 						this.rol = this.Usuario.tipo_perfil;
 						this.usuariosService.rol = this.Usuario.tipo_perfil;
-						console.log("El rol del usuario es", this.usuariosService.rol);						
+						console.log("El rol del usuario es", this.usuariosService.rol);
 						console.log(this.Usuario);
-
-
 						//Activar noti
 						this.usuariosService.notificaciones$.emit()
-						//
-
 
 					},
 					err => console.log(err)
 				);
-				console.log(this.UsuarioID.user);
+				console.log("ID del usu", this.UsuarioID);
 			},
 			err => console.log(err)
 		);
@@ -201,23 +161,16 @@ export class NavigationComponent implements OnInit {
 	}
 
 
-
-
 	notificaciones() {
 
 		this.usuariosService.notificacionesListarInteresadosDeAnimalNoVistos(this.UsuarioID.user).subscribe(
 			res => {
-				
 				console.log(res)
-				this.notificacionesInteresados=res;	
-
+				this.notificacionesInteresados=res;
 				if(this.notificacionesInteresados.length>0){
-
 					this.notificacion=true;
 				}
-				else
-				{
-					
+				else{
 					this.notificacion=false;
 				}
 
@@ -226,28 +179,30 @@ export class NavigationComponent implements OnInit {
 		);
 		console.log(this.UsuarioID.user);
 
-
-		
-
-
-		
 	}
 
 	irAInteresado(idInteresado: string) {
-
-
 		console.log("Ir al interesado de la notificacion", idInteresado);
-		
 		this.router.navigate(['usuarios/perfil/', idInteresado]);
 	}
 
 	irAAnimal(idAnimal: string) {
-		
 		console.log("Ir al animal de la notificacion", idAnimal);
-		
 		this.router.navigate(['usuarios/animal/', idAnimal]);
 	}
 
 
-}
 
+  listarAnimalesDelUsuario(){
+    this.usuariosService.listarAnimalesDelUsuario("5").subscribe(
+      res => {
+        this.animales = res;
+        console.log("Animales", res);
+      },
+      err => console.log(err)
+    )
+
+
+  }
+
+}

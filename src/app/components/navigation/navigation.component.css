@@ -52,7 +52,20 @@
   margin-left: 70px;
 }
 
+#dropdownMenuButton2{
+  font-size:12px;
+  font-weight:bold;
+  color:white;
+  background:rgb(128, 49, 12);
+  width:140px !important;
+  height:30px !important;
+}
 
+
+.lista-animales{
+background-color: salmon;
+cursor: pointer;
+}
 
 
 #menu {

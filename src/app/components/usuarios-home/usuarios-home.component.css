@@ -32,3 +32,31 @@ h1{
 }
 
 
+.animal-buscador{
+  font-size: 0.8em;
+}
+
+
+.animal-buscador{
+height: 1.7em;
+width: 23%;
+min-width: 16em;
+outline: none;
+border: 2px;
+background-color: rgb(251, 251, 192);
+font-size: 1.5em;
+color: darkslategrey;
+font-family: Georgia, 'Times New Roman', Times, serif;
+text-decoration: none;
+background-image: linear-gradient(black, black);
+background-position: 0% 100%;
+background-repeat: no-repeat;
+background-size: 0% 1px;
+transition: 1s;
+}
+
+
+.animal-buscador:focus{
+width: 40%;
+background-size: 100% 1px;
+}

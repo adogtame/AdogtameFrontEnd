@@ -44,9 +44,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       this.usuarioCargarDatos();
       console.log("Usuario", this.UsuarioID);
 
-      this.fechaAdoptados();
-      console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
     });
+    this.fechaAdoptados();
+    console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
 
   }
 
@@ -79,7 +79,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.id).subscribe(
       res => {
         this.animales = res;
-        console.log(res);
+        console.log("animnales", res);
       },
       err => console.log(err)
     )
