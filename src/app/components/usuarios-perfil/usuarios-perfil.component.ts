@@ -38,6 +38,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   //firebase
   ubi: string="PerfilU";
+  ubi2: string="SiguiendoA";
   //
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }

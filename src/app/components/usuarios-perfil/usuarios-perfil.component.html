@@ -81,13 +81,27 @@
               <p>Pendientes por aceptar</p>
               <div class="ani-item-adentro animales-pendientes-adentro" *ngFor="let AniPend of animalesInteresPendienteMe">
 
-                <div class="ani-int-pointer" (click)="irAAnimal(AniPend.id)">
-                  <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniPend.nombre}}
+                <div class="ani-int-pointer" >
+                
+                  <div class="siguiendo-templateA" (click)="irAAnimal(AniPend.id)">
+
+                    <app-upload-list [sujetoID]='AniPend.id' [Pertenece]='ubi2'></app-upload-list> 
+                  </div>
+                  
+                  <div class="siguiendo-nombreA">
+
+                    {{AniPend.nombre}}
+                  </div>
+
                 </div>
 
-                <div class="estado-item rechazar-pendiente" (click)="rechazarPendiente(AniPend)">Rechazar</div>
-                <div class="estado-item confirmar-pendiente" (click)="confirmarPendiente(AniPend)">Confirmar</div>
+                <div class="siguiendo-botones">
+
+
+                  <div class="estado-item rechazar-pendiente" (click)="rechazarPendiente(AniPend)">Rechazar</div>
+                  <div class="estado-item confirmar-pendiente" (click)="confirmarPendiente(AniPend)">Confirmar</div>
+                </div>
+
               </div>
             </div>
 
@@ -96,9 +110,18 @@
 
               <div class="ani-item-adentro animales-adoptados-adentro" *ngFor="let AniAdopt of animalesInteresAdoptadoMe">
 
-                <div class="ani-int-pointer" (click)="irAAnimal(AniAdopt.id)">
-                  <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniAdopt.nombre}}
+                <div class="ani-int-pointer" >
+                  
+                  <div class="siguiendo-templateA" (click)="irAAnimal(AniAdopt.id)">
+
+                    <app-upload-list [sujetoID]='AniAdopt.id' [Pertenece]='ubi2'></app-upload-list> 
+                  </div>
+                 
+                  <div class="siguiendo-nombreA">
+
+                    {{AniAdopt.nombre}}
+                  </div>
+
                 </div>
                 <!-- <div class="estado-item estado-adoptado">{{AniAdopt.estado}}</div>                 -->
               </div>
@@ -109,12 +132,26 @@
 
               <div class="ani-item-adentro animales-disponibles-adentro" *ngFor="let AniDisp of animalesInteresDisponible">
 
-                <div class="ani-int-pointer" (click)="irAAnimal(AniDisp.id)">
-                  <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniDisp.nombre}}
+                <div class="ani-int-pointer">
+                  
+                  <div class="siguiendo-templateA"  (click)="irAAnimal(AniDisp.id)">
+                    <app-upload-list [sujetoID]='AniDisp.id' [Pertenece]='ubi2'></app-upload-list> 
+
+                  </div>
+                  
+                  <div class="siguiendo-nombreA">
+
+                    {{AniDisp.nombre}}
+                  </div>
+                
                 </div>
 
-                <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniDisp.id)">Eliminar</div>
+                <div class="siguiendo-botones">
+
+                  <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniDisp.id)">Eliminar</div>
+                </div>
+
+
               </div>
             </div>
 
@@ -123,12 +160,25 @@
 
               <div class="ani-item-adentro animales-no-disponibles-adentro" *ngFor="let AniPAO of animalesInteresPendienteAdoptadoOtro">
 
-                <div class="ani-int-pointer" (click)="irAAnimal(AniPAO.id)">
-                  <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt="">
-                  {{AniPAO.nombre}}
+                <div class="ani-int-pointer">
+                  
+                  <div class="siguiendo-templateA"  (click)="irAAnimal(AniPAO.id)">
+
+                    <app-upload-list [sujetoID]='AniPAO.id' [Pertenece]='ubi2'></app-upload-list> 
+                  </div>
+                  
+                  <div class="siguiendo-nombreA">
+
+                    {{AniPAO.nombre}}
+                  </div>
+
                 </div>
 
-                <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniPAO.id)">Eliminar</div>
+                <div class="siguiendo-botones">
+
+                  <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniPAO.id)">Eliminar</div>
+                </div>
+
               </div >
             </div>
 

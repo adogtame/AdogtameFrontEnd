@@ -188,8 +188,13 @@ Registrar animal boton
 }
 
 .ani-item-adentro{
+  display: grid;
+  grid-template-areas: 
+  "templateA nombreA botones";
+  grid-template-rows: repeat(auto-fill, 1fr);
   padding: 0.5em 0em 0.5em 0em;
 }
+
 .animales-pendientes-adentro:hover{
   background-color: rgb(209, 186, 156);
 }
@@ -267,6 +272,30 @@ Registrar animal boton
 
 
 .ani-int-pointer{
-  cursor: pointer;
   display: inline-block;
+}
+
+
+.siguiendo-templateA{
+  grid-area: templateA;
+  display: inline-block;
+  width: fit-content;  
+
+  cursor: pointer;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.siguiendo-nombreA{
+  grid-area: nombreA;
+  
+  display: inline-block;
+  width: fit-content;  
+}
+
+.siguiendo-botones{
+  display: inline-block;
+  grid-area: botones;
+
+  margin-top: .5em;
 }

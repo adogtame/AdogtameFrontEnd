@@ -60,3 +60,11 @@
   cursor: pointer;
   border: solid 0.5px rgba(77, 76, 76, 0.356);
 }
+
+.siguiendoA img{
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+}

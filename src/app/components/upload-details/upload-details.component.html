@@ -1,34 +1,38 @@
-<div class="perfil">
-  <img src="{{ fileUpload.url }}" alt=""  *ngIf="Pertenece=='PerfilU'">
+<div class="perfil"   *ngIf="Pertenece=='PerfilU'">
+  <img src="{{ fileUpload.url }}" alt="">
 
 </div>
 
-<div class="miniNav">
-  <img src="{{ fileUpload.url }}" alt=""  *ngIf="Pertenece=='PerfilNav'">
+<div class="miniNav" *ngIf="Pertenece=='PerfilNav'">
+  <img src="{{ fileUpload.url }}" alt=""  >
 
 </div>
 
 
-<div class="miniNav2">
-  <img src="{{ fileUpload.url }}" alt=""  *ngIf="Pertenece=='PerfilNav2'">
+<div class="miniNav2"  *ngIf="Pertenece=='PerfilNav2'">
+  <img src="{{ fileUpload.url }}" alt="" >
 
 </div>
 
-<div class="perfil">
-  <img src="{{ fileUpload.url }}" alt=""  *ngIf="Pertenece=='Perfil'">
+<div class="perfil" *ngIf="Pertenece=='Perfil'">
+  <img src="{{ fileUpload.url }}" alt=""  >
 
 </div>
-<div class="buscadorA">
+<div class="buscadorA" *ngIf="Pertenece=='BuscadorA'">
 
-  <img src="{{ fileUpload.url }}" alt="" *ngIf="Pertenece=='BuscadorA'">
+  <img src="{{ fileUpload.url }}" alt="" >
 </div>
 
 
-<div class="navNotiI">
-  <img src="{{ fileUpload.url }}" alt=""  *ngIf="Pertenece=='NavNotiI'">
+<div class="navNotiI" *ngIf="Pertenece=='NavNotiI'">
+  <img src="{{ fileUpload.url }}" alt=""  >
 
 </div>
-<div class="navNotiA">
+<div class="navNotiA"  *ngIf="Pertenece=='NavNotiA'">
 
-  <img src="{{ fileUpload.url }}" alt="" *ngIf="Pertenece=='NavNotiA'">
+  <img src="{{ fileUpload.url }}" alt="">
+</div>
+
+<div class="siguiendoA" *ngIf="Pertenece=='SiguiendoA'">
+  <img src="{{ fileUpload.url }}" alt="" >
 </div>
