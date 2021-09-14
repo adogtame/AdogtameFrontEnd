@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { FileUpload } from 'src/app/models/file-upload.model';
 
@@ -14,7 +14,19 @@ export class UploadDetailsComponent implements OnInit {
   constructor(private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
+
+    
     console.log("Este es el file upload de details",this.fileUpload);
+
+  }
+
+  
+  ngOnDestroy(): void {
+
+
+    this.fileUpload.url="";
+    this.fileUpload.key="";
+    this.fileUpload.name="";
 
   }
 
