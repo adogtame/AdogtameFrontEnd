@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
+
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -10,56 +11,90 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./usuarios-perfil.component.css']
 })
 export class UsuariosPerfilComponent implements OnInit, OnDestroy {
+
+
   animal={  idDador:"",nombre:"",sexo:"",tipo:"",fNac:"",tamano:"",peso:""};
+
   Usuario: any = [];
+
   animales: any = [];
+
   UsuarioID: any = [];
+
+
   animalesSiguiendo: any = [];
   animalesInteresPendienteMe: any = [];
   animalesInteresAdoptadoMe: any = [];
   animalesInteresDisponible: any = [];
   animalesInteresPendienteAdoptadoOtro: any = [];
+
+
   toggleInformacion = true;
   toggleSiguiendo = false;
   toggleSeguidores = false;
   toggleAnimales = false;
 
   // statusAnimales = 'Disable';
+
   //firebase
   ubi: string="PerfilU";
-
+  ubi2: string="SiguiendoA";
   //
 
   fechaAdoptado: any = [];
-
+  
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
+
+
   mensaje: string = "Vacio";
+
   mensajeEnviado: string = "";
 
 
   ngOnInit(): void {
+
     this.rutaActiva.params.subscribe(routeParams => {
+
+
+
       this.UsuarioID = this.rutaActiva.snapshot.params
+
+
       console.log("Estoy en el usuario",this.UsuarioID.id);
       this.usuarioCargarDatos();
+
+
       console.log("Usuario", this.UsuarioID);
 
+
     });
-    this.fechaAdoptados();
-    console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
+
+
 
   }
 
 
   ngOnDestroy(): void {
+
+
     console.log("Se cierra el usuario",this.UsuarioID.id);
+
     this.UsuarioID = [];
+
     this.Usuario = [];
+
+
+
+
+
+
     this.animalesSiguiendo = [];
     this.animalesInteresPendienteMe = [];
     this.animalesInteresAdoptadoMe = [];
     this.animalesInteresDisponible = [];
     this.animalesInteresPendienteAdoptadoOtro = [];
+
+
     console.log("Se cerro el usuario",this.UsuarioID.id);
 
   }
@@ -67,6 +102,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
 
   usuarioCargarDatos(){
+
     this.usuariosService.buscarUsuario(this.UsuarioID.id).subscribe(
       res => {
         this.Usuario = res
@@ -79,7 +115,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.id).subscribe(
       res => {
         this.animales = res;
-        console.log("animnales", res);
+        console.log(res);
       },
       err => console.log(err)
     )
@@ -87,7 +123,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   }
 
-  fechaAdoptados(){
+    fechaAdoptados(){
     this.usuariosService.fechaAdoptados().subscribe(
       res => {
         this.fechaAdoptado = res
@@ -98,8 +134,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     );
   }
 
-
+  
   irAAnimal(id: number){
+
     console.log("El id ",id)
     this.router.navigate(['usuarios/animal/',id]);
   }
@@ -107,7 +144,10 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   registrar(){
 		console.log("Registrando animal");
     console.log(this.animal);
+
+
     this.usuariosService.registrarAnimal(this.animal, this.usuariosService.user.id).subscribe(
+
       res => {
         let result:any=res;
         console.log(result);
@@ -115,21 +155,36 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
         this.router.navigate(['usuarios/animal/', result.id]);
       },
       err => {
+
         console.log(err.error.message);
+
         this.mensaje=err.error.message;
+
+
       }
+
+
+
+
     )
+
+
 	}
 
 
 
   siguiendoAnimales(){
+
   console.log("siguiendo Animales");
+
+
   this.usuariosService.siguiendoAnimales(this.UsuarioID.id).subscribe(
     res => {
-      this.animalesSiguiendo=res;
-      for (let anim of this.animalesSiguiendo) {
 
+      this.animalesSiguiendo=res;
+
+      for (let anim of this.animalesSiguiendo) {
+        
         if(anim.est==1 && anim.estado=="Pendiente"){
 
           this.animalesInteresPendienteMe.push(anim);
@@ -149,7 +204,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
           this.animalesInteresPendienteAdoptadoOtro.push(anim);
         }
-
+        
 
       }
 
@@ -159,7 +214,12 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       console.log("Disponibles aun", this.animalesInteresDisponible)
       console.log("Pendiente o adoptado por otro", this.animalesInteresPendienteAdoptadoOtro)
 
+          this.fechaAdoptados();
+    console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
+      
       console.log(res)
+
+
 
     },
     err => console.log(err)
@@ -167,15 +227,15 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   }
 
-
+  
   quitarInteres(idAnimal: string){
 
 
-
+    
     this.usuariosService.quitarInteres(idAnimal, { idInteresado: this.usuariosService.user.id }).subscribe(
       res => {
 
-
+     
 
         console.log("id",idAnimal);
 
@@ -201,17 +261,17 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
     /**/
   }
-
+  
 
   confirmarPendiente(AniPend: any){
 
 
 
-
+    
     this.usuariosService.confirmarAdopcion(AniPend.id, { idInteresado: this.usuariosService.user.id }).subscribe(
       res => {
 
-
+     
 
         console.log("animal datos",AniPend);
 
@@ -220,7 +280,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
         // remove object
         this.animalesInteresPendienteMe.splice( removeIndex, 1 );
 
-
+     
         //Agregar a animales adoptados
         this.animalesInteresAdoptadoMe.push(AniPend);
 
@@ -242,7 +302,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
     this.usuariosService.cancelarProcesoAdopcion(AniPend.id).subscribe(
       res => {
-
+        
 
         // get index of object with id of ?
         const removeIndex = this.animalesInteresPendienteMe.findIndex( (item:any) => item.id === AniPend.id );
@@ -251,7 +311,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
 
         AniPend.est=0;
-
+     
         console.log("object ", AniPend);
         //Agregar a animales Disponible
         this.animalesInteresDisponible.push(AniPend);
@@ -275,10 +335,15 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   //Botones menu de perfil
 
   Informacion(){
+
+
+
     this.toggleInformacion = true;
     this.toggleSiguiendo = false;
     this.toggleSeguidores = false;
     this.toggleAnimales = false;
+
+
 
     //Limpiando arrays de siguiendo
     this.animalesSiguiendo = [];
@@ -293,6 +358,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   Siguiendo(){
 
     this.siguiendoAnimales();
+
     this.toggleInformacion = false;
     this.toggleSiguiendo = true;
     this.toggleSeguidores = false;
@@ -300,6 +366,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
   Seguidores(){
+
+
+
     this.toggleInformacion = false;
     this.toggleSiguiendo = false;
     this.toggleSeguidores = true;
@@ -322,6 +391,8 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.toggleSiguiendo = false;
     this.toggleSeguidores = false;
     this.toggleAnimales = true;
+
+
 
     //Limpiando arrays de siguiendo
     this.animalesSiguiendo = [];
