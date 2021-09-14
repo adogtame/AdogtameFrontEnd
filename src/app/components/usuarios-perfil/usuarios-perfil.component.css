@@ -4,12 +4,6 @@ span{
   font-size: 24px;
 }
 
-
-.contenedor-usuario-perfil{
-  margin-top: 50px;
-  text-align: center;
-}
-
 .contenedor-usuario-perfil img{
   border-radius: 50%;
   height: 100px;
@@ -195,8 +189,13 @@ Registrar animal boton
 }
 
 .ani-item-adentro{
+  display: grid;
+  grid-template-areas: 
+  "templateA nombreA botones";
+  grid-template-rows: repeat(auto-fill, 1fr);
   padding: 0.5em 0em 0.5em 0em;
 }
+
 .animales-pendientes-adentro:hover{
   background-color: rgb(209, 186, 156);
 }
@@ -217,7 +216,7 @@ Registrar animal boton
 }
 
 
-.ani-item p{
+.ani-item p{  
   padding: 0.3em 0.2em;
   display: block;
   margin-bottom: 1em;
@@ -269,15 +268,35 @@ Registrar animal boton
 .eliminar-pendiente{
   color: rgb(82, 15, 15);
   background-color: rgb(230, 62, 62);
-
+  
 }
 
 
 .ani-int-pointer{
-  cursor: pointer;
   display: inline-block;
 }
 
-.pointer{
+
+.siguiendo-templateA{
+  grid-area: templateA;
+  display: inline-block;
+  width: fit-content;  
+
   cursor: pointer;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.siguiendo-nombreA{
+  grid-area: nombreA;
+  
+  display: inline-block;
+  width: fit-content;  
+}
+
+.siguiendo-botones{
+  display: inline-block;
+  grid-area: botones;
+
+  margin-top: .5em;
 }
