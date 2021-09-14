@@ -51,17 +51,33 @@ export class UsuariosService {
 	rol: any = "";
 
 
-	//Notificaciones - Navigations
+//Notificaciones - Navigations
+
+	//
+	notificacionesListar(id: string) {
+		
+		//Buscar los id de los animales del usuario logueado
+		return this.http.get(`${this.API_URI}/notificacionesListar/${id}`);
+		
+	}
 
 	//El obsevable de navigations
 	notificaciones$ = new EventEmitter<string>();
 
-	notificacionesListarInteresadosDeAnimalNoVistos(id: string) {
-
+	notificacionesConteo(id: string) {
+		
 		//Buscar los id de los animales del usuario logueado
-		return this.http.get(`${this.API_URI}/notificacionesListarInteresadosDeAnimalNoVistos/${id}`);
-
+		return this.http.get(`${this.API_URI}/notificacionesConteo/${id}`);
+		
 	}
+	
+	notificacionesVistas(id: string) {
+		
+		//Buscar los id de los animales del usuario logueado
+		return this.http.get(`${this.API_URI}/notificacionesVistas/${id}`);
+		
+	}
+
 
 	//
 
