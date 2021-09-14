@@ -105,7 +105,7 @@
                   <div *ngFor="let fecha of fechaAdoptado">
                     <div *ngIf= "fecha.id_animal === AniAdopt.id">
                       <span>
-                        fue adoptado por {{Usuario.nombre}} en el dia: {{fecha.fecha_fin}}
+                        fue adoptado por {{Usuario.nombre}} en el dia: {{fecha.fecha_fin | date: 'dd/MM/yyyy'}}
                       </span>
                     </div>
 
