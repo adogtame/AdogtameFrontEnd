@@ -241,31 +241,18 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-
-              <br><br>
-
-              <div class="col-md-4" *ngFor=" let animal of animales">
-                <!--{{usuario.nombre}}-->
-                <h5 class="card-title">
-
-
-                  Nombre:
-                  <a (click)="irAAnimal(animal.id)">
-                    {{animal.nombre}}
-                  </a>
-
-                </h5>
-
-                <p class="card-text">
-
-                  Tipo: {{animal.tipo}}
-
-                </p>
-                &nbsp;
-                &nbsp;
-                &nbsp;
-
-
+              <br>
+              <div class="col-md-8" *ngFor=" let animal of animales">
+                <div class="card text-white bg-dark mb-3 pointer" style="max-width: 24rem; background-color: #71d1ee !important; color: black !important;" >
+                  <div class="card-header" style="text-align: center; font-size: 32px !important;">
+                    <a (click)="irAAnimal(animal.id)">{{animal.nombre}}</a>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">Tipo: {{animal.tipo}}</p>
+                    <p class="card-text">Tamaño: {{animal.tamano}}</p>
+                    <p class="card-text">Sexo: {{animal.sexo}}</p>
+                  </div>
+                </div>
               </div>
 
             </div>
