@@ -107,7 +107,7 @@
                   <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
 
                     <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
-                    <label class="segundoP">{{noti.fecha}}</label>
+                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
 
                   </div>
 
@@ -115,14 +115,14 @@
 
                     <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} te a dado su aprobacion para la
                       adopcion</label>
-                    <label class="segundoP">{{noti.fecha}}</label>
+                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
 
                   </div>
 
                   <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
 
                     <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} a confirmado la adopcion</label>
-                    <label class="segundoP">{{noti.fecha}}</label>
+                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
 
                   </div>
 
