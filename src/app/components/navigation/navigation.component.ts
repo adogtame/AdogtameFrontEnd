@@ -99,28 +99,18 @@ export class NavigationComponent implements OnInit {
     });
 
 
-    document.addEventListener('mouseup', (e) => {
-      var container2: any = document.getElementById('campanita');
-      if (container2.contains(e.target)) {
-
-        this.isOpenNoti = !this.isOpenNoti;
-
-      }
-      else {
-
-        var container: any = document.getElementById('notificaciones');
-        if (!container.contains(e.target)) {
-          this.isOpenNoti = false;
-
-        }
-      }
-    });
-
-
-
-    // Muestra solo el 5, no pude pasarle el parametro del usuario logueado
-    // Tambien lo lleva al animal pero no cambia la imagen del animal
-    this.listarAnimalesDelUsuario();
+		document.addEventListener('mouseup', (e) => {
+			var container2: any = document.getElementById('campanita');
+			if (container2.contains(e.target)) {
+				this.isOpenNoti=!this.isOpenNoti;
+			}
+			else{
+				var container: any = document.getElementById('notificaciones');
+				if (!container.contains(e.target)) {
+					this.isOpenNoti=false;
+				}
+			}
+		});
 
   }
 
@@ -283,15 +273,13 @@ export class NavigationComponent implements OnInit {
 
 
   listarAnimalesDelUsuario() {
-    this.usuariosService.listarAnimalesDelUsuario("5").subscribe(
+    this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.user).subscribe(
       res => {
         this.animales = res;
         console.log("Animales", res);
       },
       err => console.log(err)
     )
-
-
   }
 
 }

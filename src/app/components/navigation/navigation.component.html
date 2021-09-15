@@ -76,86 +76,96 @@
     <ng-template #login>
       <ul class="navbar-nav posicion-derecha">
         <li class="nav-item active">
-          <a class="btn btn - botonCampana" (click)="isOpenNoti = !isOpenNoti">
+          <a class="btn btn - botonCampana" id="campanita" (click)="notificaciones()">
             <i class="fas fa-bell" id="campanita-icon"></i>
-            <i class="fas fa-exclamation-circle" id="alert-icon" *ngIf="notificacion==true"></i>
+            <div class="alerta-notificaciones" *ngIf="notificacion==true">
+              <p>{{notificacionesContador.SumCount}}</p>
+            </div>
+            <!-- <i class="fas fa-exclamation-circle"  *ngIf="notificacion==true"></i> -->
             <!-- *ngIf="notificacion==true" -->
           </a>
-      <div class="notificaciones-container" id="notificaciones" [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti' ">
+          <div class="notificaciones-container" id="notificaciones"
+            [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti' ">
 
 
-                        <app-spinner></app-spinner>
+            <app-spinner></app-spinner>
 
-                        <div *ngIf="notificacionesInteresados.length>0; else sinNoti">
+            <div *ngIf="notificacionesInteresados.length>0; else sinNoti">
 
-                            <div *ngFor=" let noti of notificacionesInteresados">
+              <div *ngFor=" let noti of notificacionesInteresados">
 
-                                <div [ngClass]="{'notificaciones-data-interes' : noti.est==0, 'notificaciones-data-pendiente': noti.est==1, 'notificaciones-data-adoptado': noti.est==2}">
+                <div
+                  [ngClass]="{'notificaciones-data-interes' : noti.est==0, 'notificaciones-data-pendiente': noti.est==1, 'notificaciones-data-adoptado': noti.est==2}">
 
-                                    <div class="notificaciones-grid-interesado">
-                                            <div class="imagenC1"   (click)="irAInteresado(noti.interesado)">
-                                                <app-upload-list [sujetoID]='noti.interesado' [Pertenece]='ubiI'></app-upload-list> 
-                                            </div>                                    
-                                    </div>
-
-
-                                    <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
-
-                                        <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
-                                        <label class="segundoP">{{noti.fecha}}</label>
-
-                                    </div>
-
-                                    <div class="notificaciones-grid-parrafo" *ngIf="noti.est==1">
-
-                                        <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} te a dado su aprobacion para la adopcion</label>
-                                        <label class="segundoP">{{noti.fecha}}</label>
-
-                                    </div>
-
-                                    <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
-
-                                        <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} a confirmado la adopcion</label>
-                                        <label class="segundoP">{{noti.fecha}}</label>
-
-                                    </div>
-
-
-
-
-
-                                    <div class="notificaciones-grid-animal">
-                                    
-                                        <div class="imagenC1"   (click)="irAAnimal(noti.animal)">
-                                            <app-upload-list [sujetoID]='noti.animal' [Pertenece]='ubiA'></app-upload-list> 
-                                        </div>     
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <ng-template #sinNoti>
-                        <p>Aca aparecen las notificaciones<p>
-                        </ng-template>
-
-
+                  <div class="notificaciones-grid-interesado">
+                    <div class="imagenC1" (click)="irAInteresado(noti.interesado)">
+                      <app-upload-list [sujetoID]='noti.interesado' [Pertenece]='ubiI'></app-upload-list>
                     </div>
-                </li>
+                  </div>
+
+
+                  <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
+
+                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
+                    <label class="segundoP">{{noti.fecha}}</label>
+
+                  </div>
+
+                  <div class="notificaciones-grid-parrafo" *ngIf="noti.est==1">
+
+                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} te a dado su aprobacion para la
+                      adopcion</label>
+                    <label class="segundoP">{{noti.fecha}}</label>
+
+                  </div>
+
+                  <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
+
+                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} a confirmado la adopcion</label>
+                    <label class="segundoP">{{noti.fecha}}</label>
+
+                  </div>
+
+
+
+
+
+                  <div class="notificaciones-grid-animal">
+
+                    <div class="imagenC1" (click)="irAAnimal(noti.animal)">
+                      <app-upload-list [sujetoID]='noti.animal' [Pertenece]='ubiA'></app-upload-list>
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <ng-template #sinNoti>
+              <p>Aca aparecen las notificaciones
+              <p>
+            </ng-template>
+
+
+          </div>
+        </li>
         &nbsp;&nbsp;
 
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+            data-bs-toggle="dropdown" aria-expanded="false" (click)="listarAnimalesDelUsuario()">
             Mis Animales <i class="fas fa-paw"> </i> </button>
           <ul class="dropdown-menu dropdown-menu-dark lista-animales" aria-labelledby="dropdownMenuButton2">
             <div *ngFor=" let animal of animales">
               <li><a class="dropdown-item" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </a></li>
-              <li> <hr class="dropdown-divider"></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
             </div>
           </ul>
         </div>
