@@ -4,6 +4,11 @@ span{
   font-size: 24px;
 }
 
+.contenedor-usuario-perfil{
+  margin-top: 50px;
+  text-align: center;
+}
+
 .contenedor-usuario-perfil img{
   border-radius: 50%;
   height: 100px;
