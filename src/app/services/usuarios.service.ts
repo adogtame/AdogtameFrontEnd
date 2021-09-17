@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class UsuariosService {
-	API_URI = 'https://adogtame-servidor.herokuapp.com/user';
-  // API_URI = 'http://localhost:3000/user';
+	//API_URI = 'https://adogtame-servidor.herokuapp.com/user';
+   API_URI = 'http://localhost:3000/user';
 
 	constructor(private http: HttpClient, private router:Router) { }
 
@@ -55,27 +55,27 @@ export class UsuariosService {
 
 	//
 	notificacionesListar(id: string) {
-		
+
 		//Buscar los id de los animales del usuario logueado
 		return this.http.get(`${this.API_URI}/notificacionesListar/${id}`);
-		
+
 	}
 
 	//El obsevable de navigations
 	notificaciones$ = new EventEmitter<string>();
 
 	notificacionesConteo(id: string) {
-		
+
 		//Buscar los id de los animales del usuario logueado
 		return this.http.get(`${this.API_URI}/notificacionesConteo/${id}`);
-		
+
 	}
-	
+
 	notificacionesVistas(id: string) {
-		
+
 		//Buscar los id de los animales del usuario logueado
 		return this.http.get(`${this.API_URI}/notificacionesVistas/${id}`);
-		
+
 	}
 
 
@@ -260,11 +260,18 @@ export class UsuariosService {
 	}
 
 
-
-
 	eliminarComentario(id: string) {
 		return this.http.delete(`${this.API_URI}/deleteComentario/${id}`);
 	}
+
+
+  cantidadInteresados(cantidad: any){
+    return this.http.get(`${this.API_URI}/cantidadInteresados/${cantidad}`);
+  }
+
+  vacunasAnimal(vacuna: any){
+    return this.http.get(`${this.API_URI}/vacunasAnimal/${vacuna}`);
+  }
 
 
 }

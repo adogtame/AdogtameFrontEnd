@@ -70,56 +70,31 @@ import {
   ]
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
-
-
   Animal: any = [];
-
   AnimalID: any = [];
   userAhora: string="";
-
-
   //interesado seleccionado
-
-
   seleccionadoName: string = "";
   seleccionadoApellido: string = "";
   seleccionadoNum: string = "";
-
   estadoDelAnimal: any = [];
-
   modalEleccionAbierto: boolean = false;
   modalConfirmarAdopcionAbierto: boolean = false;
   modalAdopcionPendienteAbierto: boolean = false;
   chatAbierto: boolean = false;
-
-  //
   //ubi para saber como hacer la img del firebase
-
   ubi: string="Perfil";
-
-
   //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
   moment: any = [];
-  //
-
   interesadoSeleccionado: any = [];
-
   interesados: any = [];
-
   interes: boolean = false;
-
   isOpenInteresados: boolean = false;
-
   cargoPagina: boolean = false;
-
-
-
   // admin
   rol: any = "";
-  //
-
   display='none';
-
+  vacuna : any = [];
   //Fin de lo de cesar
 
   constructor(
@@ -134,91 +109,42 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.rutaActiva.params.subscribe(routeParams => {
-
-
       this.AnimalID = this.rutaActiva.snapshot.params
-
-
-
       this.funcionesEnInit();
-
-
-
       console.log("Animal", this.AnimalID);
-
-
-
       this.usuariosService.cargarAnimalEstado$.subscribe(log => {
-
         this.estadoAnimal();
-
-
       });
-
-
-
-
-
-
-
-
 
       this.usuariosService.rol$.subscribe(log => {
-
         this.rol = this.usuariosService.rol;
-
         console.log("El rol del usuario es", this.usuariosService.rol);
-
       });
-      //
-
 
     });
 
   }
 
 
-
-
-
   ngOnDestroy(): void {
-
-
-
     this.AnimalID = [];
-
-    this.Animal = [];    
-
+    this.Animal = [];
     this.interesados = [];
-
     this.seleccionadoName = "";
     this.seleccionadoApellido = "";
     this.seleccionadoNum = "";
-    
     this.estadoDelAnimal = [];
-    
     this.modalEleccionAbierto = false;
     this.modalConfirmarAdopcionAbierto = false;
     this.modalAdopcionPendienteAbierto = false;
     this.chatAbierto = false;
-  
-    
-  
     this.moment = [];
-
     this.interesadoSeleccionado = [];
-  
     this.interesados = [];
-  
     this.interes = false;
-  
     this.isOpenInteresados = false;
-  
     this.cargoPagina = false;
-  
 
-
-    
   }
 
   //Estado animal
@@ -226,27 +152,15 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.usuariosService.estadoAnimal(this.AnimalID.id).subscribe(
       res => {
-
-
-
         this.estadoDelAnimal=res;
-
-
-
         this.usuariosService.cargarTerminado$.emit()
-
         console.log("estado animal",  this.estadoDelAnimal);
-
-
 
       },
       err => console.log(err)
     );
 
   }
-
-
-  //
 
   token: any = "";
   UsuarioID: any = { user: "No logueado" };
@@ -293,37 +207,21 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
   funcionesEnInit() {
-
     this.sacarUsuario();
-
-
     this.estadoAnimal();
-
     this.usuariosService.cargarAnimalDatos$.subscribe(log => {
-
       this.animalCargarDatos();
-
     });
 
     this.usuariosService.cargarAnimalIntereses$.subscribe(log => {
-
       if(this.Animal.idDador==this.usuariosService.user.id){
-
         //si sos el dador
         this.cargarInteresados();
-
         console.log("interesados",this.interesados);
       }
-      else
-      {
-
+      else{
         this.cargarInteres();
-
       }
-
-
-
-
     });
 
 
@@ -340,7 +238,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     });
 
 
-
+    this.vacunasAnimal();
 
   }
 
@@ -519,27 +417,16 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   //si sos el dador
   cargarInteresados() {
-
-
     console.log("El id del usuario es este de aca (dador)", this.usuariosService.user.id);
-
-
     this.usuariosService.cargarInteresados(this.AnimalID.id).subscribe(
       res => {
-
         console.log("Resultado del cargar interesados", res);
-
         this.interesados=res;
-
         console.log("Interesados del animal", this.interesados);
-
         this.usuariosService.cargarTerminado$.emit()
       },
       err => console.log(err)
     );
-
-
-
   }
 
 
@@ -623,6 +510,15 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
+vacunasAnimal() {
+  this.usuariosService.vacunasAnimal(this.AnimalID.id).subscribe(
+    res => {
+      this.vacuna = res;
+      console.log("Cantidad de vacunas: ", this.vacuna);
+    },
+    err => console.log(err)
+  );
+}
 
 
 }

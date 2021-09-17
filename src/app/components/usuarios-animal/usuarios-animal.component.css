@@ -8,7 +8,7 @@
   }
 
   .modal-content{
-    margin-top: 25%;
+    margin-top: 5%;
   }
 
   .modal-header{
@@ -31,20 +31,19 @@
 }
 
 #parrafo-modal-medico{
-  font-size: 22px;
+  font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 label{
-  font: bolder;
+  font: bold;
   font-size: 26px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-left: 15px;
 }
 
 .list-group-item{
-  font: bolder;
-  font-size: 24px;
+  font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: blanchedalmond;
 }
@@ -57,6 +56,7 @@ background-color: burlywood;
   width: 30px;
   height: 30px;
   margin-left: 0.2px;
+
 }
 
 #text-check{
@@ -68,18 +68,28 @@ background-color: burlywood;
   font: bolder;
   font-size: 24px !important;
   font-family: Georgia, 'Times New Roman', Times, serif !important;
+  margin-left: 1px !important;
 }
 
 #inlineRadio2{
   width: 30px;
   height: 30px;
+  color: red !important;
+  margin-left: 20px !important;
 }
 
 #inlineRadio1{
-  margin-left: 30px !important;
+  margin-left: 20px !important;
   width: 30px;
   height: 30px ;
+  color: red !important;
 }
+
+#btn-editar-datos-medicos{
+  margin-right: 50px ;
+}
+
+
 
 .paw {
   width:100px;

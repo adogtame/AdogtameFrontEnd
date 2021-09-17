@@ -132,9 +132,11 @@ Registrar animal boton
   background-repeat: no-repeat;
   color: #0792bd;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 24px;
   background-size: 0% 2px;
   transition:  .1s;
+  width: 30%;
+  margin-left: 5%;
 }
 
 #regAnimal:hover, #regAnimal:focus {
@@ -304,4 +306,27 @@ Registrar animal boton
   grid-area: botones;
 
   margin-top: .5em;
+}
+
+#card-animales-seguidores{
+  width: 23%;
+  float: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #FEECE4;
+  border-radius: 25%;
+}
+
+#cont{
+  background-color: #fceee7;
+}
+
+.nombre-animal{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 32px;
+  font: bolder;
+  color: darkslategray;
 }

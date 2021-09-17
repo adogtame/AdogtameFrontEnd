@@ -12,102 +12,74 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
-
-  animal={  idDador:"",nombre:"",sexo:"",tipo:"",fNac:"",tamano:"",peso:""};
-
+  animal = { idDador: "", nombre: "", sexo: "", tipo: "", fNac: "", tamano: "", peso: "" };
   Usuario: any = [];
-
   animales: any = [];
-
   UsuarioID: any = [];
-
-
   animalesSiguiendo: any = [];
   animalesInteresPendienteMe: any = [];
   animalesInteresAdoptadoMe: any = [];
   animalesInteresDisponible: any = [];
   animalesInteresPendienteAdoptadoOtro: any = [];
-
-
   toggleInformacion = true;
   toggleSiguiendo = false;
   toggleSeguidores = false;
   toggleAnimales = false;
-
   // statusAnimales = 'Disable';
-
   //firebase
-  ubi: string="PerfilU";
-  ubi2: string="SiguiendoA";
-  //
-
+  ubi: string = "PerfilU";
+  ubi2: string = "SiguiendoA";
+  ubi3: string = "misAnimales";
   fechaAdoptado: any = [];
-  
+  interesados: any = [];
+  AnimalID: any = [];
+  Animal: any = [];
+  interes: boolean = false;
+  cantidadInteresado: any = [];
+
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
 
   mensaje: string = "Vacio";
-
   mensajeEnviado: string = "";
-
 
   ngOnInit(): void {
 
     this.rutaActiva.params.subscribe(routeParams => {
-
-
-
       this.UsuarioID = this.rutaActiva.snapshot.params
-
-
-      console.log("Estoy en el usuario",this.UsuarioID.id);
+      console.log("Estoy en el usuario", this.UsuarioID.id);
       this.usuarioCargarDatos();
-
-
       console.log("Usuario", this.UsuarioID);
-
 
     });
 
-
+    this.usuariosService.cargarAnimalIntereses$.subscribe(log => {
+        this.cargarInteresados();
+        console.log("interesados",this.interesados);
+    });
 
   }
 
 
   ngOnDestroy(): void {
-
-
-    console.log("Se cierra el usuario",this.UsuarioID.id);
-
+    console.log("Se cierra el usuario", this.UsuarioID.id);
     this.UsuarioID = [];
-
     this.Usuario = [];
-
-
-
-
-
-
     this.animalesSiguiendo = [];
     this.animalesInteresPendienteMe = [];
     this.animalesInteresAdoptadoMe = [];
     this.animalesInteresDisponible = [];
     this.animalesInteresPendienteAdoptadoOtro = [];
-
-
-    console.log("Se cerro el usuario",this.UsuarioID.id);
-
+    console.log("Se cerro el usuario", this.UsuarioID.id);
   }
 
 
 
-  usuarioCargarDatos(){
-
+  usuarioCargarDatos() {
     this.usuariosService.buscarUsuario(this.UsuarioID.id).subscribe(
       res => {
         this.Usuario = res
         console.log(this.Usuario);
-
       },
       err => console.log(err)
     );
@@ -119,136 +91,96 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       },
       err => console.log(err)
     )
-
-
   }
 
-    fechaAdoptados(){
+  fechaAdoptados() {
     this.usuariosService.fechaAdoptados().subscribe(
       res => {
         this.fechaAdoptado = res
         console.log("Aca guardo datos proceso ", this.fechaAdoptado);
-
       },
       err => console.log(err)
     );
   }
 
-  
-  irAAnimal(id: number){
-
-    console.log("El id ",id)
-    this.router.navigate(['usuarios/animal/',id]);
+  cantidadInteresados(cantidad:string) {
+    this.usuariosService.cantidadInteresados(cantidad).subscribe(
+      res => {
+        this.cantidadInteresado = res;
+        console.log("Cantidad de interesados: ", this.cantidadInteresado);
+      },
+      err => console.log(err)
+    );
   }
 
-  registrar(){
-		console.log("Registrando animal");
+  irAAnimal(id: number) {
+    console.log("El id ", id)
+    this.router.navigate(['usuarios/animal/', id]);
+  }
+
+  registrar() {
+    console.log("Registrando animal");
     console.log(this.animal);
-
-
     this.usuariosService.registrarAnimal(this.animal, this.usuariosService.user.id).subscribe(
-
       res => {
-        let result:any=res;
+        let result: any = res;
         console.log(result);
         //por ahora no funca porq hace falta recibir un id del animal recien creado y redireccionar con eso
         this.router.navigate(['usuarios/animal/', result.id]);
       },
       err => {
-
         console.log(err.error.message);
-
-        this.mensaje=err.error.message;
-
-
+        this.mensaje = err.error.message;
       }
-
-
-
-
     )
-
-
-	}
-
-
-
-  siguiendoAnimales(){
-
-  console.log("siguiendo Animales");
-
-
-  this.usuariosService.siguiendoAnimales(this.UsuarioID.id).subscribe(
-    res => {
-
-      this.animalesSiguiendo=res;
-
-      for (let anim of this.animalesSiguiendo) {
-        
-        if(anim.est==1 && anim.estado=="Pendiente"){
-
-          this.animalesInteresPendienteMe.push(anim);
-        }
-
-        if(anim.est==1 && anim.estado=="Adoptado"){
-
-          this.animalesInteresAdoptadoMe.push(anim);
-        }
-
-        if(anim.est==0 && anim.estado=="Disponible"){
-
-          this.animalesInteresDisponible.push(anim);
-        }
-
-        if(anim.est==0 && (anim.estado=="Pendiente" || anim.estado=="Adoptado")){
-
-          this.animalesInteresPendienteAdoptadoOtro.push(anim);
-        }
-        
-
-      }
-
-
-      console.log("Pendientes para vos", this.animalesInteresPendienteMe)
-      console.log("Adoptados por vos", this.animalesInteresAdoptadoMe)
-      console.log("Disponibles aun", this.animalesInteresDisponible)
-      console.log("Pendiente o adoptado por otro", this.animalesInteresPendienteAdoptadoOtro)
-
-          this.fechaAdoptados();
-    console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
-      
-      console.log(res)
-
-
-
-    },
-    err => console.log(err)
-    );
-
   }
 
-  
-  quitarInteres(idAnimal: string){
+  siguiendoAnimales() {
+    console.log("siguiendo Animales");
+    this.usuariosService.siguiendoAnimales(this.UsuarioID.id).subscribe(
+      res => {
+        this.animalesSiguiendo = res;
+        for (let anim of this.animalesSiguiendo) {
+          if (anim.est == 1 && anim.estado == "Pendiente") {
+            this.animalesInteresPendienteMe.push(anim);
+          }
+          if (anim.est == 1 && anim.estado == "Adoptado") {
+            this.animalesInteresAdoptadoMe.push(anim);
+          }
+          if (anim.est == 0 && anim.estado == "Disponible") {
+            this.animalesInteresDisponible.push(anim);
+          }
+          if (anim.est == 0 && (anim.estado == "Pendiente" || anim.estado == "Adoptado")) {
+            this.animalesInteresPendienteAdoptadoOtro.push(anim);
+          }
+        }
+        console.log("Pendientes para vos", this.animalesInteresPendienteMe)
+        console.log("Adoptados por vos", this.animalesInteresAdoptadoMe)
+        console.log("Disponibles aun", this.animalesInteresDisponible)
+        console.log("Pendiente o adoptado por otro", this.animalesInteresPendienteAdoptadoOtro)
+        this.fechaAdoptados();
+        console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
+        console.log(res)
+      },
+      err => console.log(err)
+    );
+  }
 
 
-    
+  quitarInteres(idAnimal: string) {
     this.usuariosService.quitarInteres(idAnimal, { idInteresado: this.usuariosService.user.id }).subscribe(
       res => {
-
-     
-
-        console.log("id",idAnimal);
-
+        console.log("id", idAnimal);
         //Este codigo de abajo me funciono
         // get index of object with id of ?
-        const removeIndex1 = this.animalesInteresDisponible.findIndex( (item:any) => item.id === idAnimal );
+        const removeIndex1 = this.animalesInteresDisponible.findIndex((item: any) => item.id === idAnimal);
         // remove object
-        this.animalesInteresDisponible.splice( removeIndex1, 1 );
+        this.animalesInteresDisponible.splice(removeIndex1, 1);
 
         // get index of object with id of ?
-        const removeIndex2 = this.animalesInteresPendienteAdoptadoOtro.findIndex( (item:any) => item.id === idAnimal );
+        const removeIndex2 = this.animalesInteresPendienteAdoptadoOtro.findIndex((item: any) => item.id === idAnimal);
         // remove object
-        this.animalesInteresPendienteAdoptadoOtro.splice( removeIndex2, 1 );
+        this.animalesInteresPendienteAdoptadoOtro.splice(removeIndex2, 1);
 
 
         console.log("quitando de array", this.animalesInteresDisponible);
@@ -261,26 +193,26 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
     /**/
   }
-  
-
-  confirmarPendiente(AniPend: any){
 
 
+  confirmarPendiente(AniPend: any) {
 
-    
+
+
+
     this.usuariosService.confirmarAdopcion(AniPend.id, { idInteresado: this.usuariosService.user.id }).subscribe(
       res => {
 
-     
 
-        console.log("animal datos",AniPend);
+
+        console.log("animal datos", AniPend);
 
         // get index of object with id of ?
-        const removeIndex = this.animalesInteresPendienteMe.findIndex( (item:any) => item.id === AniPend.id );
+        const removeIndex = this.animalesInteresPendienteMe.findIndex((item: any) => item.id === AniPend.id);
         // remove object
-        this.animalesInteresPendienteMe.splice( removeIndex, 1 );
+        this.animalesInteresPendienteMe.splice(removeIndex, 1);
 
-     
+
         //Agregar a animales adoptados
         this.animalesInteresAdoptadoMe.push(AniPend);
 
@@ -297,26 +229,26 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
 
-  rechazarPendiente(AniPend: any){
+  rechazarPendiente(AniPend: any) {
 
 
     this.usuariosService.cancelarProcesoAdopcion(AniPend.id).subscribe(
       res => {
-        
+
 
         // get index of object with id of ?
-        const removeIndex = this.animalesInteresPendienteMe.findIndex( (item:any) => item.id === AniPend.id );
+        const removeIndex = this.animalesInteresPendienteMe.findIndex((item: any) => item.id === AniPend.id);
         // remove object
-        this.animalesInteresPendienteMe.splice( removeIndex, 1 );
+        this.animalesInteresPendienteMe.splice(removeIndex, 1);
 
 
-        AniPend.est=0;
-     
+        AniPend.est = 0;
+
         console.log("object ", AniPend);
         //Agregar a animales Disponible
         this.animalesInteresDisponible.push(AniPend);
 
-        console.log("animalesInteresDisponible ",this.animalesInteresDisponible);
+        console.log("animalesInteresDisponible ", this.animalesInteresDisponible);
         console.log(res);
 
 
@@ -334,7 +266,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   //Botones menu de perfil
 
-  Informacion(){
+  Informacion() {
 
 
 
@@ -355,7 +287,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   }
 
-  Siguiendo(){
+  Siguiendo() {
 
     this.siguiendoAnimales();
 
@@ -365,7 +297,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.toggleAnimales = false;
   }
 
-  Seguidores(){
+  Seguidores() {
 
 
 
@@ -385,7 +317,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   }
 
-  Animales(){
+  Animales() {
 
     this.toggleInformacion = false;
     this.toggleSiguiendo = false;
@@ -402,6 +334,20 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     this.animalesInteresPendienteAdoptadoOtro = [];
   }
 
+
+
+  cargarInteresados() {
+    console.log("El id del usuario es este de aca (dador)", this.usuariosService.user.id);
+    this.usuariosService.cargarInteresados(this.AnimalID.id).subscribe(
+      res => {
+        console.log("Resultado del cargar interesadoss", res);
+        this.interesados=res;
+        console.log("Interesados del animals", this.interesados);
+        this.usuariosService.cargarTerminado$.emit()
+      },
+      err => console.log(err)
+    );
+  }
 
 
 

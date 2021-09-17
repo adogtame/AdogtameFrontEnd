@@ -14,28 +14,18 @@ export class UploadDetailsComponent implements OnInit {
   constructor(private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
-
-    
     console.log("Este es el file upload de details",this.fileUpload);
-
   }
 
-  
   ngOnDestroy(): void {
-
-
     this.fileUpload.url="";
     this.fileUpload.key="";
     this.fileUpload.name="";
-
   }
 
   deleteFileUpload(fileUpload: FileUpload): void {
     this.uploadService.deleteFile(fileUpload);
   }
-
-
-
 
 }
 

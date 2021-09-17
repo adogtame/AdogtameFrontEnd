@@ -2,7 +2,6 @@
   <div class="imagenC">
     <app-upload-list [sujetoID]='UsuarioID.id' [Pertenece]='ubi'></app-upload-list>
   </div>
-  <!-- <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt=""> -->
   <p id="nombre-usuario-perfil">{{Usuario.nombre}}</p>
 </div>
 <div class="container" style="margin-top: 50px;">
@@ -19,19 +18,10 @@
         aria-controls="collapseExample" class="nav-link col-lg-12" type="button" (click)="Siguiendo()">Siguiendo
       </button>
     <li class="nav-item" role="presentation">
-      <button id="Seguidores-tab" [ngClass]="{'activo' : toggleSeguidores, 'noActivo': !toggleSeguidores}"
-        class="nav-link col-lg-12" type="button" (click)="Seguidores()">Seguidores
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
       <button id="Animales-tab" [ngClass]="{'activo' : toggleAnimales, 'noActivo': !toggleAnimales}"
         data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
         aria-controls="collapseExample" class="nav-link col-lg-12" type="button" (click)="Animales()">Animales
       </button>
-      <!-- <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-      </div>
-    </div> -->
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -65,14 +55,12 @@
                     </span>
                   </div>
                 </div>
-
                 <div class="siguiendo-botones">
                   <div class="estado-item rechazar-pendiente" (click)="rechazarPendiente(AniPend)">Rechazar</div>
                   <div class="estado-item confirmar-pendiente" (click)="confirmarPendiente(AniPend)">Confirmar</div>
                 </div>
               </div>
             </div>
-
             <div class="ani-item animales-adoptados" *ngIf="animalesInteresAdoptadoMe.length>0">
               <p>Adoptados</p>
               <div class="ani-item-adentro animales-adoptados-adentro"
@@ -92,7 +80,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="estado-item estado-adoptado">{{AniAdopt.estado}}</div>                 -->
               </div>
             </div>
 
@@ -115,10 +102,8 @@
                 </div>
               </div>
             </div>
-
             <div class="ani-item animales-no-disponibles" *ngIf="animalesInteresPendienteAdoptadoOtro.length>0">
               <p>Ya adoptado o en pendiente para otro</p>
-
               <div class="ani-item-adentro animales-no-disponibles-adentro"
                 *ngFor="let AniPAO of animalesInteresPendienteAdoptadoOtro">
                 <div class="ani-int-pointer">
@@ -126,9 +111,7 @@
                     <app-upload-list [sujetoID]='AniPAO.id' [Pertenece]='ubi2'></app-upload-list>
                   </div>
                   <div class="siguiendo-nombreA">
-                    <span>
-                      {{AniPAO.nombre}}
-                    </span>
+                    <span> {{AniPAO.nombre}} </span>
                   </div>
                 </div>
                 <div class="siguiendo-botones">
@@ -140,122 +123,95 @@
         </div>
       </div>
     </div>
-    <div [ngClass]="{'content' : toggleSeguidores, 'contentNo': !toggleSeguidores}">
-      <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
-        <div class="card-body">
-          <h5 class="card-title">Seguidores de mis animales</h5>
-          <p class="card-text">Traer datos</p>
-        </div>
-      </div>
-    </div>
+
     <div [ngClass]="{'content' : toggleAnimales, 'contentNo': !toggleAnimales}">
-      <div class="card mb-3" style="max-width: 100%;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <a data-bs-toggle="modal" data-bs-target="#exampleModal2" id="regAnimal">Registrar nuevo animal</a>
-            <!-- <img src="..." alt="..."> -->
-
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="card-header" style="background-color:rgb(175, 157, 0); color:rgb(255, 245, 224)"
-                      id="exampleModalLabel2">Registra un animal</h3>
-                    <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                      class="btn btn-light">&#10006;</button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="mb-3">
-
-                      <div class="card-body" style="background-color:rgb(255, 248, 224);">
-                        <form>
-
-                          <div class="mb-3">
-                            <label for=""> <b> Nombre</b> </label>
-                            <input type="text" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre"
-                              class="form-control" autofocus required>
-                          </div>
-                          <div class="mb-3">
-                            <div class="content-select">
-                              <label for=""> <b> Tipo</b> </label>
-                              <select name="tipo" [(ngModel)]="animal.tipo" class="form-control">
-                                <option value="perro">Perro</option>
-                                <option value="gato">Gato</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <div class="content-select">
-
-                              <label for=""> <b> Sexo</b> </label>
-                              <select name="sexo" [(ngModel)]="animal.sexo" class="form-control ">
-                                <option value="macho">Macho</option>
-                                <option value="hembra">Hembra</option>
-                              </select>
-
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <label for=""> <b> Fecha de nacimiento</b> </label>
-                            <input type="date" name="fNac" [(ngModel)]="animal.fNac" class="form-control" required
-                              max="2021-07-01">
-                          </div>
-                          <div class="mb-3">
-                            <div class="content-select">
-                              <label for=""> <b> Tamaño</b> </label>
-                              <select name="tamano" [(ngModel)]="animal.tamano" class="form-control">
-                                <option value="chico">Chico</option>
-                                <option value="mediano">Mediano</option>
-                                <option value="grande">Grande</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <label for=""> <b> Peso (kg)</b> </label>
-                            <input type="number" name="peso" [(ngModel)]="animal.peso" placeholder="Ingrese el peso"
-                              class="form-control" required>
-                          </div>
-                          <div class="mb-3">
-                            <app-upload-form></app-upload-form>
-                          </div>
-                          <br>
-                          <div class="mb-3">
-                            <button class="btn btn-success btn-lg" aria-label="Close" value="animal"
-                              style="float: left; " (click)="registrar()" data-bs-dismiss="modal">
-                              Registrar</button>
-                            <input type="reset" value="Limpiar campos" class="btn btn-danger btn-lg"
-                              style="float: right;">
-                          </div>
-                        </form>
+      <div class="card mb-3" style="max-width: 100%;" id="cont">
+        <a data-bs-toggle="modal" data-bs-target="#exampleModal2" id="regAnimal">Registrar nuevo animal</a>
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+          aria-hidden="true">
+          <!-- Empieza Modal de registrar -->
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content" style="background-color:rgb(248, 245, 218);">
+              <div class="modal-header">
+                <h3 class="card-header" style=" color:rgb(88, 79, 60)" id="exampleModalLabel2">Registra un animal</h3>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light">&#10006;</button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <div class="card-body" style="background-color:rgb(255, 248, 224);">
+                    <form>
+                      <div class="mb-3">
+                        <label for=""> <b> Nombre</b> </label>
+                        <input type="text" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre"
+                          class="form-control" autofocus required>
                       </div>
-                    </div>
+                      <div class="mb-3">
+                        <div class="content-select">
+                          <label for=""> <b> Tipo</b> </label>
+                          <select name="tipo" [(ngModel)]="animal.tipo" class="form-control">
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <div class="content-select">
+                          <label for=""> <b> Sexo</b> </label>
+                          <select name="sexo" [(ngModel)]="animal.sexo" class="form-control ">
+                            <option value="macho">Macho</option>
+                            <option value="hembra">Hembra</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for=""> <b> Fecha de nacimiento</b> </label>
+                        <input type="date" name="fNac" [(ngModel)]="animal.fNac" class="form-control" required
+                          max="2021-07-01">
+                      </div>
+                      <div class="mb-3">
+                        <div class="content-select">
+                          <label for=""> <b> Tamaño</b> </label>
+                          <select name="tamano" [(ngModel)]="animal.tamano" class="form-control">
+                            <option value="chico">Chico</option>
+                            <option value="mediano">Mediano</option>
+                            <option value="grande">Grande</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for=""> <b> Peso (kg)</b> </label>
+                        <input type="number" name="peso" [(ngModel)]="animal.peso" placeholder="Ingrese el peso"
+                          class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                        <app-upload-form></app-upload-form>
+                      </div>
+                      <br>
+                      <div class="mb-3">
+                        <button class="btn btn-success btn-lg" aria-label="Close" value="animal" style="float: left; "
+                          (click)="registrar()" data-bs-dismiss="modal"> Registrar</button>
+                        <input type="reset" value="Limpiar campos" class="btn btn-danger btn-lg" style="float: right;">
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
-
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <br>
-              <div class="col-md-8" *ngFor=" let animal of animales">
-                <div class="card text-white bg-dark mb-3 pointer" style="max-width: 24rem; background-color: #71d1ee !important; color: black !important;" >
-                  <div class="card-header" style="text-align: center; font-size: 32px !important;">
-                    <a (click)="irAAnimal(animal.id)">{{animal.nombre}}</a>
-                  </div>
-                  <div class="card-body">
-                    <p class="card-text">Tipo: {{animal.tipo}}</p>
-                    <p class="card-text">Tamaño: {{animal.tamano}}</p>
-                    <p class="card-text">Sexo: {{animal.sexo}}</p>
-                  </div>
-                </div>
-              </div>
+        </div> <!-- Termina Modal de registrar -->
 
+        <div class="container">
+          <div class="card" *ngFor=" let animal of animales" id="card-animales-seguidores">
+            <div class="card-body">
+              <p class="nombre-animal" (click)="irAAnimal(animal.id)">{{animal.nombre}}</p>
+              <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi3' (click)="irAAnimal(animal.id)"></app-upload-list>
             </div>
+            <!-- Actualiza todos los valores de todas las cards al presionar el boton en lugar de una card sola
+                 Indica el numero de seguidores que tiene el animal
+              <button (click)="cantidadInteresados(animal.id)"  class="btn btn-primary" >
+                Cargar interesados {{cantidadInteresado.length}}
+              </button>
+            -->
           </div>
         </div>
       </div>
