@@ -97,17 +97,16 @@
                     </div>
                   </div>
                   <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
-                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
-                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
+                    <label class="primeroP"> <b> {{noti.nombreI}} {{noti.apellidoI}} </b>quiere adoptar a tu animal</label>
+                    <label class="segundoP"><b> {{noti.fecha | date: 'dd/MM/yyyy'}} </b></label>
                   </div>
                   <div class="notificaciones-grid-parrafo" *ngIf="noti.est==1">
-                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} te a dado su aprobacion para la
-                      adopcion</label>
-                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
+                    <label class="primeroP"><b>{{noti.nombreI}} {{noti.apellidoI}} </b>  acepto tu pedido de adopcion</label>
+                    <label class="segundoP"><b> {{noti.fecha | date: 'dd/MM/yyyy'}}</b> </label>
                   </div>
                   <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
-                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} a confirmado la adopcion</label>
-                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
+                    <label class="primeroP"><b>{{noti.nombreI}} {{noti.apellidoI}}  </b> confirmo la adopcion</label>
+                    <label class="segundoP"><b>{{noti.fecha | date: 'dd/MM/yyyy'}} </b> </label>
                   </div>
                   <div class="notificaciones-grid-animal">
                     <div class="imagenC1" (click)="irAAnimal(noti.animal)">

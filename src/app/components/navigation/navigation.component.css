@@ -1,4 +1,8 @@
-
+.notificaciones-grid-parrafo{
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
 
 .imagenC1{
 
@@ -280,16 +284,16 @@ h1 {
     margin-top: 0.2em;
 
     right: 9em;
-    
 
-    overflow: auto; 
+
+    overflow: auto;
 }
 
 
 
 
 /* .notificaciones-data:hover{
-    
+
     background-color: #d4c3a8;
 
 } */
@@ -302,79 +306,79 @@ h1 {
 }
 
 .notificaciones-data-interes{
-    
-    display: grid; 
-    grid-template-areas: 
+
+    display: grid;
+    grid-template-areas:
     "interesado parrafo animal";
     grid-template-rows: repeat(auto-fill, 1fr);
     background-color: #d9ebf0;
     border: solid 0.5px rgba(77, 76, 76, 0.171);
 
-} 
+}
 
 
 .notificaciones-data-pendiente{
-    
-    display: grid; 
-    grid-template-areas: 
+
+    display: grid;
+    grid-template-areas:
     "interesado parrafo animal";
     grid-template-rows: repeat(auto-fill, 1fr);
     background-color: #bff0c3;
     border: solid 0.5px rgba(77, 76, 76, 0.171);
 
-} 
+}
 
 
 .notificaciones-data-adoptado{
-    
-    display: grid; 
-    grid-template-areas: 
+
+    display: grid;
+    grid-template-areas:
     "interesado parrafo animal";
     grid-template-rows: repeat(auto-fill, 1fr);
     background-color: #e4c0c0;
     border: solid 0.5px rgba(77, 76, 76, 0.171);
 
-} 
+}
 
 
 .notificaciones-data-interes:hover{
-    
+
     background-color: #abb9bd;
 
 }
 
 .notificaciones-data-pendiente:hover{
-    
+
     background-color: #98be9b;
 
 }
 
 .notificaciones-data-adoptado:hover{
-    
+
     background-color: #c3a8a8;
-    
-} 
+
+}
 
 
 .notificaciones-grid-interesado{
     grid-area: interesado;
-    
+
     margin: 0.6em 0em 0.8em 0em;
 }
-  
-.notificaciones-grid-parrafo{    
+
+.notificaciones-grid-parrafo{
     grid-area: parrafo;
     margin: 0.6em 0em 0.8em 0em;
-}  
+}
 
-.notificaciones-grid-animal{    
+.notificaciones-grid-animal{
     grid-area: animal;
     margin: 0.6em 0em 0.8em 0em;
 }
 
 .notificaciones-container label{
-    font-size: 1em; 
-    padding: 0.35em 0.9em 0.5em 0.9em;   
+    font-size: 1em;
+    padding: 0.35em 0.9em 0.5em 0.9em;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -387,7 +391,7 @@ h1 {
 
 
 .alerta-notificaciones{
-    
+
     transform: translate(0.9em, -2.2em);
     height: 1.2em;
     width: 1.2em;
@@ -397,7 +401,7 @@ h1 {
 }
 
 .alerta-notificaciones p{
-    
+
     font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     transform: translatey(-.13em);
     color: white;
@@ -449,13 +453,13 @@ h1 {
 
 
 @media screen and (max-width: 750px) {
-  
 
-  
+
+
 }
-  
-  
-  
+
+
+
 
 
 
