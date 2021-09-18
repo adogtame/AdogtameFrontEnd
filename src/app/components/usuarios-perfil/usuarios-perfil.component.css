@@ -330,3 +330,16 @@ Registrar animal boton
   font: bolder;
   color: darkslategray;
 }
+
+#subir-foto{
+  transform: translate(1.8em, -1.0em);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 26px;
+}
+
+#subir-foto:hover{
+  background-color: lightgray;
+
+}

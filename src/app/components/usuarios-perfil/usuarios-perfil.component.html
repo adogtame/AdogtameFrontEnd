@@ -1,8 +1,9 @@
 <div class="contenedor-usuario-perfil">
   <div class="imagenC">
     <app-upload-list [sujetoID]='UsuarioID.id' [Pertenece]='ubi'></app-upload-list>
+      <i class="fas fa-camera" id="subir-foto"></i>
   </div>
-  <p id="nombre-usuario-perfil">{{Usuario.nombre}}</p>
+  <p id="nombre-usuario-perfil">{{Usuario.nombre}} </p>
 </div>
 <div class="container" style="margin-top: 50px;">
   <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
@@ -33,6 +34,8 @@
           <p class="card-text">Apellido: <span class="spa">{{Usuario.apellido}} </span> </p>
           <p class="card-text">Email: <span class="spa"> {{Usuario.email}}</span></p>
           <p class="card-text">Celular: <span class="spa"> {{Usuario.nro_celular}}</span></p>
+          <button type="button" class="btn btn-light" style="float: right;"> <b>Editar </b> <i
+            class="fas fa-pencil-alt"></i></button>
         </div>
       </div>
     </div>

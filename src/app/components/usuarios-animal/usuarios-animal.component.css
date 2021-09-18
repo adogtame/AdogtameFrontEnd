@@ -85,6 +85,20 @@ background-color: burlywood;
   color: red !important;
 }
 
+#subir-foto{
+  transform: translate(1.8em, -1.0em);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 26px;
+}
+
+#subir-foto:hover{
+  background-color: lightgray;
+
+}
+
+
 #btn-editar-datos-medicos{
   margin-right: 50px ;
 }
@@ -392,10 +406,7 @@ display: inline-block;
   text-align: center;
 }
 
-.animal-imagen > .imagenC{}
 
-.animal-imagen p{
-}
 
 .animal-nombre{
   font: bolder;

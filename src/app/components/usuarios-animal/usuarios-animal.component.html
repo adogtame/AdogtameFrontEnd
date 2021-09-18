@@ -42,8 +42,11 @@
 
 
         <div class="imagenC">
-          <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'></app-upload-list>
-        </div>
+          <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'> </app-upload-list>
+            <i class="fas fa-camera" id="subir-foto"></i>
+          </div>
+
+
 
         <!-- <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt=""> -->
         <p class="animal-nombre">{{Animal.nombre}}</p>
@@ -66,6 +69,8 @@
             </button>
           </li>
 
+          <button type="button" class="btn btn-light" style="float: left;"> <b>Editar datos </b> <i
+              class="fas fa-pencil-alt"></i></button>
 
           <ng-template #dador>
             <li class="nav-item activecol-lg-4" role="presentation">
@@ -161,6 +166,7 @@
         <div class="grid-main-item datos-medicos">
           <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()">Datos Medicos</button>
         </div>
+
         <div class="backdrop" id="modal-datos-medicos" [ngStyle]="{'display':display}"></div>
         <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
           <div class="modal-dialog" role="document">
@@ -247,10 +253,12 @@
               <div class="modal-footer">
                 <div class="form-group row">
                   <div class="col-sm-12">
-                  <button type="button" class="btn btn-dark" id="btn-editar-datos-medicos" style="float: left !important;"> <b>Editar </b> <i
-                      class="fas fa-pencil-alt"></i></button>
-                  <button type="button" class="btn btn-success" id="btn-editar-datos-medicos" style="float: right !important;" > <b>Confirmar cambios </b><i class="fas fa-check-double"></i></button>
-                </div>
+                    <button type="button" class="btn btn-dark" id="btn-editar-datos-medicos"
+                      style="float: left !important;"> <b>Editar </b> <i class="fas fa-pencil-alt"></i></button>
+                    <button type="button" class="btn btn-success" id="btn-editar-datos-medicos"
+                      style="float: right !important;"> <b>Confirmar cambios </b><i
+                        class="fas fa-check-double"></i></button>
+                  </div>
                 </div>
 
                 <!-- <button type="button" class="btn btn-dark" (click)="onCloseHandled()" id="btn-cerrar-datos-medicos">Cerrar</button> -->
