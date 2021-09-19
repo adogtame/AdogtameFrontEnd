@@ -1,7 +1,7 @@
 <div class="contenedor-usuario-perfil">
   <div class="imagenC">
     <app-upload-list [sujetoID]='UsuarioID.id' [Pertenece]='ubi'></app-upload-list>
-      <i class="fas fa-camera" id="subir-foto"></i>
+    <i class="fas fa-camera" id="subir-foto"></i>
   </div>
   <p id="nombre-usuario-perfil">{{Usuario.nombre}} </p>
 </div>
@@ -27,20 +27,91 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div [ngClass]="{'content' : toggleInformacion, 'contentNo': !toggleInformacion}">
-      <div class="card text-dark bg-info mb-3" style="max-width: 100%;">
+      <div class="card text-dark mb-3" style="max-width: 100%; background-color:rgb(248, 220, 195) ;">
         <div class="card-body">
           <h2 class="card-title">Datos personales</h2>
           <p class="card-text">Nombre: <span class="spa"> {{Usuario.nombre}}</span> </p>
           <p class="card-text">Apellido: <span class="spa">{{Usuario.apellido}} </span> </p>
           <p class="card-text">Email: <span class="spa"> {{Usuario.email}}</span></p>
           <p class="card-text">Celular: <span class="spa"> {{Usuario.nro_celular}}</span></p>
-          <button type="button" class="btn btn-light" style="float: right;"> <b>Editar </b> <i
-            class="fas fa-pencil-alt"></i></button>
+          <button type="button" class="btn btn-light" style="float: right;" data-bs-toggle="modal"
+            data-bs-target="#modal-editar-datos-personales"> <b>Editar </b> <i class="fas fa-pencil-alt"></i></button>
+          <!-- Empieza Modal de registrar -->
+          <div class="modal fade" id="modal-editar-datos-personales" tabindex="-1"
+            aria-labelledby="modal-editar-datos-personales-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 id="modal-editar-datos-personales-label">Modifica tus datos personales</h3>
+                  <button type="button" data-bs-dismiss="modal" aria-label="Close" class="close" style="font-size: 40px;">
+                    <i class="fas fa-times-circle" ></i></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <div class="card-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="" style="float: left;"> <b> Nombre</b> </label>
+                          <input type="text" minlength="4" name="nombre" [(ngModel)]="user.nombre"
+                            placeholder="Ingrese su Usuario" class="form-control" (focus)="limpiarNombre()" autofocus
+                            required>
+                          <div [ngSwitch]="errorNombre" class="errorField">
+                            <div *ngSwitchCase="1">Debes completar el campo</div>
+                            <div *ngSwitchCase="2">Nombre muy largo</div>
+                            <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
+                            <div *ngSwitchCase="4">Error {{mensajeEnviado}}</div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for=""> <b> Apellido</b> </label>
+                          <input type="text" minlength="4" name="apellido" [(ngModel)]="user.apellido"
+                            placeholder="Ingrese su  Apellido" class="form-control" (focus)="limpiarApellido()"
+                            required>
+                          <div [ngSwitch]="errorApellido" class="errorField">
+                            <div *ngSwitchCase="1">Debes completar el campo</div>
+                            <div *ngSwitchCase="2">Apellido muy largo</div>
+                            <div *ngSwitchCase="3">Apellido debe ser alfabetico</div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for=""> <b> E-mail</b> </label>
+                          <input type="email" name="email" [(ngModel)]="user.email" placeholder="Ingrese su Email"
+                            class="form-control" minlength="10" (focus)="limpiarEmail()" required>
+                          <div [ngSwitch]="errorEmail" class="errorField">
+                            <div *ngSwitchCase="1">Debes completar el campo</div>
+                            <div *ngSwitchCase="2">Email muy largo</div>
+                            <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for=""> <b> Celular</b> </label>
+                          <input type="tel" name="nro_celular" [(ngModel)]="user.nro_celular"
+                            placeholder="Ingrese su nro de celular" class="form-control" minlength="8"
+                            (focus)="limpiarCelular()" required>
+                          <div [ngSwitch]="errorCelular" class="errorField">
+                            <div *ngSwitchCase="1">Debes completar el campo</div>
+                            <div *ngSwitchCase="2">Celular muy largo</div>
+                            <div *ngSwitchCase="3">Celular debe ser numerico</div>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="mb-3">
+                          <button type="reset" class="btn btn-danger" style="float: left;"> <b> Limpiar campos</b> </button>
+                          <button class="btn btn-success" aria-label="Close" style="float: right; "
+                            data-bs-dismiss="modal"> <b>Confirmar </b>  <i class="fas fa-check-double"></i></button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- Termina Modal de registrar -->
         </div>
       </div>
     </div>
     <div [ngClass]="{'content' : toggleSiguiendo, 'contentNo': !toggleSiguiendo}">
-      <div class="card" style="width: 100%;">
+      <div class="card" style="width: 100%; background-color:rgb(248, 220, 195) ;">
         <div class="card-body">
           <h2 class="card-title">Animales a los que sigo</h2>
           <div class="animales-con-interes">
@@ -128,7 +199,7 @@
     </div>
 
     <div [ngClass]="{'content' : toggleAnimales, 'contentNo': !toggleAnimales}">
-      <div class="card mb-3" style="max-width: 100%;" id="cont">
+      <div class="card mb-3" style="max-width: 100%; background-color:rgb(248, 220, 195) ;" id="cont">
         <a data-bs-toggle="modal" data-bs-target="#exampleModal2" id="regAnimal">Registrar nuevo animal</a>
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
           aria-hidden="true">
@@ -207,7 +278,8 @@
           <div class="card" *ngFor=" let animal of animales" id="card-animales-seguidores">
             <div class="card-body">
               <p class="nombre-animal" (click)="irAAnimal(animal.id)">{{animal.nombre}}</p>
-              <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi3' (click)="irAAnimal(animal.id)"></app-upload-list>
+              <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi3' (click)="irAAnimal(animal.id)">
+              </app-upload-list>
             </div>
             <!-- Actualiza todos los valores de todas las cards al presionar el boton en lugar de una card sola
                  Indica el numero de seguidores que tiene el animal

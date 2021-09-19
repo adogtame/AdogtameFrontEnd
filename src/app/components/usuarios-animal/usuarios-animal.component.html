@@ -69,8 +69,77 @@
             </button>
           </li>
 
-          <button type="button" class="btn btn-light" style="float: left;"> <b>Editar datos </b> <i
+          <button type="button" class="btn btn-light" style="float: left;" data-bs-toggle="modal" data-bs-target="#exampleModal2"> <b>Editar datos </b> <i
               class="fas fa-pencil-alt"></i></button>
+              <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                aria-hidden="true">
+                <!-- Empieza Modal de registrar -->
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 id="exampleModalLabel2">Modifica los datos de {{Animal.nombre}}</h2>
+                      <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light "><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <div class="card-body">
+                          <form>
+                            <div class="mb-3">
+                              <label for=""> <b> Nombre</b> </label>
+                              <input type="text" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre"
+                                class="form-control" autofocus required>
+                            </div>
+                            <div class="mb-3">
+                              <div class="content-select">
+                                <label for=""> <b> Tipo</b> </label>
+                                <select name="tipo" [(ngModel)]="animal.tipo" class="form-control">
+                                  <option value="perro">Perro</option>
+                                  <option value="gato">Gato</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <div class="content-select">
+                                <label for=""> <b> Sexo</b> </label>
+                                <select name="sexo" [(ngModel)]="animal.sexo" class="form-control ">
+                                  <option value="macho">Macho</option>
+                                  <option value="hembra">Hembra</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for=""> <b> Fecha de nacimiento</b> </label>
+                              <input type="date" name="fNac" [(ngModel)]="animal.fNac" class="form-control" required
+                                max="2021-07-01">
+                            </div>
+                            <div class="mb-3">
+                              <div class="content-select">
+                                <label for=""> <b> Tamaño</b> </label>
+                                <select name="tamano" [(ngModel)]="animal.tamano" class="form-control">
+                                  <option value="chico">Chico</option>
+                                  <option value="mediano">Mediano</option>
+                                  <option value="grande">Grande</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for=""> <b> Peso (KG)</b> </label>
+                              <input type="number" name="peso" [(ngModel)]="animal.peso" placeholder="Ingrese el peso"
+                                class="form-control" required>
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                              <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar campos</b> </button>
+                              <button class="btn btn-success btn-lg" aria-label="Close" value="animal" style="float: right; "
+                                data-bs-dismiss="modal"> <b>Confirmar </b>  <i class="fas fa-check-double"></i></button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- Termina Modal de registrar -->
 
           <ng-template #dador>
             <li class="nav-item activecol-lg-4" role="presentation">
@@ -166,14 +235,14 @@
         <div class="grid-main-item datos-medicos">
           <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()">Datos Medicos</button>
         </div>
-
+        <div class="modal-dialog modal-dialog-scrollable">
         <div class="backdrop" id="modal-datos-medicos" [ngStyle]="{'display':display}"></div>
         <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h2 class="modal-title">Datos Medicos de {{Animal.nombre}} </h2>
-                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()" style="font-size: 40px;"><span
                     aria-hidden="true"><i class="fas fa-times-circle"></i></span></button>
               </div>
               <div class="modal-body">
@@ -266,7 +335,7 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal !-->
-
+      </div>
 
       </div>
     </div>

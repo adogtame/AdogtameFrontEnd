@@ -37,6 +37,14 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   interes: boolean = false;
   cantidadInteresado: any = [];
 
+  user={  tipo_perfil:"persona", nombre:"",apellido:"",email:"",nro_celular:""};
+  errorNombre=0;
+  errorApellido=0;
+  errorEmail=0;
+  errorCelular=0;
+
+
+
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
 
@@ -348,6 +356,44 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
   }
+
+
+
+  limpiarNombre() {
+    if (this.errorNombre > 0) {
+      console.log("Limpiar nombre");
+      this.user.nombre = "";
+      this.errorNombre = 0;
+    }
+  }
+
+  limpiarApellido() {
+    if (this.errorApellido > 0) {
+      console.log("Limpiar Apellido");
+      this.user.apellido = "";
+      this.errorApellido = 0;
+    }
+  }
+
+  limpiarEmail() {
+    if(this.errorEmail>0){
+      console.log("Limpiar email");
+      this.user.email = "";
+      this.errorEmail = 0;
+    }
+  }
+
+  limpiarCelular() {
+    if (this.errorCelular > 0) {
+      console.log("Limpiar Celular");
+      this.user.nro_celular = "";
+      this.errorCelular = 0;
+    }
+  }
+
+
+
+
 
 
 

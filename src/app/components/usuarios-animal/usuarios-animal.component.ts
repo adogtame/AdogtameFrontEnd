@@ -70,6 +70,7 @@ import {
   ]
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
+  animal = { idDador: "", nombre: "", sexo: "", tipo: "", fNac: "", tamano: "", peso: "" };
   Animal: any = [];
   AnimalID: any = [];
   userAhora: string="";

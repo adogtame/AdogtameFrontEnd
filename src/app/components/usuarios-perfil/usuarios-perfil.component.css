@@ -1,7 +1,23 @@
+.modal-header{
+  background-color:  rgb(250, 218, 170);
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.modal-body{
+  background-color: blanchedalmond;
+}
+
 span{
   font: bolder;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 24px;
+}
+
+label{
+  font: bold;
+  font-size: 22px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-left: 15px;
 }
 
 .contenedor-usuario-perfil{
@@ -155,7 +171,7 @@ Registrar animal boton
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 24px;
   font: bold;
-  color: white;
+  color: darkslategrey;
 }
 
 .animales-con-interes{
