@@ -43,6 +43,7 @@
     border:0px;
     width:130px;
     height:30px;
+    margin-right: 5px;
 }
 
 .boton3{
@@ -454,7 +455,23 @@ h1 {
 
 @media screen and (max-width: 750px) {
 
+  button{
+    margin: 1px 1px 1px 1px !important;
+    padding: 0 0 0 0;
+  }
 
+  .posicion-derecha{
+    position:relative;
+
+}
+
+.botonCampana{
+  margin-top: 5px !important;
+}
+
+.ocultar-mobile{
+  display: none;
+}
 
 }
 
