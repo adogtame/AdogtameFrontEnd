@@ -1,13 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
-
-
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
-
-//cesar jueves
-
 import { AdminService } from '../../services/admin.service';
 
 //Animations (Dropdown)
@@ -17,43 +12,29 @@ import {
   style,
   animate,
   transition,
-
   query,
   sequence,
   stagger,
-  // ...
 } from '@angular/animations';
-//
+
 
 @Component({
   selector: 'app-usuarios-animal',
-
-
   templateUrl: './usuarios-animal.component.html',
-
   styleUrls: ['./usuarios-animal.component.css'],
-
   animations: [
-
      trigger('clickContent', [
        state('noShow',
          style({
-
            display: 'none',
            height: '0px',
            opacity: 0.6
-
          })
        ),
        state('show',
          style({
           display: 'block',
-
           'min-height':'45px',
-
-
-          // height: '260px',
-
           'margin-top': '32px',
           opacity: 1
           })
@@ -65,8 +46,6 @@ import {
          animate('0s')
        ])
      ]),
-
-
   ]
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
@@ -96,7 +75,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   rol: any = "";
   display='none';
   vacuna : any = [];
-  //Fin de lo de cesar
 
   constructor(
 
@@ -225,19 +203,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       }
     });
 
-
-
-
     this.usuariosService.cargarTerminado$.subscribe(log => {
-
       this.userAhora=this.usuariosService.user.id;
-
       setTimeout(()=>{ this.cargoPagina=true }, 2000)
-
-
       console.log("interesados",this.interesados);
     });
-
 
     this.vacunasAnimal();
 
@@ -260,15 +230,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
   comenzarChat(id: number, nombre: string, apellido: string, num: string){
-
     this.seleccionadoName = nombre;
     this.seleccionadoApellido = apellido;
     this.seleccionadoNum = num;
-
     this.chatAbierto = true;
-
     console.log("El id ",id);
-
 
   }
 
@@ -277,28 +243,20 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.seleccionadoName = "";
     this.seleccionadoApellido = "";
     this.seleccionadoNum = "";
-
     this.chatAbierto = false;
   }
 
 
   abrirWhats(){
-
     const ind = "54";
     const num = this.seleccionadoNum;
     const url = `https://api.whatsapp.com/send?phone=${ind}${num}`;
-
     console.log(url);
-
     window.open(url, '_blank');
-
   }
 
 
   abrirDisponibleYPendiente(){
-
-
-
     if(this.estadoDelAnimal.estado=="Disponible"){
 
       console.log("Se abrio el modal Elejir Adoptante");
@@ -409,10 +367,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
 
-
-
-
-
   }
 
 
@@ -506,9 +460,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
  onCloseHandled(){
   this.display='none';
-}
-
-
+ }
 
 
 vacunasAnimal() {
@@ -519,6 +471,22 @@ vacunasAnimal() {
     },
     err => console.log(err)
   );
+}
+
+  modificarDatosAnimal() {
+
+  this.usuariosService.modificarDatosAnimal(this.Animal.ID, this.Animal).subscribe(
+    res => {
+      this.Animal = res
+      console.log("Modificar datos", this.Animal);
+    },
+    err => console.log(err)
+  );
+
+
+
+
+
 }
 
 

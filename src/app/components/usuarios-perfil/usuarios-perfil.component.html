@@ -54,7 +54,7 @@
                           <label for="" style="float: left;"> <b> Nombre</b> </label>
                           <input type="text" minlength="4" name="nombre" [(ngModel)]="user.nombre"
                             placeholder="Ingrese su Usuario" class="form-control" (focus)="limpiarNombre()" autofocus
-                            required>
+                            required value="{{Usuario.nombre}}">
                           <div [ngSwitch]="errorNombre" class="errorField">
                             <div *ngSwitchCase="1">Debes completar el campo</div>
                             <div *ngSwitchCase="2">Nombre muy largo</div>
@@ -66,7 +66,7 @@
                           <label for=""> <b> Apellido</b> </label>
                           <input type="text" minlength="4" name="apellido" [(ngModel)]="user.apellido"
                             placeholder="Ingrese su  Apellido" class="form-control" (focus)="limpiarApellido()"
-                            required>
+                            required value="{{Usuario.apellido}}">
                           <div [ngSwitch]="errorApellido" class="errorField">
                             <div *ngSwitchCase="1">Debes completar el campo</div>
                             <div *ngSwitchCase="2">Apellido muy largo</div>
@@ -76,7 +76,7 @@
                         <div class="mb-3">
                           <label for=""> <b> E-mail</b> </label>
                           <input type="email" name="email" [(ngModel)]="user.email" placeholder="Ingrese su Email"
-                            class="form-control" minlength="10" (focus)="limpiarEmail()" required>
+                            class="form-control" minlength="10" (focus)="limpiarEmail()" required value="{{Usuario.email}}">
                           <div [ngSwitch]="errorEmail" class="errorField">
                             <div *ngSwitchCase="1">Debes completar el campo</div>
                             <div *ngSwitchCase="2">Email muy largo</div>
@@ -87,7 +87,7 @@
                           <label for=""> <b> Celular</b> </label>
                           <input type="tel" name="nro_celular" [(ngModel)]="user.nro_celular"
                             placeholder="Ingrese su nro de celular" class="form-control" minlength="8"
-                            (focus)="limpiarCelular()" required>
+                            (focus)="limpiarCelular()" required value="{{Usuario.nro_celular}}">
                           <div [ngSwitch]="errorCelular" class="errorField">
                             <div *ngSwitchCase="1">Debes completar el campo</div>
                             <div *ngSwitchCase="2">Celular muy largo</div>

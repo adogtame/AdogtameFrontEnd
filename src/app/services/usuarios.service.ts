@@ -273,5 +273,8 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/vacunasAnimal/${vacuna}`);
   }
 
+	modificarDatosAnimal(id: string, animal: Animal): Observable<Usuario> {
+		return this.http.put(`${this.API_URI}/modificarDatosAnimal/${id}`, animal);
+	}
 
 }
