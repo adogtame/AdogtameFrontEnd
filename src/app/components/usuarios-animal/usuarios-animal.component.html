@@ -35,23 +35,18 @@
 
     <!-- GRID HEADER-->
     <div class="grid-item grid-header">
-
       <div class="animal-imagen">
-        <!--
-      <app-upload-list [AnimalID]='AnimalID.id'></app-upload-list>  -->
-
-
+        <h1 class="animal-nombre">{{Animal.nombre}}</h1>
         <div class="imagenC">
           <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'> </app-upload-list>
-          <i class="fas fa-camera" id="subir-foto"></i>
+          <ng-container *ngIf="Animal.idDador === Usuario.id">
+            <label for="file-upload" class="subir">
+              <i class="fas fa-camera" id="subir-foto"></i>
+            </label>
+            <input id="file-upload" onchange='cambiar()' type="file" accept=".jpeg" style='display: none;'/>
+          </ng-container>
         </div>
-
-
-
-        <!-- <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg" alt=""> -->
-        <p class="animal-nombre">{{Animal.nombre}}</p>
       </div>
-
     </div>
 
     <!-- GRID SUBHEADER-->
@@ -69,104 +64,6 @@
             </button>
           </li>
 
-          <button type="button" class="btn btn-light" style="float: left;" data-bs-toggle="modal"
-            data-bs-target="#exampleModal2"> <b>Editar datos </b> <i class="fas fa-pencil-alt"></i></button>
-          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
-            aria-hidden="true">
-            <!-- Empieza Modal de Modificar -->
-            <div class="modal-dialog modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h2 id="exampleModalLabel2">Modifica los datos de {{Animal.nombre}}</h2>
-                  <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light "><i
-                      class="fas fa-times"></i></button>
-                </div>
-                <div class="modal-body">
-                  <div class="mb-3">
-                    <div class="card-body">
-                      <form>
-                        <div class="mb-3">
-                          <label for=""> <b> Nombre</b> </label>
-                          <input type="text" name="nombre" placeholder="Ingrese el nombre" class="form-control"
-                            autofocus required required value="{{Animal.nombre}}">
-                        </div>
-                        <div class="mb-3">
-                          <div class="content-select">
-                            <label for=""> <b> Tipo</b> </label>
-                            <select name="tipo" class="form-control">
-                              <ng-container *ngIf="Animal.tipo === 'perro'; else tipoTemplate">
-                              <option value="perro" selected>Perro</option>
-                              <option value="gato">Gato</option>
-                              </ng-container>
-                              <ng-template #tipoTemplate>
-                                <option value="perro" >Perro</option>
-                                <option value="gato" selected>Gato</option>
-                              </ng-template>
-
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                          <div class="content-select">
-                            <label for=""> <b> Sexo</b> </label>
-                            <select name="sexo" class="form-control">
-                              <ng-container *ngIf="Animal.sexo === 'hembra'; else sexoTemplate">
-                                <option value="macho" >Macho</option>
-                                <option value="hembra" selected>Hembra</option>
-                              </ng-container>
-                              <ng-template #sexoTemplate>
-                                <option value="macho" selected>Macho</option>
-                                <option value="hembra" >Hembra</option>
-                              </ng-template>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                          <label for=""> <b> Fecha de nacimiento</b> </label>
-                          <input type="date" name="fNac" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                          <div class="content-select">
-                            <label for=""> <b> Tamaño</b> </label>
-                            <select name="tamano" class="form-control">
-                              <ng-container *ngIf="Animal.tamano === 'chico'">
-                                <option value="chico" selected>Chico</option>
-                                <option value="mediano">Mediano</option>
-                                <option value="grande">Grande</option>
-                              </ng-container>
-                              <ng-container *ngIf="Animal.tamano === 'mediano'">
-                                <option value="chico">Chico</option>
-                                <option value="mediano" selected>Mediano</option>
-                                <option value="grande">Grande</option>
-                              </ng-container>
-                              <ng-container *ngIf="Animal.tamano === 'grande'">
-                                <option value="chico">Chico</option>
-                                <option value="mediano">Mediano</option>
-                                <option value="grande" selected>Grande</option>
-                              </ng-container>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                          <label for=""> <b> Peso (KG)</b> </label>
-                          <input type="number" name="peso" placeholder="Ingrese el peso" class="form-control" required
-                            value="{{Animal.peso}}">
-                        </div>
-                        <br>
-                        <div class="mb-3">
-                          <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar
-                              campos</b> </button>
-                          <button class="btn btn-success btn-lg" value="animal" style="float: right;"
-                            data-bs-dismiss="modal">
-                            <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- Termina Modal de registrar -->
 
           <ng-template #dador>
             <li class="nav-item activecol-lg-4" role="presentation">
@@ -259,9 +156,118 @@
           </div>
         </div>
 
-        <div class="grid-main-item datos-medicos">
-          <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()">Datos Medicos</button>
-        </div>
+        <ng-container *ngIf="Animal.idDador === Usuario.id; else noEsDador">
+          <div class="grid-main-item datos-medicos">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()"> <b> Datos Medicos </b></button>
+            </div>
+            <button type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal"
+              data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
+          </div>
+        </ng-container>
+        <ng-template #noEsDador>
+          <div>
+            <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()" style="float: right;"><b> Datos Medicos </b></button>
+
+          </div>
+        </ng-template>
+
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+          aria-hidden="true">
+          <!-- Empieza Modal de Modificar -->
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 id="exampleModalLabel2">Modifica los datos de {{Animal.nombre}}</h2>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light "><i
+                    class="fas fa-times"></i></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <div class="card-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for=""> <b> Nombre</b> </label>
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" class="form-control" autofocus
+                          required required value="{{Animal.nombre}}">
+                      </div>
+                      <div class="mb-3">
+                        <div class="content-select">
+                          <label for=""> <b> Tipo</b> </label>
+                          <select name="tipo" class="form-control">
+                            <ng-container *ngIf="Animal.tipo === 'perro'; else tipoTemplate">
+                              <option value="perro" selected>Perro</option>
+                              <option value="gato">Gato</option>
+                            </ng-container>
+                            <ng-template #tipoTemplate>
+                              <option value="perro">Perro</option>
+                              <option value="gato" selected>Gato</option>
+                            </ng-template>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <div class="content-select">
+                          <label for=""> <b> Sexo</b> </label>
+                          <select name="sexo" class="form-control">
+                            <ng-container *ngIf="Animal.sexo === 'hembra'; else sexoTemplate">
+                              <option value="macho">Macho</option>
+                              <option value="hembra" selected>Hembra</option>
+                            </ng-container>
+                            <ng-template #sexoTemplate>
+                              <option value="macho" selected>Macho</option>
+                              <option value="hembra">Hembra</option>
+                            </ng-template>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for=""> <b> Fecha de nacimiento</b> </label>
+                        <input type="date" name="fNac" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                        <div class="content-select">
+                          <label for=""> <b> Tamaño</b> </label>
+                          <select name="tamano" class="form-control">
+                            <ng-container *ngIf="Animal.tamano === 'chico'">
+                              <option value="chico" selected>Chico</option>
+                              <option value="mediano">Mediano</option>
+                              <option value="grande">Grande</option>
+                            </ng-container>
+                            <ng-container *ngIf="Animal.tamano === 'mediano'">
+                              <option value="chico">Chico</option>
+                              <option value="mediano" selected>Mediano</option>
+                              <option value="grande">Grande</option>
+                            </ng-container>
+                            <ng-container *ngIf="Animal.tamano === 'grande'">
+                              <option value="chico">Chico</option>
+                              <option value="mediano">Mediano</option>
+                              <option value="grande" selected>Grande</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for=""> <b> Peso (KG)</b> </label>
+                        <input type="number" name="peso" placeholder="Ingrese el peso" class="form-control" required
+                          value="{{Animal.peso}}">
+                      </div>
+                      <br>
+                      <div class="mb-3">
+                        <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar
+                            campos</b> </button>
+                        <button class="btn btn-success btn-lg" value="animal" style="float: right;"
+                          data-bs-dismiss="modal">
+                          <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- Termina Modal -->
+
         <div class="modal-dialog modal-dialog-scrollable">
           <div class="backdrop" id="modal-datos-medicos" [ngStyle]="{'display':display}"></div>
           <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
@@ -274,91 +280,175 @@
                         class="fas fa-times-circle"></i></span></button>
                 </div>
                 <div class="modal-body">
-                  <ul class="list-group">
-                    <label for=""> Vacunas</label>
-                    <li class="list-group-item">
-                      <ng-container *ngIf="vacuna.Moquiillo; else elseTemplate">
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          checked disabled>
-                      </ng-container>
-                      <ng-template #elseTemplate>
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          disabled>
-                      </ng-template>
-                      <span id="text-check"> <b>Moquillo </b> </span>
-                    </li>
-                    <li class="list-group-item">
-                      <ng-container *ngIf="vacuna.Primovacunacion === 1; else elseTemplate">
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          aria-readonly="true" checked disabled>
-                      </ng-container>
-                      <ng-template #elseTemplate>
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          aria-readonly="true" disabled>
-                      </ng-template>
-                      <span id="text-check"> <b>Primovacunacion</b> </span>
-                    </li>
-                    <li class="list-group-item">
-                      <ng-container *ngIf="vacuna.Polivalente === 1; else elseTemplate">
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          checked disabled>
-                      </ng-container>
-                      <ng-template #elseTemplate>
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          disabled>
-                      </ng-template>
-                      <span id="text-check"> <b>Polivalente </b> </span>
-                    </li>
-                    <li class="list-group-item">
-                      <ng-container *ngIf="vacuna.Rabia; else elseTemplate">
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          checked disabled>
-                      </ng-container>
-                      <ng-template #elseTemplate>
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
-                          disabled>
-                      </ng-template>
-                      <span id="text-check"> <b>Rabia </b> </span>
-                    </li>
-                  </ul>
-                  <label> Castrado</label><br>
-                  <ng-container *ngIf="vacuna.Castrado">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="option1" checked>
-                      <label class="form-check-label" for="inlineRadio1" id="text-radio"> Si</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="option2" disabled>
-                      <label class="form-check-label" for="inlineRadio2" id="text-radio"> No</label>
+                  <ng-container *ngIf="Animal.idDador != Usuario.id; else puedeEditar">
+                    <ul class="list-group">
+                      <label for=""> Vacunas</label>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Moquiillo; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            checked disabled>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            disabled>
+                        </ng-template>
+                        <span id="text-check"> <b>Moquillo </b> </span>
+                      </li>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Primovacunacion === 1; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            aria-readonly="true" checked disabled>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            aria-readonly="true" disabled>
+                        </ng-template>
+                        <span id="text-check"> <b>Primovacunacion</b> </span>
+                      </li>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Polivalente === 1; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            checked disabled>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            disabled>
+                        </ng-template>
+                        <span id="text-check"> <b>Polivalente </b> </span>
+                      </li>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Rabia; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            checked disabled>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            disabled>
+                        </ng-template>
+                        <span id="text-check"> <b>Rabia </b> </span>
+                      </li>
+                    </ul>
+                    <label> Castrado</label><br>
+                    <ng-container *ngIf="vacuna.Castrado">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                          value="option1" checked>
+                        <label class="form-check-label" for="inlineRadio1" id="text-radio"> Si</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="option2" disabled>
+                        <label class="form-check-label" for="inlineRadio2" id="text-radio"> No</label>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="vacuna.Castrado != 1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                          value="option1" disabled>
+                        <label class="form-check-label" for="inlineRadio1" id="text-radio">Si</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="option2" checked>
+                        <label class="form-check-label" for="inlineRadio2" id="text-radio">No</label>
+                      </div>
+                    </ng-container>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-dark" (click)="onCloseHandled()"
+                        id="btn-cerrar-datos-medicos">Cerrar</button>
                     </div>
                   </ng-container>
-                  <ng-container *ngIf="vacuna.Castrado != 1">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="option1" disabled>
-                      <label class="form-check-label" for="inlineRadio1" id="text-radio">Si</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="option2" checked>
-                      <label class="form-check-label" for="inlineRadio2" id="text-radio">No</label>
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="modal-footer">
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <button type="button" class="btn btn-dark" id="btn-editar-datos-medicos"
-                        style="float: left !important;"> <b>Editar </b> <i class="fas fa-pencil-alt"></i></button>
-                      <button type="button" class="btn btn-success" id="btn-editar-datos-medicos"
-                        style="float: right !important;"> <b>Confirmar cambios </b><i
-                          class="fas fa-check-double"></i></button>
-                    </div>
-                  </div>
 
-                  <!-- <button type="button" class="btn btn-dark" (click)="onCloseHandled()" id="btn-cerrar-datos-medicos">Cerrar</button> -->
+                  <ng-template #puedeEditar>
+
+                    <ul class="list-group">
+                      <label for=""> Vacunas</label>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Moquiillo; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            checked >
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            >
+                        </ng-template>
+                        <span id="text-check"> <b>Moquillo </b> </span>
+                      </li>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Primovacunacion === 1; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            aria-readonly="true" checked >
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            aria-readonly="true" >
+                        </ng-template>
+                        <span id="text-check"> <b>Primovacunacion</b> </span>
+                      </li>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Polivalente === 1; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            checked >
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            >
+                        </ng-template>
+                        <span id="text-check"> <b>Polivalente </b> </span>
+                      </li>
+                      <li class="list-group-item">
+                        <ng-container *ngIf="vacuna.Rabia; else elseTemplate">
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            checked >
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." id="tamano-check"
+                            >
+                        </ng-template>
+                        <span id="text-check"> <b>Rabia </b> </span>
+                      </li>
+                    </ul>
+                    <label> Castrado</label><br>
+                    <ng-container *ngIf="vacuna.Castrado">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                          value="option1" checked>
+                        <label class="form-check-label" for="inlineRadio1" id="text-radio"> Si</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="option2" >
+                        <label class="form-check-label" for="inlineRadio2" id="text-radio"> No</label>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="vacuna.Castrado != 1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                          value="option1" >
+                        <label class="form-check-label" for="inlineRadio1" id="text-radio">Si</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="option2" checked>
+                        <label class="form-check-label" for="inlineRadio2" id="text-radio">No</label>
+                      </div>
+                    </ng-container>
+                    <div class="modal-footer">
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <button type="button" class="btn btn-danger" id="btn-editar-datos-medicos"
+                            style="float: left !important;" (click)="onCloseHandled()"> <b>Cancelar </b></button>
+                          <button type="button" class="btn btn-success" id="btn-editar-datos-medicos"
+                            style="float: right !important;"> <b>Confirmar cambios </b><i
+                              class="fas fa-check-double"></i></button>
+                        </div>
+                      </div>
+
+                      <!-- <button type="button" class="btn btn-dark" (click)="onCloseHandled()" id="btn-cerrar-datos-medicos">Cerrar</button> -->
+                    </div>
+
+                  </ng-template>
+
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

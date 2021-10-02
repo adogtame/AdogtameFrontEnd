@@ -34,8 +34,9 @@ label{
 
 #nombre-usuario-perfil{
   font: bolder;
-  font-size: 26px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: darkslategray;
 }
 
 #myTab{
@@ -148,11 +149,12 @@ Registrar animal boton
   background-repeat: no-repeat;
   color: #0792bd;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 28px;
   background-size: 0% 2px;
   transition:  .1s;
   width: 30%;
   margin-left: 5%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #regAnimal:hover, #regAnimal:focus {
@@ -357,5 +359,12 @@ Registrar animal boton
 
 #subir-foto:hover{
   background-color: lightgray;
+
+}
+
+
+.nav-item{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 32px;
 
 }

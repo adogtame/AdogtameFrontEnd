@@ -43,7 +43,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   errorEmail=0;
   errorCelular=0;
 
-
+  usuarioLogueado : any = [];
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
@@ -66,6 +66,8 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
         console.log("interesados",this.interesados);
     });
 
+    this.logueado();
+    console.log("Usuario log: ", this.usuarioLogueado)
   }
 
 
@@ -392,7 +394,11 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
 
-
+  logueado() {
+    if (this.usuariosService.isLoggedIn()) {
+      this.usuarioLogueado = this.usuariosService.user.id;
+    }
+  }
 
 
 

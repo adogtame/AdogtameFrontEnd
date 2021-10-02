@@ -462,6 +462,13 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   this.display='none';
  }
 
+ openModal1(){
+  this.display='block';
+}
+
+onCloseHandled1(){
+this.display='none';
+}
 
 vacunasAnimal() {
   this.usuariosService.vacunasAnimal(this.AnimalID.id).subscribe(

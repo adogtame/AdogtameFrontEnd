@@ -343,7 +343,7 @@ se podira cambiar al stylecss para q sea general
 display: inline-block;
 } */
 
-.grid-item{}
+
 
 
 .grid-header{
@@ -409,8 +409,9 @@ display: inline-block;
 
 .animal-nombre{
   font: bolder;
-  font-size: 1.4em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3.0em;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: darkslategray;
 }
 
 
@@ -743,17 +744,17 @@ FIN Diseño de dropdown
 
 .botonDatosMedicos {
   background-color: #67b4d8;
-  border: none;
+  font: bolder;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display:grid ;
   font-size: 16px;
-
+  margin-top: 10px;
+  margin-bottom: 30px;
 
 }
-
 
 
 .botonEstado{
@@ -900,11 +901,6 @@ Probando chat
 
 }
 
-.chat-item{
-
-  /* border-bottom: 1px solid rgba(105, 105, 105, 0.541); */
-
-}
 
 
 .chat-header{
@@ -1182,7 +1178,6 @@ Modal en estado de animal
 
   background-color: #eec27c;
   text-align: center;
-
   width: 10em;
   height: 2em;
   float: right;
