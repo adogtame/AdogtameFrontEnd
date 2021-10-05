@@ -1,13 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
-
-
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
-
-//cesar jueves
-
 import { AdminService } from '../../services/admin.service';
 
 //Animations (Dropdown)
@@ -17,43 +12,29 @@ import {
   style,
   animate,
   transition,
-
   query,
   sequence,
   stagger,
-  // ...
 } from '@angular/animations';
-//
+
 
 @Component({
   selector: 'app-usuarios-animal',
-
-
   templateUrl: './usuarios-animal.component.html',
-
   styleUrls: ['./usuarios-animal.component.css'],
-
   animations: [
-
      trigger('clickContent', [
        state('noShow',
          style({
-
            display: 'none',
            height: '0px',
            opacity: 0.6
-
          })
        ),
        state('show',
          style({
           display: 'block',
-
           'min-height':'45px',
-
-
-          // height: '260px',
-
           'margin-top': '32px',
           opacity: 1
           })
@@ -65,62 +46,35 @@ import {
          animate('0s')
        ])
      ]),
-
-
   ]
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
-
-
+  animal = { idDador: "", nombre: "", sexo: "", tipo: "", fNac: "", tamano: "", peso: "" };
   Animal: any = [];
-
   AnimalID: any = [];
   userAhora: string="";
-
-
   //interesado seleccionado
-
-
   seleccionadoName: string = "";
   seleccionadoApellido: string = "";
   seleccionadoNum: string = "";
-
   estadoDelAnimal: any = [];
-
   modalEleccionAbierto: boolean = false;
   modalConfirmarAdopcionAbierto: boolean = false;
   modalAdopcionPendienteAbierto: boolean = false;
   chatAbierto: boolean = false;
-
-  //
   //ubi para saber como hacer la img del firebase
-
   ubi: string="Perfil";
-
-
   //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
   moment: any = [];
-  //
-
   interesadoSeleccionado: any = [];
-
   interesados: any = [];
-
   interes: boolean = false;
-
   isOpenInteresados: boolean = false;
-
   cargoPagina: boolean = false;
-
-
-
   // admin
   rol: any = "";
-  //
-
   display='none';
-
-  //Fin de lo de cesar
+  vacuna : any = [];
 
   constructor(
 
@@ -134,91 +88,42 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.rutaActiva.params.subscribe(routeParams => {
-
-
       this.AnimalID = this.rutaActiva.snapshot.params
-
-
-
       this.funcionesEnInit();
-
-
-
       console.log("Animal", this.AnimalID);
-
-
-
       this.usuariosService.cargarAnimalEstado$.subscribe(log => {
-
         this.estadoAnimal();
-
-
       });
-
-
-
-
-
-
-
-
 
       this.usuariosService.rol$.subscribe(log => {
-
         this.rol = this.usuariosService.rol;
-
         console.log("El rol del usuario es", this.usuariosService.rol);
-
       });
-      //
-
 
     });
 
   }
 
 
-
-
-
   ngOnDestroy(): void {
-
-
-
     this.AnimalID = [];
-
-    this.Animal = [];    
-
+    this.Animal = [];
     this.interesados = [];
-
     this.seleccionadoName = "";
     this.seleccionadoApellido = "";
     this.seleccionadoNum = "";
-    
     this.estadoDelAnimal = [];
-    
     this.modalEleccionAbierto = false;
     this.modalConfirmarAdopcionAbierto = false;
     this.modalAdopcionPendienteAbierto = false;
     this.chatAbierto = false;
-  
-    
-  
     this.moment = [];
-
     this.interesadoSeleccionado = [];
-  
     this.interesados = [];
-  
     this.interes = false;
-  
     this.isOpenInteresados = false;
-  
     this.cargoPagina = false;
-  
 
-
-    
   }
 
   //Estado animal
@@ -226,27 +131,15 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     this.usuariosService.estadoAnimal(this.AnimalID.id).subscribe(
       res => {
-
-
-
         this.estadoDelAnimal=res;
-
-
-
         this.usuariosService.cargarTerminado$.emit()
-
         console.log("estado animal",  this.estadoDelAnimal);
-
-
 
       },
       err => console.log(err)
     );
 
   }
-
-
-  //
 
   token: any = "";
   UsuarioID: any = { user: "No logueado" };
@@ -293,54 +186,30 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
   funcionesEnInit() {
-
     this.sacarUsuario();
-
-
     this.estadoAnimal();
-
     this.usuariosService.cargarAnimalDatos$.subscribe(log => {
-
       this.animalCargarDatos();
-
     });
 
     this.usuariosService.cargarAnimalIntereses$.subscribe(log => {
-
       if(this.Animal.idDador==this.usuariosService.user.id){
-
         //si sos el dador
         this.cargarInteresados();
-
         console.log("interesados",this.interesados);
       }
-      else
-      {
-
+      else{
         this.cargarInteres();
-
       }
-
-
-
-
     });
 
-
-
-
     this.usuariosService.cargarTerminado$.subscribe(log => {
-
       this.userAhora=this.usuariosService.user.id;
-
       setTimeout(()=>{ this.cargoPagina=true }, 2000)
-
-
       console.log("interesados",this.interesados);
     });
 
-
-
+    this.vacunasAnimal();
 
   }
 
@@ -361,15 +230,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
   comenzarChat(id: number, nombre: string, apellido: string, num: string){
-
     this.seleccionadoName = nombre;
     this.seleccionadoApellido = apellido;
     this.seleccionadoNum = num;
-
     this.chatAbierto = true;
-
     console.log("El id ",id);
-
 
   }
 
@@ -378,28 +243,20 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.seleccionadoName = "";
     this.seleccionadoApellido = "";
     this.seleccionadoNum = "";
-
     this.chatAbierto = false;
   }
 
 
   abrirWhats(){
-
     const ind = "54";
     const num = this.seleccionadoNum;
     const url = `https://api.whatsapp.com/send?phone=${ind}${num}`;
-
     console.log(url);
-
     window.open(url, '_blank');
-
   }
 
 
   abrirDisponibleYPendiente(){
-
-
-
     if(this.estadoDelAnimal.estado=="Disponible"){
 
       console.log("Se abrio el modal Elejir Adoptante");
@@ -510,36 +367,21 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
 
-
-
-
-
   }
 
 
   //si sos el dador
   cargarInteresados() {
-
-
     console.log("El id del usuario es este de aca (dador)", this.usuariosService.user.id);
-
-
     this.usuariosService.cargarInteresados(this.AnimalID.id).subscribe(
       res => {
-
         console.log("Resultado del cargar interesados", res);
-
         this.interesados=res;
-
         console.log("Interesados del animal", this.interesados);
-
         this.usuariosService.cargarTerminado$.emit()
       },
       err => console.log(err)
     );
-
-
-
   }
 
 
@@ -618,11 +460,41 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
  onCloseHandled(){
   this.display='none';
+ }
+
+ openModal1(){
+  this.display='block';
 }
 
+onCloseHandled1(){
+this.display='none';
+}
+
+vacunasAnimal() {
+  this.usuariosService.vacunasAnimal(this.AnimalID.id).subscribe(
+    res => {
+      this.vacuna = res;
+      console.log("Cantidad de vacunas: ", this.vacuna);
+    },
+    err => console.log(err)
+  );
+}
+
+  modificarDatosAnimal() {
+
+  this.usuariosService.modificarDatosAnimal(this.Animal.ID, this.Animal).subscribe(
+    res => {
+      this.Animal = res
+      console.log("Modificar datos", this.Animal);
+    },
+    err => console.log(err)
+  );
 
 
 
+
+
+}
 
 
 }

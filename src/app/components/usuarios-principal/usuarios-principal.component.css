@@ -82,10 +82,11 @@
   min-width: 16em;
   outline: none;
   border:none;
-  background-color:lightgoldenrodyellow;
-  font-size: 1.5em;
-  color: darkslategray;
+  background-color: rgb(255, 235, 199);
+  font-size: 1.1em;
+  color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  /* transition: 1s; */
   text-decoration: none;
   background-image: linear-gradient(black, black);
   background-position: 0% 100%;
@@ -103,3 +104,7 @@
 .container-animales{
   margin-left: 15%;
 }
+
+
+
+

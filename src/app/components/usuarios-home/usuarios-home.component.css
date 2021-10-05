@@ -33,26 +33,34 @@ h1{
 
 
 .animal-buscador{
+  margin-left: none;
+  margin-top: none;
+  height: 1.7em;
+  width: 18em;
+  min-width: 18em;
   font-size: 0.8em;
 }
 
 
 .animal-buscador{
-height: 1.7em;
-width: 23%;
-min-width: 16em;
-outline: none;
-border: 2px;
-background-color: rgb(251, 251, 192);
-font-size: 1.5em;
-color: darkslategrey;
-font-family: Georgia, 'Times New Roman', Times, serif;
-text-decoration: none;
-background-image: linear-gradient(black, black);
-background-position: 0% 100%;
-background-repeat: no-repeat;
-background-size: 0% 1px;
-transition: 1s;
+  margin-left: 2.0em;
+  margin-top: 1em;
+  height: 1.7em;
+  width: 23%;
+  min-width: 16em;
+  outline: none;
+  border:none;
+  background-color: rgb(255, 235, 199);
+  font-size: 1.1em;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* transition: 1s; */
+  text-decoration: none;
+  background-image: linear-gradient(black, black);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: 1s;
 }
 
 
@@ -60,3 +68,6 @@ transition: 1s;
 width: 40%;
 background-size: 100% 1px;
 }
+
+
+

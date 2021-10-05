@@ -1,7 +1,23 @@
+.modal-header{
+  background-color:  rgb(250, 218, 170);
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.modal-body{
+  background-color: blanchedalmond;
+}
+
 span{
   font: bolder;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 24px;
+}
+
+label{
+  font: bold;
+  font-size: 22px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-left: 15px;
 }
 
 .contenedor-usuario-perfil{
@@ -18,8 +34,9 @@ span{
 
 #nombre-usuario-perfil{
   font: bolder;
-  font-size: 26px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: darkslategray;
 }
 
 #myTab{
@@ -132,9 +149,12 @@ Registrar animal boton
   background-repeat: no-repeat;
   color: #0792bd;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 28px;
   background-size: 0% 2px;
   transition:  .1s;
+  width: 30%;
+  margin-left: 5%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #regAnimal:hover, #regAnimal:focus {
@@ -153,7 +173,7 @@ Registrar animal boton
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 24px;
   font: bold;
-  color: white;
+  color: darkslategrey;
 }
 
 .animales-con-interes{
@@ -304,4 +324,47 @@ Registrar animal boton
   grid-area: botones;
 
   margin-top: .5em;
+}
+
+#card-animales-seguidores{
+  width: 23%;
+  float: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #FEECE4;
+  border-radius: 25%;
+}
+
+#cont{
+  background-color: #fceee7;
+}
+
+.nombre-animal{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 32px;
+  font: bolder;
+  color: darkslategray;
+}
+
+#subir-foto{
+  transform: translate(1.8em, -1.0em);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 26px;
+}
+
+#subir-foto:hover{
+  background-color: lightgray;
+
+}
+
+
+.nav-item{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 32px;
+
 }

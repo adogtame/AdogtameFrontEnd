@@ -8,7 +8,7 @@
   }
 
   .modal-content{
-    margin-top: 25%;
+    margin-top: 5%;
   }
 
   .modal-header{
@@ -18,7 +18,6 @@
 
   .modal-body{
     background-color: blanchedalmond;
-
   }
 
   .modal-footer{
@@ -31,20 +30,19 @@
 }
 
 #parrafo-modal-medico{
-  font-size: 22px;
+  font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 label{
-  font: bolder;
+  font: bold;
   font-size: 26px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-left: 15px;
 }
 
 .list-group-item{
-  font: bolder;
-  font-size: 24px;
+  font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: blanchedalmond;
 }
@@ -57,6 +55,7 @@ background-color: burlywood;
   width: 30px;
   height: 30px;
   margin-left: 0.2px;
+
 }
 
 #text-check{
@@ -68,18 +67,42 @@ background-color: burlywood;
   font: bolder;
   font-size: 24px !important;
   font-family: Georgia, 'Times New Roman', Times, serif !important;
+  margin-left: 1px !important;
 }
 
 #inlineRadio2{
   width: 30px;
   height: 30px;
+  color: red !important;
+  margin-left: 20px !important;
 }
 
 #inlineRadio1{
-  margin-left: 30px !important;
+  margin-left: 20px !important;
   width: 30px;
   height: 30px ;
+  color: red !important;
 }
+
+#subir-foto{
+  transform: translate(1.8em, -1.0em);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 26px;
+}
+
+#subir-foto:hover{
+  background-color: lightgray;
+
+}
+
+
+#btn-editar-datos-medicos{
+  margin-right: 50px ;
+}
+
+
 
 .paw {
   width:100px;
@@ -320,7 +343,7 @@ se podira cambiar al stylecss para q sea general
 display: inline-block;
 } */
 
-.grid-item{}
+
 
 
 .grid-header{
@@ -382,15 +405,13 @@ display: inline-block;
   text-align: center;
 }
 
-.animal-imagen > .imagenC{}
 
-.animal-imagen p{
-}
 
 .animal-nombre{
   font: bolder;
-  font-size: 1.4em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3.0em;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: darkslategray;
 }
 
 
@@ -723,17 +744,17 @@ FIN Diseño de dropdown
 
 .botonDatosMedicos {
   background-color: #67b4d8;
-  border: none;
+  font: bolder;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display:grid ;
   font-size: 16px;
-
+  margin-top: 10px;
+  margin-bottom: 30px;
 
 }
-
 
 
 .botonEstado{
@@ -880,11 +901,6 @@ Probando chat
 
 }
 
-.chat-item{
-
-  /* border-bottom: 1px solid rgba(105, 105, 105, 0.541); */
-
-}
 
 
 .chat-header{
@@ -1162,7 +1178,6 @@ Modal en estado de animal
 
   background-color: #eec27c;
   text-align: center;
-
   width: 10em;
   height: 2em;
   float: right;
@@ -1415,4 +1430,10 @@ Estado pendiente modal
 
   text-decoration: none;
 }
+
+
+
+
+
+
 

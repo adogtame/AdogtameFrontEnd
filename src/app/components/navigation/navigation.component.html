@@ -1,179 +1,165 @@
-<nav class="navbar navbar-expand-lg navbar-outline-dark" id="navbar">
-  <div *ngIf="revelarBusRapida==true">
-    <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
-    <label for="abrir-cerrar" class="btn btn-outline-dark">
-      <span class="abrir"><i class="fas fa-bars"></i> <i class="fas fa-chevron-right"></i></span>
-      <span class="cerrar"><i class="fas fa-chevron-left"></i><i class="fas fa-bars"></i></span>
-    </label>
-    <div id="sidebar" class="sidebar">
-      <ul id="menu">
-        <br><br>
-        <li>
-          <button class="btn btn - boton" href="#">Organizaciones</button>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FAE2D7;">
+  <div class="container-fluid">
+    <div *ngIf="revelarBusRapida==true" class="ocultar-mobile">
+      <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+      <label for="abrir-cerrar" class="btn btn-outline-dark">
+        <span class="abrir"><i class="fas fa-bars"></i> <i class="fas fa-chevron-right"></i></span>
+        <span class="cerrar"><i class="fas fa-chevron-left"></i><i class="fas fa-bars"></i></span>
+      </label>
+      <div id="sidebar" class="sidebar">
+        <ul id="menu">
+          <br><br>
+          <li>
+            <button class="btn btn - boton" href="#">Organizaciones</button>
+          </li>
+          <br> <br>
+          <li>
+            <button class="btn btn - boton" href="#">Crias</button>
+          </li>
+          <br> <br>
+          <li>
+            <button class="btn btn - boton" href="#">Adultos</button>
+          </li>
+          <br> <br>
+          <li>
+            <button class="btn btn - boton" href="#">Especiales </button>
+          </li>
+        </ul>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <a class="navbar-brand" routerLink="usuarios/principal">
+      <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <button class="btn btn - boton2" style="height: 35px; font-size:16px;"
+            routerLink="usuarios/buscador-avanzado">En
+            adopcion </button>
         </li>
-        <br> <br>
-        <li>
-          <button class="btn btn - boton" href="#">Crias</button>
+        <li class="nav-item ">
+          <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/home">
+            Adoptados </button>
         </li>
-        <br> <br>
-        <li>
-          <button class="btn btn - boton" href="#">Adultos</button>
-        </li>
-        <br> <br>
-        <li>
-          <button class="btn btn - boton" href="#">Especiales </button>
-        </li>
+        <ng-container *ngIf="revelar==false as user; else login">
+          <ul class="navbar-nav posicion-derecha">
+            <li class="nav-item" *ngIf="user">
+              <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/ingresar"> Iniciar sesión</button>
+            </li>
+
+            <li class="nav-item" *ngIf="user">
+              <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/registrar"> Registrarse</button>
+            </li>
+          </ul>
+        </ng-container>
+        <ng-template #login>
+          <ul class="navbar-nav posicion-derecha">
+            <li class="nav-item active">
+              <a class="btn btn - botonCampana" id="campanita" (click)="notificaciones()">
+                <i class="fas fa-bell" id="campanita-icon"></i>
+                <div class="alerta-notificaciones" *ngIf="notificacion==true">
+                  <p>{{notificacionesContador.SumCount}}</p>
+                </div>
+                <!-- <i class="fas fa-exclamation-circle"  *ngIf="notificacion==true"></i> -->
+                <!-- *ngIf="notificacion==true" -->
+              </a>
+              <div class="notificaciones-container" id="notificaciones"
+                [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti' ">
+
+                <app-spinner></app-spinner>
+
+                <div *ngIf="notificacionesInteresados.length>0; else sinNoti">
+                  <div *ngFor=" let noti of notificacionesInteresados">
+                    <div
+                      [ngClass]="{'notificaciones-data-interes' : noti.est==0, 'notificaciones-data-pendiente': noti.est==1, 'notificaciones-data-adoptado': noti.est==2}">
+                      <div class="notificaciones-grid-interesado">
+                        <div class="imagenC1" (click)="irAInteresado(noti.interesado)">
+                          <app-upload-list [sujetoID]='noti.interesado' [Pertenece]='ubiI'></app-upload-list>
+                        </div>
+                      </div>
+                      <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
+                        <label class="primeroP"> <b> {{noti.nombreI}} {{noti.apellidoI}} </b>quiere adoptar a tu
+                          animal</label>
+                        <label class="segundoP"><b> {{noti.fecha | date: 'dd/MM/yyyy'}} </b></label>
+                      </div>
+                      <div class="notificaciones-grid-parrafo" *ngIf="noti.est==1">
+                        <label class="primeroP"><b>{{noti.nombreI}} {{noti.apellidoI}} </b> acepto tu pedido de
+                          adopcion</label>
+                        <label class="segundoP"><b> {{noti.fecha | date: 'dd/MM/yyyy'}}</b> </label>
+                      </div>
+                      <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
+                        <label class="primeroP"><b>{{noti.nombreI}} {{noti.apellidoI}} </b> confirmo la adopcion</label>
+                        <label class="segundoP"><b>{{noti.fecha | date: 'dd/MM/yyyy'}} </b> </label>
+                      </div>
+                      <div class="notificaciones-grid-animal">
+                        <div class="imagenC1" (click)="irAAnimal(noti.animal)">
+                          <app-upload-list [sujetoID]='noti.animal' [Pertenece]='ubiA'></app-upload-list>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #sinNoti>
+                  <p> <b>No tienes notificaciones </b> </p>
+                </ng-template>
+
+              </div>
+            </li>
+            &nbsp;&nbsp;
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                data-bs-toggle="dropdown" aria-expanded="false" (click)="listarAnimalesDelUsuario()">
+                Mis Animales <i class="fas fa-paw"> </i> </button>
+              <ul class="dropdown-menu dropdown-menu-dark lista-animales" aria-labelledby="dropdownMenuButton2">
+                <div *ngFor=" let animal of animales">
+                  <li><a class="dropdown-item" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </div>
+              </ul>
+            </div>
+            &nbsp;&nbsp; &nbsp;&nbsp;
+            <div class="btn-group dropdown">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+
+                <div class="imagenC1" *ngIf="cargoID==true">
+                  <app-upload-list [sujetoID]='Usuario.id' [Pertenece]='ubi'></app-upload-list>
+                </div>
+              </a>
+              <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
+                <li>
+
+                  <div class="ir-a-perfil" (click)="irAPerfil()">
+                    <div class="imagenC2" *ngIf="cargoID==true">
+
+                      <app-upload-list [sujetoID]='Usuario.id ' [Pertenece]='ubi2'></app-upload-list>
+                    </div>
+                    <a> <b>{{Usuario.nombre}} </b></a>
+                  </div>
+
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" id="logout" (click)="logout()"> <i class="fas fa-sign-out-alt">Cerrar
+                      sesion</i></a></li>
+              </ul>
+            </div>
+
+          </ul>
+
+        </ng-template>
+
       </ul>
     </div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </div>
-  <a class="navbar-brand" routerLink="usuarios/principal">
-
-
-    <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
-
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse">
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="navbar-brand" style="color: white;"> </div>
-    <!--
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
-                &nbsp;
-                <button type="submit" style="background-color: grey">
-                    <img src="https://media-public.canva.com/HYnZ0/MAEViGHYnZ0/1/s.svg" style="height: 25px;">
-                </button>
-            </form>
-        -->
-
-    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-    <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/buscador-avanzado">En
-      adopcion </button>
-
-    <button class="btn btn - boton3" style="height: 35px; font-size:16px;" routerLink="usuarios/home">Adoptados
-    </button>
-    <!-- <button class="btn btn - boton2" style="width: 150px; font-size:12px;" routerLink="usuarios/listar">Lista de usuarios</button>
-         -->
-    <ul class="navbar-nav posicion-derecha" *ngIf="revelar==false as user; else login">
-
-      <li class="nav-item" *ngIf="user">
-        <a class="btn btn - boton2" routerLink="usuarios/ingresar"> Iniciar sesión
-        </a>
-      </li>
-      &nbsp;&nbsp;
-      <li class="nav-item" *ngIf="user">
-        <a class="btn btn - boton2" routerLink="usuarios/registrar"> Registrarse
-        </a>
-      </li>
-    </ul>
-    <ng-template #login>
-      <ul class="navbar-nav posicion-derecha">
-        <li class="nav-item active">
-          <a class="btn btn - botonCampana" id="campanita" (click)="notificaciones()">
-            <i class="fas fa-bell" id="campanita-icon"></i>
-            <div class="alerta-notificaciones" *ngIf="notificacion==true">
-              <p>{{notificacionesContador.SumCount}}</p>
-            </div>
-            <!-- <i class="fas fa-exclamation-circle"  *ngIf="notificacion==true"></i> -->
-            <!-- *ngIf="notificacion==true" -->
-          </a>
-          <div class="notificaciones-container" id="notificaciones"
-            [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti' ">
-
-            <app-spinner></app-spinner>
-
-            <div *ngIf="notificacionesInteresados.length>0; else sinNoti">
-              <div *ngFor=" let noti of notificacionesInteresados">
-                <div
-                  [ngClass]="{'notificaciones-data-interes' : noti.est==0, 'notificaciones-data-pendiente': noti.est==1, 'notificaciones-data-adoptado': noti.est==2}">
-                  <div class="notificaciones-grid-interesado">
-                    <div class="imagenC1" (click)="irAInteresado(noti.interesado)">
-                      <app-upload-list [sujetoID]='noti.interesado' [Pertenece]='ubiI'></app-upload-list>
-                    </div>
-                  </div>
-                  <div class="notificaciones-grid-parrafo" *ngIf="noti.est==0">
-                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} le a dado interes a tu animal</label>
-                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
-                  </div>
-                  <div class="notificaciones-grid-parrafo" *ngIf="noti.est==1">
-                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} te a dado su aprobacion para la
-                      adopcion</label>
-                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
-                  </div>
-                  <div class="notificaciones-grid-parrafo" *ngIf="noti.est==2">
-                    <label class="primeroP">{{noti.nombreI}} {{noti.apellidoI}} a confirmado la adopcion</label>
-                    <label class="segundoP">{{noti.fecha | date: 'dd/MM/yyyy'}}</label>
-                  </div>
-                  <div class="notificaciones-grid-animal">
-                    <div class="imagenC1" (click)="irAAnimal(noti.animal)">
-                      <app-upload-list [sujetoID]='noti.animal' [Pertenece]='ubiA'></app-upload-list>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <ng-template #sinNoti>
-              <p>Aca aparecen las notificaciones
-              <p>
-            </ng-template>
-
-
-          </div>
-        </li>
-        &nbsp;&nbsp;
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-            data-bs-toggle="dropdown" aria-expanded="false" (click)="listarAnimalesDelUsuario()">
-            Mis Animales <i class="fas fa-paw"> </i> </button>
-          <ul class="dropdown-menu dropdown-menu-dark lista-animales" aria-labelledby="dropdownMenuButton2">
-            <div *ngFor=" let animal of animales">
-              <li><a class="dropdown-item" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </div>
-          </ul>
-        </div>
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        <div class="btn-group dropdown">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-
-            <div class="imagenC1" *ngIf="cargoID==true">
-              <app-upload-list [sujetoID]='Usuario.id' [Pertenece]='ubi'></app-upload-list>
-            </div>
-          </a>
-          <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
-            <li>
-
-              <div class="ir-a-perfil" (click)="irAPerfil()">
-                <div class="imagenC2" *ngIf="cargoID==true">
-
-                  <app-upload-list [sujetoID]='Usuario.id ' [Pertenece]='ubi2'></app-upload-list>
-                </div>
-                <a> <b>{{Usuario.nombre}} </b></a>
-              </div>
-
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" id="logout" (click)="logout()"> <i class="fas fa-sign-out-alt">Cerrar
-                  sesion</i></a></li>
-          </ul>
-        </div>
-
-      </ul>
-
-    </ng-template>
-
   </div>
 </nav>
