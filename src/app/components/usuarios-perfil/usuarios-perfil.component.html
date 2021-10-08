@@ -47,7 +47,7 @@
               data-bs-target="#modal-editar-datos-personales"> <b>Editar </b> <i class="fas fa-pencil-alt"></i></button>
           </ng-container>
 
-          <!-- Empieza Modal de registrar -->
+          <!-- Empieza Modal de Modificar -->
           <div class="modal fade" id="modal-editar-datos-personales" tabindex="-1"
             aria-labelledby="modal-editar-datos-personales-label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -120,7 +120,7 @@
                 </div>
               </div>
             </div>
-          </div> <!-- Termina Modal de registrar -->
+          </div> <!-- Termina Modal de Modificar -->
         </div>
       </div>
     </div>
@@ -219,14 +219,15 @@
           aria-hidden="true">
           <!-- Empieza Modal de registrar -->
           <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content" style="background-color:rgb(248, 245, 218);">
+            <div class="modal-content">
               <div class="modal-header">
-                <h3 class="card-header" style=" color:rgb(88, 79, 60)" id="exampleModalLabel2">Registra un animal</h3>
-                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light">&#10006;</button>
+                <h3 id="exampleModalLabel2">Registra un animal</h3>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 35px;">
+                  <i class="fas fa-times-circle"></i></button>
               </div>
               <div class="modal-body">
                 <div class="mb-3">
-                  <div class="card-body" style="background-color:rgb(255, 248, 224);">
+                  <div class="card-body" >
                     <form>
                       <div class="mb-3">
                         <label for=""> <b> Nombre</b> </label>
@@ -276,9 +277,11 @@
                       </div>
                       <br>
                       <div class="mb-3">
-                        <button class="btn btn-success btn-lg" aria-label="Close" value="animal" style="float: left; "
-                          (click)="registrar()" data-bs-dismiss="modal"> Registrar</button>
-                        <input type="reset" value="Limpiar campos" class="btn btn-danger btn-lg" style="float: right;">
+                        <button type="reset" class="btn-danger btn-lg" style="float: left;"> <b> Limpiar
+                            campos</b> </button>
+                        <button class="btn-success btn-lg" style="float: right;"
+                          data-bs-dismiss="modal">
+                          <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
                       </div>
                     </form>
                   </div>

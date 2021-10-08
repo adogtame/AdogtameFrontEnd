@@ -1,6 +1,8 @@
 .modal-header{
   background-color:  rgb(250, 218, 170);
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+  font-size: 86px !important;
 }
 
 .modal-body{
