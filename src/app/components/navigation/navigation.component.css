@@ -5,15 +5,86 @@
 }
 
 .imagenC1{
+    
 
-  display: inline-block;
+    display: inline-block;
+
 }
+
+.fa-paw{
+    color: rgb(90, 122, 118);
+    margin-left: .38em;
+    margin-top: .4em;
+    font-size: 1.5em;
+}
+  
 .imagenC2{
 
     display: inline-block;
     margin-left: .5em;
     margin-right: .4em;
-  }
+}
+
+.btn-group{
+
+    position: relative;
+    margin-right: 1em;
+}
+
+
+
+.usuario-perfil{
+    z-index: 50;    
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    margin-right: 1.4em;
+    left:auto;
+    right:0;
+}
+
+.animales-usuario{
+    z-index: 40;  
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgb(235, 232, 227);
+    cursor: pointer;
+    position: absolute;
+    border: solid 1px rgba(133, 129, 129, 0.609);
+    margin-left: 1.4em; 
+    margin-top: -.1em;
+
+    left:auto;
+    right:0;
+}
+
+.activo{
+   
+    z-index: 100;  
+    transform: scale(1.2) ;
+}
+
+.noActivo{   
+    transform: scale(1) ;
+}
+
+
+
+.usuario-perfil:hover{
+    z-index: 110;  
+    transform: scale(1.2) ;
+}   
+
+.animales-usuario:hover{ 
+    z-index: 80;  
+    transform: scale(1.2) ;
+}
+
+
+
+
 
 #logout{
     cursor: pointer;
@@ -43,6 +114,7 @@
     border:0px;
     width:130px;
     height:30px;
+    /* height: 35px; font-size:16px; */
     margin-right: 5px;
 }
 
@@ -219,15 +291,28 @@ h1 {
 
 }
 
+.navbar-brand img{
+    height: 45px;
+
+}
+
+
 .posicion-derecha{
     position: absolute;
     right: 0px;
     margin-right: 1.5em;
 }
 
-.dropdown-menu.pull-left {
+.dropdown-menu{
     left:auto;
     right:0;
+    margin-top: .5em;
+}
+
+
+.pull-left{
+    
+    right:1.3em;
 }
 
 .img-navbar{
@@ -249,7 +334,7 @@ h1 {
     height: var(--circulo-boton-nav);
     border-radius: 50%;
     cursor: pointer;
-    margin-right: 1em;
+    margin-right: 6em;
 }
 
 #campanita-icon{
@@ -283,8 +368,7 @@ h1 {
     z-index: 1000;
     max-height: 70vh;
     margin-top: 0.2em;
-
-    right: 9em;
+    right: 7em;
 
 
     overflow: auto;

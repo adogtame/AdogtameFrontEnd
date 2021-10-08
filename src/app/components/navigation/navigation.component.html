@@ -10,7 +10,11 @@
         <ul id="menu">
           <br><br>
           <li>
-            <button class="btn btn - boton" href="#">Organizaciones</button>
+            <button class="btn btn - boton">Organizaciones</button>
+          </li> 
+          <br> <br>
+          <li>
+            <button class="btn btn - boton" routerLink="usuarios/home">Adoptados </button>
           </li>
           <br> <br>
           <li>
@@ -24,12 +28,13 @@
           <li>
             <button class="btn btn - boton" href="#">Especiales </button>
           </li>
+         
         </ul>
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <a class="navbar-brand" routerLink="usuarios/principal">
-      <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" style="height: 45px;">
+      <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" >
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
       aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,28 +43,25 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <button class="btn btn - boton2" style="height: 35px; font-size:16px;"
+          <button class="btn btn - boton2"
             routerLink="usuarios/buscador-avanzado">En
             adopcion </button>
         </li>
-        <li class="nav-item ">
-          <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/home">
-            Adoptados </button>
-        </li>
+      
         <ng-container *ngIf="revelar==false as user; else login">
           <ul class="navbar-nav posicion-derecha">
             <li class="nav-item" *ngIf="user">
-              <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/ingresar"> Iniciar sesión</button>
+              <button class="btn btn - boton2" routerLink="usuarios/ingresar"> Iniciar sesión</button>
             </li>
 
             <li class="nav-item" *ngIf="user">
-              <button class="btn btn - boton2" style="height: 35px; font-size:16px;" routerLink="usuarios/registrar"> Registrarse</button>
+              <button class="btn btn - boton2" routerLink="usuarios/registrar"> Registrarse</button>
             </li>
           </ul>
         </ng-container>
         <ng-template #login>
-          <ul class="navbar-nav posicion-derecha">
-            <li class="nav-item active">
+          <ul class="navbar-nav posicion-derecha" >
+            <li class="nav-item active" id="notificaciones">
               <a class="btn btn - botonCampana" id="campanita" (click)="notificaciones()">
                 <i class="fas fa-bell" id="campanita-icon"></i>
                 <div class="alerta-notificaciones" *ngIf="notificacion==true">
@@ -68,7 +70,7 @@
                 <!-- <i class="fas fa-exclamation-circle"  *ngIf="notificacion==true"></i> -->
                 <!-- *ngIf="notificacion==true" -->
               </a>
-              <div class="notificaciones-container" id="notificaciones"
+              <div class="notificaciones-container"
                 [@clickNoti]="isOpenNoti ? 'showNoti' : 'noShowNoti' ">
 
                 <app-spinner></app-spinner>
@@ -109,40 +111,25 @@
                 </ng-template>
 
               </div>
-            </li>
-            &nbsp;&nbsp;
-
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                data-bs-toggle="dropdown" aria-expanded="false" (click)="listarAnimalesDelUsuario()">
-                Mis Animales <i class="fas fa-paw"> </i> </button>
-              <ul class="dropdown-menu dropdown-menu-dark lista-animales" aria-labelledby="dropdownMenuButton2">
-                <div *ngFor=" let animal of animales">
-                  <li><a class="dropdown-item" (click)="irAAnimal(animal.id)"><b>{{animal.nombre}}</b> </a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                </div>
-              </ul>
-            </div>
-            &nbsp;&nbsp; &nbsp;&nbsp;
+            </li>            
+            <!-- Cuenta perfil -->
             <div class="btn-group dropdown">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-                data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="usuario-perfil" [ngClass]="{'activo': isOpenPerfil, 'noActivo': !isOpenPerfil}" id="perfilDropdownBoton" >
 
                 <div class="imagenC1" *ngIf="cargoID==true">
-                  <app-upload-list [sujetoID]='Usuario.id' [Pertenece]='ubi'></app-upload-list>
+                  <app-upload-list [sujetoID]='Usuario.id' [Pertenece]='ubiUsuarioPerfil1'></app-upload-list>
                 </div>
-              </a>
-              <ul class="dropdown-menu pull-left" aria-labelledby="dropdownUser1">
+              </div>
+              <ul class="dropdown-menu pull-left" id="perfilDropdownContenido" [@clickPerfil]="isOpenPerfil ? 'showPerfil' : 'noShowPerfil' ">
                 <li>
 
                   <div class="ir-a-perfil" (click)="irAPerfil()">
                     <div class="imagenC2" *ngIf="cargoID==true">
 
-                      <app-upload-list [sujetoID]='Usuario.id ' [Pertenece]='ubi2'></app-upload-list>
+                      <app-upload-list [sujetoID]='Usuario.id ' [Pertenece]='ubiUsuarioPerfil2'></app-upload-list>
+                    
                     </div>
-                    <a> <b>{{Usuario.nombre}} </b></a>
+                    <b>{{Usuario.nombre}} </b>
                   </div>
 
                 </li>
@@ -153,7 +140,41 @@
                 <li><a class="dropdown-item" id="logout" (click)="logout()"> <i class="fas fa-sign-out-alt">Cerrar
                       sesion</i></a></li>
               </ul>
+            <!--  Animales del dueño  -->
+              <a class="animales-usuario" [ngClass]="{'activo': isOpenAnimals, 'noActivo': !isOpenAnimals}" id="animalsDropdownBoton"  (click)="listarAnimalesDelUsuario()">
+
+                <div class="imagenC1" *ngIf="cargoID==true">
+                  <i class="fas fa-paw"> </i>
+                </div>
+              </a>
+              <ul class="dropdown-menu" id="animalsDropdownContenido" [@clickAnimals]="isOpenAnimals ? 'showAnimals' : 'noShowAnimals' ">
+
+                <li>
+
+                  <div *ngFor="let animal of animales">
+                    <div class="ir-a-perfil" (click)="irAAnimal(animal.id)">
+                      
+
+                        <div class="imagenC2" *ngIf="cargoID==true">
+                                                  
+                          <app-upload-list [sujetoID]='animal.id ' [Pertenece]='ubi2AnimalUsuario'></app-upload-list>
+                          
+                        </div>
+                        <b>{{animal.nombre}}</b> 
+
+
+
+                    </div>
+           
+                  </div>
+                </li>
+            
+              </ul>
             </div>
+
+
+
+
 
           </ul>
 

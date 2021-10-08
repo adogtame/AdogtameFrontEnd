@@ -33,13 +33,53 @@ import {
       state('showNoti',
         style({
           display: 'block',
-          'min-height': '10em',
+          'min-height': '9em',
         })
       ),
       transition('showNoti => noShowNoti', [
         animate('0s')
       ]),
       transition('noShowNoti => showNoti', [
+        animate('0s')
+      ])
+    ]),
+    trigger('clickPerfil', [
+      state('noShowPerfil',
+        style({
+          display: 'none',
+          height: '0px'
+        })
+      ),
+      state('showPerfil',
+        style({
+          display: 'block',
+          'min-height': '4em',
+        })
+      ),
+      transition('showPerfil => noShowPerfil', [
+        animate('0s')
+      ]),
+      transition('noShowPerfil => showPerfil', [
+        animate('0s')
+      ])
+    ]),
+    trigger('clickAnimals', [
+      state('noShowAnimals',
+        style({
+          display: 'none',
+          height: '0px'
+        })
+      ),
+      state('showAnimals',
+        style({
+          display: 'block',
+          'min-height': '2em',
+        })
+      ),
+      transition('showAnimals => noShowAnimals', [
+        animate('0s')
+      ]),
+      transition('noShowAnimals => showAnimals', [
         animate('0s')
       ])
     ]),
@@ -60,6 +100,16 @@ export class NavigationComponent implements OnInit {
   // public user$: Observable<any>= this.revelar
   //nombreSubscription: Subscription | any;
 
+
+  //abrir dropdowns  
+  isOpenAnimals: boolean = false;  
+  isOpenPerfil: boolean = false;
+
+  //Cargaron mis animales
+  
+  animalesCargados: boolean = false;
+
+
   //Notificacion
   notificacion: boolean = false;
   isOpenNoti: boolean = false;
@@ -68,8 +118,9 @@ export class NavigationComponent implements OnInit {
   notificacionesCargadas: boolean = false;
 
   //ubi para saber como hacer la img del firebase
-  ubi: string = "PerfilNav";
-  ubi2: string = "PerfilNav2";
+  ubiUsuarioPerfil1: string = "PerfilNavUsuarioPerfil1";
+  ubiUsuarioPerfil2: string = "PerfilNavUsuarioPerfil2";
+  ubi2AnimalUsuario: string = "PerfilNavAnimalUsuario";
   ubiI: string = "NavNotiI";
   ubiA: string = "NavNotiA";
   cargoID: boolean = false;
@@ -100,7 +151,8 @@ export class NavigationComponent implements OnInit {
 
 
 		document.addEventListener('mouseup', (e) => {
-			var container2: any = document.getElementById('campanita');
+			
+      var container2: any = document.getElementById('campanita');
 			if (container2.contains(e.target)) {
 				this.isOpenNoti=!this.isOpenNoti;
 			}
@@ -110,7 +162,38 @@ export class NavigationComponent implements OnInit {
 					this.isOpenNoti=false;
 				}
 			}
+
+
+      var container3: any = document.getElementById('perfilDropdownBoton');
+			if (container3.contains(e.target)) {
+				this.isOpenPerfil=!this.isOpenPerfil;
+			}
+			else{
+				var container4: any = document.getElementById('perfilDropdownContenido');
+				if (!container4.contains(e.target)) {
+					this.isOpenPerfil=false;
+				}
+			}
+
+
+
+      var container5: any = document.getElementById('animalsDropdownBoton');
+			if (container5.contains(e.target)) {
+				this.isOpenAnimals=!this.isOpenAnimals;
+			}
+			else{
+				var container6: any = document.getElementById('animalsDropdownContenido');
+				if (!container6.contains(e.target)) {
+					this.isOpenAnimals=false;
+				}
+			}
+
 		});
+
+
+
+    
+    
 
   }
 
@@ -215,13 +298,13 @@ export class NavigationComponent implements OnInit {
           console.log(res)
           this.notificacionesInteresados = res;
 
+          this.notificacionesCargadas = true;
         },
         err => console.log(err)
       );
       console.log(this.UsuarioID.user);
 
 
-      this.notificacionesCargadas = true;
 
 
     }
@@ -269,17 +352,27 @@ export class NavigationComponent implements OnInit {
     });
 
 
+
   }
 
 
   listarAnimalesDelUsuario() {
-    this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.user).subscribe(
-      res => {
-        this.animales = res;
-        console.log("Animales", res);
-      },
-      err => console.log(err)
-    )
+
+    //Aca pregunta si ya se cargo esto una vez
+    //Hay q hacer q recargue la pagina cuando registre un animal nuevo el usuario porq sino no va a aparecer en el nav
+    if (this.animalesCargados == false) {
+      this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.user).subscribe(
+        res => {
+          this.animales = res;
+          console.log("Animales", res);
+          this.animalesCargados=true;
+        },
+        err => console.log(err)
+      )
+    }
+
+    
+ 
   }
 
 }
