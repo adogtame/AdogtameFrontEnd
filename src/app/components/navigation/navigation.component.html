@@ -11,7 +11,7 @@
           <br><br>
           <li>
             <button class="btn btn - boton">Organizaciones</button>
-          </li> 
+          </li>
           <br> <br>
           <li>
             <button class="btn btn - boton" routerLink="usuarios/home">Adoptados </button>
@@ -28,7 +28,7 @@
           <li>
             <button class="btn btn - boton" href="#">Especiales </button>
           </li>
-         
+
         </ul>
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,7 +47,7 @@
             routerLink="usuarios/buscador-avanzado">En
             adopcion </button>
         </li>
-      
+
         <ng-container *ngIf="revelar==false as user; else login">
           <ul class="navbar-nav posicion-derecha">
             <li class="nav-item" *ngIf="user">
@@ -61,6 +61,10 @@
         </ng-container>
         <ng-template #login>
           <ul class="navbar-nav posicion-derecha" >
+            <li class="nav-item ">
+              <a style="font-size:26px; margin-right: 15px;" routerLink="usuarios/informes">
+                 <b> <i class="fas fa-info-circle"></i></b> </a>
+            </li>
             <li class="nav-item active" id="notificaciones">
               <a class="btn btn - botonCampana" id="campanita" (click)="notificaciones()">
                 <i class="fas fa-bell" id="campanita-icon"></i>
@@ -111,7 +115,7 @@
                 </ng-template>
 
               </div>
-            </li>            
+            </li>
             <!-- Cuenta perfil -->
             <div class="btn-group dropdown">
               <div class="usuario-perfil" [ngClass]="{'activo': isOpenPerfil, 'noActivo': !isOpenPerfil}" id="perfilDropdownBoton" >
@@ -127,7 +131,7 @@
                     <div class="imagenC2" *ngIf="cargoID==true">
 
                       <app-upload-list [sujetoID]='Usuario.id ' [Pertenece]='ubiUsuarioPerfil2'></app-upload-list>
-                    
+
                     </div>
                     <b>{{Usuario.nombre}} </b>
                   </div>
@@ -153,22 +157,22 @@
 
                   <div *ngFor="let animal of animales">
                     <div class="ir-a-perfil" (click)="irAAnimal(animal.id)">
-                      
+
 
                         <div class="imagenC2" *ngIf="cargoID==true">
-                                                  
+
                           <app-upload-list [sujetoID]='animal.id ' [Pertenece]='ubi2AnimalUsuario'></app-upload-list>
-                          
+
                         </div>
-                        <b>{{animal.nombre}}</b> 
+                        <b>{{animal.nombre}}</b>
 
 
 
                     </div>
-           
+
                   </div>
                 </li>
-            
+
               </ul>
             </div>
 
