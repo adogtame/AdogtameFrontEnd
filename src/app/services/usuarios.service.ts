@@ -32,6 +32,7 @@ export class UsuariosService {
 
 
 
+
   //Una cagada pero tengo q hacer estos emitt porq sino la base dice
   //q hay demasiadas cosas cargando al mismo tiempo
 
@@ -265,16 +266,29 @@ export class UsuariosService {
 	}
 
 
-  cantidadInteresados(cantidad: any){
-    return this.http.get(`${this.API_URI}/cantidadInteresados/${cantidad}`);
-  }
+	//Editar datos
+	
+	
 
-  vacunasAnimal(vacuna: any){
-    return this.http.get(`${this.API_URI}/vacunasAnimal/${vacuna}`);
-  }
+	editarPerfil(actualizarUsuario: Usuario, id: string): Observable<Usuario> {
+		return this.http.put(`${this.API_URI}/updateDataUsuario/${id}`, actualizarUsuario);
+	}
+
+	vacunasAnimal(vacuna: any){
+		return this.http.get(`${this.API_URI}/vacunasAnimal/${vacuna}`);
+	}
 
 	modificarDatosAnimal(id: string, animal: Animal): Observable<Usuario> {
 		return this.http.put(`${this.API_URI}/modificarDatosAnimal/${id}`, animal);
 	}
+
+
+	/*
+	
+	cantidadInteresados(cantidad: any){
+		return this.http.get(`${this.API_URI}/cantidadInteresados/${cantidad}`);
+	} 
+	*/
+
 
 }

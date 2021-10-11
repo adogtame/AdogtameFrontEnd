@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 //import { Subscription } from 'rxjs';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
@@ -100,6 +100,7 @@ export class NavigationComponent implements OnInit {
   // public user$: Observable<any>= this.revelar
   //nombreSubscription: Subscription | any;
 
+  //
 
   //abrir dropdowns  
   isOpenAnimals: boolean = false;  
@@ -197,6 +198,53 @@ export class NavigationComponent implements OnInit {
 
   }
 
+
+
+
+  ngOnDestroy(): void {
+
+    this.token = "";
+    this.UsuarioID = { user: "No logueado" };
+    this.Usuario = [];
+    this.idUsuario = "";
+    this.TokenJSON = { token: "" };
+    //Revela y oculta botones si esta logueado el usuario
+    this.revelar = false;
+    this.revelarBusRapida = false;
+    // public user$: Observable<any>= this.revelar
+    //nombreSubscription: Subscription | any;
+  
+  
+    //abrir dropdowns  
+    this.isOpenAnimals = false;  
+    this.isOpenPerfil = false;
+  
+    //Cargaron mis animales
+    
+    this.animalesCargados = false;
+  
+  
+    //Notificacion
+    this.notificacion = false;
+    this.isOpenNoti = false;
+    this.notificacionesInteresados = [];
+    this.notificacionesContador = [];
+    this.notificacionesCargadas = false;
+  
+    this.rol = "";
+    this.animales = [];
+  
+
+
+
+  }
+
+
+
+
+
+
+
   logout() {
     //Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
     this.usuariosService.logOut();
@@ -241,7 +289,9 @@ export class NavigationComponent implements OnInit {
 						this.usuariosService.rol = this.Usuario.tipo_perfil;
 						console.log("El rol del usuario es", this.usuariosService.rol);
 						console.log(this.Usuario);
-						//Activar noti
+						
+            
+            //Activar noti
 						this.usuariosService.notificaciones$.emit()
 
 					},
@@ -252,6 +302,7 @@ export class NavigationComponent implements OnInit {
 			err => console.log(err)
 		);
 	}
+
 
 
   irAPerfil() {

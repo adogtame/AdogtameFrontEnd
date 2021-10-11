@@ -49,7 +49,6 @@ import {
   ]
 })
 export class UsuariosAnimalComponent implements OnInit, OnDestroy {
-  animal = { idDador: "", nombre: "", sexo: "", tipo: "", fNac: "", tamano: "", peso: "" };
   Animal: any = [];
   AnimalID: any = [];
   userAhora: string="";
@@ -71,10 +70,17 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   interes: boolean = false;
   isOpenInteresados: boolean = false;
   cargoPagina: boolean = false;
-  // admin
-  rol: any = "";
+  
   display='none';
   vacuna : any = [];
+  //Modificar datos animal
+  
+  datosNuevos={nombre: "vacio", sexo: "vacio", tipo: "vacio", fNac: "vacio", tamano: "vacio", peso: "vacio"};
+
+  
+
+  // admin
+  //rol: any = "";
 
   constructor(
 
@@ -95,11 +101,12 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         this.estadoAnimal();
       });
 
+      /*
       this.usuariosService.rol$.subscribe(log => {
         this.rol = this.usuariosService.rol;
         console.log("El rol del usuario es", this.usuariosService.rol);
       });
-
+      /**/
     });
 
   }
@@ -155,8 +162,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.usuariosService.decodificarToken(this.TokenJSON).subscribe(
       res => {
         this.UsuarioID = res;
-        console.log("Este es el id decodificado", this.UsuarioID);
-
+        console.log("Este es el id decodificado", this.UsuarioID.user);
+        
+        
+        this.usuariosService.cargarAnimalDatos$.emit()
+        /*
         this.usuariosService.buscarUsuario(this.UsuarioID.user).subscribe(
           res => {
             this.Usuario = res
@@ -178,6 +188,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
           err => console.log(err)
         );
         console.log(this.UsuarioID.user);
+        /**/
       },
       err => console.log(err)
     );
@@ -193,7 +204,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     });
 
     this.usuariosService.cargarAnimalIntereses$.subscribe(log => {
-      if(this.Animal.idDador==this.usuariosService.user.id){
+      if(this.Animal.idDador== this.UsuarioID.user){
         //si sos el dador
         this.cargarInteresados();
         console.log("interesados",this.interesados);
@@ -204,7 +215,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     });
 
     this.usuariosService.cargarTerminado$.subscribe(log => {
-      this.userAhora=this.usuariosService.user.id;
+      this.userAhora= this.UsuarioID.user;
       setTimeout(()=>{ this.cargoPagina=true }, 2000)
       console.log("interesados",this.interesados);
     });
@@ -228,6 +239,71 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     window.open(url, '_blank');
     //this.router.navigate(['usuarios/perfil/',id])
   }
+
+
+
+
+  modificarDatosAnimal(datosNuevos: any) {
+
+    console.log("animal a modificar", this.Animal);
+    console.log("datosNuevos del animal cambios", datosNuevos);
+ 
+		var nombresArray: any =["nombre","sexo","tipo","fNac","tamano","peso"];
+		let datosArray:any={};
+
+    console.log(`animal dato 0`, this.Animal[`${nombresArray[0]}`]);
+    console.log("datosNuevos 0", datosNuevos[`${nombresArray[0]}`]);
+    console.log("nombresArray.length", nombresArray.length);
+
+    for (var i = 0; i < nombresArray.length; i++) {
+      if(this.Animal[`${nombresArray[i]}`]!=datosNuevos[`${nombresArray[i]}`] && datosNuevos[`${nombresArray[i]}`]!=null && datosNuevos[`${nombresArray[i]}`]!="vacio"){
+
+        //  
+        console.log("i",  i);
+        console.log("this.Animal", [`${nombresArray[i]}`],this.Animal[`${nombresArray[i]}`]);
+        console.log("datosNuevos", [`${nombresArray[i]}`],datosNuevos[`${nombresArray[i]}`]);
+
+        datosArray[`${nombresArray[i]}`]= datosNuevos[`${nombresArray[i]}`];
+
+
+
+      }
+    }
+
+    console.log("datosArray que se guarda", datosArray);
+
+
+
+
+    //Editar datos animal
+    /*
+    this.usuariosService.modificarDatosAnimal(datosArray, this.Animal.id).subscribe(
+      res => {
+        
+        console.log(res);  
+        
+        this.animalCargarDatos();        
+        
+
+      },
+      err => {
+        
+        console.log(err.error.message);
+
+      }
+
+
+
+    )
+
+    /**/
+
+
+  }
+
+
+
+
 
   comenzarChat(id: number, nombre: string, apellido: string, num: string){
     this.seleccionadoName = nombre;
@@ -372,7 +448,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   //si sos el dador
   cargarInteresados() {
-    console.log("El id del usuario es este de aca (dador)", this.usuariosService.user.id);
+    console.log("El id del usuario es este de aca (dador)",  this.UsuarioID.user);
     this.usuariosService.cargarInteresados(this.AnimalID.id).subscribe(
       res => {
         console.log("Resultado del cargar interesados", res);
@@ -389,10 +465,10 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   cargarInteres() {
 
 
-    console.log("El id del usuario es este de aca (interes)", this.usuariosService.user.id);
+    console.log("El id del usuario es este de aca (interes)", this.UsuarioID.user);
 
 
-    this.usuariosService.cargarInteres(this.AnimalID.id, { idUsuario: this.usuariosService.user.id }).subscribe(
+    this.usuariosService.cargarInteres(this.AnimalID.id, { idUsuario:  this.UsuarioID.user }).subscribe(
       res => {
 
         console.log("Resultado del cargar interes", res);
@@ -422,7 +498,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     if (this.interes == true) {
 
-      this.usuariosService.quitarInteres(this.AnimalID.id, { idInteresado: this.usuariosService.user.id }).subscribe(
+      this.usuariosService.quitarInteres(this.AnimalID.id, { idInteresado:  this.UsuarioID.user }).subscribe(
         res => {
 
           this.interes = false;
@@ -437,7 +513,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     }
     else {
 
-      this.usuariosService.mostrarInteres(this.AnimalID.id, { idInteresado: this.usuariosService.user.id }).subscribe(
+      this.usuariosService.mostrarInteres(this.AnimalID.id, { idInteresado:  this.UsuarioID.user}).subscribe(
         res => {
 
           this.interes = true;
@@ -478,22 +554,6 @@ vacunasAnimal() {
     },
     err => console.log(err)
   );
-}
-
-  modificarDatosAnimal() {
-
-  this.usuariosService.modificarDatosAnimal(this.Animal.ID, this.Animal).subscribe(
-    res => {
-      this.Animal = res
-      console.log("Modificar datos", this.Animal);
-    },
-    err => console.log(err)
-  );
-
-
-
-
-
 }
 
 

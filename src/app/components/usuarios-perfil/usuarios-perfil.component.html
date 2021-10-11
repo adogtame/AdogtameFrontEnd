@@ -1,14 +1,15 @@
+
 <div class="contenedor-usuario-perfil">
-  <h1 id="nombre-usuario-perfil">{{Usuario.nombre}} </h1>
   <div class="imagenC">
     <app-upload-list [sujetoID]='UsuarioID.id' [Pertenece]='ubi'></app-upload-list>
-    <ng-container *ngIf="usuarioLogueado === Usuario.id">
+    <ng-container *ngIf="miUsuario == UsuarioID.id">
       <label for="file-upload" class="subir">
         <i class="fas fa-camera" id="subir-foto"></i>
       </label>
       <input id="file-upload" onchange='cambiar()' type="file" accept=".jpeg" style='display: none;'/>
     </ng-container>
-  </div>
+  </div>  
+  <h1 id="nombre-usuario-perfil">{{Usuario.nombre}} </h1>
 </div>
 
 
@@ -37,12 +38,15 @@
       <div class="card text-dark mb-3" style="max-width: 100%; background-color:rgb(248, 220, 195) ;">
         <div class="card-body">
           <h2 class="card-title">Datos personales</h2>
-          <p class="card-text">Nombre: <span class="spa"> {{Usuario.nombre}}</span> </p>
-          <p class="card-text">Apellido: <span class="spa">{{Usuario.apellido}} </span> </p>
-          <p class="card-text">Email: <span class="spa"> {{Usuario.email}}</span></p>
-          <p class="card-text">Celular: <span class="spa"> {{Usuario.nro_celular}}</span></p>
+          <p>Nombre: <span> {{Usuario.nombre}}</span> </p>
+          <p>Apellido: <span>{{Usuario.apellido}} </span> </p>
+          <p>Email: <span> {{Usuario.email}}</span></p>
+          <p>Celular: <span> {{Usuario.nro_celular}}</span></p>
 
-          <ng-container *ngIf="usuarioLogueado === Usuario.id">
+          <!-- Hacer q traiga datos del servidor segun quien sea el id, no q traiga datos y segun id muestra uno u otros. Traer datos especificando cuales. -->
+         
+         
+          <ng-container *ngIf="miUsuario == UsuarioID.id">
             <button type="button" class="btn btn-light" style="float: right;" data-bs-toggle="modal"
               data-bs-target="#modal-editar-datos-personales"> <b>Editar </b> <i class="fas fa-pencil-alt"></i></button>
           </ng-container>
@@ -64,7 +68,7 @@
                       <form>
                         <div class="mb-3">
                           <label for="" style="float: left;"> <b> Nombre</b> </label>
-                          <input type="text" minlength="4" name="nombre" [(ngModel)]="user.nombre"
+                          <input type="text" minlength="4" name="nombre" [(ngModel)]="datosNuevos.nombre"
                             placeholder="Ingrese su Usuario" class="form-control" (focus)="limpiarNombre()" autofocus
                             required value="{{Usuario.nombre}}">
                           <div [ngSwitch]="errorNombre" class="errorField">
@@ -76,7 +80,7 @@
                         </div>
                         <div class="mb-3">
                           <label for=""> <b> Apellido</b> </label>
-                          <input type="text" minlength="4" name="apellido" [(ngModel)]="user.apellido"
+                          <input type="text" minlength="4" name="apellido" [(ngModel)]="datosNuevos.apellido"
                             placeholder="Ingrese su  Apellido" class="form-control" (focus)="limpiarApellido()" required
                             value="{{Usuario.apellido}}">
                           <div [ngSwitch]="errorApellido" class="errorField">
@@ -87,7 +91,7 @@
                         </div>
                         <div class="mb-3">
                           <label for=""> <b> E-mail</b> </label>
-                          <input type="email" name="email" [(ngModel)]="user.email" placeholder="Ingrese su Email"
+                          <input type="email" name="email" [(ngModel)]="datosNuevos.email" placeholder="Ingrese su Email"
                             class="form-control" minlength="10" (focus)="limpiarEmail()" required
                             value="{{Usuario.email}}">
                           <div [ngSwitch]="errorEmail" class="errorField">
@@ -98,7 +102,7 @@
                         </div>
                         <div class="mb-3">
                           <label for=""> <b> Celular</b> </label>
-                          <input type="tel" name="nro_celular" [(ngModel)]="user.nro_celular"
+                          <input type="tel" name="nro_celular" [(ngModel)]="datosNuevos.nro_celular"
                             placeholder="Ingrese su nro de celular" class="form-control" minlength="8"
                             (focus)="limpiarCelular()" required value="{{Usuario.nro_celular}}">
                           <div [ngSwitch]="errorCelular" class="errorField">
@@ -112,7 +116,7 @@
                           <button type="reset" class="btn btn-danger" style="float: left;"> <b> Limpiar campos</b>
                           </button>
                           <button class="btn btn-success" aria-label="Close" style="float: right; "
-                            data-bs-dismiss="modal"> <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
+                            data-bs-dismiss="modal"  (click)="editarPerfil(datosNuevos)"> <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
                         </div>
                       </form>
                     </div>
@@ -120,7 +124,8 @@
                 </div>
               </div>
             </div>
-          </div> <!-- Termina Modal de registrar -->
+          </div> 
+          <!-- Termina Modal de registrar -->
         </div>
       </div>
     </div>

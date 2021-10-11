@@ -39,7 +39,7 @@
         <h1 class="animal-nombre">{{Animal.nombre}}</h1>
         <div class="imagenC">
           <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'> </app-upload-list>
-          <ng-container *ngIf="Animal.idDador === Usuario.id">
+          <ng-container *ngIf="Animal.idDador ===  UsuarioID.user">
             <label for="file-upload" class="subir">
               <i class="fas fa-camera" id="subir-foto"></i>
             </label>
@@ -55,7 +55,7 @@
       <div class="animal-subheader">
         <ul class="nav nav-tabs nav-fill" role="tablist">
 
-          <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!=Usuario.id; else dador">
+          <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!= UsuarioID.user; else dador">
             <button class="nav-link" type="button" role="tab"
               [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' " (click)="mostrarInteres()">
               <p class="interes-mostrado-text" *ngIf="interes==true"><i class="fas fa-check"></i> Interes Mostrado</p>
@@ -156,7 +156,7 @@
           </div>
         </div>
 
-        <ng-container *ngIf="Animal.idDador === Usuario.id; else noEsDador">
+        <ng-container *ngIf="Animal.idDador ===  UsuarioID.user; else noEsDador">
           <div class="grid-main-item datos-medicos">
             <div class="btn-group" role="group">
               <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()"> <b> Datos Medicos </b></button>
@@ -178,7 +178,7 @@
           <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                <h2 id="exampleModalLabel2">Modifica los datos de {{Animal.nombre}}</h2>
+                <h2 id="exampleModalLabel2">Modificar datos animal</h2>
                 <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light "><i
                     class="fas fa-times"></i></button>
               </div>
@@ -187,77 +187,78 @@
                   <div class="card-body">
                     <form>
                       <div class="mb-3">
-                        <label for=""> <b> Nombre</b> </label>
-                        <input type="text" name="nombre" placeholder="Ingrese el nombre" class="form-control" autofocus
-                          required required value="{{Animal.nombre}}">
+                        <label> <b> Nombre</b> </label>
+                        <input type="text" name="nombre" [(ngModel)]="datosNuevos.nombre" placeholder="Ingrese el nombre" class="form-control" autofocus
+                          required value="{{Animal.nombre}}">
                       </div>
                       <div class="mb-3">
                         <div class="content-select">
-                          <label for=""> <b> Tipo</b> </label>
+                          <label> <b> Tipo</b> </label>
                           <select name="tipo" class="form-control">
                             <ng-container *ngIf="Animal.tipo === 'perro'; else tipoTemplate">
-                              <option value="perro" selected>Perro</option>
-                              <option value="gato">Gato</option>
+                              <option [(ngModel)]="datosNuevos.tipo" value="perro" selected>Perro</option>
+                              <option [(ngModel)]="datosNuevos.tipo" value="gato">Gato</option>
                             </ng-container>
                             <ng-template #tipoTemplate>
-                              <option value="perro">Perro</option>
-                              <option value="gato" selected>Gato</option>
+                              <option [(ngModel)]="datosNuevos.tipo" value="perro">Perro</option>
+                              <option [(ngModel)]="datosNuevos.tipo" value="gato" selected>Gato</option>
                             </ng-template>
                           </select>
                         </div>
                       </div>
                       <div class="mb-3">
                         <div class="content-select">
-                          <label for=""> <b> Sexo</b> </label>
+                          <label> <b> Sexo</b> </label>
                           <select name="sexo" class="form-control">
                             <ng-container *ngIf="Animal.sexo === 'hembra'; else sexoTemplate">
-                              <option value="macho">Macho</option>
-                              <option value="hembra" selected>Hembra</option>
+                              <option [(ngModel)]="datosNuevos.sexo" value="macho">Macho</option>
+                              <option [(ngModel)]="datosNuevos.sexo" value="hembra" selected>Hembra</option>
                             </ng-container>
                             <ng-template #sexoTemplate>
-                              <option value="macho" selected>Macho</option>
-                              <option value="hembra">Hembra</option>
+                              <option [(ngModel)]="datosNuevos.sexo" value="macho" selected>Macho</option>
+                              <option [(ngModel)]="datosNuevos.sexo" value="hembra">Hembra</option>
                             </ng-template>
                           </select>
                         </div>
                       </div>
                       <div class="mb-3">
-                        <label for=""> <b> Fecha de nacimiento</b> </label>
-                        <input type="date" name="fNac" class="form-control" required>
+                        <label> <b> Fecha de nacimiento</b> </label>
+                        <input type="date" name="fNac" class="form-control" required 
+                        [(ngModel)]="datosNuevos.fNac" value="{{Animal.fNac}}">
                       </div>
                       <div class="mb-3">
                         <div class="content-select">
-                          <label for=""> <b> Tamaño</b> </label>
+                          <label> <b> Tamaño</b> </label>
                           <select name="tamano" class="form-control">
                             <ng-container *ngIf="Animal.tamano === 'chico'">
-                              <option value="chico" selected>Chico</option>
-                              <option value="mediano">Mediano</option>
-                              <option value="grande">Grande</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="chico" selected>Chico</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="grande">Grande</option>
                             </ng-container>
                             <ng-container *ngIf="Animal.tamano === 'mediano'">
-                              <option value="chico">Chico</option>
-                              <option value="mediano" selected>Mediano</option>
-                              <option value="grande">Grande</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="chico">Chico</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="mediano" selected>Mediano</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="grande">Grande</option>
                             </ng-container>
                             <ng-container *ngIf="Animal.tamano === 'grande'">
-                              <option value="chico">Chico</option>
-                              <option value="mediano">Mediano</option>
-                              <option value="grande" selected>Grande</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="chico">Chico</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
+                              <option [(ngModel)]="datosNuevos.tamano" value="grande" selected>Grande</option>
                             </ng-container>
                           </select>
                         </div>
                       </div>
                       <div class="mb-3">
-                        <label for=""> <b> Peso (KG)</b> </label>
+                        <label> <b> Peso (KG)</b> </label>
                         <input type="number" name="peso" placeholder="Ingrese el peso" class="form-control" required
-                          value="{{Animal.peso}}">
+                        [(ngModel)]="datosNuevos.peso" value="{{Animal.peso}}">
                       </div>
                       <br>
                       <div class="mb-3">
                         <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar
                             campos</b> </button>
-                        <button class="btn btn-success btn-lg" value="animal" style="float: right;"
-                          data-bs-dismiss="modal">
+                        <button class="btn btn-success btn-lg" style="float: right;"
+                          data-bs-dismiss="modal" (click)="modificarDatosAnimal(datosNuevos)">
                           <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
                       </div>
                     </form>
@@ -280,7 +281,7 @@
                         class="fas fa-times-circle"></i></span></button>
                 </div>
                 <div class="modal-body">
-                  <ng-container *ngIf="Animal.idDador != Usuario.id; else puedeEditar">
+                  <ng-container *ngIf="Animal.idDador !=  UsuarioID.user; else puedeEditar">
                     <ul class="list-group">
                       <label for=""> Vacunas</label>
                       <li class="list-group-item">
@@ -474,7 +475,7 @@
       <a class="interesado-seleccionado-img">
         <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
       </a>
-      <a>{{this.seleccionadoName}} {{this.seleccionadoApellido}}</a>
+      <a>{{seleccionadoName}} {{seleccionadoApellido}}</a>
       <button type="button" class="btn btn-cerrarChat" (click)="cerrarChat()">&#10006;</button>
     </div>
     <div class="chat-item chat-main">
@@ -489,7 +490,7 @@
 
 
   <!--  ES EL MODAL DE ELECCION   *ngIf="modalEleccionAbierto==true" -->
-  <div class="overlay-eleccion-adoptante" *ngIf="modalEleccionAbierto==true && this.Animal.idDador==this.userAhora">
+  <div class="overlay-eleccion-adoptante" *ngIf="modalEleccionAbierto==true && Animal.idDador==userAhora">
     <div class="modal-eleccion-adoptante">
       <div class="eleccion-item eleccion-header">
         <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
@@ -513,7 +514,7 @@
   <!-- Modal confirmar adopcion  -->
 
   <div class="overlay-confirmar-adopcion"
-    *ngIf="modalConfirmarAdopcionAbierto==true && this.Animal.idDador==this.userAhora">
+    *ngIf="modalConfirmarAdopcionAbierto==true && Animal.idDador==userAhora">
     <div class="modal-confirmar-adopcion">
       <div class="confirmar-head">
         <p>¿Seguro quiere darle su animal en adopcion a {{interesadoSeleccionado.nombre}}
@@ -533,7 +534,7 @@
 
   <!-- Modal adopcion pendiente  -->
   <div class="overlay-adopcion-pendiente"
-    *ngIf="modalAdopcionPendienteAbierto==true && this.Animal.idDador==this.userAhora">
+    *ngIf="modalAdopcionPendienteAbierto==true && Animal.idDador==userAhora">
 
     <div class="modal-adopcion-pendiente">
 
