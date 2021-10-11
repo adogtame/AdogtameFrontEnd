@@ -12,7 +12,7 @@ h1{
 #contenedorAnimales{
   float: left ;
   margin: 25px;
-  outline: black 2px dashed;
+  outline: black 2px solid;
   cursor: pointer;
   background-color: lightgoldenrodyellow;
 }

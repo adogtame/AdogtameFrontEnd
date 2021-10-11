@@ -1,3 +1,4 @@
+import { InformesComponent } from './components/informes/informes.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {UsuariosListarComponent} from "./components/usuarios-listar/usuarios-listar.component";
@@ -78,6 +79,10 @@ const routes: Routes = [
 		path: 'usuarios/animal',
 		component: UsuariosAnimalComponent,
 		canActivate: [AuthGuard]
+	},
+  {
+		path: 'usuarios/informes',
+		component: InformesComponent
 	},
 	{
 		path: 'usuarios/animal/:id',

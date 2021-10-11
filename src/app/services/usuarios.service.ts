@@ -6,16 +6,12 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 
-//
-
-//
-
 @Injectable({
 	providedIn: 'root'
 })
 export class UsuariosService {
-	//API_URI = 'https://adogtame-servidor.herokuapp.com/user';
-	API_URI = 'http://localhost:3000/user';
+	API_URI = 'https://adogtame-servidor.herokuapp.com/user';
+	//API_URI = 'http://localhost:3000/user';
 
 	constructor(private http: HttpClient, private router:Router) { }
 
@@ -282,7 +278,6 @@ export class UsuariosService {
 		return this.http.put(`${this.API_URI}/modificarDatosAnimal/${id}`, animal);
 	}
 
-
 	/*
 	
 	cantidadInteresados(cantidad: any){
@@ -291,4 +286,22 @@ export class UsuariosService {
 	*/
 
 
+  cantidadUsuariosRegistrados(){
+  }
+
+  cantidadAnimalesRegistrados(){
+    return this.http.get(`${this.API_URI}/cantidadAnimalesRegistrados`);
+  }
+
+  cantidadAnimalesAdoptados(){
+    return this.http.get(`${this.API_URI}/cantidadAnimalesAdoptados`);
+  }
+
+  cantidadAnimalesEnAdopcion(){
+    return this.http.get(`${this.API_URI}/cantidadAnimalesEnAdopcion`);
+  }
+
+  promedioAnimalesAdoptados(){
+    return this.http.get(`${this.API_URI}/promedioAnimalesAdoptados`);
+  }
 }

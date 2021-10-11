@@ -1,0 +1,42 @@
+td{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 70px;
+  font: bold;
+}
+th{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 26px;
+  color: darkslategray;
+  font-style: italic;
+}
+
+table{
+  text-align: center;
+  align-items: center;
+  width: 195px;
+  float: left;
+  margin: 10px;
+  margin-top: 40px;
+  background-color: #f8e8df;
+}
+
+h1{
+  font-size: 82px;
+  font-family: fantasy;
+  text-align: center;
+  border-bottom: 3px solid darkslategray ;
+}
+
+table:hover{
+  color: red;
+}
+
+td:hover{
+  color: red;
+}
+
+.copyright-footer{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1em;
+}
