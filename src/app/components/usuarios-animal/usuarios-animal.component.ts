@@ -220,7 +220,6 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       console.log("interesados",this.interesados);
     });
 
-    this.vacunasAnimal();
 
   }
 
@@ -276,7 +275,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
     //Editar datos animal
-    /*
+    
     this.usuariosService.modificarDatosAnimal(datosArray, this.Animal.id).subscribe(
       res => {
         
@@ -530,31 +529,35 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-  openModal(){
+  datosMedicos(vacunas: any){
+    this.traerVacunasAnimal(vacunas);
     this.display='block';
- }
+  }
 
- onCloseHandled(){
-  this.display='none';
- }
+  onCloseHandled(){
+    this.display='none';
+  }
+  //this.traerVacunasAnimal();
+  traerVacunasAnimal(vacunas: any) {
+    this.usuariosService.traerVacunasAnimal(this.AnimalID.id).subscribe(
+      res => {
+        this.vacuna = res;
+        console.log("Cantidad de vacunas: ", this.vacuna);
+      },
+      err => console.log(err)
+    );
+  }
 
- openModal1(){
-  this.display='block';
-}
 
-onCloseHandled1(){
-this.display='none';
-}
-
-vacunasAnimal() {
-  this.usuariosService.vacunasAnimal(this.AnimalID.id).subscribe(
-    res => {
-      this.vacuna = res;
-      console.log("Cantidad de vacunas: ", this.vacuna);
-    },
-    err => console.log(err)
-  );
-}
+  modificarVacunasAnimal(vacunas: any) {
+    this.usuariosService.modificarVacunasAnimal(vacunas, this.AnimalID.id).subscribe(
+      res => {
+        this.vacuna = res;
+        console.log("Cantidad de vacunas: ", this.vacuna);
+      },
+      err => console.log(err)
+    );
+  }
 
 
 }

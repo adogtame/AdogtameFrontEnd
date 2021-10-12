@@ -270,11 +270,16 @@ export class UsuariosService {
 		return this.http.put(`${this.API_URI}/updateDataUsuario/${id}`, actualizarUsuario);
 	}
 
-	vacunasAnimal(vacuna: any){
-		return this.http.get(`${this.API_URI}/vacunasAnimal/${vacuna}`);
+	traerVacunasAnimal(id: string){
+		return this.http.get(`${this.API_URI}/traerVacunasAnimal/${id}`);
+	}
+
+	modificarVacunasAnimal(vacunas: any, id: string){
+		return this.http.put(`${this.API_URI}/modificarVacunasAnimal/${id}`, vacunas);
 	}
 
 	modificarDatosAnimal(id: string, animal: Animal): Observable<Usuario> {
+		console.log("id", id);
 		return this.http.put(`${this.API_URI}/modificarDatosAnimal/${id}`, animal);
 	}
 
