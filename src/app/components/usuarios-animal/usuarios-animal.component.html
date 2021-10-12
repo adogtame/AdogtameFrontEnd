@@ -159,7 +159,7 @@
         <ng-container *ngIf="Animal.idDador ===  UsuarioID.user; else noEsDador">
           <div class="grid-main-item datos-medicos">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()"> <b> Datos Medicos </b></button>
+              <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos(vacuna)"> <b> Datos Medicos </b></button>
             </div>
             <button type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal"
               data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
@@ -167,7 +167,7 @@
         </ng-container>
         <ng-template #noEsDador>
           <div>
-            <button type="button" class="btn btn - botonDatosMedicos" (click)="openModal()" style="float: right;"><b> Datos Medicos </b></button>
+            <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos(vacuna)" style="float: right;"><b> Datos Medicos </b></button>
 
           </div>
         </ng-template>

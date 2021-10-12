@@ -263,30 +263,36 @@ export class UsuariosService {
 
 
 	//Editar datos
-	
-	
+
+
 
 	editarPerfil(actualizarUsuario: Usuario, id: string): Observable<Usuario> {
 		return this.http.put(`${this.API_URI}/updateDataUsuario/${id}`, actualizarUsuario);
 	}
 
-	vacunasAnimal(vacuna: any){
-		return this.http.get(`${this.API_URI}/vacunasAnimal/${vacuna}`);
+	traerVacunasAnimal(id: string){
+		return this.http.get(`${this.API_URI}/traerVacunasAnimal/${id}`);
 	}
 
-	modificarDatosAnimal(id: string, animal: Animal): Observable<Usuario> {
+	modificarVacunasAnimal(vacunas: any, id: string){
+		return this.http.put(`${this.API_URI}/modificarVacunasAnimal/${id}`, vacunas);
+	}
+
+	modificarDatosAnimal(animal: Animal, id: string): Observable<Usuario> {
+		console.log("id", id);
 		return this.http.put(`${this.API_URI}/modificarDatosAnimal/${id}`, animal);
 	}
 
 	/*
-	
+
 	cantidadInteresados(cantidad: any){
 		return this.http.get(`${this.API_URI}/cantidadInteresados/${cantidad}`);
-	} 
+	}
 	*/
 
 
   cantidadUsuariosRegistrados(){
+    return this.http.get(`${this.API_URI}/cantidadUsuariosRegistrados`);
   }
 
   cantidadAnimalesRegistrados(){
