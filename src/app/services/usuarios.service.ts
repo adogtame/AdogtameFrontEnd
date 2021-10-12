@@ -292,7 +292,11 @@ export class UsuariosService {
 
 
   cantidadUsuariosRegistrados(){
-    return this.http.get(`${this.API_URI}/cantidadUsuariosRegistrados`);
+<<<<<<< HEAD
+    return this.http.get(`${this.API_URI}/cantidadUsuariosRegistrados`) ;
+=======
+        return this.http.get(`${this.API_URI}/cantidadUsuariosRegistrados`);
+>>>>>>> 85e582d8142f24eae32dfbfb8132380a4c9edc90
   }
 
   cantidadAnimalesRegistrados(){
