@@ -8,7 +8,7 @@
       </label>
       <input id="file-upload" onchange='cambiar()' type="file" accept=".jpeg" style='display: none;'/>
     </ng-container>
-  </div>  
+  </div>
   <h1 id="nombre-usuario-perfil">{{Usuario.nombre}} </h1>
 </div>
 
@@ -44,8 +44,8 @@
           <p>Celular: <span> {{Usuario.nro_celular}}</span></p>
 
           <!-- Hacer q traiga datos del servidor segun quien sea el id, no q traiga datos y segun id muestra uno u otros. Traer datos especificando cuales. -->
-         
-         
+
+
           <ng-container *ngIf="miUsuario == UsuarioID.id">
             <button type="button" class="btn btn-light" style="float: right;" data-bs-toggle="modal"
               data-bs-target="#modal-editar-datos-personales"> <b>Editar </b> <i class="fas fa-pencil-alt"></i></button>
@@ -302,12 +302,6 @@
               <app-upload-list [sujetoID]='animal.id' [Pertenece]='ubi3' (click)="irAAnimal(animal.id)">
               </app-upload-list>
             </div>
-            <!-- Actualiza todos los valores de todas las cards al presionar el boton en lugar de una card sola
-                 Indica el numero de seguidores que tiene el animal
-              <button (click)="cantidadInteresados(animal.id)"  class="btn btn-primary" >
-                Cargar interesados {{cantidadInteresado.length}}
-              </button>
-            -->
           </div>
         </div>
       </div>

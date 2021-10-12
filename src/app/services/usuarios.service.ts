@@ -263,8 +263,8 @@ export class UsuariosService {
 
 
 	//Editar datos
-	
-	
+
+
 
 	editarPerfil(actualizarUsuario: Usuario, id: string): Observable<Usuario> {
 		return this.http.put(`${this.API_URI}/updateDataUsuario/${id}`, actualizarUsuario);
@@ -284,14 +284,15 @@ export class UsuariosService {
 	}
 
 	/*
-	
+
 	cantidadInteresados(cantidad: any){
 		return this.http.get(`${this.API_URI}/cantidadInteresados/${cantidad}`);
-	} 
+	}
 	*/
 
 
   cantidadUsuariosRegistrados(){
+    return this.http.get(`${this.API_URI}/cantidadUsuariosRegistrados`);
   }
 
   cantidadAnimalesRegistrados(){

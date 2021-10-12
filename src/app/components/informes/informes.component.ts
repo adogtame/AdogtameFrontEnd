@@ -21,24 +21,23 @@ export class InformesComponent implements OnInit {
   promedioAnimalesAdoptado: any = [];
 
   ngOnInit(): void {
-  this.cantidadAnimalesAdoptados();
-  this.cantidadAnimalesRegistrados();
-  // this.cantidadUsuariosRegistrados();
-  this.cantidadAnimalesEnAdopcion();
-  this.promedioAnimalesAdoptados();
+    this.cantidadAnimalesAdoptados();
+    this.cantidadAnimalesRegistrados();
+    this.cantidadUsuariosRegistrados();
+    this.cantidadAnimalesEnAdopcion();
+    this.promedioAnimalesAdoptados();
   }
 
-
-  // cantidadUsuariosRegistrados(): void {
-  //   this.usuariosService.cantidadUsuariosRegistrados().subscribe(
-  //     res => {
-  //       this.cantidadUsuariosRegistrado = res;
-  //       console.log(res);
-  //       console.log("cantidad regiss", this.cantidadUsuariosRegistrado);
-  //     },
-  //     err => console.log(err)
-  //   )
-  // }
+  cantidadUsuariosRegistrados(): void {
+    this.usuariosService.cantidadUsuariosRegistrados().subscribe(
+      res => {
+        this.cantidadUsuariosRegistrado = res;
+        console.log(res);
+        console.log("cantidad regiss", this.cantidadUsuariosRegistrado);
+      },
+      err => console.log(err)
+    )
+  }
 
   cantidadAnimalesRegistrados(): void {
     this.usuariosService.cantidadAnimalesRegistrados().subscribe(
