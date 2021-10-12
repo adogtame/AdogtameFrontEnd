@@ -278,7 +278,7 @@ export class UsuariosService {
 		return this.http.put(`${this.API_URI}/modificarVacunasAnimal/${id}`, vacunas);
 	}
 
-	modificarDatosAnimal(id: string, animal: Animal): Observable<Usuario> {
+	modificarDatosAnimal(animal: Animal, id: string): Observable<Usuario> {
 		console.log("id", id);
 		return this.http.put(`${this.API_URI}/modificarDatosAnimal/${id}`, animal);
 	}
