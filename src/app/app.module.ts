@@ -42,6 +42,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
 import { InformesComponent } from './components/informes/informes.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 //
 @NgModule({
@@ -65,6 +67,8 @@ import { InformesComponent } from './components/informes/informes.component';
     UploadListComponent,
     UploadDetailsComponent,
     InformesComponent,
+    PasswordRecoveryComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
