@@ -325,7 +325,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   abrirWhats(){
     const ind = "54";
     const num = this.seleccionadoNum;
-    const url = `https://api.whatsapp.com/send?phone=${ind}${num}&text=¡Hola! Estoy interesado en adoptar a tu animal. ¿Podemos conversar?`;
+    const url = `https://api.whatsapp.com/send?phone=${ind}${num}&text=¡Hola ${this.seleccionadoName}!. Estas interesado en adoptar a ${this.Animal.nombre}. ¿Podemos conversar?`;
     console.log(url);
     window.open(url, '_blank');
   }
