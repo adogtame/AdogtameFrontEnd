@@ -100,6 +100,10 @@ export class UsuariosService {
 		return this.http.get(`${this.API_URI}/listarAnimalesAdoptados`);
 	}
 
+  listarAnimalesSinAdoptar() {
+		return this.http.get(`${this.API_URI}/listarAnimalesSinAdoptar`);
+	}
+
   fechaAdoptados(){
     return this.http.get(`${this.API_URI}/fechaAdoptados`);
   }
