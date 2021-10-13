@@ -70,14 +70,14 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   interes: boolean = false;
   isOpenInteresados: boolean = false;
   cargoPagina: boolean = false;
-  
+
   display='none';
   vacuna : any = [];
   //Modificar datos animal
-  
+
   datosNuevos={nombre: "vacio", sexo: "vacio", tipo: "vacio", fNac: "vacio", tamano: "vacio", peso: "vacio"};
 
-  
+
 
   // admin
   //rol: any = "";
@@ -163,8 +163,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       res => {
         this.UsuarioID = res;
         console.log("Este es el id decodificado", this.UsuarioID.user);
-        
-        
+
+
         this.usuariosService.cargarAnimalDatos$.emit()
         /*
         this.usuariosService.buscarUsuario(this.UsuarioID.user).subscribe(
@@ -246,7 +246,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
     console.log("animal a modificar", this.Animal);
     console.log("datosNuevos del animal cambios", datosNuevos);
- 
+
 		var nombresArray: any =["nombre","sexo","tipo","fNac","tamano","peso"];
 		let datosArray:any={};
 
@@ -257,7 +257,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     for (var i = 0; i < nombresArray.length; i++) {
       if(this.Animal[`${nombresArray[i]}`]!=datosNuevos[`${nombresArray[i]}`] && datosNuevos[`${nombresArray[i]}`]!=null && datosNuevos[`${nombresArray[i]}`]!="vacio"){
 
-        //  
+        //
         console.log("i",  i);
         console.log("this.Animal", [`${nombresArray[i]}`],this.Animal[`${nombresArray[i]}`]);
         console.log("datosNuevos", [`${nombresArray[i]}`],datosNuevos[`${nombresArray[i]}`]);
@@ -275,18 +275,18 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
     //Editar datos animal
-    
+
     this.usuariosService.modificarDatosAnimal(datosArray, this.Animal.id).subscribe(
       res => {
-        
-        console.log(res);  
-        
-        this.animalCargarDatos();        
-        
+
+        console.log(res);
+
+        this.animalCargarDatos();
+
 
       },
       err => {
-        
+
         console.log(err.error.message);
 
       }
@@ -325,7 +325,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   abrirWhats(){
     const ind = "54";
     const num = this.seleccionadoNum;
-    const url = `https://api.whatsapp.com/send?phone=${ind}${num}`;
+    const url = `https://api.whatsapp.com/send?phone=${ind}${num}&text=¡Hola! Estoy interesado en adoptar a tu animal. ¿Podemos conversar?`;
     console.log(url);
     window.open(url, '_blank');
   }
