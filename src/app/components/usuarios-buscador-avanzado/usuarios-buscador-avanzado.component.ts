@@ -143,7 +143,7 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.usuariosService.listarAnimales().subscribe(
+    this.usuariosService.listarAnimalesSinAdoptar().subscribe(
       res => {
         this.animales = res;
         console.log(res);

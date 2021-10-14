@@ -46,6 +46,8 @@ import { PasswordRecoveryComponent } from './components/password-recovery/passwo
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 //
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +82,7 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    ChartsModule
   ],
   providers: [
     UsuariosService,

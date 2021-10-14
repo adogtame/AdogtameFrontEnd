@@ -42,7 +42,7 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
     //este dice q si esta en principal
     this.usuariosService.revelarBusquedaRapida$.emit('si')
     console.log(this.usuariosService.revelarBusquedaRapida);
-    this.usuariosService.listarAnimales().subscribe(
+    this.usuariosService.listarAnimalesSinAdoptar().subscribe(
       res => {
         this.animales = res;
         console.log(res);

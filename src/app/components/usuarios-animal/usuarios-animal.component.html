@@ -153,6 +153,15 @@
             <b>Estado de adopcion: &nbsp;&nbsp; </b>
             <a [ngClass]="{'botonEstado' : estadoDelAnimal.estado === 'Disponible' , 'botonEstadoPendiente': estadoDelAnimal.estado === 'Pendiente', 'botonEstadoAdoptado': estadoDelAnimal.estado === 'Adoptado'}"
               (click)="abrirDisponibleYPendiente()">{{estadoDelAnimal.estado}}</a>
+              <div *ngIf=" estadoDelAnimal.estado === 'Adoptado'">
+              <div *ngFor="let fecha of fechaAdoptado">
+                <div *ngIf="fecha.id_animal === Animal.id">
+                  <span class="fecha-adopcion">{{Animal.nombre}} fue adoptado en el dia: {{fecha.fecha_fin | date:'dd/MM/yyyy'}}</span>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
 
@@ -223,7 +232,7 @@
                       </div>
                       <div class="mb-3">
                         <label> <b> Fecha de nacimiento</b> </label>
-                        <input type="date" name="fNac" class="form-control" required 
+                        <input type="date" name="fNac" class="form-control" required
                         [(ngModel)]="datosNuevos.fNac" value="{{Animal.fNac}}">
                       </div>
                       <div class="mb-3">

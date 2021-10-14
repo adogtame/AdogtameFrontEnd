@@ -1319,9 +1319,14 @@ Modal en estado de animal
   text-decoration: none;
 }
 
+.fecha-adopcion{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+}
 
-
-
+.fecha-adopcion:hover{
+  color: red;
+}
 
 
 

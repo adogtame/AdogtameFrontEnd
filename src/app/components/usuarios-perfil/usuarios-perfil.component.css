@@ -15,6 +15,13 @@ span{
   font-size: 24px;
 }
 
+.p-datos{
+  font: bold;
+  font-size: 22px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-left: 15px;
+}
+
 label{
   font: bold;
   font-size: 22px;

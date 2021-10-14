@@ -38,10 +38,10 @@
       <div class="card text-dark mb-3" style="max-width: 100%; background-color:rgb(248, 220, 195) ;">
         <div class="card-body">
           <h2 class="card-title">Datos personales</h2>
-          <p>Nombre: <span> {{Usuario.nombre}}</span> </p>
-          <p>Apellido: <span>{{Usuario.apellido}} </span> </p>
-          <p>Email: <span> {{Usuario.email}}</span></p>
-          <p>Celular: <span> {{Usuario.nro_celular}}</span></p>
+          <p class="p-datos">Nombre: <span> {{Usuario.nombre}}</span> </p>
+          <p class="p-datos">Apellido: <span>{{Usuario.apellido}} </span> </p>
+          <p class="p-datos">Email: <span> {{Usuario.email}}</span></p>
+          <p class="p-datos">Celular: <span> {{Usuario.nro_celular}}</span></p>
 
           <!-- Hacer q traiga datos del servidor segun quien sea el id, no q traiga datos y segun id muestra uno u otros. Traer datos especificando cuales. -->
 
@@ -67,7 +67,7 @@
                     <div class="card-body">
                       <form>
                         <div class="mb-3">
-                          <label for="" style="float: left;"> <b> Nombre</b> </label>
+                          <label for="" style="float: left;">  Nombre</label>
                           <input type="text" minlength="4" name="nombre" [(ngModel)]="datosNuevos.nombre"
                             placeholder="Ingrese su Usuario" class="form-control" (focus)="limpiarNombre()" autofocus
                             required value="{{Usuario.nombre}}">
@@ -79,7 +79,7 @@
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label for=""> <b> Apellido</b> </label>
+                          <label for=""> Apellido </label>
                           <input type="text" minlength="4" name="apellido" [(ngModel)]="datosNuevos.apellido"
                             placeholder="Ingrese su  Apellido" class="form-control" (focus)="limpiarApellido()" required
                             value="{{Usuario.apellido}}">
@@ -90,18 +90,7 @@
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label for=""> <b> E-mail</b> </label>
-                          <input type="email" name="email" [(ngModel)]="datosNuevos.email" placeholder="Ingrese su Email"
-                            class="form-control" minlength="10" (focus)="limpiarEmail()" required
-                            value="{{Usuario.email}}">
-                          <div [ngSwitch]="errorEmail" class="errorField">
-                            <div *ngSwitchCase="1">Debes completar el campo</div>
-                            <div *ngSwitchCase="2">Email muy largo</div>
-                            <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                          <label for=""> <b> Celular</b> </label>
+                          <label for=""> Celular </label>
                           <input type="tel" name="nro_celular" [(ngModel)]="datosNuevos.nro_celular"
                             placeholder="Ingrese su nro de celular" class="form-control" minlength="8"
                             (focus)="limpiarCelular()" required value="{{Usuario.nro_celular}}">
@@ -234,13 +223,13 @@
                   <div class="card-body" >
                     <form>
                       <div class="mb-3">
-                        <label for=""> <b> Nombre</b> </label>
+                        <label for="">  Nombre </label>
                         <input type="text" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre"
                           class="form-control" autofocus required>
                       </div>
                       <div class="mb-3">
                         <div class="content-select">
-                          <label for=""> <b> Tipo</b> </label>
+                          <label for=""> Tipo </label>
                           <select name="tipo" [(ngModel)]="animal.tipo" class="form-control">
                             <option value="perro">Perro</option>
                             <option value="gato">Gato</option>
@@ -249,7 +238,7 @@
                       </div>
                       <div class="mb-3">
                         <div class="content-select">
-                          <label for=""> <b> Sexo</b> </label>
+                          <label for="">  Sexo </label>
                           <select name="sexo" [(ngModel)]="animal.sexo" class="form-control ">
                             <option value="macho">Macho</option>
                             <option value="hembra">Hembra</option>
@@ -257,13 +246,13 @@
                         </div>
                       </div>
                       <div class="mb-3">
-                        <label for=""> <b> Fecha de nacimiento</b> </label>
+                        <label for=""> Fecha de nacimiento </label>
                         <input type="date" name="fNac" [(ngModel)]="animal.fNac" class="form-control" required
                           max="2021-07-01">
                       </div>
                       <div class="mb-3">
                         <div class="content-select">
-                          <label for=""> <b> Tamaño</b> </label>
+                          <label for=""> Tamaño </label>
                           <select name="tamano" [(ngModel)]="animal.tamano" class="form-control">
                             <option value="chico">Chico</option>
                             <option value="mediano">Mediano</option>
@@ -272,7 +261,7 @@
                         </div>
                       </div>
                       <div class="mb-3">
-                        <label for=""> <b> Peso (kg)</b> </label>
+                        <label for="">  Peso (kg) </label>
                         <input type="number" name="peso" [(ngModel)]="animal.peso" placeholder="Ingrese el peso"
                           class="form-control" required>
                       </div>
