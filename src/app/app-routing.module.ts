@@ -59,7 +59,7 @@ const routes: Routes = [
         component: PasswordRecoveryComponent
     },
     {
-        path: 'usuarios/new-password',
+        path: 'usuarios/new-password/:token',
         component: NewPasswordComponent
     },
 	{
