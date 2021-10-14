@@ -77,6 +77,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   datosNuevos={nombre: "vacio", sexo: "vacio", tipo: "vacio", fNac: "vacio", tamano: "vacio", peso: "vacio"};
 
+  fechaAdoptado: any = [];
 
 
   // admin
@@ -101,6 +102,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         this.estadoAnimal();
       });
 
+      this.fechaAdoptados();
       /*
       this.usuariosService.rol$.subscribe(log => {
         this.rol = this.usuariosService.rol;
@@ -558,6 +560,14 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
   }
-
+  fechaAdoptados() {
+    this.usuariosService.fechaAdoptados().subscribe(
+      res => {
+        this.fechaAdoptado = res
+        console.log("Aca guardo datos proceso ", this.fechaAdoptado);
+      },
+      err => console.log(err)
+    );
+  }
 
 }
