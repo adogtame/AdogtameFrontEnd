@@ -53,7 +53,7 @@ export class InformesComponent implements OnInit {
   public barChartLegend = true;
   public barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] = [{ data: [, , , , , ,], label: 'Cantidad' }];
+  public barChartData: ChartDataSets[] = [{ data: [, , , , ], label: 'Cantidad' }];
 
 
   cantidadUsuariosRegistrados(): void {
@@ -73,6 +73,7 @@ export class InformesComponent implements OnInit {
         this.cantidadAnimalesRegistrado = res;
         console.log(res);
         console.log("animales registrados", this.cantidadAnimalesRegistrado);
+
       },
       err => console.log(err)
     )
@@ -84,6 +85,7 @@ export class InformesComponent implements OnInit {
         this.cantidadAnimalesAdoptado = res;
         console.log(res);
         console.log("cantidad adoptados", this.cantidadAnimalesAdoptado);
+
       },
       err => console.log(err)
     )
@@ -95,6 +97,7 @@ export class InformesComponent implements OnInit {
         this.cantidadAnimalesAdopcion = res;
         console.log(res);
         console.log("cantidad en adopcion", this.cantidadAnimalesAdopcion);
+
       },
       err => console.log(err)
     )
@@ -106,11 +109,16 @@ export class InformesComponent implements OnInit {
         this.promedioAnimalesAdoptado = res;
         console.log(res);
         console.log("promedio adoptado", this.promedioAnimalesAdoptado);
+        this.promedioAnimalesAdoptado.prom = Math.round(this.promedioAnimalesAdoptado.prom * 1000)/1000;
         // Aca guardo los valores del grafico, si lo pongo por fuera me trae undefined
         //this.pieChartData = [this.cantidadAnimalesAdoptado.ana, this.cantidadAnimalesAdopcion.ane];
         this.barChartData = [{ data: [this.cantidadAnimalesRegistrado.an, this.cantidadAnimalesAdoptado.ana, this.cantidadAnimalesAdopcion.ane, this.cantidadUsuariosRegistrado.us, this.promedioAnimalesAdoptado.prom], label: 'Cantidad' }];
       },
       err => console.log(err)
     )
+
   }
+
+
+
 }
