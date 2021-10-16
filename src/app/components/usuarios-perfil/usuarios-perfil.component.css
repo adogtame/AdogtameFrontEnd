@@ -377,3 +377,16 @@ Registrar animal boton
   font-size: 32px;
 
 }
+
+.subir-foto-animal{
+  font-size: 16px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: #0155a3;
+  margin-left: 5px;
+}
+
+button:disabled{
+  color: darkgrey;
+  background-color: grey;
+}

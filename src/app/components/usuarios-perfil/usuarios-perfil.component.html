@@ -263,17 +263,18 @@
                       <div class="mb-3">
                         <label for="">  Peso (kg) </label>
                         <input type="number" name="peso" [(ngModel)]="animal.peso" placeholder="Ingrese el peso"
-                          class="form-control" required>
+                          class="form-control" min="1" required>
                       </div>
                       <div class="mb-3">
-                        <app-upload-form></app-upload-form>
+                        <label for="">  Foto </label>
+                          <input type="file" class="subir-foto-animal" (change)="selectFile($event)"/>
                       </div>
                       <br>
                       <div class="mb-3">
                         <button type="reset" class="btn-danger btn-lg" style="float: left;"> <b> Limpiar
                             campos</b> </button>
                         <button class="btn-success btn-lg" style="float: right;"
-                          data-bs-dismiss="modal">
+                          data-bs-dismiss="modal" [disabled]="!selectedFiles" (click)="registrar()" >
                           <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
                       </div>
                     </form>

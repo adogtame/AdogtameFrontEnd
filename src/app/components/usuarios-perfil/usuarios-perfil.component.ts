@@ -5,6 +5,12 @@ import { Router } from '@angular/router'
 //recibir parametros en las rutas del componente
 import { ActivatedRoute, Params } from '@angular/router';
 
+// Subir foto
+import { FileUploadService } from 'src/app/services/file-upload.service';
+import { FileUpload } from 'src/app/models/file-upload.model';
+
+
+
 @Component({
   selector: 'app-usuarios-perfil',
   templateUrl: './usuarios-perfil.component.html',
@@ -27,7 +33,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   toggleAnimales = false;
   //Booleano para if si ya paso por ahi una vez
   siguiendoAnimCargado: boolean = false;
-  
+
   //Mi usuario||Para comprobar si es el mismo q el del perfil
   miUsuario:any ="";
 
@@ -37,10 +43,11 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   ubi: string = "PerfilU";
   ubi2: string = "SiguiendoA";
   ubi3: string = "misAnimales";
-  
+
   fechaAdoptado: any = [];
   AnimalID: any = [];
   Animal: any = [];;
+  siguienteIdAnimal: Number = 0;
 
   datosNuevos={nombre:"vacio",apellido:"vacio",email:"vacio",nro_celular:"vacio"};
 
@@ -49,8 +56,12 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   errorEmail=0;
   errorCelular=0;
 
+  /* Subir foto */
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+  percentage = 0;
 
-  constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute) { }
+  constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute, private uploadService: FileUploadService) { }
 
 
   mensaje: string = "Vacio";
@@ -64,7 +75,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       this.usuarioCargarDatos();
       console.log("Usuario", this.UsuarioID);
 
-    });  
+    });
 
     this.tokenIdUsuario();
 
@@ -88,7 +99,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   }
 
-  
+
   tokenIdUsuario(){
     this.miUsuario = this.usuariosService.getToken();
 		console.log(this.miUsuario);
@@ -191,7 +202,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
     console.log("User del editar perfil", this.Usuario);
     console.log("datosNuevos del editar perfil cambios", datosNuevos);
- 
+
 		var nombresArray: any =["nombre","apellido","email","nro_celular"];
 		let datosArray:any={};
 
@@ -203,7 +214,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     for (var i = 0; i < nombresArray.length; i++) {
       if(this.Usuario[`${nombresArray[i]}`]!=datosNuevos[`${nombresArray[i]}`] && datosNuevos[`${nombresArray[i]}`]!=null && datosNuevos[`${nombresArray[i]}`]!="vacio"){
 
-        //  
+        //
         console.log("i",  i);
         console.log("this.Usuario", [`${nombresArray[i]}`],this.Usuario[`${nombresArray[i]}`]);
         console.log("datosNuevos", [`${nombresArray[i]}`],datosNuevos[`${nombresArray[i]}`]);
@@ -220,21 +231,21 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
 
 
-    
-    
+
+
     this.usuariosService.editarPerfil(datosArray, this.miUsuario).subscribe(
       res => {
-        
-        console.log(res);  
-        
+
+        console.log(res);
+
         this.usuariosService.buscarUsuario(this.UsuarioID.id).subscribe(
           res => {
             this.Usuario = res
             console.log(this.Usuario);
-    
+
             //Los datos q se van a reemplazar si hace un edit
             //this.datosNuevos=this.Usuario
-    
+
           },
           err => console.log(err)
         );
@@ -245,7 +256,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
             this.Usuario[`${nombresArray[i]}`]=datosNuevos[`${nombresArray[i]}`]
           }
         }
-    
+
         /**/
 
         //this.adminService.abm$.emit();
@@ -254,7 +265,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
       },
       err => {
-        
+
         console.log(err.error.message);
 
       }
@@ -268,7 +279,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   }
 
-  
+
   limpiarEmail() {
     if(this.errorEmail>0){
       console.log("Limpiar email");
@@ -301,11 +312,11 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     }
   }
 
-  
+
   //FIN Tab de Informacion
 
 
-  
+
   //Perfil Tab de Siguiendo
 
   siguiendoAnimales() {
@@ -339,16 +350,16 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
           console.log("Informacion de proceso adoptados ", this.fechaAdoptado);
           console.log(res)
           this.siguiendoAnimCargado=true;
-  
-  
-  
+
+
+
         },
         err => console.log(err)
       );
 
 
     }
-    
+
 
   }
 
@@ -470,8 +481,11 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       res => {
         let result: any = res;
         console.log(result);
-        //por ahora no funca porq hace falta recibir un id del animal recien creado y redireccionar con eso
+        this.siguienteIdAnimal = result.id;
+        console.log("Id animal siguiente: ", this.siguienteIdAnimal);
+        this.upload();
         this.router.navigate(['usuarios/animal/', result.id]);
+
       },
       err => {
         console.log(err.error.message);
@@ -480,41 +494,30 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     )
   }
 
+  /* Subir foto */
 
-  //FIN Tab de Animales
-    
-  //Nose que se supone q hacen estos pero por ahora parece q nada |Leo|
-  /*
-  cantidadInteresados(cantidad:string) {
-    this.usuariosService.cantidadInteresados(cantidad).subscribe(
-      res => {
-        this.cantidadInteresado = res;
-        console.log("Cantidad de interesados: ", this.cantidadInteresado);
-      },
-      err => console.log(err)
-    );
-  }
-  */
-/*
-  this.usuariosService.cargarAnimalIntereses$.subscribe(log => {
-    this.cargarInteresados();
-    console.log("interesados",this.interesados);
-  });
-  /*
-  cargarInteresados() {
-    console.log("El id del usuario es este de aca (dador)", this.usuariosService.user.id);
-    this.usuariosService.cargarInteresados(this.AnimalID.id).subscribe(
-      res => {
-        console.log("Resultado del cargar interesadoss", res);
-        this.interesados=res;
-        console.log("Interesados del animals", this.interesados);
-        this.usuariosService.cargarTerminado$.emit()
-      },
-      err => console.log(err)
-    );
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
   }
 
-  /**/
+  upload(): void {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
 
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.uploadService.pushFileToStorageAnimal(this.currentFileUpload, this.siguienteIdAnimal).subscribe(
+          percentage => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
+
+  }
 
 }

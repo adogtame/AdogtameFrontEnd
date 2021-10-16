@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
 
+import { FileUploadService } from 'src/app/services/file-upload.service';
+import { FileUpload } from 'src/app/models/file-upload.model';
+
 @Component({
     selector: 'app-usuarios-registrar',
     templateUrl: './usuarios-registrar.component.html',
@@ -22,10 +25,14 @@ export class UsuariosRegistrarComponent implements OnInit {
     errorNro_calle = 0;
 
     mensaje: string = "Vacio";
-
     mensajeEnviado: string = "";
 
-    constructor(private usuariosService: UsuariosService, private router: Router) { }
+    /* Subir foto */
+    selectedFiles?: FileList;
+    currentFileUpload?: FileUpload;
+    percentage = 0;
+
+    constructor(private usuariosService: UsuariosService, private router: Router, private uploadService: FileUploadService) { }
 
     ngOnInit(): void {
     }
@@ -38,15 +45,19 @@ export class UsuariosRegistrarComponent implements OnInit {
             //TO DO: Modificar para que no redireccione, ni almacene el token
             res => {
                 let result: any = res;
+                console.log("Dio");
                 console.log('Cliente result.message => ', result.message);
-                //localStorage.setItem('token',result.token);        
+                console.log("Dio  al registrar");
+                //localStorage.setItem('token',result.token);
                 //this.usuariosService.logued$.emit('si')
                 this.router.navigate(['usuarios/verificando']);
+                console.log("Dio error al rar");
             },
             err => {
                 console.log('Cliente error.message => ', err.error.message);
                 this.mensaje = err.error.message;
                 this.verificarNombre(this.user.nombre);
+                console.log("Dio error al registrar");
             }
         )
     }
@@ -245,4 +256,31 @@ export class UsuariosRegistrarComponent implements OnInit {
             this.errorDNI = 0;
         }
     }
+
+
+    /* Subir foto */
+    selectFile(event: any): void {
+      this.selectedFiles = event.target.files;
+    }
+
+    upload(): void {
+      if (this.selectedFiles) {
+        const file: File | null = this.selectedFiles.item(0);
+        this.selectedFiles = undefined;
+
+        if (file) {
+          this.currentFileUpload = new FileUpload(file);
+          this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+            percentage => {
+              this.percentage = Math.round(percentage ? percentage : 0);
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+      }
+
+    }
+
 }
