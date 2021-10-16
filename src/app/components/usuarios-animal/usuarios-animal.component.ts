@@ -60,6 +60,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   modalEleccionAbierto: boolean = false;
   modalConfirmarAdopcionAbierto: boolean = false;
   modalAdopcionPendienteAbierto: boolean = false;
+  modalDatosMedicosAbierto: boolean = false;
   chatAbierto: boolean = false;
   //ubi para saber como hacer la img del firebase
   ubi: string="Perfil";
@@ -272,6 +273,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     console.log("datosArray que se guarda", datosArray);
 
 
+    console.log("this.Animal.id", this.Animal.id);
 
 
     //Editar datos animal
@@ -530,13 +532,30 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
   datosMedicos(vacunas: any){
+
     this.traerVacunasAnimal(vacunas);
-    this.display='block';
+    this.modalDatosMedicosAbierto=true;
+
+    //Chequear overlay z index porq habia varios overlay con distintos index
+    //Asiq puede q el overlay tape algunos modales
+
+    //this.display='block';
+
+
   }
 
-  onCloseHandled(){
-    this.display='none';
+  cerrarModalDatosMedicos(){
+    
+    console.log("Se cerro el modal Datos Medicos");
+    this.modalDatosMedicosAbierto = false;
   }
+  
+
+
+
+  //onCloseHandled(){
+  //  this.display='none';
+  //}
   //this.traerVacunasAnimal();
   traerVacunasAnimal(vacunas: any) {
     this.usuariosService.traerVacunasAnimal(this.AnimalID.id).subscribe(
