@@ -26,6 +26,7 @@ export class UsuariosRegistrarComponent implements OnInit {
 
     mensaje: string = "Vacio";
     mensajeEnviado: string = "";
+    emailExiste: boolean = false;
 
     /* Subir foto */
     selectedFiles?: FileList;
@@ -38,26 +39,19 @@ export class UsuariosRegistrarComponent implements OnInit {
     }
 
     registrar() {
-        console.log("Sign Up");
-        console.log('Cliente this.user => ', this.user);
 
         this.usuariosService.registrar(this.user).subscribe(
             //TO DO: Modificar para que no redireccione, ni almacene el token
             res => {
                 let result: any = res;
-                console.log("Dio");
-                console.log('Cliente result.message => ', result.message);
-                console.log("Dio  al registrar");
-                //localStorage.setItem('token',result.token);
-                //this.usuariosService.logued$.emit('si')
                 this.router.navigate(['usuarios/verificando']);
-                console.log("Dio error al rar");
             },
             err => {
-                console.log('Cliente error.message => ', err.error.message);
-                this.mensaje = err.error.message;
-                this.verificarNombre(this.user.nombre);
-                console.log("Dio error al registrar");
+                this.mensaje = String(err.error.message);
+                if(this.mensaje == '44') {
+                    console.log('adentro del if');
+                    this.emailExiste = true;
+                }
             }
         )
     }
@@ -130,13 +124,17 @@ export class UsuariosRegistrarComponent implements OnInit {
     }
 
     verificarEmail(email: any): number {
-        const patron = /^[a-z0-9]{1,20}@[a-z0-9]{1,10}\.[a-z]{2,3}$/;
+        const patron = /^[\w.\-]{1,20}@[a-z0-9]{1,10}\.[a-z]{2,3}$/;
         if (email.length == 0)
             return 1;
         if (email.length > 33)
             return 2;
         if (!patron.test(email))
             return 3;
+        if (this.emailExiste){
+            console.log('dentro de emailExiste');
+            return 4;
+        }
         return 0;
     }
 
