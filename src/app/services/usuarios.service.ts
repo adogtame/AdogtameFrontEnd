@@ -100,6 +100,10 @@ export class UsuariosService {
 		return this.http.get(`${this.API_URI}/listarAnimalesAdoptados`);
 	}
 
+  listarAnimalesSinAdoptar() {
+		return this.http.get(`${this.API_URI}/listarAnimalesSinAdoptar`);
+	}
+
   fechaAdoptados(){
     return this.http.get(`${this.API_URI}/fechaAdoptados`);
   }
@@ -156,6 +160,21 @@ export class UsuariosService {
 	verificar(token: any) {
 		return this.http.get(`${this.API_URI}/confirmar/${token}`);
 	}
+
+    recoverPassword(email: any) {
+        console.log('email => ', email);
+        let emailToSend = '{ "email": "'+email+ '" }';
+        let emailJsoned = JSON.parse(emailToSend);
+        return this.http.post(`${this.API_URI}/password-recovery`, emailJsoned);
+    }
+
+    newPassword(token: any, password: any) {
+        console.log('token => ', token);
+        console.log('password => ', password);
+        let passToSend = '{ "newPassword": "'+password+ '" }';
+        let passJsoned = JSON.parse(passToSend);
+        return this.http.post(`${this.API_URI}/new-password/${token}`, passJsoned,  { headers: {'reset': token}});
+    }
 
 	registrarAnimal(animal: any, id: string) {
 		animal.idDador=id;

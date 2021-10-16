@@ -8,6 +8,8 @@ import { UsuariosVerificarComponent } from './components/usuarios-verificar/usua
 import { UsuariosVerificandoComponent } from './components/usuarios-verificando/usuarios-verificando.component';
 import { UsuariosVerificadoComponent } from './components/usuarios-verificado/usuarios-verificado.component';
 import { UsuariosVerificacionfallidaComponent } from './components/usuarios-verificacionfallida/usuarios-verificacionfallida.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 import { UsuariosPrincipalComponent } from "./components/usuarios-principal/usuarios-principal.component";
 import { UsuariosHomeComponent } from "./components/usuarios-home/usuarios-home.component";
@@ -52,6 +54,14 @@ const routes: Routes = [
 		path: 'usuarios/verificado',
 		component: UsuariosVerificadoComponent
 	},
+    {
+        path: 'usuarios/recovery-password',
+        component: PasswordRecoveryComponent
+    },
+    {
+        path: 'usuarios/new-password/:token',
+        component: NewPasswordComponent
+    },
 	{
 		path: 'usuarios/verificacionfallida',
 		component: UsuariosVerificacionfallidaComponent

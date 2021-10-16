@@ -13,9 +13,9 @@ th{
 table{
   text-align: center;
   align-items: center;
-  width: 195px;
+  width: 205px;
   float: left;
-  margin: 10px;
+  margin-left: 15px;
   margin-top: 40px;
   background-color: #f8e8df;
 }
@@ -40,3 +40,5 @@ td:hover{
   text-align: center;
   font-size: 1em;
 }
+
+

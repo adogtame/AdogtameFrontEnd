@@ -15,6 +15,13 @@ span{
   font-size: 24px;
 }
 
+.p-datos{
+  font: bold;
+  font-size: 22px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-left: 15px;
+}
+
 label{
   font: bold;
   font-size: 22px;
@@ -369,4 +376,17 @@ Registrar animal boton
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 32px;
 
+}
+
+.subir-foto-animal{
+  font-size: 16px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: #0155a3;
+  margin-left: 5px;
+}
+
+button:disabled{
+  color: darkgrey;
+  background-color: grey;
 }

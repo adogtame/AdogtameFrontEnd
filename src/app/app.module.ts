@@ -42,8 +42,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
 import { InformesComponent } from './components/informes/informes.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 //
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +69,8 @@ import { InformesComponent } from './components/informes/informes.component';
     UploadListComponent,
     UploadDetailsComponent,
     InformesComponent,
+    PasswordRecoveryComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +82,7 @@ import { InformesComponent } from './components/informes/informes.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    ChartsModule
   ],
   providers: [
     UsuariosService,

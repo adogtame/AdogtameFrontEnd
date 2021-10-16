@@ -5,19 +5,6 @@
   <table class="table table-danger table-striped table-hover">
     <thead>
       <tr>
-        <th scope="col">Usuarios registrados</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{cantidadUsuariosRegistrado.us}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-danger table-striped table-hover">
-    <thead>
-      <tr>
         <th scope="col">Animales Registrados</th>
       </tr>
     </thead>
@@ -57,6 +44,19 @@
   <table class="table table-danger table-striped table-hover">
     <thead>
       <tr>
+        <th scope="col">Usuarios registrados</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{cantidadUsuariosRegistrado.us}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-danger table-striped table-hover">
+    <thead>
+      <tr>
         <th scope="col">Promedio de Adoptados</th>
       </tr>
     </thead>
@@ -66,12 +66,38 @@
       </tr>
     </tbody>
   </table>
+<!--
+  <div class="grafic">
+    <div style="display: block;" >
+      <canvas baseChart style="  border-radius: 50px;
+      border: 3px darkcyan solid; margin: 5px;"
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend">
+      </canvas>
 
-
-
-<div class="grid-item grid-footer">
-  <div class="copyright-footer">
-    <p><b>Copyright © Adogtame </b></p>
+    </div>
   </div>
-</div>
+  -->
+
+  <div style="display: block;">
+    <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType">
+    </canvas>
+  </div>
+
+
+  <div class="grid-item grid-footer">
+    <div class="copyright-footer">
+      <p><b>Copyright © Adogtame </b></p>
+    </div>
+  </div>
 </div>
