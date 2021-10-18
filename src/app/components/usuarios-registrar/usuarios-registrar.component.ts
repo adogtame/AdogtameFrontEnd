@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router'
 
+// Subir foto
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { FileUpload } from 'src/app/models/file-upload.model';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
     selector: 'app-usuarios-registrar',
@@ -32,7 +34,7 @@ export class UsuariosRegistrarComponent implements OnInit {
     selectedFiles?: FileList;
     currentFileUpload?: FileUpload;
     percentage = 0;
-
+    siguienteIdusuario: Number = 0;
     constructor(private usuariosService: UsuariosService, private router: Router, private uploadService: FileUploadService) { }
 
     ngOnInit(): void {
@@ -44,6 +46,9 @@ export class UsuariosRegistrarComponent implements OnInit {
             //TO DO: Modificar para que no redireccione, ni almacene el token
             res => {
                 let result: any = res;
+                this.siguienteIdusuario = result.message.id;
+                console.log("Id usuario siguiente: ", this.siguienteIdusuario);
+                this.upload();
                 this.router.navigate(['usuarios/verificando']);
             },
             err => {
@@ -57,7 +62,6 @@ export class UsuariosRegistrarComponent implements OnInit {
     }
 
     verificarForm(): boolean {
-
         this.errorNombre = this.verificarNombre(this.user.nombre);
         this.errorApellido = this.verificarApellido(this.user.apellido);
         this.errrorPassword = this.verificarPassword(this.user.password);
@@ -268,7 +272,7 @@ export class UsuariosRegistrarComponent implements OnInit {
 
         if (file) {
           this.currentFileUpload = new FileUpload(file);
-          this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+          this.uploadService.pushFileToStorageUsuario(this.currentFileUpload,this.siguienteIdusuario).subscribe(
             percentage => {
               this.percentage = Math.round(percentage ? percentage : 0);
             },
@@ -280,5 +284,6 @@ export class UsuariosRegistrarComponent implements OnInit {
       }
 
     }
+
 
 }

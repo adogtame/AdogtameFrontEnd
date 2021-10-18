@@ -14,3 +14,11 @@
   text-align: center;
   font-size: 1em;
 }
+
+.subir-foto-usuario{
+  font-size: 16px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: #0155a3;
+  margin-left: 5px;
+}
