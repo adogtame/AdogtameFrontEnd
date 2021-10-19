@@ -16,12 +16,14 @@ export class InformesComponent implements OnInit {
   cantidadAnimalesAdopcion: any = [];
   promedioAnimalesAdoptado: any = [];
 
+
   constructor(
     private usuariosService: UsuariosService,
     private router: Router
   ) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
+    
   }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class InformesComponent implements OnInit {
     this.cantidadUsuariosRegistrados();
     this.cantidadAnimalesEnAdopcion();
     this.promedioAnimalesAdoptados();
+
 
   }
 
@@ -45,15 +48,15 @@ export class InformesComponent implements OnInit {
     public pieChartPlugins = [];
   */
 
-  public barChartOptions: ChartOptions = {
+ barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['Animales registrados', 'Animales Adoptados', 'Animales sin Adoptar', 'Usuarios Registrados', 'Promedo de Animales Adoptados'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
+ barChartLabels: Label[] = ['Animales registrados', 'Animales Adoptados', 'Animales sin Adoptar', 'Usuarios Registrados', 'Promedo de Animales Adoptados'];
+ barChartType: ChartType = 'bar';
+ barChartLegend = true;
+ barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] = [{ data: [, , , , ], label: 'Cantidad' }];
+ barChartData: ChartDataSets[] = [{ data: [ , , , , ], label: 'Cantidad' }];
 
 
   cantidadUsuariosRegistrados(): void {
@@ -118,7 +121,5 @@ export class InformesComponent implements OnInit {
     )
 
   }
-
-
 
 }

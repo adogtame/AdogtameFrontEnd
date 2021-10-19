@@ -98,6 +98,31 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
+                                    <label for="" style="float: left;"> <b> DNI</b> </label>
+                                    <input type="number" name="dni" [(ngModel)]="user.dni" placeholder="Ingrese su  Dni" class="form-control" minlength="7" (focus)="limpiarDNI()" required>
+                                    <div [ngSwitch]="errorDNI" class="errorField">
+                                        <div *ngSwitchCase="1">Debe completar este campo</div>
+                                        <div *ngSwitchCase="2">DNI invalido. Reintente</div>
+                                        <div *ngSwitchCase="3">DNI debe ser numerico</div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <label for=""> <b> Altura</b> </label>
+                                    <input type="text" name="nro_calle" [(ngModel)]="user.nro_calle" placeholder="Ingrese altura" class="form-control" maxlength="5" (focus)="limpiarNro_calle()" required>
+                                    <div [ngSwitch]="errorNro_calle" class="errorField">
+                                        <div *ngSwitchCase="1">Debes completar el campo</div>
+                                        <div *ngSwitchCase="2">Altura muy largo</div>
+                                        <div *ngSwitchCase="3">Altura debe ser numerico</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-sm-6">
                                     <button class="btn btn-success btn-block" value="persona" (click)="verificarForm()" [disabled]="!selectedFiles">Enviar</button>
                                 </div>
 
