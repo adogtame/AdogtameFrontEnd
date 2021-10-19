@@ -14,17 +14,19 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class UsuariosRegistrarComponent implements OnInit {
 
-    user = { tipo_perfil: "persona", nombre: "", apellido: "", password: "", repassword: "", email: "", dni: "", nro_celular: "", calle: "", nro_calle: "" };
+    user = { tipo_perfil: "persona", nombre: "", apellido: "", password: "", repassword: "", email: "", nro_celular: "", calle: ""};
 
     errorNombre = 0;
     errorApellido = 0;
     errrorPassword = 0;
     errorRePassrword = 0;
     errorEmail = 0;
-    errorDNI = 0;
     errorCelular = 0;
     errorCalle = 0;
-    errorNro_calle = 0;
+
+    /* Los comento ya que los saque del form */
+    //errorDNI = 0;
+    //errorNro_calle = 0;
 
     mensaje: string = "Vacio";
     mensajeEnviado: string = "";
@@ -35,13 +37,13 @@ export class UsuariosRegistrarComponent implements OnInit {
     currentFileUpload?: FileUpload;
     percentage = 0;
     siguienteIdusuario: Number = 0;
+
     constructor(private usuariosService: UsuariosService, private router: Router, private uploadService: FileUploadService) { }
 
     ngOnInit(): void {
     }
 
     registrar() {
-
         this.usuariosService.registrar(this.user).subscribe(
             //TO DO: Modificar para que no redireccione, ni almacene el token
             res => {
@@ -67,15 +69,17 @@ export class UsuariosRegistrarComponent implements OnInit {
         this.errrorPassword = this.verificarPassword(this.user.password);
         this.errorRePassrword = this.verificarRePassword(this.user.password, this.user.repassword);
         this.errorEmail = this.verificarEmail(this.user.email);
-        this.errorDNI = this.verificarDNI(this.user.dni);
         this.errorCelular = this.verificarCelular(this.user.nro_celular);
         this.errorCalle = this.verificarCalle(this.user.calle);
-        this.errorNro_calle = this.verificarNro_calle(this.user.nro_calle);
+        /* Desactivo verificar dni y verificar altura porque lo sacamos del html */
+        //  this.errorDNI = this.verificarDNI(this.user.dni);
+       // this.errorNro_calle = this.verificarNro_calle(this.user.nro_calle);
         if ((this.errorNombre + this.errrorPassword + this.errorRePassrword + this.errorEmail) > 0) {
             return false;
         }
         return true;
     }
+    
     //Cambiar los patrones porq tengo q poner solo numerico en algunos como dni
     verificarNombre(nombre: string): number {
         const patron = /^[A-Za-z]{1,20}$/;
@@ -243,6 +247,7 @@ export class UsuariosRegistrarComponent implements OnInit {
         }
     }
 
+    /*
     limpiarNro_calle() {
         if (this.errorNro_calle > 0) {
             console.log("Limpiar Nro_calle");
@@ -259,7 +264,7 @@ export class UsuariosRegistrarComponent implements OnInit {
         }
     }
 
-
+*/
     /* Subir foto */
     selectFile(event: any): void {
       this.selectedFiles = event.target.files;
