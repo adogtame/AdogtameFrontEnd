@@ -127,6 +127,14 @@ export class UsuariosService {
 		//return this.http.get(this.API_URI+'/list');
 	}
 
+	listarAnimalesDelUsuarioAdoptados(id: string) {
+		return this.http.get(`${this.API_URI}/listAnimalsUserAdoptados/${id}`);
+	}
+
+	listarAnimalesDelUsuarioEnAdopcion(id: string) {
+		return this.http.get(`${this.API_URI}/listAnimalsUserEnAdopcion/${id}`);
+	}
+
 	buscarUsuario(id: string) {
 		return this.http.get(`${this.API_URI}/find/${id}`);
 	}
