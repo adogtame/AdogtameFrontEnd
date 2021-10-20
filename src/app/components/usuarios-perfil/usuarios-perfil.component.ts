@@ -21,6 +21,8 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   animal = { idDador: "", nombre: "", sexo: "", tipo: "", fNac: "", tamano: "", peso: "" };
   Usuario: any = [];
   animales: any = [];
+  animalesAdoptados: any = [];
+  animalesEnAdopcion: any = [];
   UsuarioID: any = [];
   animalesSiguiendo: any = [];
   animalesInteresPendienteMe: any = [];
@@ -188,9 +190,17 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
 
-    this.usuariosService.listarAnimalesDelUsuario(this.UsuarioID.id).subscribe(
+    this.usuariosService.listarAnimalesDelUsuarioAdoptados(this.UsuarioID.id).subscribe(
       res => {
-        this.animales = res;
+        this.animalesAdoptados = res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+
+    this.usuariosService.listarAnimalesDelUsuarioEnAdopcion(this.UsuarioID.id).subscribe(
+      res => {
+        this.animalesEnAdopcion = res;
         console.log(res);
       },
       err => console.log(err)

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class UsuariosService {
-	API_URI = 'https://adogtame-servidor.herokuapp.com/user';
+	API_URI = 'https://adogtame-servidor.herokuapp.com/user'; 
 	//API_URI = 'http://localhost:3000/user';
 
 	constructor(private http: HttpClient, private router:Router) { }
@@ -125,6 +125,14 @@ export class UsuariosService {
 		return this.http.get(`${this.API_URI}/listAnimalsUser/${id}`);
 		//si no funciona usar
 		//return this.http.get(this.API_URI+'/list');
+	}
+
+	listarAnimalesDelUsuarioAdoptados(id: string) {
+		return this.http.get(`${this.API_URI}/listAnimalsUserAdoptados/${id}`);
+	}
+
+	listarAnimalesDelUsuarioEnAdopcion(id: string) {
+		return this.http.get(`${this.API_URI}/listAnimalsUserEnAdopcion/${id}`);
 	}
 
 	buscarUsuario(id: string) {

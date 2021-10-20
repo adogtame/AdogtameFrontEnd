@@ -1,115 +1,118 @@
-.modal-header{
-  background-color:  rgb(250, 218, 170);
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  text-align: center;
-  font-size: 86px !important;
+.modal-header {
+    background-color: rgb(250, 218, 170);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    font-size: 86px !important;
 }
 
-.modal-body{
-  background-color: blanchedalmond;
+.modal-body {
+    background-color: blanchedalmond;
 }
 
-span{
-  font: bolder;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 24px;
+span {
+    font: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
 }
 
-.p-datos{
-  font: bold;
-  font-size: 22px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-left: 15px;
+.p-datos {
+    font: bold;
+    font-size: 22px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 15px;
 }
 
-label{
-  font: bold;
-  font-size: 22px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-left: 15px;
+label {
+    font: bold;
+    font-size: 22px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 15px;
 }
 
-.contenedor-usuario-perfil{
-  margin-top: 50px;
-  text-align: center;
+.contenedor-usuario-perfil {
+    margin-top: 50px;
+    text-align: center;
 }
 
-.contenedor-usuario-perfil img{
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  margin-bottom: 0.5em;
+.contenedor-usuario-perfil img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 0.5em;
 }
 
-#nombre-usuario-perfil{
-  font: bolder;
-  font-size: 50px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: darkslategray;
+#nombre-usuario-perfil {
+    font: bolder;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: darkslategray;
 }
 
-#myTab{
- border-bottom: 2px solid black;
+#myTab {
+    border-bottom: 2px solid black;
 }
 
 .btn {
-  color: black;
-  padding: 7px 30px;
-  font-size: 14px;
-  cursor: pointer;
+    color: black;
+    padding: 7px 30px;
+    font-size: 14px;
+    cursor: pointer;
 }
-
 
 .BotonMenu {
-  color: rgb(15, 15, 15);
+    color: rgb(15, 15, 15);
 }
 
-.btn-link{
-  color: blue;
-  box-shadow: none;
+.btn-link {
+    color: blue;
+    box-shadow: none;
 }
 
-.activo{
-
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.5),
-            inset 5px 5px 8px rgba(0,0,0,0.5);
-
+.activo {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), inset 5px 5px 8px rgba(0, 0, 0, 0.5);
 }
 
-.noActivo{
-  box-shadow: none;
+.noActivo {
+    box-shadow: none;
 }
+
 
 /* Style the button that is used to open and close the collapsible content */
+
 .collapsible {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
 }
+
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible:hover {
-  background-color: #ccc;
+
+.active,
+.collapsible:hover {
+    background-color: #ccc;
 }
 
+
 /* Style the collapsible content. Note: hidden by default */
+
 .contentNo {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
 }
 
 .content {
-
-  max-width: 100%;
+    max-width: 100%;
 }
+
 
 /* #registrar-nuevo-animal-btn{
   font: bolder;
@@ -128,23 +131,21 @@ label{
   color: #110933;
 } */
 
-#form-registar{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font: bolder;
-  font-size: 18px;
+#form-registar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font: bolder;
+    font-size: 18px;
 }
 
-.content-select select{
+.content-select select {
     border-radius: 12px;
 }
 
-.content-select select:focus{
-  background: #a7f8e7;
-	/* Color de antes
+.content-select select:focus {
+    background: #a7f8e7;
+    /* Color de antes
   background: #B1E8CD; */
 }
-
-
 
 
 /*
@@ -152,241 +153,225 @@ Registrar animal boton
 */
 
 #regAnimal {
-  text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0% 100%;
-  background-repeat: no-repeat;
-  color: #0792bd;
-  cursor: pointer;
-  font-size: 28px;
-  background-size: 0% 2px;
-  transition:  .1s;
-  width: 30%;
-  margin-left: 5%;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    color: #0792bd;
+    cursor: pointer;
+    font-size: 28px;
+    background-size: 0% 2px;
+    transition: .1s;
+    width: 30%;
+    margin-left: 5%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-#regAnimal:hover, #regAnimal:focus {
-  background-size: 100% 2px;
-  color: #0155a3;
+#regAnimal:hover,
+#regAnimal:focus {
+    background-size: 100% 2px;
+    color: #0155a3;
 }
 
-.card-text{
-  font: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serifs;
-  font-size: 26px;
-
+.card-text {
+    font: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serifs;
+    font-size: 26px;
 }
 
-.spa{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 24px;
-  font: bold;
-  color: darkslategrey;
+.spa {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font: bold;
+    color: darkslategrey;
 }
 
-.animales-con-interes{
-  margin-top: 2em;
+.animales-con-interes {
+    margin-top: 2em;
 }
 
-.animales-con-interes img{
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  margin-left: 0.5em;
-  margin-right: 0.7em;
+.animales-con-interes img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-left: 0.5em;
+    margin-right: 0.7em;
 }
 
-.animales-pendientes{
-  background-color: rgb(255, 229, 196);
+.animales-pendientes {
+    background-color: rgb(255, 229, 196);
 }
 
-.animales-adoptados{
-  background-color: rgb(217, 255, 192);
-
+.animales-adoptados {
+    background-color: rgb(217, 255, 192);
 }
 
-.animales-disponibles{
-  background-color: rgb(212, 212, 212);
-
+.animales-disponibles {
+    background-color: rgb(212, 212, 212);
 }
 
-.animales-no-disponibles{
-  background-color: rgb(255, 197, 189);
-
+.animales-no-disponibles {
+    background-color: rgb(255, 197, 189);
 }
 
-.ani-item{
-  padding: 0.2em 0.1em;
-  padding: 0em 0em 0.5em 0em;
-  margin-bottom: 2em;
+.ani-item {
+    padding: 0.2em 0.1em;
+    padding: 0em 0em 0.5em 0em;
+    margin-bottom: 2em;
 }
 
-.ani-item-adentro{
-  display: grid;
-  grid-template-areas:
-  "templateA nombreA botones";
-  grid-template-rows: repeat(auto-fill, 1fr);
-  padding: 0.5em 0em 0.5em 0em;
+.ani-item-adentro {
+    display: grid;
+    grid-template-areas: "templateA nombreA botones";
+    grid-template-rows: repeat(auto-fill, 1fr);
+    padding: 0.5em 0em 0.5em 0em;
 }
 
-.animales-pendientes-adentro:hover{
-  background-color: rgb(209, 186, 156);
+.animales-pendientes-adentro:hover {
+    background-color: rgb(209, 186, 156);
 }
 
-.animales-adoptados-adentro:hover{
-  background-color: rgb(180, 209, 161);
-
+.animales-adoptados-adentro:hover {
+    background-color: rgb(180, 209, 161);
 }
 
-.animales-disponibles-adentro:hover{
-  background-color: rgb(180, 180, 180);
-
+.animales-disponibles-adentro:hover {
+    background-color: rgb(180, 180, 180);
 }
 
-.animales-no-disponibles-adentro:hover{
-  background-color: rgb(207, 160, 154);
-
+.animales-no-disponibles-adentro:hover {
+    background-color: rgb(207, 160, 154);
 }
 
-
-.ani-item p{
-  padding: 0.3em 0.2em;
-  display: block;
-  margin-bottom: 1em;
+.ani-item p {
+    padding: 0.3em 0.2em;
+    display: block;
+    margin-bottom: 1em;
 }
 
-.animales-pendientes p{
-  color: rgb(250, 236, 192);
-  background-color: rgb(128, 109, 49);
-
+.animales-pendientes p {
+    color: rgb(250, 236, 192);
+    background-color: rgb(128, 109, 49);
 }
 
-.animales-adoptados p{
-  color: rgb(210, 255, 198);
-  background-color: rgb(44, 95, 32);
-
+.animales-adoptados p {
+    color: rgb(210, 255, 198);
+    background-color: rgb(44, 95, 32);
 }
 
-.animales-disponibles p{
-  color: rgb(221, 217, 217);
-  background-color: rgb(61, 61, 61);
-
+.animales-disponibles p {
+    color: rgb(221, 217, 217);
+    background-color: rgb(61, 61, 61);
 }
 
-.animales-no-disponibles p{
-  color: rgb(248, 176, 176);
-  background-color: rgb(105, 16, 16);
-
+.animales-no-disponibles p {
+    color: rgb(248, 176, 176);
+    background-color: rgb(105, 16, 16);
 }
 
-.estado-item{
-  float: right;
-  padding: 0.15em 0.25em;
-  border-radius: 0.4em;
-  margin-right: 0.5em;
-  cursor: pointer;
+.estado-item {
+    float: right;
+    padding: 0.15em 0.25em;
+    border-radius: 0.4em;
+    margin-right: 0.5em;
+    cursor: pointer;
 }
 
-.confirmar-pendiente{
-  color: rgb(29, 65, 21);
-  background-color: rgb(156, 223, 140);
-
+.confirmar-pendiente {
+    color: rgb(29, 65, 21);
+    background-color: rgb(156, 223, 140);
 }
 
-.rechazar-pendiente{
-  color: rgb(82, 15, 15);
-  background-color: rgb(221, 83, 83);
+.rechazar-pendiente {
+    color: rgb(82, 15, 15);
+    background-color: rgb(221, 83, 83);
 }
 
-.eliminar-pendiente{
-  color: rgb(82, 15, 15);
-  background-color: rgb(230, 62, 62);
-
+.eliminar-pendiente {
+    color: rgb(82, 15, 15);
+    background-color: rgb(230, 62, 62);
 }
 
-
-.ani-int-pointer{
-  display: inline-block;
+.ani-int-pointer {
+    display: inline-block;
 }
 
-
-.siguiendo-templateA{
-  grid-area: templateA;
-  display: inline-block;
-  width: fit-content;
-
-  cursor: pointer;
-  margin-left: 1em;
-  margin-right: 1em;
+.siguiendo-templateA {
+    grid-area: templateA;
+    display: inline-block;
+    width: fit-content;
+    cursor: pointer;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
-.siguiendo-nombreA{
-  grid-area: nombreA;
-
-  display: inline-block;
-  width: fit-content;
+.siguiendo-nombreA {
+    grid-area: nombreA;
+    display: inline-block;
+    width: fit-content;
 }
 
-.siguiendo-botones{
-  display: inline-block;
-  grid-area: botones;
-
-  margin-top: .5em;
+.siguiendo-botones {
+    display: inline-block;
+    grid-area: botones;
+    margin-top: .5em;
 }
 
-#card-animales-seguidores{
-  width: 23%;
-  float: left;
-  margin-left: 15px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  text-align: center;
-  background-color: #FEECE4;
-  border-radius: 25%;
+#card-animales-seguidores {
+    width: 23%;
+    float: left;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #FEECE4;
+    border-radius: 25%;
 }
 
-#cont{
-  background-color: #fceee7;
+#cont {
+    background-color: #fceee7;
 }
 
-.nombre-animal{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 32px;
-  font: bolder;
-  color: darkslategray;
+.nombre-animal {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+    font: bolder;
+    color: darkslategray;
 }
 
-#subir-foto{
-  transform: translate(1.8em, -1.0em);
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  font-size: 26px;
+#subir-foto {
+    transform: translate(1.8em, -1.0em);
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    font-size: 26px;
 }
 
-#subir-foto:hover{
-  background-color: lightgray;
-
+#subir-foto:hover {
+    background-color: lightgray;
 }
 
-
-.nav-item{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 32px;
-
+.nav-item {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 32px;
 }
 
-.subir-foto-animal{
-  font-size: 16px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-style: italic;
-  color: #0155a3;
-  margin-left: 5px;
+.subir-foto-animal {
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: #0155a3;
+    margin-left: 5px;
 }
 
-button:disabled{
-  color: darkgrey;
-  background-color: grey;
+button:disabled {
+    color: darkgrey;
+    background-color: grey;
+}
+
+.card-header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 32px;
+    text-align: center;
 }

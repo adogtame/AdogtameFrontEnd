@@ -4,7 +4,7 @@
             <div class="col-md-10 mx-auto">
                 <div class="mb-6">
                     <div class="card-header" style="background-color:#FEECE4; color:black;">
-                        <h1 style="text-align: center;">Registro</h1>
+                        <h1>Registro</h1>
                     </div>
                     <div class="card-body" style="background-color:#FEECE4;">
                         <form (submit)="registrar()">
@@ -13,7 +13,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <label for="" style="float: left;"> <b> Nombre</b> </label>
+                                    <label for="" style="float: left;"> Nombre </label>
                                     <input type="text" minlength="4" name="nombre" [(ngModel)]="user.nombre" placeholder="Ingrese su Usuario" class="form-control" (focus)="limpiarNombre()" autofocus required>
                                     <div [ngSwitch]="errorNombre" class="errorField">
                                         <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -24,7 +24,7 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <label for=""> <b> Apellido</b> </label>
+                                    <label for=""> Apellido </label>
                                     <input type="text" minlength="4" name="apellido" [(ngModel)]="user.apellido" placeholder="Ingrese su  Apellido" class="form-control" (focus)="limpiarApellido()" required>
                                     <div [ngSwitch]="errorApellido" class="errorField">
                                         <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -36,7 +36,7 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <label for="" style="float: left;"> <b> Contraseña</b> </label>
+                                    <label for="" style="float: left;">  Contraseña </label>
                                     <input type="password" name="password" [(ngModel)]="user.password" placeholder="Ingrese su  Contraseña" class="form-control" (focus)="limpiarPassword()" required minlength="6">
                                     <div [ngSwitch]="errrorPassword" class="errorField">
                                         <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <label for=""> <b> Repita la contraseña</b> </label>
+                                    <label for=""> Repita la contraseña </label>
                                     <input type="password" name="repassword" [(ngModel)]="user.repassword" placeholder="Repetir Contraseña" class="form-control" minlength="6" (focus)="limpiarRePassword()" required>
                                     <div [ngSwitch]="errorRePassrword" class="errorField">
                                         <div *ngSwitchCase="1">Las contraseñas deben ser iguales</div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <label for=""> <b> Celular</b> </label>
+                                    <label for="">  Celular </label>
                                     <input type="tel" name="nro_celular" [(ngModel)]="user.nro_celular" placeholder="Ingrese su nro de celular" class="form-control" minlength="8" (focus)="limpiarCelular()" required>
                                     <div [ngSwitch]="errorCelular" class="errorField">
                                         <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <label for=""> <b> E-mail</b> </label>
+                                    <label for="">  E-mail </label>
                                     <input type="email" name="email" [(ngModel)]="user.email" placeholder="Ingrese su Email" class="form-control" minlength="10" (focus)="limpiarEmail()" required>
                                     <div [ngSwitch]="errorEmail" class="errorField">
                                         <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -80,7 +80,7 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <label for="" style="float: left;"> <b> Zona </b> </label>
+                                    <label for="" style="float: left;">  Zona </label>
                                     <input type="text" name="calle" [(ngModel)]="user.calle" placeholder="Ingrese la zona" class="form-control" minlength="4" (focus)="limpiarCalle()" required>
                                     <div [ngSwitch]="errorCalle" class="errorField">
                                         <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -90,12 +90,13 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <label for=""> <b> Foto</b> </label><br>
+                                    <label for="">  Foto </label><br>
                                     <input type="file" class="subir-foto-usuario" (change)="selectFile($event)" />
                                 </div>
 
                             </div>
 
+                            <!--                        
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <label for="" style="float: left;"> <b> DNI</b> </label>
@@ -119,11 +120,11 @@
                                 </div>
 
                             </div>
-
+                            -->
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <button class="btn btn-success btn-block" value="persona" (click)="verificarForm()" [disabled]="!selectedFiles">Enviar</button>
+                                    <button class="btn btn-success btn-block" value="persona" (click)="verificarForm()" [disabled]="!selectedFiles"><b>Enviar </b> </button>
                                 </div>
 
                                 <div class="col-sm-6">
