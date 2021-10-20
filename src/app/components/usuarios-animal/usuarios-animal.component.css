@@ -1401,9 +1401,6 @@ Estado pendiente modal
   grid-template-areas:
   "headerD headerD headerD"
   "mainD mainD mainD"
-  "mainD mainD mainD"
-  "mainD mainD mainD"
-  "mainD mainD mainD"
   "footD footD footD";
   grid-template-rows: repeat(auto-fill, 1fr);
   border-top-right-radius: 0.4em;
@@ -1442,15 +1439,23 @@ Estado pendiente modal
 
 .grid-datos-medicos-main{
 
+
   text-align: left;
 
   grid-area: mainD;
+  
+  margin-left: .5em;
+
+  
+  overflow: scroll;
 
 }
 
 .grid-datos-medicos-foot{
 
-  text-align: left;
+  display: block;
+
+  text-align: center;
 
   grid-area: footD;
 
@@ -1460,14 +1465,41 @@ Estado pendiente modal
 
 .main-datos-medicos-vacunas{
 
+  grid-area: vacunas;
+
+}
+
+
+
+.main-datos-medicos-castrado{
+  
+  grid-area: castrado;
   text-align: left;
 
 }
 
-.main-datos-medicos-castrado{
+
+.main-datos-medicos-castrado label{
 
   text-align: left;
+  margin-left: .4em;
+  margin-right: 1em;
 
+}
+
+.grid-datos-medicos-main label{
+
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+.grid-datos-medicos-main h3{
+
+  margin-top: 1em;
+  margin-bottom: .3em;
 }
 
 

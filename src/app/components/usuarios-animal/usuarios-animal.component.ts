@@ -73,7 +73,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   cargoPagina: boolean = false;
 
   display='none';
-  vacuna : any = [];
+  vacuna : any = {};
   //Modificar datos animal
 
   datosNuevos={nombre: "vacio", sexo: "vacio", tipo: "vacio", fNac: "vacio", tamano: "vacio", peso: "vacio"};
@@ -560,15 +560,22 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   //}
   //this.traerVacunasAnimal();
   traerVacunasAnimal(vacunas: any) {
+    
     this.usuariosService.traerVacunasAnimal(this.AnimalID.id).subscribe(
       res => {
         this.vacuna = res;
+
         console.log("Cantidad de vacunas: ", this.vacuna);
       },
       err => console.log(err)
     );
   }
 
+  returnZero() {
+    //Para q funcione bien la parte de datos medicos y la parte de castrado aparezca abajo  
+    //|Esto hace q el array se itere segun como vino de la base sin el order by q aplica automaticamente el ngFor|
+    return 0
+  }
 
   modificarVacunasAnimal(vacunas: any) {
     this.usuariosService.modificarVacunasAnimal(vacunas, this.AnimalID.id).subscribe(
