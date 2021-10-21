@@ -47,7 +47,7 @@ export class UsuariosIngresarComponent implements OnInit {
         //este dice q esta logueado
         this.usuariosService.logued$.emit()
         
-        this.router.navigate(['usuarios/home']);
+        this.router.navigate(['usuarios/buscador-avanzado']);
         
 
 
