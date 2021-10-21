@@ -87,6 +87,32 @@ export class FileUploadService {
     return uploadTask.percentageChanges();
   }
 
+  pushFileToStorageActualizarFotoPerfil(fileUpload: FileUpload, idusuario: Number): Observable<number | undefined> {
+
+    /* o aca eliminamos el actual o en el perfil component */
+    const filePath = `${this.basePath}/per${idusuario}.jpg`;
+    console.log("file path" + filePath);
+    const storageRef = this.storage.ref(filePath);
+    console.log("storage ref" + storageRef);
+    const uploadTask = this.storage.upload(filePath, fileUpload.file);
+    console.log("task" + uploadTask);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          fileUpload.url = downloadURL;
+          console.log("down url: " + downloadURL);
+          fileUpload.name = `ani${idusuario}.jpg`;
+          console.log("name " + fileUpload.name);
+          this.saveFileData(fileUpload);
+          console.log("save data " +this.saveFileData);
+        });
+      })
+    ).subscribe();
+
+    return uploadTask.percentageChanges();
+  }
+
 
   private saveFileData(fileUpload: FileUpload): void {
     this.db.list(this.basePath).push(fileUpload);
@@ -104,13 +130,8 @@ export class FileUploadService {
   }
 
 
-
   getUserProfileImage(userID: string) {
-
-    // return this.db.list(this.basePath , ref =>
-    //   ref.orderByChild('name').equalTo('ani1.jpg')).valueChanges();
-
-    return this.db.list(this.basePath , ref =>
+    return this.db.list(this.basePath, ref =>
       ref.orderByChild('name').equalTo('per'+userID+'.jpg')).valueChanges();
 
   }
@@ -139,4 +160,7 @@ export class FileUploadService {
     const storageRef = this.storage.ref(this.basePath);
     storageRef.child(name).delete();
   }
+
+
+
 }
