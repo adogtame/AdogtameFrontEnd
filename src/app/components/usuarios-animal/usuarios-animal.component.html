@@ -1,112 +1,107 @@
 <div class="overlayAnimal" *ngIf="cargoPagina==false; else elseBlock">
-  <div class="rot1">
-    <div class="paw">
-      <div class="inner"></div>
-      <div class="bottom"></div>
+    <div class="rot1">
+        <div class="paw">
+            <div class="inner"></div>
+            <div class="bottom"></div>
+        </div>
     </div>
-  </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="rot2">
-    <div class="paw">
-      <div class="inner"></div>
-      <div class="bottom"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="rot2">
+        <div class="paw">
+            <div class="inner"></div>
+            <div class="bottom"></div>
+        </div>
     </div>
-  </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="rot3">
-    <div class="paw">
-      <div class="inner"></div>
-      <div class="bottom"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="rot3">
+        <div class="paw">
+            <div class="inner"></div>
+            <div class="bottom"></div>
+        </div>
     </div>
-  </div>
 
 
-  <!-- <div class="lds-heart"><div></div></div> -->
+    <!-- <div class="lds-heart"><div></div></div> -->
 </div>
 <ng-template #elseBlock>
 
-  <!--
+    <!--
     la idea es que se vea el contenido solo cuando termine de cargar todo
   -->
 
 
-  <!-- COMIENZA EL GRID-->
-  <div class="grid-container">
+    <!-- COMIENZA EL GRID-->
+    <div class="grid-container">
 
-    <!-- GRID HEADER-->
-    <div class="grid-item grid-header">
-      <div class="animal-imagen">
-        <h1 class="animal-nombre">{{Animal.nombre}}</h1>
-        <div class="imagenC">
-          <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'> </app-upload-list>
-          <ng-container *ngIf="Animal.idDador ===  UsuarioID.user">
-            <label for="file-upload" class="subir">
+        <!-- GRID HEADER-->
+        <div class="grid-item grid-header">
+            <div class="animal-imagen">
+                <h1 class="animal-nombre">{{Animal.nombre}}</h1>
+                <div class="imagenC">
+                    <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'> </app-upload-list>
+                    <ng-container *ngIf="Animal.idDador ===  UsuarioID.user">
+                        <label for="file-upload" class="subir">
               <i class="fas fa-camera" id="subir-foto"></i>
             </label>
-            <input id="file-upload" onchange='cambiar()' type="file" accept=".jpeg" style='display: none;'/>
-          </ng-container>
+                        <input id="file-upload" onchange='cambiar()' type="file" accept=".jpeg" style='display: none;' />
+                    </ng-container>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- GRID SUBHEADER-->
-    <div class="grid-item grid-subheader">
+        <!-- GRID SUBHEADER-->
+        <div class="grid-item grid-subheader">
 
-      <div class="animal-subheader">
-        <ul class="nav nav-tabs nav-fill" role="tablist">
+            <div class="animal-subheader">
+                <ul class="nav nav-tabs nav-fill" role="tablist">
 
-          <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!= UsuarioID.user; else dador">
-            <button class="nav-link" type="button" role="tab"
-              [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' " (click)="mostrarInteres()">
+                    <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!= UsuarioID.user; else dador">
+                        <button class="nav-link" type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' " (click)="mostrarInteres()">
               <p class="interes-mostrado-text" *ngIf="interes==true"><i class="fas fa-check"></i> Interes Mostrado</p>
               <p class="mostrar-interes-text" *ngIf="interes==false"> Mostrar Interes </p>
 
             </button>
-          </li>
+                    </li>
 
 
-          <ng-template #dador>
-            <li class="nav-item activecol-lg-4" role="presentation">
-              <div class="dropdown">
-                <div class="nav-link" role="tab" class="btn btn - btnInteresados"
-                  (click)="isOpenInteresados = !isOpenInteresados">
-                  <span> Interesados </span><i [ngClass]="{'gg-chevron-down': isOpenInteresados} "></i>
-                </div>
-                <div [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="interesados-dropdown-content">
-                  <div class="interesados-item">
-                    <div *ngIf="interesados.length>0; else vacio">
-                      <div class="interesado-data" *ngFor=" let interesado of interesados">
-                        <!--
+                    <ng-template #dador>
+                        <li class="nav-item activecol-lg-4" role="presentation">
+                            <div class="dropdown">
+                                <div class="nav-link" role="tab" class="btn btn - btnInteresados" (click)="isOpenInteresados = !isOpenInteresados">
+                                    <span> Interesados </span><i [ngClass]="{'gg-chevron-down': isOpenInteresados} "></i>
+                                </div>
+                                <div [@clickContent]="isOpenInteresados ? 'show' : 'noShow'" class="interesados-dropdown-content">
+                                    <div class="interesados-item">
+                                        <div *ngIf="interesados.length>0; else vacio">
+                                            <div class="interesado-data" *ngFor=" let interesado of interesados">
+                                                <!--
                         La idea seria poner la foto de perfil (Redirecciona al perfil del usuario),
                         el nombre y apellido de los interesados (Abre model q pregunta si quiere iniciar chat)
                         -->
-                        <a class="imagen-interesado" (click)="irAInteresado(interesado.id)">
-                          <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
-                        </a>
-                        <a
-                          (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido, interesado.nro_celular)">{{interesado.nombre}}
-                          {{interesado.apellido}}</a>
-                      </div>
-                    </div>
+                                                <a class="imagen-interesado" (click)="irAInteresado(interesado.id)">
+                                                    <app-upload-list [sujetoID]='interesado.id' [Pertenece]='interesadosA'> </app-upload-list>
+                                                </a>
+                                                <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido, interesado.nro_celular)">{{interesado.nombre}} {{interesado.apellido}}</a>
+                                            </div>
+                                        </div>
 
 
-                    <ng-template #vacio>
-                      <div style="text-align: center;">
-                        <br>No hay interesados
-                      </div>
+                                        <ng-template #vacio>
+                                            <div style="text-align: center;">
+                                                <br>No hay interesados
+                                            </div>
+                                        </ng-template>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
                     </ng-template>
 
-                  </div>
-                </div>
-              </div>
+                    <li class="nav-item" role="presentation">
 
-            </li>
-          </ng-template>
-
-          <li class="nav-item" role="presentation">
-
-            <button id="boton-dador" role="tab" class="nav-link col-lg-4 float-right" type="button"
-              (click)="irADador()">
+                        <button id="boton-dador" role="tab" class="nav-link col-lg-4 float-right" type="button" (click)="irADador()">
 
               <div class="patita-dador">
                 <div class="paw">
@@ -118,86 +113,82 @@
               <p class="dador-text">Dador</p>
 
             </button>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- GRID ANIMALMAIN-->
-    <div class="grid-item grid-animalMain">
-      <div class="animal-main">
-        <div class="grid-main-item animal-datos">
-          <div class="data-item data-1">
-            <span class="span-1" data-title="Nombre:">Nombre:</span> {{Animal.nombre}}
-          </div>
-
-          <div class="data-item data-2">
-            <span class="span-1" data-title="Tipo:">Tipo:</span> {{Animal.tipo}}
-          </div>
-          <div class="data-item data-1">
-            <span class="span-1" data-title="Sexo:">Sexo:</span> {{Animal.sexo}}
-          </div>
-          <div class="data-item data-2">
-            <span class="span-1" data-title="Nacimiento:">Nacimiento:</span> {{Animal.fNac | date: 'dd/MM/yyyy'}}
-          </div>
-          <div class="data-item data-1">
-            <span class="span-1" data-title="Tamaño:">Tamaño:</span> {{Animal.tamano}}
-          </div>
-          <div class="data-item data-2">
-            <span class="span-1" data-title="Peso:">Peso:</span> {{Animal.peso}} KG
-          </div>
-
-          <div class="data-estado">
-
-            <b>Estado de adopcion: &nbsp;&nbsp; </b>
-            <a [ngClass]="{'botonEstado' : estadoDelAnimal.estado === 'Disponible' , 'botonEstadoPendiente': estadoDelAnimal.estado === 'Pendiente', 'botonEstadoAdoptado': estadoDelAnimal.estado === 'Adoptado'}"
-              (click)="abrirDisponibleYPendiente()">{{estadoDelAnimal.estado}}</a>
-              <div *ngIf=" estadoDelAnimal.estado === 'Adoptado'">
-              <div *ngFor="let fecha of fechaAdoptado">
-                <div *ngIf="fecha.id_animal === Animal.id">
-                  <span class="fecha-adopcion">{{Animal.nombre}} fue adoptado en el dia: {{fecha.fecha_fin | date:'dd/MM/yyyy'}}</span>
-                </div>
-              </div>
+                    </li>
+                </ul>
             </div>
 
-
-          </div>
         </div>
 
-        <ng-container>
-          <div class="grid-main-item datos-medicos">
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos(vacuna)"> <b> Datos Medicos </b></button>
-            </div>
-            <button *ngIf="Animal.idDador == UsuarioID.user" type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal"
-              data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
-          </div>
-        </ng-container>
+        <!-- GRID ANIMALMAIN-->
+        <div class="grid-item grid-animalMain">
+            <div class="animal-main">
+                <div class="grid-main-item animal-datos">
+                    <div class="data-item data-1">
+                        <span class="span-1" data-title="Nombre:">Nombre:</span> {{Animal.nombre}}
+                    </div>
 
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
-          aria-hidden="true">
-          <!-- Empieza Modal de Modificar -->
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 id="exampleModalLabel2">Modifica los datos de {{Animal.nombre}}</h2>
-                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light ">
+                    <div class="data-item data-2">
+                        <span class="span-1" data-title="Tipo:">Tipo:</span> {{Animal.tipo}}
+                    </div>
+                    <div class="data-item data-1">
+                        <span class="span-1" data-title="Sexo:">Sexo:</span> {{Animal.sexo}}
+                    </div>
+                    <div class="data-item data-2">
+                        <span class="span-1" data-title="Nacimiento:">Nacimiento:</span> {{Animal.fNac | date: 'dd/MM/yyyy'}}
+                    </div>
+                    <div class="data-item data-1">
+                        <span class="span-1" data-title="Tamaño:">Tamaño:</span> {{Animal.tamano}}
+                    </div>
+                    <div class="data-item data-2">
+                        <span class="span-1" data-title="Peso:">Peso:</span> {{Animal.peso}} KG
+                    </div>
+
+                    <div class="data-estado">
+
+                        <b>Estado de adopcion: &nbsp;&nbsp; </b>
+                        <a [ngClass]="{'botonEstado' : estadoDelAnimal.estado === 'Disponible' , 'botonEstadoPendiente': estadoDelAnimal.estado === 'Pendiente', 'botonEstadoAdoptado': estadoDelAnimal.estado === 'Adoptado'}" (click)="abrirDisponibleYPendiente()">{{estadoDelAnimal.estado}}</a>
+                        <div *ngIf=" estadoDelAnimal.estado === 'Adoptado'">
+                            <div *ngFor="let fecha of fechaAdoptado">
+                                <div *ngIf="fecha.id_animal === Animal.id">
+                                    <span class="fecha-adopcion">{{Animal.nombre}} fue adoptado en el dia: {{fecha.fecha_fin | date:'dd/MM/yyyy'}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <ng-container>
+                    <div class="grid-main-item datos-medicos">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos(vacuna)"> <b> Datos Medicos </b></button>
+                        </div>
+                        <button *ngIf="Animal.idDador == UsuarioID.user" type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal" data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
+                    </div>
+                </ng-container>
+
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                    <!-- Empieza Modal de Modificar -->
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 id="exampleModalLabel2">Modifica los datos de {{Animal.nombre}}</h2>
+                                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light ">
                   <i class="fas fa-times"></i></button>
-              </div>
-              <div class="modal-body">
-                <div class="mb-3">
-                  <div class="card-body">
-                    <form>
-                      <div class="mb-3">
-                        <label> <b> Nombre</b> </label>
-                        <input type="text" name="nombre" [(ngModel)]="datosNuevos.nombre" placeholder="Ingrese el nombre" class="form-control" autofocus
-                          required value="{{Animal.nombre}}">
-                      </div>
-                      <div class="mb-3">
-                        <div class="content-select">
-                          <label> <b> Tipo</b> </label>
-                          <select name="tipo" class="form-control">
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label> <b> Nombre</b> </label>
+                                                <input type="text" name="nombre" [(ngModel)]="datosNuevos.nombre" placeholder="Ingrese el nombre" class="form-control" autofocus required value="{{Animal.nombre}}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="content-select">
+                                                    <label> <b> Tipo</b> </label>
+                                                    <select name="tipo" class="form-control">
                             <ng-container *ngIf="Animal.tipo === 'perro'; else tipoTemplate">
                               <option [(ngModel)]="datosNuevos.tipo" value="perro" selected>Perro</option>
                               <option [(ngModel)]="datosNuevos.tipo" value="gato">Gato</option>
@@ -207,12 +198,12 @@
                               <option [(ngModel)]="datosNuevos.tipo" value="gato" selected>Gato</option>
                             </ng-template>
                           </select>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <div class="content-select">
-                          <label> <b> Sexo</b> </label>
-                          <select name="sexo" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="content-select">
+                                                    <label> <b> Sexo</b> </label>
+                                                    <select name="sexo" class="form-control">
                             <ng-container *ngIf="Animal.sexo === 'hembra'; else sexoTemplate">
                               <option [(ngModel)]="datosNuevos.sexo" value="macho">Macho</option>
                               <option [(ngModel)]="datosNuevos.sexo" value="hembra" selected>Hembra</option>
@@ -222,17 +213,16 @@
                               <option [(ngModel)]="datosNuevos.sexo" value="hembra">Hembra</option>
                             </ng-template>
                           </select>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label> <b> Fecha de nacimiento</b> </label>
-                        <input type="date" name="fNac" class="form-control" required
-                        [(ngModel)]="datosNuevos.fNac" value="{{Animal.fNac}}">
-                      </div>
-                      <div class="mb-3">
-                        <div class="content-select">
-                          <label> <b> Tamaño</b> </label>
-                          <select name="tamano" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label> <b> Fecha de nacimiento</b> </label>
+                                                <input type="date" name="fNac" class="form-control" required [(ngModel)]="datosNuevos.fNac" value="{{Animal.fNac}}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="content-select">
+                                                    <label> <b> Tamaño</b> </label>
+                                                    <select name="tamano" class="form-control">
                             <ng-container *ngIf="Animal.tamano === 'chico'">
                               <option [(ngModel)]="datosNuevos.tamano" value="chico" selected>Chico</option>
                               <option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
@@ -249,192 +239,188 @@
                               <option [(ngModel)]="datosNuevos.tamano" value="grande" selected>Grande</option>
                             </ng-container>
                           </select>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label> <b> Peso (KG)</b> </label>
-                        <input type="number" name="peso" placeholder="Ingrese el peso" class="form-control" required
-                        [(ngModel)]="datosNuevos.peso" value="{{Animal.peso}}">
-                      </div>
-                      <br>
-                      <div class="mb-3">
-                        <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label> <b> Peso (KG)</b> </label>
+                                                <input type="number" name="peso" placeholder="Ingrese el peso" class="form-control" required [(ngModel)]="datosNuevos.peso" value="{{Animal.peso}}">
+                                            </div>
+                                            <br>
+                                            <div class="mb-3">
+                                                <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar
                             campos</b> </button>
-                        <button class="btn btn-success btn-lg" style="float: right;"
-                          data-bs-dismiss="modal" (click)="modificarDatosAnimal(datosNuevos)">
+                                                <button class="btn btn-success btn-lg" style="float: right;" data-bs-dismiss="modal" (click)="modificarDatosAnimal(datosNuevos)">
                           <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> <!-- Termina Modal -->
-
-        <!-- datosMedicos -->
-
-        <div class="overlay-gris" *ngIf="modalDatosMedicosAbierto==true">
-              
-          <div class="modal-datos-medicos">
-
-            <div class="grid-datos-medicos-head">
-              <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDatosMedicos()">&#10006;</button>
-              <p>Datos medicos animal</p>
-            </div>
-
-            <div class="grid-datos-medicos-main">
-
-                <h3>Vacunas</h3>
-
-                <div *ngFor="let vac of vacuna | keyvalue : returnZero">                 
-                 
-
-                  <ng-container *ngIf="vac.key=='Castrado'; else checkboxvac">
-                    
-                    <div class="main-datos-medicos-castrado">
-                      <h3>Castrado</h3>                  
-                  
-                      <input id="Si" name="{{vac.key}}" [checked]="vac.value == 1" value="1" type="radio">                 
-                      <label for="Si">Si</label>
-                      <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
-                      <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" value="0" type="radio">                 
-                      <label for="No">No</label>
-                      {{vac.key}}:{{vac.value}}
-                    </div> 
-                  
-                  </ng-container>
-                  <ng-template #checkboxvac>
-
-                    <div class="main-datos-medicos-vacunas">
-                      <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" value="{{vac.value}}" [(ngModel)]="vac.value"> 
-                      <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>                    
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!-- Termina Modal -->
 
-                  </ng-template>
+                <!-- datosMedicos -->
+
+                <div class="overlay-gris" *ngIf="modalDatosMedicosAbierto==true">
+
+                    <div class="modal-datos-medicos">
+
+                        <div class="grid-datos-medicos-head">
+                            <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDatosMedicos()">&#10006;</button>
+                            <p>Datos medicos animal</p>
+                        </div>
+
+                        <div class="grid-datos-medicos-main">
+
+                            <h3>Vacunas</h3>
+
+                            <div *ngFor="let vac of vacuna | keyvalue : returnZero">
 
 
-                    
-                
+                                <ng-container *ngIf="vac.key=='Castrado'; else checkboxvac">
+
+                                    <div class="main-datos-medicos-castrado">
+                                        <h3>Castrado</h3>
+
+                                        <input id="Si" name="{{vac.key}}" [checked]="vac.value == 1" value="1" type="radio">
+                                        <label for="Si">Si</label>
+                                        <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
+                                        <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" value="0" type="radio">
+                                        <label for="No">No</label> {{vac.key}}:{{vac.value}}
+                                    </div>
+
+                                </ng-container>
+                                <ng-template #checkboxvac>
+
+                                    <div class="main-datos-medicos-vacunas">
+                                        <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" value="{{vac.value}}" [(ngModel)]="vac.value">
+                                        <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>
+                                    </div>
+
+                                </ng-template>
 
 
-              </div>
-              <!-- <div class="main-datos-medicos-castrado">
+
+
+
+
+                            </div>
+                            <!-- <div class="main-datos-medicos-castrado">
               </div> -->
-            </div>
+                        </div>
 
-            <div class="grid-datos-medicos-foot">
-              <a class="btn-confirmar">
+                        <div class="grid-datos-medicos-foot">
+                            <a class="btn-confirmar">
                 Confirmar
               </a>
-              <a class="btn-cancelar" (click)="cerrarModalDatosMedicos()">
+                            <a class="btn-cancelar" (click)="cerrarModalDatosMedicos()">
                 Cancelar
               </a>
-            </div>
+                        </div>
 
-          </div>
-          
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
         </div>
 
-        
+        <!-- GRID FOOTER-->
+        <div class="grid-item grid-footer">
 
-
-      </div>
-    </div>
-
-    <!-- GRID FOOTER-->
-    <div class="grid-item grid-footer">
-
-    </div>
-  </div>
-
-
-
-
-
-  <!-- NO ES DEL GRID ANTERIOR, ES EL CHAT  -->
-  <div class="chat" *ngIf="chatAbierto==true">
-    <div class="chat-item chat-header">
-      <a class="interesado-seleccionado-img">
-        <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
-      </a>
-      <a>{{seleccionadoName}} {{seleccionadoApellido}}</a>
-      <button type="button" class="btn btn-cerrarChat" (click)="cerrarChat()">&#10006;</button>
-    </div>
-    <div class="chat-item chat-main">
-      <p> ¿Comenzar a chatear? </p>
-      <div class="chat-resp" (click)="abrirWhats()">
-        <img class="chat-si" src="../assets/img/whatsapp-logo-11.png" alt="imagen whatsapp">
-      </div>
-    </div>
-
-    <!-- <div class="chat-item chat-aside"></div>  -->
-  </div>
-
-
-  <!--  ES EL MODAL DE ELECCION   *ngIf="modalEleccionAbierto==true" -->
-  <div class="overlay-gris" *ngIf="modalEleccionAbierto==true && Animal.idDador==userAhora">
-    <div class="modal-eleccion-adoptante">
-      <div class="eleccion-item eleccion-header">
-        <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
-        <p>Elija al adoptante final</p>
-      </div>
-      <div class="eleccion-item eleccion-main">
-        <div class="adoptante-a-seleccionar" *ngFor=" let adoptante of interesados">
-          <div class="adoptante-data">
-            <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
-            <div class="adoptante-nombre">{{adoptante.nombre}} {{adoptante.apellido}}</div>
-            <div class="elejir-adoptante"
-              (click)="abirConfirmarAdopcion(adoptante.nombre,adoptante.apellido,adoptante.id)">
-              <p>Elejir Adoptante</p>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Modal confirmar adopcion  -->
 
-  <div class="overlay-gris"
-    *ngIf="modalConfirmarAdopcionAbierto==true && Animal.idDador==userAhora">
-    <div class="modal-confirmar-adopcion">
-      <div class="confirmar-head">
-        <p>¿Seguro quiere darle su animal en adopcion a {{interesadoSeleccionado.nombre}}
-          {{interesadoSeleccionado.apellido}}?</p>
-      </div>
 
-      <div class="confirmar-main">
-        <a class="btn-confirmar" (click)="confirmarAdopcion(interesadoSeleccionado.id)">
+
+
+    <!-- NO ES DEL GRID ANTERIOR, ES EL CHAT  -->
+    <div class="chat" *ngIf="chatAbierto==true">
+        <div class="chat-item chat-header">
+            <a class="interesado-seleccionado-img">
+                <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
+            </a>
+            <a>{{seleccionadoName}} {{seleccionadoApellido}}</a>
+            <button type="button" class="btn btn-cerrarChat" (click)="cerrarChat()">&#10006;</button>
+        </div>
+        <div class="chat-item chat-main">
+            <p class="chat-interesado"> ¿Comenzar a chatear? </p>
+            <div class="chat-resp" (click)="abrirWhats()">
+                <img class="chat-si" src="../assets/img/whatsapp-logo-11.png" alt="imagen whatsapp">
+            </div>
+        </div>
+
+        <!-- <div class="chat-item chat-aside"></div>  -->
+    </div>
+
+
+    <!--  ES EL MODAL DE ELECCION   *ngIf="modalEleccionAbierto==true" -->
+    <div class="overlay-gris" *ngIf="modalEleccionAbierto==true && Animal.idDador==userAhora">
+        <div class="modal-eleccion-adoptante">
+            <div class="eleccion-item eleccion-header">
+                <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()"><i class="far fa-times-circle"></i></button>
+                <h3>Elija al adoptante final</h3>
+            </div>
+            <div class="eleccion-item eleccion-main">
+                <div class="adoptante-a-seleccionar" *ngFor=" let adoptante of interesados">
+                    <div class="adoptante-data">
+                        <div class="adoptante-nombre">
+                            <app-upload-list [sujetoID]='adoptante.id' [Pertenece]='interesadosA'> </app-upload-list>
+                        </div>{{adoptante.nombre}} {{adoptante.apellido}}
+                        <div class="elejir-adoptante" (click)="abirConfirmarAdopcion(adoptante.nombre,adoptante.apellido,adoptante.id)">
+                            <p>Elegir Adoptante</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal confirmar adopcion  -->
+
+    <div class="overlay-gris" *ngIf="modalConfirmarAdopcionAbierto==true && Animal.idDador==userAhora">
+        <div class="modal-confirmar-adopcion">
+            <div class="confirmar-head">
+                <p>¿Seguro quiere darle su animal en adopcion a {{interesadoSeleccionado.nombre}} {{interesadoSeleccionado.apellido}}?
+                </p>
+            </div>
+
+            <div class="confirmar-main">
+                <a class="btn-confirmar" (click)="confirmarAdopcion(interesadoSeleccionado.id)">
           Confirmar
         </a>
-        <a class="btn-cancelar" (click)="cerrarModalConfirmarAdopcion()">
+                <a class="btn-cancelar" (click)="cerrarModalConfirmarAdopcion()">
           Cancelar
         </a>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Modal adopcion pendiente  -->
-  <div class="overlay-gris"
-    *ngIf="modalAdopcionPendienteAbierto==true && Animal.idDador==userAhora">
+    <!-- Modal adopcion pendiente  -->
+    <div class="overlay-gris" *ngIf="modalAdopcionPendienteAbierto==true && Animal.idDador==userAhora">
 
-    <div class="modal-adopcion-pendiente">
+        <div class="modal-adopcion-pendiente">
 
-      <div class="pendiente-head">
-        <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
-        <p>Proceso de adopcion en espera de la aceptacion del interesado seleccionado</p>
-      </div>
+            <div class="pendiente-head">
+                <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDisponibleYPendiente()">&#10006;</button>
+                <p>Proceso de adopcion en espera de la aceptacion del interesado seleccionado</p>
+            </div>
 
-      <div class="pendiente-main">
-        <a class="btn-cancelar-proceso" (click)="cancelarProcesoAdopcion()">
+            <div class="pendiente-main">
+                <a class="btn-cancelar-proceso" (click)="cancelarProcesoAdopcion()">
           Cancelar proceso
         </a>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!--
+    <!--
     Este es el template de la carga
     El contenido va arriba
   -->

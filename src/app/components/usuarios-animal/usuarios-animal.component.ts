@@ -64,6 +64,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   chatAbierto: boolean = false;
   //ubi para saber como hacer la img del firebase
   ubi: string="Perfil";
+  interesadosA: string="interesadosA";
   //Nose de q es esto de moment, mepa q es inutil, no hace nada, hay q comprobar
   moment: any = [];
   interesadoSeleccionado: any = [];
