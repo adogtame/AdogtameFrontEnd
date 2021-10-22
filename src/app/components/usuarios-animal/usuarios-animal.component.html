@@ -155,6 +155,8 @@
                             </div>
                         </div>
 
+                      </div>
+                    </div>
         <ng-container>
           <div class="grid-main-item datos-medicos">
             <div class="btn-group" role="group">
@@ -265,43 +267,52 @@
 
                     <div class="modal-datos-medicos">
 
-            <div class="grid-datos-medicos-main">
+                        <div class="grid-datos-medicos-head">
+                            <button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalDatosMedicos()">&#10006;</button>
+                            <p>Datos medicos animal</p>
+                        </div>
+
+                        <div class="grid-datos-medicos-main">
                   
 
 
-              <h3>Vacunas</h3>
+                          <h3>Vacunas</h3>
+            
+                          <div *ngFor="let vac of datosMedicosCambio | keyvalue : returnZero">                 
+                             
+            
+                            <ng-container *ngIf="vac.key=='Castrado'; else checkboxvac">
+                                
+                              <div class="main-datos-medicos-castrado">
+                                <h3>Castrado</h3>                  
+                              
+                                <input id="Si" name="{{vac.key}}" [checked]="vac.value == 1" type="radio" (change)="datoMedicoUnCambio(vac.key, 1)">                 
+                                <label for="Si">Si</label>
+                                <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
+                                <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" type="radio" (change)="datoMedicoUnCambio(vac.key, 0)">                 
+                                <label for="No">No</label>
+                                {{vac.key}}:{{vac.value}}
+                              </div> 
+                              
+                            </ng-container>
+                            <ng-template #checkboxvac>
+            
+                              <div class="main-datos-medicos-vacunas">
+                                <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" [(ngModel)]="vac.value" (change)="datoMedicoUnCambio(vac.key, vac.value)"> 
+                                <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>                    
+                              </div>
+            
+                            </ng-template>
 
-              <div *ngFor="let vac of datosMedicosCambio | keyvalue : returnZero">                 
-                 
 
-                <ng-container *ngIf="vac.key=='Castrado'; else checkboxvac">
-                    
-                  <div class="main-datos-medicos-castrado">
-                    <h3>Castrado</h3>                  
-                  
-                    <input id="Si" name="{{vac.key}}" [checked]="vac.value == 1" type="radio" (change)="datoMedicoUnCambio(vac.key, 1)">                 
-                    <label for="Si">Si</label>
-                    <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
-                    <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" type="radio" (change)="datoMedicoUnCambio(vac.key, 0)">                 
-                    <label for="No">No</label>
-                    {{vac.key}}:{{vac.value}}
-                  </div> 
-                  
-                </ng-container>
-                <ng-template #checkboxvac>
 
-                  <div class="main-datos-medicos-vacunas">
-                    <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" [(ngModel)]="vac.value" (change)="datoMedicoUnCambio(vac.key, vac.value)"> 
-                    <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>                    
-                  </div>
-
-                </ng-template>
-
-              </div>
-            </div>
+                            </div>
+                            <!-- <div class="main-datos-medicos-castrado">
+              </div> -->
+                        </div>
 
             <div class="grid-datos-medicos-foot">
-              <a class="btn-confirmar" type="submit" (click)="modificarVacunasAnimal()">
+              <a class="btn-confirmar" (click)="modificarVacunasAnimal()">
                 Confirmar
               </a>
                             <a class="btn-cancelar" (click)="cerrarModalDatosMedicos()">
