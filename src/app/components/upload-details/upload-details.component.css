@@ -1,89 +1,95 @@
-.perfil img{
-  height: 8em;
-  width: 8em;
-
-  border-radius: 50%;
-  object-fit: cover;
+.perfil img {
+    height: 8em;
+    width: 8em;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.buscadorA img{
-  min-height: 8.3em;
-  min-width: 13.5em;
-  max-height: 8.3em;
-  max-width: 13.5em;
-  vertical-align: top;
-  align-items: center;
-  object-fit: cover;
-  position: relative;
+.buscadorA img {
+    min-height: 8.3em;
+    min-width: 13.5em;
+    max-height: 8.3em;
+    max-width: 13.5em;
+    vertical-align: top;
+    align-items: center;
+    object-fit: cover;
+    position: relative;
 }
 
-.buscadorHome img{
-  height: 700px;
-  width: 1020px;
-  background-size: contain;
+.buscadorHome img {
+    height: 700px;
+    width: 1020px;
+    background-size: contain;
 }
 
-.buscadorAdoptados img{
-  height: 350px;
-  width: 500px;
+.buscadorAdoptados img {
+    height: 350px;
+    width: 500px;
 }
 
-.miniNav img{
-  height: 40px;
-  width: 40px;
-  display: inline-block;
-  border-radius: 50%;
-  object-fit: cover;
+.miniNav img {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-
-.miniNav2 img{
-  height: 35px;
-  width: 35px;
-  display: inline-block;
-  border-radius: 50%;
-  object-fit: cover;
+.miniNav2 img {
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.navNotiI img{
-
-  left: 0;
-  height: 3em;
-  width: 3em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  margin-top: 0.5em;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-  border: solid 0.5px rgba(77, 76, 76, 0.356);
+.navNotiI img {
+    left: 0;
+    height: 3em;
+    width: 3em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: solid 0.5px rgba(77, 76, 76, 0.356);
 }
 
-.navNotiA img{
-
-  right: 0;
-  height: 3em;
-  width: 3em;
-  margin-right: 0.5em;
-  margin-top: 0.5em;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-  border: solid 0.5px rgba(77, 76, 76, 0.356);
+.navNotiA img {
+    right: 0;
+    height: 3em;
+    width: 3em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: solid 0.5px rgba(77, 76, 76, 0.356);
 }
 
-.siguiendoA img{
-  height: 50px;
-  width: 50px;
-  display: inline-block;
-  border-radius: 50%;
-  object-fit: cover;
+.siguiendoA img {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.misAnimales img{
-  height: 215px;
-  width: 215px;
-  display: inline-block;
-  border-radius: 50%;
-  object-fit: cover;
+.misAnimales img {
+    height: 215px;
+    width: 215px;
+    display: inline-block;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.interesadosA img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 0.2em;
+    margin-right: 0.5em;
+    cursor: pointer;
 }

@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { FileUpload } from 'src/app/models/file-upload.model';
 
-
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuarios-perfil',
@@ -48,8 +48,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   fechaAdoptado: any = [];
   AnimalID: any = [];
-  Animal: any = [];;
+  Animal: any = [];
   siguienteIdAnimal: Number = 0;
+  actualizarId: Number = 0;
 
   datosNuevos={nombre:"vacio",apellido:"vacio",email:"vacio",nro_celular:"vacio"};
 
@@ -61,6 +62,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   /* Subir foto */
   selectedFiles?: FileList;
   currentFileUpload?: FileUpload;
+
   percentage = 0;
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute, private uploadService: FileUploadService) { }
@@ -80,7 +82,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     });
 
     this.tokenIdUsuario();
-
+  
   }
 
 
@@ -529,5 +531,27 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
     }
 
   }
+
+  actualizarFoto(): void {
+/* Falta buscar el file y pasarle al delete para eliminarlo, aca o en upload service */
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.uploadService.pushFileToStorageActualizarFotoPerfil(this.currentFileUpload, this.actualizarId).subscribe(
+          percentage => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
+
+  }
+
 
 }

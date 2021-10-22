@@ -22,7 +22,7 @@ export class UploadListComponent implements OnInit {
   ngOnInit(): void {
     
     
-    if(this.Pertenece=="PerfilU" || this.Pertenece=="PerfilNavUsuarioPerfil1" || this.Pertenece=="PerfilNavUsuarioPerfil2" || this.Pertenece=="NavNotiI"){
+    if(this.Pertenece=="PerfilU" || this.Pertenece=="PerfilNavUsuarioPerfil1" || this.Pertenece=="PerfilNavUsuarioPerfil2" || this.Pertenece=="NavNotiI" || this.Pertenece=="interesadosA"){
 
       console.log("Pertenece a ", this.Pertenece)
       console.log("El usuario es", this.sujetoID)
