@@ -73,7 +73,9 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   cargoPagina: boolean = false;
 
   display='none';
+
   vacuna : any = {};
+  datosMedicosCambio : any = {};
   //Modificar datos animal
 
   datosNuevos={nombre: "vacio", sexo: "vacio", tipo: "vacio", fNac: "vacio", tamano: "vacio", peso: "vacio"};
@@ -103,7 +105,21 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         this.estadoAnimal();
       });
 
-      this.fechaAdoptados();
+      //Esto no va en el init, nose donde va pero ponganlo en la parte q vaya
+      //Porq en init solo va lo q es necesario cargar apenas se arranca y no hay ninguna fecha q sea necesaria apenas se arranca
+      //Tambien vi q en la base pide q traiga todo de proceso_adopcion lo q tambien esta mal supongo
+      //Onda si quieren sacar la fecha nomas hay q hacer "select fecha from proceso" 
+      //Esta mal si sacas todo haciendo "Select * from proceso"
+      //Solo saquen lo q usan sino estamos haciendo al pedo eso
+      //Ademas q si vos queres sacar una fecha, q nose para q sea esta funcion, fijense q sean solo las necesarias.
+      //Si traern todas las fechas no sirve, si quieren una fecha pongan una condicion
+      //por ejemplo "select fecha from proceso where id=?" algo asi, asi nomas te trae la fecha necesaria
+      //this.fechaAdoptados();
+      //Cada vez q vea q se llame a una funcion q nose q hace y q esta mal 
+      //porq no debe ir en el init o porq la llamada a base es muy general la comento
+      //porq nose donde se usa y si me pongo a buscar pierdo mucho tiempo
+
+
       /*
       this.usuariosService.rol$.subscribe(log => {
         this.rol = this.usuariosService.rol;
@@ -533,15 +549,24 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-  datosMedicos(vacunas: any){
+  datosMedicos(){
 
-    this.traerVacunasAnimal(vacunas);
-    this.modalDatosMedicosAbierto=true;
+    
+    this.usuariosService.traerVacunasAnimal(this.AnimalID.id).subscribe(
+      res => {
+        this.vacuna = res;
+        this.datosMedicosCambio = res;
+        console.log("Cantidad de vacunas: ", this.vacuna);
+
+        this.modalDatosMedicosAbierto=true;
+
+      },
+      err => console.log(err)
+    );
+
 
     //Chequear overlay z index porq habia varios overlay con distintos index
     //Asiq puede q el overlay tape algunos modales
-
-    //this.display='block';
 
 
   }
@@ -559,17 +584,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   //  this.display='none';
   //}
   //this.traerVacunasAnimal();
-  traerVacunasAnimal(vacunas: any) {
-    
-    this.usuariosService.traerVacunasAnimal(this.AnimalID.id).subscribe(
-      res => {
-        this.vacuna = res;
 
-        console.log("Cantidad de vacunas: ", this.vacuna);
-      },
-      err => console.log(err)
-    );
-  }
 
   returnZero() {
     //Para q funcione bien la parte de datos medicos y la parte de castrado aparezca abajo  
@@ -577,15 +592,32 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     return 0
   }
 
-  modificarVacunasAnimal(vacunas: any) {
-    this.usuariosService.modificarVacunasAnimal(vacunas, this.AnimalID.id).subscribe(
+  datoMedicoUnCambio(propiedad: any, valor: any){
+    console.log("Propiedad: ", propiedad, "| Nuevo valor: ", valor);
+    if(valor==false){valor=0;}
+    if(valor==true){valor=1;}
+    this.datosMedicosCambio[`${propiedad}`] = valor;
+  }
+
+  modificarVacunasAnimal() {
+    console.log("Datos medicos cambios: ", this.datosMedicosCambio);
+    
+    this.usuariosService.modificarVacunasAnimal(this.datosMedicosCambio, this.AnimalID.id).subscribe(
       res => {
         this.vacuna = res;
+        this.datosMedicosCambio = res;
+
         console.log("Cantidad de vacunas: ", this.vacuna);
+
+        
+        this.modalDatosMedicosAbierto = false;
+
       },
       err => console.log(err)
     );
+    /**/
   }
+
   fechaAdoptados() {
     this.usuariosService.fechaAdoptados().subscribe(
       res => {

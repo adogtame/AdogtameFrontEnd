@@ -168,7 +168,7 @@
         <ng-container>
           <div class="grid-main-item datos-medicos">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos(vacuna)"> <b> Datos Medicos </b></button>
+              <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos()"> <b> Datos Medicos </b></button>
             </div>
             <button *ngIf="Animal.idDador == UsuarioID.user" type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal"
               data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
@@ -284,34 +284,36 @@
             </div>
 
             <div class="grid-datos-medicos-main">
+                  
 
-                <h3>Vacunas</h3>
 
-                <div *ngFor="let vac of vacuna | keyvalue : returnZero">                 
+              <h3>Vacunas</h3>
+
+              <div *ngFor="let vac of datosMedicosCambio | keyvalue : returnZero">                 
                  
 
-                  <ng-container *ngIf="vac.key=='Castrado'; else checkboxvac">
+                <ng-container *ngIf="vac.key=='Castrado'; else checkboxvac">
                     
-                    <div class="main-datos-medicos-castrado">
-                      <h3>Castrado</h3>                  
+                  <div class="main-datos-medicos-castrado">
+                    <h3>Castrado</h3>                  
                   
-                      <input id="Si" name="{{vac.key}}" [checked]="vac.value == 1" value="1" type="radio">                 
-                      <label for="Si">Si</label>
-                      <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
-                      <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" value="0" type="radio">                 
-                      <label for="No">No</label>
-                      {{vac.key}}:{{vac.value}}
-                    </div> 
+                    <input id="Si" name="{{vac.key}}" [checked]="vac.value == 1" type="radio" (change)="datoMedicoUnCambio(vac.key, 1)">                 
+                    <label for="Si">Si</label>
+                    <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
+                    <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" type="radio" (change)="datoMedicoUnCambio(vac.key, 0)">                 
+                    <label for="No">No</label>
+                    {{vac.key}}:{{vac.value}}
+                  </div> 
                   
-                  </ng-container>
-                  <ng-template #checkboxvac>
+                </ng-container>
+                <ng-template #checkboxvac>
 
-                    <div class="main-datos-medicos-vacunas">
-                      <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" value="{{vac.value}}" [(ngModel)]="vac.value"> 
-                      <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>                    
-                    </div>
+                  <div class="main-datos-medicos-vacunas">
+                    <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" [(ngModel)]="vac.value" (change)="datoMedicoUnCambio(vac.key, vac.value)"> 
+                    <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>                    
+                  </div>
 
-                  </ng-template>
+                </ng-template>
 
 
                     
@@ -324,7 +326,7 @@
             </div>
 
             <div class="grid-datos-medicos-foot">
-              <a class="btn-confirmar">
+              <a class="btn-confirmar" type="submit" (click)="modificarVacunasAnimal()">
                 Confirmar
               </a>
               <a class="btn-cancelar" (click)="cerrarModalDatosMedicos()">
