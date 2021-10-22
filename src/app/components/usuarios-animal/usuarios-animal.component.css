@@ -940,7 +940,7 @@ Modal en estado de animal
     outline: none;
     box-shadow: none;
     border: none;
-    font-size: 28px;
+    font-size: 1em;
 }
 
 .modal-confirmar-adopcion {
@@ -1163,7 +1163,7 @@ Estado pendiente modal
 }
 
 h3 {
-    text-align: center;
+    text-align: left;
     margin-top: 10px;
 }
 
