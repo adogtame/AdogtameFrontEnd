@@ -132,8 +132,10 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
   isOpenFiltro = false;
   isOpenExcluir = false;
   //
-  filtroAplica={perroF:false, gatoF:false, criaF:false, adultoF:false, grandeF:false, medianoF:false, chicoF:false,
-                perroE:false, gatoE:false, criaE:false, adultoE:false, grandeE:false, medianoE:false, chicoE:false}
+  filtroIncluye={tipo:{perro:false, gato:false}, edad:{cria:false, adulto:false}, tamano:{grande:false, mediano:false, chico:false}}
+
+  filtroExcluye={tipo:{perro:false, gato:false}, edad:{cria:false, adulto:false}, tamano:{grande:false, mediano:false, chico:false}}
+
 
 
 
@@ -162,30 +164,41 @@ export class UsuariosBuscadorAvanzadoComponent implements OnInit {
 
 
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
 
 
 
 
-clickEnAplicar() {
+  clickEnAplicar() {
 
-  //Tengo q ver si haciendo un for con animales puedo hacer
-  //lo de los filtros sin tener q pegarle a la base cada vez
+    //Tengo q ver si haciendo un for con animales puedo hacer
+    //lo de los filtros sin tener q pegarle a la base cada vez
 
 
 
-  console.log("filtroAplica", this.filtroAplica);
+    console.log("filtroIncluye", this.filtroIncluye);  
+    console.log("filtroExcluye", this.filtroExcluye);
 
-   this.usuariosService.listarAnimalesFiltrado({filtro: this.filtroAplica}).subscribe(
-     res => {
-       this.animales = res;
-       console.log(res);
-     },
-     err => console.log(err)
-  )
 
-}
+
+
+
+
+    
+
+    
+    this.usuariosService.listarAnimalesFiltrado({filtroIncluye: this.filtroIncluye, filtroExcluye: this.filtroExcluye}).subscribe(
+      res => {
+        this.animales = res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+    /**/
+
+
+  }
 
 
 

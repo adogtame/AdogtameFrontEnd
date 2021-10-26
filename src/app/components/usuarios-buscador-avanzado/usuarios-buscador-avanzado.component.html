@@ -18,21 +18,21 @@
                     </div>
                     <div class="menu123" *ngIf="isOpenFiltro" [@dropDownMenu]>
                         <div class="menu-item">
-                            <input type="checkbox" id="perroF" [(ngModel)]="filtroAplica.perroF" name="perroF" class="check">
+                            <input type="checkbox" id="perroF" [(ngModel)]="filtroIncluye.tipo.perro" name="perroF" class="check">
                             <label class="tran" for="perroF"> Tipo Perro </label>
                             <hr>
 
-                            <input type="checkbox" id="gatoF" [(ngModel)]="filtroAplica.gatoF" name="gatoF" class="check">
+                            <input type="checkbox" id="gatoF" [(ngModel)]="filtroIncluye.tipo.gato" name="gatoF" class="check">
                             <label class="tran" for="gatoF"> Tipo Gato </label>
                             <hr>
 
-                            <input type="checkbox" id="grandeF" [(ngModel)]="filtroAplica.grandeF" name="grandeF" class="check">
+                            <input type="checkbox" id="grandeF" [(ngModel)]="filtroIncluye.tamano.grande" name="grandeF" class="check">
                             <label class="tran" for="grandeF"> Tamaño Grande </label>
                             <hr>
-                            <input type="checkbox" id="medianoF" [(ngModel)]="filtroAplica.medianoF" name="medianoF" class="check">
+                            <input type="checkbox" id="medianoF" [(ngModel)]="filtroIncluye.tamano.mediano" name="medianoF" class="check">
                             <label class="tran" for="medianoF"> Tamaño Mediano </label>
                             <hr>
-                            <input type="checkbox" id="chicoF" [(ngModel)]="filtroAplica.chicoF" name="chicoF" class="check">
+                            <input type="checkbox" id="chicoF" [(ngModel)]="filtroIncluye.tamano.chico" name="chicoF" class="check">
                             <label class="tran" for="chicoF"> Tamaño Chico </label>
 
                         </div>
@@ -50,21 +50,21 @@
                     <div class="menu123" *ngIf="isOpenExcluir" [@dropDownMenu]>
                         <div class="menu-item">
 
-                            <input type="checkbox" id="perroE" [(ngModel)]="filtroAplica.perroE" name="perroE" class="check">
+                            <input type="checkbox" id="perroE" [(ngModel)]="filtroExcluye.tipo.perro" name="perroE" class="check">
                             <label class="tran" for="perroE"> Tipo Perro </label>
                             <hr>
 
-                            <input type="checkbox" id="gatoE" [(ngModel)]="filtroAplica.gatoE" name="gatoE" class="check">
+                            <input type="checkbox" id="gatoE" [(ngModel)]="filtroExcluye.tipo.gato" name="gatoE" class="check">
                             <label class="tran" for="gatoE"> Tipo Gato </label>
                             <hr>
 
-                            <input type="checkbox" id="grandeE" [(ngModel)]="filtroAplica.grandeE" name="grandeE" class="check">
+                            <input type="checkbox" id="grandeE" [(ngModel)]="filtroExcluye.tamano.grande" name="grandeE" class="check">
                             <label class="tran" for="grandeE"> Tamaño Grande </label>
                             <hr>
-                            <input type="checkbox" id="medianoE" [(ngModel)]="filtroAplica.medianoE" name="medianoE" class="check">
+                            <input type="checkbox" id="medianoE" [(ngModel)]="filtroExcluye.tamano.mediano" name="medianoE" class="check">
                             <label class="tran" for="medianoE"> Tamaño Mediano </label>
                             <hr>
-                            <input type="checkbox" id="chicoE" [(ngModel)]="filtroAplica.chicoE" name="chicoE" class="check">
+                            <input type="checkbox" id="chicoE" [(ngModel)]="filtroExcluye.tamano.chico" name="chicoE" class="check">
                             <label class="tran" for="chicoE"> Tamaño Chico </label>
 
                         </div>

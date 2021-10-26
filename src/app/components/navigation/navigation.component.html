@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FAE2D7;">
   <div class="container-fluid">
+    <!--
+
     <div *ngIf="revelarBusRapida==true" class="ocultar-mobile">
       <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
       <label for="abrir-cerrar" class="btn btn-outline-dark">
@@ -33,6 +35,8 @@
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
+    
+    -->
     <a class="navbar-brand" routerLink="usuarios/principal">
       <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" >
     </a>
@@ -47,6 +51,7 @@
             routerLink="usuarios/buscador-avanzado">En
             adopcion </button>
         </li>
+
 
         <ng-container *ngIf="revelar==false as user; else login">
           <ul class="navbar-nav posicion-derecha">
