@@ -301,9 +301,9 @@
                             <i class="fas fa-home"> Los que ya tienen un hogar</i>
                         </div>
                         <div class="card" *ngFor=" let animalAdop of animalesAdoptados" id="card-animales-seguidores">
-                            <div class="card-body">
-                                <p class="nombre-animal" (click)="irAAnimal(animalAdop.id)">{{animalAdop.nombre}}</p>
-                                <app-upload-list [sujetoID]='animalAdop.id' [Pertenece]='ubi3' (click)="irAAnimal(animalAdop.id)"></app-upload-list>
+                            <div class="card-body" (click)="irAAnimal(animalAdop.id)">
+                                <p class="nombre-animal">{{animalAdop.nombre}}</p>
+                                <app-upload-list [sujetoID]='animalAdop.id' [Pertenece]='ubi3'></app-upload-list>
                             </div>
                         </div>
                     </div>

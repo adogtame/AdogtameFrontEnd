@@ -82,6 +82,7 @@
                                                     <app-upload-list [sujetoID]='interesado.id' [Pertenece]='interesadosA'> </app-upload-list>
                                                 </a>
                                                 <a (click)="comenzarChat(interesado.id, interesado.nombre, interesado.apellido, interesado.nro_celular)">{{interesado.nombre}} {{interesado.apellido}}</a>
+                                                
                                             </div>
                                         </div>
 
@@ -291,7 +292,6 @@
                                 <!-- ngModel con checked no funciona, trae error si pones ngModel (osea q no te marca el button)-->
                                 <input id="No" name="{{vac.key}}" [checked]="vac.value == 0" type="radio" (change)="datoMedicoUnCambio(vac.key, 0)">                 
                                 <label for="No">No</label>
-                                {{vac.key}}:{{vac.value}}
                               </div> 
                               
                             </ng-container>
@@ -299,7 +299,7 @@
             
                               <div class="main-datos-medicos-vacunas">
                                 <input type="checkbox" id="{{vac.key}}" name="{{vac.key}}" [(ngModel)]="vac.value" (change)="datoMedicoUnCambio(vac.key, vac.value)" [ngModelOptions]="{standalone: true}">   
-                                <label for="{{vac.key}}">{{vac.key}}:{{vac.value}}</label><br>                    
+                                <label for="{{vac.key}}">{{vac.key}}</label><br>                    
                               </div>
             
                             </ng-template>
@@ -344,7 +344,7 @@
     <div class="chat" *ngIf="chatAbierto==true">
         <div class="chat-item chat-header">
             <a class="interesado-seleccionado-img">
-                <img src="https://ligacanceratlantico.com/wp-content/uploads/2017/11/b1-8.jpg">
+                <app-upload-list [sujetoID]='seleccionadoId' [Pertenece]='interesadosA'> </app-upload-list>
             </a>
             <a>{{seleccionadoName}} {{seleccionadoApellido}}</a>
             <button type="button" class="btn btn-cerrarChat" (click)="cerrarChat()">&#10006;</button>

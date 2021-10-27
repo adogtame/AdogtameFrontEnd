@@ -53,6 +53,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   AnimalID: any = [];
   userAhora: string="";
   //interesado seleccionado
+  seleccionadoId: string = "";
   seleccionadoName: string = "";
   seleccionadoApellido: string = "";
   seleccionadoNum: string = "";
@@ -325,7 +326,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
 
 
-  comenzarChat(id: number, nombre: string, apellido: string, num: string){
+  comenzarChat(id: string, nombre: string, apellido: string, num: string){
+    this.seleccionadoId = id;
     this.seleccionadoName = nombre;
     this.seleccionadoApellido = apellido;
     this.seleccionadoNum = num;
