@@ -66,31 +66,17 @@
             </tr>
         </tbody>
     </table>
-    <!--
-  <div class="grafic">
-    <div style="display: block;" >
-      <canvas baseChart style="  border-radius: 50px;
-      border: 3px darkcyan solid; margin: 5px;"
-        [data]="pieChartData"
-        [labels]="pieChartLabels"
-        [chartType]="pieChartType"
-        [options]="pieChartOptions"
-        [plugins]="pieChartPlugins"
-        [legend]="pieChartLegend">
-      </canvas>
 
-    </div>
-  </div>
-  -->
     <div>
-        <div style="display: block;">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
-    </canvas>
+        <div>
+            <button class="btn btn-outline-danger btn-lg" (click)="randomize()">Cargar datos</button>
+            <div style="display: block">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
         </div>
     </div>
-
-
-
 
     <div class="grid-item grid-footer">
         <div class="copyright-footer">
