@@ -37,7 +37,7 @@ export class UploadListComponent implements OnInit {
 
       console.log("Pertenece a en eliminar ", this.Pertenece);
       console.log("El usuario es en eliminar ", this.sujetoID);
-      this.uploadService.getFiles(6).snapshotChanges().pipe(
+      this.uploadService.getFiles(500).snapshotChanges().pipe(
         map(changes =>
           // store the key
           changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
