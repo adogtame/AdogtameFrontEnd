@@ -1,7 +1,8 @@
-<div>
   <div *ngFor="let file of fileUploads">
+      <div *ngIf="file.name === 'per'+sujetoID+'.jpg' "> 
+
       <app-upload-details [fileUpload]='file'  [Pertenece]='Pertenece'></app-upload-details>
+
+    </div>
+    
   </div> 
-</div>
-
-

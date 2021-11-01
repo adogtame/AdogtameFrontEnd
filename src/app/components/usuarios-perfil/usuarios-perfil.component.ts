@@ -45,7 +45,8 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   ubi: string = "PerfilU";
   ubi2: string = "SiguiendoA";
   ubi3: string = "misAnimales";
-
+  ubi4: string = "PerfilUAct";
+  
   fechaAdoptado: any = [];
   AnimalID: any = [];
   Animal: any = [];
@@ -534,13 +535,15 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
   actualizarFoto(): void {
 /* Falta buscar el file y pasarle al delete para eliminarlo, aca o en upload service */
+
+
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       this.selectedFiles = undefined;
 
       if (file) {
         this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorageActualizarFotoPerfil(this.currentFileUpload, this.actualizarId).subscribe(
+        this.uploadService.pushFileToStorageActualizarFotoPerfil(this.currentFileUpload, this.UsuarioID.id).subscribe(
           percentage => {
             this.percentage = Math.round(percentage ? percentage : 0);
           },

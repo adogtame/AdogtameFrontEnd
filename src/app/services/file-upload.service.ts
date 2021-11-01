@@ -102,7 +102,7 @@ export class FileUploadService {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           fileUpload.url = downloadURL;
           console.log("down url: " + downloadURL);
-          fileUpload.name = `ani${idusuario}.jpg`;
+          fileUpload.name = `per${idusuario}.jpg`;
           console.log("name " + fileUpload.name);
           this.saveFileData(fileUpload);
           console.log("save data " +this.saveFileData);
@@ -128,6 +128,8 @@ export class FileUploadService {
       ref.limitToLast(numberItems));
 
   }
+
+
 
 
   getUserProfileImage(userID: string) {

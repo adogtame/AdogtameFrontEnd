@@ -58,3 +58,9 @@
 <div class="interesadosA" *ngIf="Pertenece=='interesadosA'">
     <img src="{{ fileUpload.url }}" alt="">
 </div>
+
+<div class="perfil" *ngIf="Pertenece=='PerfilUAct'">
+    <img src="{{ fileUpload.url }}" alt="">
+    <button (click)="deleteFileUpload(fileUpload)" class="btn btn-danger btn-sm" style="float: right"> Delete
+    </button>
+</div>
