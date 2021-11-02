@@ -14,6 +14,8 @@ export class FileUploadService {
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
+
+  /*
   pushFileToStorage(fileUpload: FileUpload): Observable<number | undefined> {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
     console.log("file path" + filePath);
@@ -37,7 +39,7 @@ export class FileUploadService {
 
     return uploadTask.percentageChanges();
   }
-
+  /**/
 
   pushFileToStorageAnimal(fileUpload: FileUpload, idAnimal: Number): Observable<number | undefined> {
     const filePath = `${this.basePath}/ani${idAnimal}.jpg`;
@@ -89,7 +91,9 @@ export class FileUploadService {
 
   pushFileToStorageActualizarFotoPerfil(fileUpload: FileUpload, idusuario: Number): Observable<number | undefined> {
 
-    /* o aca eliminamos el actual o en el perfil component */
+    
+	
+	/* o aca eliminamos el actual o en el perfil component */
     const filePath = `${this.basePath}/per${idusuario}.jpg`;
     console.log("file path" + filePath);
     const storageRef = this.storage.ref(filePath);
@@ -130,7 +134,11 @@ export class FileUploadService {
   }
 
 
+  getUserProfileKey(userID: string) {
+    return this.db.list(this.basePath, ref =>
+      ref.orderByChild('name').equalTo('per'+userID+'.jpg')).snapshotChanges();
 
+  }
 
   getUserProfileImage(userID: string) {
     return this.db.list(this.basePath, ref =>
@@ -138,6 +146,11 @@ export class FileUploadService {
 
   }
 
+  getUserAnimalKey(animalID: string) {
+    return this.db.list(this.basePath, ref =>
+      ref.orderByChild('name').equalTo('ani'+animalID+'.jpg')).snapshotChanges();
+
+  }
 
   getAnimalProfileImage(animalID: string) {
 
@@ -146,12 +159,18 @@ export class FileUploadService {
 
   }
 
+
+
   deleteFile(fileUpload: FileUpload): void {
+	
+
+	console.log("q onda fileUpload 1", fileUpload)
+	console.log("q onda fileUpload.key 2", fileUpload.key)
     this.deleteFileDatabase(fileUpload.key)
-      .then(() => {
-        this.deleteFileStorage(fileUpload.name);
-      })
-      .catch(error => console.log(error));
+    //.then(() => {
+    this.deleteFileStorage(fileUpload.name);
+    // })
+    //.catch(error => console.log(error));
   }
 
   private deleteFileDatabase(key: string): Promise<void> {

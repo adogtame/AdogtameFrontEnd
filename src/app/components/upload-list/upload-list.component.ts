@@ -11,9 +11,11 @@ import { map } from 'rxjs/operators';
 export class UploadListComponent implements OnInit {
   @Input() sujetoID!: string;
   @Input() Pertenece!: string;
-
-  fileUploads?: any[];
-  fileUploads1?: any[];
+  
+  fileUploads: any = [];
+  fileKey: any = [];
+  //fileUploads?: any[];
+  //fileKey?: any[];
 
 
   FileUpload1 = "https://firebasestorage.googleapis.com/v0/b/adogtame-efa8f.appspot.com/o/uploads%2Fadogtame.png?alt=media&token=d56dc7b3-e4c2-4622-ab1a-19260a9b26bf";
@@ -28,13 +30,33 @@ export class UploadListComponent implements OnInit {
       console.log("Pertenece a ", this.Pertenece)
       console.log("El usuario es", this.sujetoID)
 
-      /*
-      this.uploadService.getUserProfileImage(this.sujetoID).subscribe(fileUploads => {
-        this.fileUploads = fileUploads;
+	  
+      
+      this.uploadService.getUserProfileKey(this.sujetoID).subscribe(fileKey => {
+        this.fileKey = fileKey;
+		console.log(" fileKey snapshotChanges es ",   fileKey)
+
+		if(this.fileKey.length!=0){
+			this.uploadService.getUserProfileImage(this.sujetoID).subscribe(fileUploads => {
+
+				this.fileUploads = fileUploads;
+				this.fileUploads[0]['key'] = this.fileKey[0].key;
+				console.log("  this.fileKey es ",   this.fileKey)
+				console.log("  this.fileUploads es ",   this.fileUploads)
+			});
+		}
+		
+	
+
       });
 
-      */
 
+	  
+
+		//font-family: roboto, arial, sans-serif;
+
+      
+		/*
       console.log("Pertenece a en eliminar ", this.Pertenece);
       console.log("El usuario es en eliminar ", this.sujetoID);
       this.uploadService.getFiles(500).snapshotChanges().pipe(
@@ -45,10 +67,8 @@ export class UploadListComponent implements OnInit {
       ).subscribe(fileUploads => {
         this.fileUploads = fileUploads;
       });
-
+		/**/
     }
-
-
     else {
 
       this.uploadService.getAnimalProfileImage(this.sujetoID).subscribe(fileUploads => {

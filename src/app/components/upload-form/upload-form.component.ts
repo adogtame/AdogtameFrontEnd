@@ -23,23 +23,25 @@ export class UploadFormComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  upload(): void {
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      this.selectedFiles = undefined;
+  	/*
+	upload(): void {
+		if (this.selectedFiles) {
+		const file: File | null = this.selectedFiles.item(0);
+		this.selectedFiles = undefined;
 
-      if (file) {
-        this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-          percentage => {
-            this.percentage = Math.round(percentage ? percentage : 0);
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      }
-    }
+		if (file) {
+			this.currentFileUpload = new FileUpload(file);
+			this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+			percentage => {
+				this.percentage = Math.round(percentage ? percentage : 0);
+			},
+			error => {
+				console.log(error);
+			}
+			);
+		}
+		}
 
-  }
+	}
+	/**/
 }
