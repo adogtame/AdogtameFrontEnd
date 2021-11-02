@@ -36,7 +36,7 @@ export class UsuariosRegistrarComponent implements OnInit {
     selectedFiles?: FileList;
     currentFileUpload?: FileUpload;
     percentage = 0;
-    siguienteIdusuario: Number = 0;
+    siguienteIdusuario: string = "0";
 
     constructor(private usuariosService: UsuariosService, private router: Router, private uploadService: FileUploadService) { }
 

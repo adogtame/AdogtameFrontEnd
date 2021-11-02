@@ -663,14 +663,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
         this.currentFileUpload = new FileUpload(file);
 
 
-        this.uploadService.pushFileToStorageAnimal(this.currentFileUpload,  this.AnimalID.id).subscribe(
-          percentage => {
-            this.percentage = Math.round(percentage ? percentage : 0);
-          },
-          error => {
-            console.log(error);
-          }
-        );
+        this.uploadService.pushFileToStorageAnimal(this.currentFileUpload,  this.AnimalID.id);
       }
     }
 

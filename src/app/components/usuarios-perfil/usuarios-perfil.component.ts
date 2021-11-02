@@ -50,7 +50,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   fechaAdoptado: any = [];
   AnimalID: any = [];
   Animal: any = [];
-  siguienteIdAnimal: Number = 0;
+  siguienteIdAnimal: string = "0";
   actualizarId: Number = 0;
 
   datosNuevos={nombre:"vacio",apellido:"vacio",email:"vacio",nro_celular:"vacio"};
@@ -64,7 +64,6 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   selectedFiles?: FileList;
   currentFileUpload?: FileUpload;
 
-  percentage = 0;
 
   constructor(private usuariosService: UsuariosService, private router: Router, private rutaActiva: ActivatedRoute, private uploadService: FileUploadService) { }
 
@@ -520,14 +519,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
       if (file) {
         this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorageAnimal(this.currentFileUpload, this.siguienteIdAnimal).subscribe(
-          percentage => {
-            this.percentage = Math.round(percentage ? percentage : 0);
-          },
-          error => {
-            console.log(error);
-          }
-        );
+        this.uploadService.pushFileToStorageAnimal(this.currentFileUpload, this.siguienteIdAnimal);
       }
     }
 
@@ -543,14 +535,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
       if (file) {
         this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorageActualizarFotoPerfil(this.currentFileUpload, this.UsuarioID.id).subscribe(
-          percentage => {
-            this.percentage = Math.round(percentage ? percentage : 0);
-          },
-          error => {
-            console.log(error);
-          }
-        );
+        this.uploadService.pushFileToStorageActualizarFotoPerfil(this.currentFileUpload, this.UsuarioID.id);
       }
     }
 
