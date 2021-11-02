@@ -71,9 +71,24 @@ export class UploadListComponent implements OnInit {
     }
     else {
 
-      this.uploadService.getAnimalProfileImage(this.sujetoID).subscribe(fileUploads => {
-        this.fileUploads = fileUploads;
-      });
+
+		this.uploadService.getAnimalProfileKey(this.sujetoID).subscribe(fileKey => {
+			this.fileKey = fileKey;
+			console.log(" fileKey snapshotChanges es ",   fileKey)
+	
+			if(this.fileKey.length!=0){
+				this.uploadService.getAnimalProfileImage(this.sujetoID).subscribe(fileUploads => {
+	
+					this.fileUploads = fileUploads;
+					this.fileUploads[0]['key'] = this.fileKey[0].key;
+					console.log("  this.fileKey es ",   this.fileKey)
+					console.log("  this.fileUploads es ",   this.fileUploads)
+				});
+			}
+			
+
+		});
+		
 
     }
 

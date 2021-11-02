@@ -42,6 +42,12 @@ export class FileUploadService {
   /**/
 
   pushFileToStorageAnimal(fileUpload: FileUpload, idAnimal: Number): Observable<number | undefined> {
+
+	this.deleteFile(fileUpload); () => console.log('huzzah, I\'m done!');
+	
+	/* o aca eliminamos el actual o en el perfil component */
+
+
     const filePath = `${this.basePath}/ani${idAnimal}.jpg`;
     console.log("file path" + filePath);
     const storageRef = this.storage.ref(filePath);
@@ -91,9 +97,12 @@ export class FileUploadService {
 
   pushFileToStorageActualizarFotoPerfil(fileUpload: FileUpload, idusuario: Number): Observable<number | undefined> {
 
-    
+    this.deleteFile(fileUpload); () => console.log('huzzah, I\'m done!');
 	
 	/* o aca eliminamos el actual o en el perfil component */
+
+
+
     const filePath = `${this.basePath}/per${idusuario}.jpg`;
     console.log("file path" + filePath);
     const storageRef = this.storage.ref(filePath);
@@ -146,7 +155,7 @@ export class FileUploadService {
 
   }
 
-  getUserAnimalKey(animalID: string) {
+  getAnimalProfileKey(animalID: string) {
     return this.db.list(this.basePath, ref =>
       ref.orderByChild('name').equalTo('ani'+animalID+'.jpg')).snapshotChanges();
 
@@ -166,20 +175,23 @@ export class FileUploadService {
 
 	console.log("q onda fileUpload 1", fileUpload)
 	console.log("q onda fileUpload.key 2", fileUpload.key)
-    this.deleteFileDatabase(fileUpload.key)
-    //.then(() => {
+    this.deleteFileDatabase(fileUpload.key); () => 
     this.deleteFileStorage(fileUpload.name);
+	
+    //.then(() => {
     // })
     //.catch(error => console.log(error));
   }
 
   private deleteFileDatabase(key: string): Promise<void> {
+	console.log("termina una")
     return this.db.list(this.basePath).remove(key);
   }
 
   private deleteFileStorage(name: string): void {
     const storageRef = this.storage.ref(this.basePath);
     storageRef.child(name).delete();
+	console.log("termina otra")
   }
 
 

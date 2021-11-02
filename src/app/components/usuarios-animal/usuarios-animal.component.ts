@@ -5,6 +5,10 @@ import { Router } from '@angular/router'
 import { ActivatedRoute, Params } from '@angular/router';
 import { AdminService } from '../../services/admin.service';
 
+// Subir foto
+import { FileUploadService } from 'src/app/services/file-upload.service';
+import { FileUpload } from 'src/app/models/file-upload.model';
+
 //Animations (Dropdown)
 import {
   trigger,
@@ -16,6 +20,8 @@ import {
   sequence,
   stagger,
 } from '@angular/animations';
+
+//import { resourceUsage } from 'process';
 
 
 @Component({
@@ -84,6 +90,12 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
   fechaAdoptado: any = [];
 
+  /* Subir foto */
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+
+  percentage = 0;
+
 
   // admin
   //rol: any = "";
@@ -93,7 +105,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     private usuariosService: UsuariosService,
     private router: Router,
     private rutaActiva: ActivatedRoute,
-
+	private uploadService: FileUploadService
 
   ) { }
 
@@ -630,5 +642,45 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
       err => console.log(err)
     );
   }
+
+
+  /* Subir foto */
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+
+  actualizarFoto(): void {
+/* Falta buscar el file y pasarle al delete para eliminarlo, aca o en upload service */
+
+
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+
+
+        this.uploadService.pushFileToStorageAnimal(this.currentFileUpload,  this.AnimalID.id).subscribe(
+          percentage => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
+
+  }
+
+
+
+
+
+
+
 
 }
