@@ -4,7 +4,7 @@
         <ng-container *ngIf="miUsuario == UsuarioID.id">
             <!-- Button trigger modal -->
             <label type="button" class="subir" data-bs-toggle="modal" data-bs-target="#exampleModalFoto">
-    <i class="fas fa-camera" id="subir-foto" (click)="chekearPer()"></i>
+    		<i class="fas fa-camera" id="subir-foto" (click)="chekearPer()"></i>
             </label>
             <!-- Modal -->
             <div class="modal fade" id="exampleModalFoto" tabindex="-1" aria-labelledby="exampleModalLabelFoto" aria-hidden="true">
@@ -36,16 +36,16 @@
     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button id="Informacion-tab" [ngClass]="{'activo' : toggleInformacion, 'noActivo': !toggleInformacion}" class="nav-link active col-lg-12" data-bs-toggle="tab" data-bs-target="#Informacion" type="button" role="tab" aria-controls="Informacion" aria-selected="true"
-                (click)="Informacion()">Informacion
-      </button>
+            (click)="Informacion()">Informacion
+      		</button>
         </li>
         <li class="nav-item" role="presentation">
             <button id="Siguiendo-tab" [ngClass]="{'activo' : toggleSiguiendo, 'noActivo': !toggleSiguiendo}" data-bs-toggle="collapse" data-bs-target="#collapse3Example" aria-expanded="false" aria-controls="collapseExample" class="nav-link col-lg-12" type="button"
-                (click)="Siguiendo()">Siguiendo
-      </button>
+            (click)="Siguiendo()">Siguiendo
+      		</button>
             <li class="nav-item" role="presentation">
-                <button id="Animales-tab" [ngClass]="{'activo' : toggleAnimales, 'noActivo': !toggleAnimales}" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="nav-link col-lg-12" type="button" (click)="Animales()">Animales
-      </button>
+            <button id="Animales-tab" [ngClass]="{'activo' : toggleAnimales, 'noActivo': !toggleAnimales}" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="nav-link col-lg-12" type="button" (click)="Animales()">Animales
+      		</button>
             </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -74,7 +74,7 @@
                                     <button type="button" data-bs-dismiss="modal" aria-label="Close" class="close" style="font-size: 40px;">
                     <i class="fas fa-times-circle"></i></button>
                                 </div>
-                                <div class="modal-body">
+                            	<div class="modal-body">
                                     <div class="mb-3">
                                         <div class="card-body">
                                             <form>
@@ -137,11 +137,11 @@
                                     </div>
                                     <div class="siguiendo-nombreA">
                                         <span>
-                      {{AniPend.nombre}}
-                    </span>
+											{{AniPend.nombre}}
+										</span>
                                     </div>
                                 </div>
-                                <div class="siguiendo-botones">
+                                <div *ngIf="this.miUsuario==this.UsuarioID.id" class="siguiendo-botones">
                                     <div class="estado-item rechazar-pendiente" (click)="rechazarPendiente(AniPend)">Rechazar</div>
                                     <div class="estado-item confirmar-pendiente" (click)="confirmarPendiente(AniPend)">Confirmar</div>
                                 </div>
@@ -158,9 +158,9 @@
                                         <div *ngFor="let fecha of fechaAdoptado">
                                             <div *ngIf="fecha.id_animal === AniAdopt.id">
                                                 <span>
-                          {{AniAdopt.nombre}} fue adoptado por {{Usuario.nombre}} en el dia: {{fecha.fecha_fin | date:
-                          'dd/MM/yyyy'}}
-                        </span>
+													{{AniAdopt.nombre}} fue adoptado por {{Usuario.nombre}} en el dia: {{fecha.fecha_fin | date:
+													'dd/MM/yyyy'}}
+												</span>
                                             </div>
                                         </div>
                                     </div>
@@ -177,12 +177,12 @@
                                     </div>
                                     <div class="siguiendo-nombreA">
                                         <span>
-                      {{AniDisp.nombre}}
-                    </span>
+											{{AniDisp.nombre}}
+										</span>
                                     </div>
                                 </div>
-                                <div class="siguiendo-botones">
-                                    <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniDisp.id)">Eliminar</div>
+                                <div *ngIf="this.miUsuario==this.UsuarioID.id" class="siguiendo-botones">
+                                    <div class="estado-item eliminar-pendiente" (click)="quitarInteresDisponible(AniDisp.id)">Eliminar</div>
                                 </div>
                             </div>
                         </div>
@@ -197,8 +197,8 @@
                                         <span> {{AniPAO.nombre}} </span>
                                     </div>
                                 </div>
-                                <div class="siguiendo-botones">
-                                    <div class="estado-item eliminar-pendiente" (click)="quitarInteres(AniPAO.id)">Eliminar</div>
+                                <div *ngIf="this.miUsuario==this.UsuarioID.id" class="siguiendo-botones">
+                                    <div class="estado-item eliminar-pendiente" (click)="quitarInteresAdoptadoOtro(AniPAO.id)">Eliminar</div>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                             <div class="modal-header">
                                 <h3 id="exampleModalLabel2">Registra un animal</h3>
                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 35px;">
-                  <i class="fas fa-times-circle"></i></button>
+                 				<i class="fas fa-times-circle"></i></button>
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
@@ -231,18 +231,18 @@
                                                 <div class="content-select">
                                                     <label for=""> Tipo </label>
                                                     <select name="tipo" [(ngModel)]="animal.tipo" class="form-control">
-                            <option value="perro">Perro</option>
-                            <option value="gato">Gato</option>
-                          </select>
+														<option value="perro">Perro</option>
+														<option value="gato">Gato</option>
+													</select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <div class="content-select">
                                                     <label for="">  Sexo </label>
                                                     <select name="sexo" [(ngModel)]="animal.sexo" class="form-control ">
-                            <option value="macho">Macho</option>
-                            <option value="hembra">Hembra</option>
-                          </select>
+														<option value="macho">Macho</option>
+														<option value="hembra">Hembra</option>
+													</select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
@@ -253,10 +253,10 @@
                                                 <div class="content-select">
                                                     <label for=""> Tamaño </label>
                                                     <select name="tamano" [(ngModel)]="animal.tamano" class="form-control">
-                            <option value="chico">Chico</option>
-                            <option value="mediano">Mediano</option>
-                            <option value="grande">Grande</option>
-                          </select>
+														<option value="chico">Chico</option>
+														<option value="mediano">Mediano</option>
+														<option value="grande">Grande</option>
+													</select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
@@ -269,10 +269,11 @@
                                             </div>
                                             <br>
                                             <div class="mb-3">
-                                                <button type="reset" class="btn-danger btn-lg" style="float: left;"> <b> Limpiar
-                            campos</b> </button>
-                                                <button class="btn-success btn-lg" style="float: right;" data-bs-dismiss="modal" [disabled]="!selectedFiles" (click)="registrar()">
-                          <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
+                                                <button type="reset" class="btn-danger btn-lg" style="float: left;"> 
+												<b> Limpiar	campos</b> 
+												</button>
+												<button class="btn-success btn-lg" style="float: right;" data-bs-dismiss="modal" [disabled]="!selectedFiles" (click)="registrar()">
+												<b>Confirmar </b> <i class="fas fa-check-double"></i></button>
                                             </div>
                                         </form>
                                     </div>

@@ -569,6 +569,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   datosMedicos(){
 
     
+	console.log("this.AnimalID.id vacunas: ", this.AnimalID.id);
     this.usuariosService.traerVacunasAnimal(this.AnimalID.id).subscribe(
       res => {
         this.vacuna = res;

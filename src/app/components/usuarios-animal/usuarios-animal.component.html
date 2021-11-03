@@ -209,30 +209,30 @@
                                                 <div class="content-select">
                                                     <label> <b> Tipo</b> </label>
                                                     <select name="tipo" class="form-control">
-                            <ng-container *ngIf="Animal.tipo === 'perro'; else tipoTemplate">
-                              <option [(ngModel)]="datosNuevos.tipo" value="perro" selected>Perro</option>
-                              <option [(ngModel)]="datosNuevos.tipo" value="gato">Gato</option>
-                            </ng-container>
-                            <ng-template #tipoTemplate>
-                              <option [(ngModel)]="datosNuevos.tipo" value="perro">Perro</option>
-                              <option [(ngModel)]="datosNuevos.tipo" value="gato" selected>Gato</option>
-                            </ng-template>
-                          </select>
+														<ng-container *ngIf="Animal.tipo === 'perro'; else tipoTemplate">
+														<option [(ngModel)]="datosNuevos.tipo" value="perro" selected>Perro</option>
+														<option [(ngModel)]="datosNuevos.tipo" value="gato">Gato</option>
+														</ng-container>
+														<ng-template #tipoTemplate>
+														<option [(ngModel)]="datosNuevos.tipo" value="perro">Perro</option>
+														<option [(ngModel)]="datosNuevos.tipo" value="gato" selected>Gato</option>
+														</ng-template>
+													</select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <div class="content-select">
                                                     <label> <b> Sexo</b> </label>
                                                     <select name="sexo" class="form-control">
-                            <ng-container *ngIf="Animal.sexo === 'hembra'; else sexoTemplate">
-                              <option [(ngModel)]="datosNuevos.sexo" value="macho">Macho</option>
-                              <option [(ngModel)]="datosNuevos.sexo" value="hembra" selected>Hembra</option>
-                            </ng-container>
-                            <ng-template #sexoTemplate>
-                              <option [(ngModel)]="datosNuevos.sexo" value="macho" selected>Macho</option>
-                              <option [(ngModel)]="datosNuevos.sexo" value="hembra">Hembra</option>
-                            </ng-template>
-                          </select>
+														<ng-container *ngIf="Animal.sexo === 'hembra'; else sexoTemplate">
+														<option [(ngModel)]="datosNuevos.sexo" value="macho">Macho</option>
+														<option [(ngModel)]="datosNuevos.sexo" value="hembra" selected>Hembra</option>
+														</ng-container>
+														<ng-template #sexoTemplate>
+														<option [(ngModel)]="datosNuevos.sexo" value="macho" selected>Macho</option>
+														<option [(ngModel)]="datosNuevos.sexo" value="hembra">Hembra</option>
+														</ng-template>
+													</select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
@@ -243,22 +243,22 @@
                                                 <div class="content-select">
                                                     <label> <b> Tamaño</b> </label>
                                                     <select name="tamano" class="form-control">
-                            <ng-container *ngIf="Animal.tamano === 'chico'">
-                              <option [(ngModel)]="datosNuevos.tamano" value="chico" selected>Chico</option>
-                              <option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
-                              <option [(ngModel)]="datosNuevos.tamano" value="grande">Grande</option>
-                            </ng-container>
-                            <ng-container *ngIf="Animal.tamano === 'mediano'">
-                              <option [(ngModel)]="datosNuevos.tamano" value="chico">Chico</option>
-                              <option [(ngModel)]="datosNuevos.tamano" value="mediano" selected>Mediano</option>
-                              <option [(ngModel)]="datosNuevos.tamano" value="grande">Grande</option>
-                            </ng-container>
-                            <ng-container *ngIf="Animal.tamano === 'grande'">
-                              <option [(ngModel)]="datosNuevos.tamano" value="chico">Chico</option>
-                              <option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
-                              <option [(ngModel)]="datosNuevos.tamano" value="grande" selected>Grande</option>
-                            </ng-container>
-                          </select>
+														<ng-container *ngIf="Animal.tamano === 'chico'">
+														<option [(ngModel)]="datosNuevos.tamano" value="chico" selected>Chico</option>
+														<option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
+														<option [(ngModel)]="datosNuevos.tamano" value="grande">Grande</option>
+														</ng-container>
+														<ng-container *ngIf="Animal.tamano === 'mediano'">
+														<option [(ngModel)]="datosNuevos.tamano" value="chico">Chico</option>
+														<option [(ngModel)]="datosNuevos.tamano" value="mediano" selected>Mediano</option>
+														<option [(ngModel)]="datosNuevos.tamano" value="grande">Grande</option>
+														</ng-container>
+														<ng-container *ngIf="Animal.tamano === 'grande'">
+														<option [(ngModel)]="datosNuevos.tamano" value="chico">Chico</option>
+														<option [(ngModel)]="datosNuevos.tamano" value="mediano">Mediano</option>
+														<option [(ngModel)]="datosNuevos.tamano" value="grande" selected>Grande</option>
+														</ng-container>
+													</select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
@@ -267,10 +267,10 @@
                                             </div>
                                             <br>
                                             <div class="mb-3">
-                                                <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> <b> Limpiar
-                            campos</b> </button>
-                                                <button class="btn btn-success btn-lg" style="float: right;" data-bs-dismiss="modal" (click)="modificarDatosAnimal(datosNuevos)">
-                          <b>Confirmar </b> <i class="fas fa-check-double"></i></button>
+                                                <button type="reset" class="btn btn-danger btn-lg" style="float: left;"> 
+												<b> Limpiar	campos</b> </button>
+												<button class="btn btn-success btn-lg" style="float: right;" data-bs-dismiss="modal" (click)="modificarDatosAnimal(datosNuevos)">
+												<b>Confirmar </b> <i class="fas fa-check-double"></i></button>
                                             </div>
                                         </form>
                                     </div>
@@ -330,7 +330,7 @@
               </div> -->
                         </div>
 
-            <div class="grid-datos-medicos-foot">
+            <div *ngIf="this.UsuarioID.user==this.Animal.idDador" class="grid-datos-medicos-foot">
               <a class="btn-confirmar" (click)="modificarVacunasAnimal()">
                 Confirmar
               </a>

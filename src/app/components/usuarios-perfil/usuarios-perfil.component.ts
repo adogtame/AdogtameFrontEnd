@@ -83,7 +83,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
     this.tokenIdUsuario();
   
-  }
+  	}
 
 
   ngOnDestroy(): void {
@@ -375,92 +375,153 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
 
-  quitarInteres(idAnimal: string) {
-    this.usuariosService.quitarInteres(idAnimal, { idInteresado: this.usuariosService.user.id }).subscribe(
-      res => {
-        console.log("id", idAnimal);
-        //Este codigo de abajo me funciono
-        // get index of object with id of ?
-        const removeIndex1 = this.animalesInteresDisponible.findIndex((item: any) => item.id === idAnimal);
-        // remove object
-        this.animalesInteresDisponible.splice(removeIndex1, 1);
+  quitarInteresAdoptadoOtro(idAnimal: string) {
 
-        // get index of object with id of ?
-        const removeIndex2 = this.animalesInteresPendienteAdoptadoOtro.findIndex((item: any) => item.id === idAnimal);
-        // remove object
-        this.animalesInteresPendienteAdoptadoOtro.splice(removeIndex2, 1);
+	if(this.miUsuario==this.UsuarioID.id){
 
+		
+		this.usuariosService.quitarInteres(idAnimal, { idInteresado: this.usuariosService.user.id }).subscribe(
+			res => {
+			  console.log("id", idAnimal);
+			  
+			
+				console.log("AdoptadoOtro");
+				// get index of object with id of ?
+				const removeIndex2 = this.animalesInteresPendienteAdoptadoOtro.findIndex((item: any) => item.id === idAnimal);
+				// remove object
+				this.animalesInteresPendienteAdoptadoOtro.splice(removeIndex2, 1);
+		
+				console.log("quitado de array", this.animalesInteresPendienteAdoptadoOtro);
+			 
+			},
+			err => console.log(err)
+		);
+	  
+		/**/
+	}
+	else
+	{
+		
 
-        console.log("quitando de array", this.animalesInteresDisponible);
-        console.log("quitando de array", this.animalesInteresPendienteAdoptadoOtro);
-        console.log("Resultado", res);
+	}
 
-      },
-      err => console.log(err)
-    );
-
-    /**/
   }
 
+  quitarInteresDisponible(idAnimal: string) {
+
+	if(this.miUsuario==this.UsuarioID.id){
+
+		
+		this.usuariosService.quitarInteres(idAnimal, { idInteresado: this.usuariosService.user.id }).subscribe(
+			res => {
+				console.log("id", idAnimal);
+				//Este codigo de abajo me funciono
+				// get index of object with id of ?
+
+			
+				
+				console.log("Disponible");
+				const removeIndex1 = this.animalesInteresDisponible.findIndex((item: any) => item.id === idAnimal);
+				// remove object
+				this.animalesInteresDisponible.splice(removeIndex1, 1);
+
+	  
+	  
+				console.log("quitado de array", this.animalesInteresDisponible);
+				console.log("Resultado", res);
+		
+			},
+			err => console.log(err)
+		);
+	  
+		/**/
+	}
+	else
+	{
+		
+
+	}
+
+  }
+
+
+
+
+
+
   confirmarPendiente(AniPend: any) {
-
-
-    this.usuariosService.confirmarAdopcion(AniPend.id, { idInteresado: this.usuariosService.user.id }).subscribe(
-      res => {
-
-
-
-        console.log("animal datos", AniPend);
-
-        // get index of object with id of ?
-        const removeIndex = this.animalesInteresPendienteMe.findIndex((item: any) => item.id === AniPend.id);
-        // remove object
-        this.animalesInteresPendienteMe.splice(removeIndex, 1);
-
-
-        //Agregar a animales adoptados
-        this.animalesInteresAdoptadoMe.push(AniPend);
-
-
-        console.log("quitando de array", this.animalesInteresPendienteMe);
-        console.log("agregando a array", this.animalesInteresAdoptadoMe);
-        console.log("Resultado", res);
-
-      },
-      err => console.log(err)
-    );
-
+	
+	if(this.miUsuario==this.UsuarioID.id){
+		this.usuariosService.confirmarAdopcion(AniPend.id, { idInteresado: this.usuariosService.user.id }).subscribe(
+			res => {
+	
+	
+	
+				console.log("animal datos", AniPend);
+	
+				// get index of object with id of ?
+				const removeIndex = this.animalesInteresPendienteMe.findIndex((item: any) => item.id === AniPend.id);
+				// remove object
+				this.animalesInteresPendienteMe.splice(removeIndex, 1);
+	
+	
+				//Agregar a animales adoptados
+				this.animalesInteresAdoptadoMe.push(AniPend);
+	
+	
+				console.log("quitando de array", this.animalesInteresPendienteMe);
+				console.log("agregando a array", this.animalesInteresAdoptadoMe);
+				console.log("Resultado", res);
+	
+			},
+			err => console.log(err)
+		);
+	
+	}
+	else
+	{
+		
+		return
+		
+	}
 
   }
 
 
   rechazarPendiente(AniPend: any) {
+	
+	if(this.miUsuario==this.UsuarioID.id){
+		this.usuariosService.cancelarProcesoAdopcion(AniPend.id).subscribe(
+			res => {
+	
+	
+				// get index of object with id of ?
+				const removeIndex = this.animalesInteresPendienteMe.findIndex((item: any) => item.id === AniPend.id);
+				// remove object
+				this.animalesInteresPendienteMe.splice(removeIndex, 1);
+	
+	
+				AniPend.est = 0;
+	
+				console.log("object ", AniPend);
+				//Agregar a animales Disponible
+				this.animalesInteresDisponible.push(AniPend);
+	
+				console.log("animalesInteresDisponible ", this.animalesInteresDisponible);
+				console.log(res);
+	
+	
+	
+			},
+			err => console.log(err)
+		);
+	}
+	else
+	{
+		return
 
-
-    this.usuariosService.cancelarProcesoAdopcion(AniPend.id).subscribe(
-      res => {
-
-
-        // get index of object with id of ?
-        const removeIndex = this.animalesInteresPendienteMe.findIndex((item: any) => item.id === AniPend.id);
-        // remove object
-        this.animalesInteresPendienteMe.splice(removeIndex, 1);
-
-
-        AniPend.est = 0;
-
-        console.log("object ", AniPend);
-        //Agregar a animales Disponible
-        this.animalesInteresDisponible.push(AniPend);
-
-        console.log("animalesInteresDisponible ", this.animalesInteresDisponible);
-        console.log(res);
-
-
-
-      },
-      err => console.log(err)
-    );
+		
+	}
 
   }
 
