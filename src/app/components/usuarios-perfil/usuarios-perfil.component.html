@@ -4,7 +4,7 @@
         <ng-container *ngIf="miUsuario == UsuarioID.id">
             <!-- Button trigger modal -->
             <label type="button" class="subir" data-bs-toggle="modal" data-bs-target="#exampleModalFoto">
-    <i class="fas fa-camera" id="subir-foto"></i>
+    <i class="fas fa-camera" id="subir-foto" (click)="chekearPer()"></i>
             </label>
             <!-- Modal -->
             <div class="modal fade" id="exampleModalFoto" tabindex="-1" aria-labelledby="exampleModalLabelFoto" aria-hidden="true">

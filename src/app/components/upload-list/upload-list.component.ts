@@ -12,43 +12,36 @@ export class UploadListComponent implements OnInit {
   @Input() sujetoID!: string;
   @Input() Pertenece!: string;
   
-  fileUploads: any = [];
-  fileKey: any = [];
+  fileData: any = {name:"", key:""};
+  fileUploads: any=[];
+  fileKey: any=[];
   //fileUploads?: any[];
   //fileKey?: any[];
 
-
+  //firebaseImageData
   FileUpload1 = "https://firebasestorage.googleapis.com/v0/b/adogtame-efa8f.appspot.com/o/uploads%2Fadogtame.png?alt=media&token=d56dc7b3-e4c2-4622-ab1a-19260a9b26bf";
 
   constructor(private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
 
-
     if (this.Pertenece == "PerfilUAct" || this.Pertenece == "PerfilU" || this.Pertenece == "PerfilNavUsuarioPerfil1" || this.Pertenece == "PerfilNavUsuarioPerfil2" || this.Pertenece == "NavNotiI" || this.Pertenece == "interesadosA") {
 
-      console.log("Pertenece a ", this.Pertenece)
-      console.log("El usuario es", this.sujetoID)
+
+
+		console.log("Pertenece a ", this.Pertenece)
+		console.log("El usuario es", this.sujetoID)
 
 	  
+
       
-      this.uploadService.getUserProfileKey(this.sujetoID).subscribe(fileKey => {
-        this.fileKey = fileKey;
-		console.log(" fileKey snapshotChanges es ",   fileKey)
+		this.uploadService.getUserProfileImage(this.sujetoID).subscribe(fileUploads => {
 
-		if(this.fileKey.length!=0){
-			this.uploadService.getUserProfileImage(this.sujetoID).subscribe(fileUploads => {
+			this.fileUploads = fileUploads;
 
-				this.fileUploads = fileUploads;
-				this.fileUploads[0]['key'] = this.fileKey[0].key;
-				console.log("  this.fileKey es ",   this.fileKey)
-				console.log("  this.fileUploads es ",   this.fileUploads)
-			});
-		}
-		
+
+		});
 	
-
-      });
 
 
 	  
@@ -70,26 +63,17 @@ export class UploadListComponent implements OnInit {
 		/**/
     }
     else {
+		
+		this.uploadService.getAnimalProfileImage(this.sujetoID).subscribe(fileUploads => {
 
-
-		this.uploadService.getAnimalProfileKey(this.sujetoID).subscribe(fileKey => {
-			this.fileKey = fileKey;
-			console.log(" fileKey snapshotChanges es ",   fileKey)
-	
-			if(this.fileKey.length!=0){
-				this.uploadService.getAnimalProfileImage(this.sujetoID).subscribe(fileUploads => {
-	
-					this.fileUploads = fileUploads;
-					this.fileUploads[0]['key'] = this.fileKey[0].key;
-					console.log("  this.fileKey es ",   this.fileKey)
-					console.log("  this.fileUploads es ",   this.fileUploads)
-				});
-			}
-			
+			this.fileUploads = fileUploads;
 
 		});
-		
+			
 
+
+
+		
     }
 
 

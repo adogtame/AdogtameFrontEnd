@@ -15,16 +15,18 @@ export class FileUploadService {
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
 
+  firebaseImageData: any={name:"", key:""};
+
 
   cargarUploadAni$ = new EventEmitter<string>();
   cargarUploadPer$ = new EventEmitter<string>();
-
-
-
-
-
   /*
+	 logued$ = new EventEmitter<string>();
 
+					this.cargarUploadAni$.emit()
+    this.cargarUploadAni$.subscribe(log => {
+		
+    });
 
 
   pushFileToStorage(fileUpload: FileUpload): Observable<number | undefined> {
@@ -55,64 +57,24 @@ export class FileUploadService {
   pushFileToStorageAnimal(fileUpload: FileUpload, idAnimal: string){
 
 
+	console.log("firebaseImageData", this.firebaseImageData);
 
-
-
-	var file: any=[];
-
-	console.log("idAnimal", idAnimal)
-	this.getAnimalProfileKey(idAnimal).subscribe(fileKey => {
-		console.log(" fileKey snapshotChanges de upload es ",   fileKey)
-
-		if(fileKey.length!=0){
-			this.getAnimalProfileImage(idAnimal).subscribe(fileUploads => {
-
-				file = fileUploads;
-				file[0]['key'] = fileKey[0].key;
-				console.log("  fileKey de upload es ",   fileKey)
-				console.log("  fileUploads de upload es ",   fileUploads)
-
-
-				console.log(" ahora se elimina deleteFile", file);
-				this.deleteFile(file); 
-				
-			});
-
-				
-		}
-		file=[];
-		fileKey=[];
+	if(this.firebaseImageData.key!="" && this.firebaseImageData.name!=""){
 		
-	
-
-      });
-
-	 
-
 		
-			/* o aca eliminamos el actual o en el perfil component */
+		this.deleteFile();
 
-
-			const filePath = `${this.basePath}/ani${idAnimal}.jpg`;
-			console.log("file path" + filePath);
-			const storageRef = this.storage.ref(filePath);
-			console.log("storage ref" + storageRef);
-			const uploadTask = this.storage.upload(filePath, fileUpload.file);
-			console.log("task" + uploadTask);
-
-			uploadTask.snapshotChanges().pipe(
-			finalize(() => {
-				storageRef.getDownloadURL().subscribe(downloadURL => {
-				fileUpload.url = downloadURL;
-				console.log("down url: " + downloadURL);
-				fileUpload.name = `ani${idAnimal}.jpg`;
-				console.log("name " + fileUpload.name);
-				this.saveFileData(fileUpload);
-				console.log("save data " +this.saveFileData);
-				});
-			})
-			).subscribe();
-
+		console.log("Borro y despues cargo");
+		this.uploadAni(fileUpload, idAnimal);
+					
+			
+	}
+	else
+	{
+		
+		console.log("Cargo de una");
+		this.uploadAni(fileUpload, idAnimal);
+	}
 
 
   }
@@ -143,58 +105,166 @@ export class FileUploadService {
 
   pushFileToStorageActualizarFotoPerfil(fileUpload: FileUpload, idusuario: string){
 	
-	var file: any=[];
-
-	console.log("idusuario", idusuario)
-	this.getUserProfileKey(idusuario).subscribe(fileKey => {
-		console.log(" fileKey snapshotChanges de pushFile es ",   fileKey)
-
-		if(fileKey.length!=0){
-			this.getUserProfileImage(idusuario).subscribe(fileUploads => {
-
-				file = fileUploads;
-				file[0]['key'] = fileKey[0].key;
-				console.log("  fileKey de pushFile es ",   fileKey)
-				console.log("  fileUploads de pushFile es ",   fileUploads)
-
-				console.log(" ahora se elimina deleteFile", file)
-			  	this.deleteFile(file); 
-				//() => console.log('huzzah, I\'m done!');
-			});
-		}
-	
-		file=[];
-		fileKey=[];
-    });
 
 
-		/* o aca eliminamos el actual o en el perfil component */
+	console.log("firebaseImageData", this.firebaseImageData);
 
-
-
-		const filePath = `${this.basePath}/per${idusuario}.jpg`;
-		console.log("file path" + filePath);
-		const storageRef = this.storage.ref(filePath);
-		console.log("storage ref" + storageRef);
-		const uploadTask = this.storage.upload(filePath, fileUpload.file);
-		console.log("task" + uploadTask);
-
-		uploadTask.snapshotChanges().pipe(
-		finalize(() => {
-			storageRef.getDownloadURL().subscribe(downloadURL => {
-			fileUpload.url = downloadURL;
-			console.log("down url: " + downloadURL);
-			fileUpload.name = `per${idusuario}.jpg`;
-			console.log("name " + fileUpload.name);
-			this.saveFileData(fileUpload);
-			console.log("save data " +this.saveFileData);
-			});
-		})
-		).subscribe();
-
+	if(this.firebaseImageData.key!="" && this.firebaseImageData.name!=""){
 		
 	
+
+		this.deleteFile();
+
+		console.log("Borro y despues cargo");
+		this.uploadPer(fileUpload, idusuario);
+
+
+	}
+	else
+	{
+
+		console.log("Cargo de una");
+		
+		this.uploadPer(fileUpload, idusuario);
+
+	}
 	
+	
+  }
+
+  
+  chekearPer(idusuario: string){
+
+	this.firebaseImageData={name:"", key:""};
+	console.log("chekearPer");
+	console.log("firebaseImageData", this.firebaseImageData);
+
+	console.log("idusuario", idusuario);
+	this.getUserProfileKey(idusuario).subscribe(Key => {
+		var fileKey = Key;
+
+		console.log("Key", Key);
+		console.log("fileKey", fileKey);
+		if(fileKey.length!=0){
+
+			this.firebaseImageData.key = fileKey[0].key;
+
+			console.log("firebaseImageData", this.firebaseImageData);
+			this.getUserProfileImage(idusuario).subscribe(fileUploads => {
+
+				var data: any = fileUploads;
+	
+				console.log("data", data);
+	
+				if(data.length!=0){
+	
+					this.firebaseImageData.name = data[0].name;
+
+
+
+					console.log("firebaseImageData 2", this.firebaseImageData);
+
+				}
+				
+			});
+
+
+		}
+		
+
+	});
+		
+	
+
+  }
+
+  chekearAni(idAnimal: string){
+
+	this.firebaseImageData={name:"", key:""};
+	console.log("chekearAni");
+	console.log("firebaseImageData", this.firebaseImageData);
+
+
+	
+	console.log("idAnimal", idAnimal);
+	this.getAnimalProfileKey(idAnimal).subscribe(Key => {
+		var fileKey = Key;
+
+		if(fileKey.length!==0){
+
+			this.firebaseImageData.key = fileKey[0].key;
+
+			this.getAnimalProfileImage(idAnimal).subscribe(fileUploads => {
+
+				var data: any = fileUploads;
+	
+	
+				if(data.length!=undefined){
+	
+					this.firebaseImageData.name = data[0].name;
+
+					console.log("firebaseImageData 2", this.firebaseImageData);
+				}
+				
+			});
+
+
+		}
+		
+
+	});	
+		
+  }
+
+
+
+  uploadAni(fileUpload: FileUpload, idAnimal: string){
+	const filePath = `${this.basePath}/ani${idAnimal}.jpg`;
+	console.log("file path" + filePath);
+	const storageRef = this.storage.ref(filePath);
+	console.log("storage ref" + storageRef);
+	const uploadTask = this.storage.upload(filePath, fileUpload.file);
+	console.log("task" + uploadTask);
+
+	uploadTask.snapshotChanges().pipe(
+	finalize(() => {
+		storageRef.getDownloadURL().subscribe(downloadURL => {
+		fileUpload.url = downloadURL;
+		console.log("down url: " + downloadURL);
+		fileUpload.name = `ani${idAnimal}.jpg`;
+		console.log("name " + fileUpload.name);
+		this.saveFileData(fileUpload);
+		console.log("save data " +this.saveFileData);
+		});
+	})
+	).subscribe();
+
+
+
+	
+  }
+
+  uploadPer(fileUpload: FileUpload, idusuario: string){
+	const filePath = `${this.basePath}/per${idusuario}.jpg`;
+	console.log("file path" + filePath);
+	const storageRef = this.storage.ref(filePath);
+	console.log("storage ref" + storageRef);
+	const uploadTask = this.storage.upload(filePath, fileUpload.file);
+	console.log("task" + uploadTask);
+
+	uploadTask.snapshotChanges().pipe(
+	finalize(() => {
+		storageRef.getDownloadURL().subscribe(downloadURL => {
+		fileUpload.url = downloadURL;
+		console.log("down url: " + downloadURL);
+		fileUpload.name = `per${idusuario}.jpg`;
+		console.log("name " + fileUpload.name);
+		this.saveFileData(fileUpload);
+		console.log("save data " +this.saveFileData);
+		});
+	})
+	).subscribe();
+
   }
 
 
@@ -241,15 +311,17 @@ export class FileUploadService {
 
 
 
-  deleteFile(fileUpload: FileUpload): void {
+  deleteFile() {
 	
 
-	console.log("q onda fileUpload 1", fileUpload)
-	console.log("q onda fileUpload.key 2", fileUpload.key)
-    this.deleteFileDatabase(fileUpload.key); () => 
-    this.deleteFileStorage(fileUpload.name);
-	
 
+
+
+
+    this.deleteFileDatabase(this.firebaseImageData.key); () =>
+    this.deleteFileStorage(this.firebaseImageData.name);	
+
+	this.firebaseImageData={name:"", key:""};
     //.then(() => {
     // })
     //.catch(error => console.log(error));

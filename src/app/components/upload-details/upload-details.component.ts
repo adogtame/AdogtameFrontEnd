@@ -23,9 +23,15 @@ export class UploadDetailsComponent implements OnInit {
     this.fileUpload.name="";
   }
 
+  /*
+
+  //El problema es q para este delete tendriamos q hacer un get, y los get de firebase se repiten, entonces es kk
+
   deleteFileUpload(fileUpload: FileUpload): void {
-    this.uploadService.deleteFile(fileUpload);
+
+    this.uploadService.deleteFile();
   }
+  /**/
 
 }
 

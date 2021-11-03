@@ -67,9 +67,4 @@ export class UsuariosPrincipalComponent implements OnInit, OnDestroy {
     this.router.navigate(['usuarios/animal/',id]);
   }
 
-  deleteFileUpload(fileUpload: FileUpload): void {
-    this.uploadService.deleteFile(fileUpload);
-  }
-
-
 }

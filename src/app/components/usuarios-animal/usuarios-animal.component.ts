@@ -164,6 +164,8 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     this.isOpenInteresados = false;
     this.cargoPagina = false;
 
+
+	
   }
 
   //Estado animal
@@ -670,7 +672,10 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   }
 
 
+  chekearAni(){
 
+	this.uploadService.chekearAni(this.AnimalID.id);
+  }
 
 
 

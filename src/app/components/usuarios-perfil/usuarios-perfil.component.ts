@@ -100,7 +100,6 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
 
 
 
-
   }
 
 
@@ -526,7 +525,7 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
   actualizarFoto(): void {
-/* Falta buscar el file y pasarle al delete para eliminarlo, aca o en upload service */
+	/* Falta buscar el file y pasarle al delete para eliminarlo, aca o en upload service */
 
 
     if (this.selectedFiles) {
@@ -542,4 +541,9 @@ export class UsuariosPerfilComponent implements OnInit, OnDestroy {
   }
 
 
+  chekearPer(){
+
+	
+	this.uploadService.chekearPer(this.UsuarioID.id);
+  }
 }
