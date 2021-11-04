@@ -177,19 +177,110 @@
 
                       </div>
                     </div>
-        <ng-container>
-          <div class="grid-main-item datos-medicos">
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos()"> <b> Datos Medicos </b></button>
-            </div>
-            <button *ngIf="Animal.idDador == UsuarioID.user" type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal"
-              data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
-          </div>
-        </ng-container>
+			<ng-container>
+			<div class="grid-main-item datos-medicos">
+				<div class="btn-group" role="group">
+				<button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos()"> <b> Datos Medicos </b></button>
+				</div>
+				<button *ngIf="Animal.idDador == UsuarioID.user" type="button" 
+				class="btn btn-light botonDatosMedicos" (click)="editarDatos()"> 
+					<b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
+			</div>
+			</ng-container>
 
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
-          aria-hidden="true">
-          <!-- Empieza Modal de Modificar -->
+        
+          
+		 
+		 
+		 
+		  <!-- Empieza Modal de Modificar -->
+
+
+
+			<div class="overlay-gris" *ngIf="modalEditarDatosAierto==true">
+
+				<div class="modal-editar-datos">
+
+					<div class="grid-editar-datos-head">
+						<button type="button" class="btn btn-cerrarModalX" (click)="cerrarModalEditarDatos()">&#10006;</button>
+						<p>Modifica los datos de {{Animal.nombre}}</p>
+					</div>
+
+					<div class="grid-editar-datos-main">
+			
+
+						<div *ngFor="let dato of datosLista">                 
+							
+							<div *ngIf="dato=='nombre' || dato=='peso'"  class="editar-datos-inputText">
+								<h3>{{dato}}</h3>
+								<input type="text" name="{{dato}}" [(ngModel)]="datosNuevos[dato]"
+								placeholder="Ingrese {{dato}}" class="form-control" 
+								required value="{{Animal[dato]}}">
+							</div>
+
+							<div *ngIf="dato=='sexo' || dato=='tipo' || dato=='tamano'" class="editar-datos-inputSelect">
+											
+								<h3>{{dato}}</h3>	
+								
+
+								<div *ngIf="dato=='sexo'">
+									<select name="{{dato}}" [(ngModel)]="datosNuevos[dato]" class="form-control">
+										<option [value]="item" *ngFor="let item of sexoArray">{{item}}</option>
+									</select>	
+								</div>
+
+								<div *ngIf="dato=='tipo'">
+									<select name="{{dato}}" [(ngModel)]="datosNuevos[dato]" class="form-control">
+										<option [value]="item" *ngFor="let item of tipoArray">{{item}}</option>
+									</select>	
+								</div>
+
+								<div *ngIf="dato=='tamano'">
+									<select name="{{dato}}" [(ngModel)]="datosNuevos[dato]" class="form-control">
+										<option [value]="item" *ngFor="let item of tamanoArray">{{item}}</option>
+									</select>	
+								</div>
+
+							</div>
+	
+							
+							
+							<div *ngIf="dato=='fNac'" class="editar-datos-inputDate">
+								
+								<h3>Fecha de nacimiento</h3>
+								<input type="date" name="fNac" class="form-control" required 
+								[(ngModel)]="datosNuevos.fNac" [value]="Animal.fNac">
+								
+							</div>
+							
+
+
+						</div>
+
+
+					</div>
+
+					<div *ngIf="this.UsuarioID.user==this.Animal.idDador" class="grid-editar-datos-foot">
+						<a class="btn-confirmar" (click)="modificarDatosAnimal()">
+							Confirmar
+						</a>
+						<a class="btn-cancelar" (click)="cerrarModalEditarDatos()">
+							Cancelar
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		  <!-- 
+			<button *ngIf="Animal.idDador == UsuarioID.user" type="button" class="btn btn-light botonDatosMedicos" data-bs-toggle="modal"
+            data-bs-target="#exampleModal2"> <b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
+
+
+
           <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
@@ -279,6 +370,7 @@
                         </div>
                     </div>
                 </div>
+				-->
                 <!-- Termina Modal -->
 
                 <!-- datosMedicos -->
@@ -327,16 +419,16 @@
 
                             </div>
                             <!-- <div class="main-datos-medicos-castrado">
-              </div> -->
+              				</div> -->
                         </div>
 
-            <div *ngIf="this.UsuarioID.user==this.Animal.idDador" class="grid-datos-medicos-foot">
-              <a class="btn-confirmar" (click)="modificarVacunasAnimal()">
-                Confirmar
-              </a>
-                            <a class="btn-cancelar" (click)="cerrarModalDatosMedicos()">
-                Cancelar
-              </a>
+						<div *ngIf="this.UsuarioID.user==this.Animal.idDador" class="grid-datos-medicos-foot">
+							<a class="btn-confirmar" (click)="modificarVacunasAnimal()">
+								Confirmar
+							</a>
+							<a class="btn-cancelar" (click)="cerrarModalDatosMedicos()">
+								Cancelar
+							</a>
                         </div>
 
                     </div>

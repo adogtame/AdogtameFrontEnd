@@ -67,6 +67,7 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   modalEleccionAbierto: boolean = false;
   modalConfirmarAdopcionAbierto: boolean = false;
   modalAdopcionPendienteAbierto: boolean = false;
+  modalEditarDatosAierto: boolean = false;
   modalDatosMedicosAbierto: boolean = false;
   chatAbierto: boolean = false;
   //ubi para saber como hacer la img del firebase
@@ -86,7 +87,11 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
   datosMedicosCambio : any = {};
   //Modificar datos animal
 
-  datosNuevos={nombre: "vacio", sexo: "vacio", tipo: "vacio", fNac: "vacio", tamano: "vacio", peso: "vacio"};
+  datosLista: any =["nombre", "sexo", "tipo", "fNac", "tamano", "peso"];
+  sexoArray:any=["macho", "hembra"]
+  tipoArray:any=["perro", "gato"]
+  tamanoArray:any=["grande", "mediano", "chico"]
+  datosNuevos: any ={nombre: "", sexo: "", tipo: "", fNac: "", tamano: "", peso: ""};
 
   fechaAdoptado: any = [];
 
@@ -273,21 +278,41 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
     window.open(url, '_blank');
     //this.router.navigate(['usuarios/perfil/',id])
   }
+  
+
+  editarDatos(){
+
+	this.datosNuevos.nombre=this.Animal.nombre;
+	this.datosNuevos.sexo=this.Animal.sexo;
+	this.datosNuevos.tipo=this.Animal.tipo;
+	this.datosNuevos.fNac=this.Animal.fNac;
+	this.datosNuevos.tamano=this.Animal.tamano;
+	this.datosNuevos.peso=this.Animal.peso;
 
 
+	this.modalEditarDatosAierto=true;
 
 
-  modificarDatosAnimal(datosNuevos: any) {
+  }
 
+  cerrarModalEditarDatos(){
+
+	this.modalEditarDatosAierto=false;
+
+  }
+
+ 
+
+  modificarDatosAnimal() {
+
+    console.log("datosNuevos del animal cambios", this.datosNuevos);
     console.log("animal a modificar", this.Animal);
-    console.log("datosNuevos del animal cambios", datosNuevos);
+	
+	
+	/*
+	var nombresArray: any =["nombre","sexo","tipo","fNac","tamano","peso"];
+	let datosArray:any={};
 
-		var nombresArray: any =["nombre","sexo","tipo","fNac","tamano","peso"];
-		let datosArray:any={};
-
-    console.log(`animal dato 0`, this.Animal[`${nombresArray[0]}`]);
-    console.log("datosNuevos 0", datosNuevos[`${nombresArray[0]}`]);
-    console.log("nombresArray.length", nombresArray.length);
 
     for (var i = 0; i < nombresArray.length; i++) {
       if(this.Animal[`${nombresArray[i]}`]!=datosNuevos[`${nombresArray[i]}`] && datosNuevos[`${nombresArray[i]}`]!=null && datosNuevos[`${nombresArray[i]}`]!="vacio"){
@@ -303,22 +328,19 @@ export class UsuariosAnimalComponent implements OnInit, OnDestroy {
 
       }
     }
-
-    console.log("datosArray que se guarda", datosArray);
-
-
-    console.log("this.Animal.id", this.Animal.id);
+	/**/
 
 
     //Editar datos animal
 
-    this.usuariosService.modificarDatosAnimal(datosArray, this.Animal.id).subscribe(
+    this.usuariosService.modificarDatosAnimal(this.datosNuevos, this.Animal.id).subscribe(
       res => {
 
         console.log(res);
 
         this.animalCargarDatos();
 
+		this.modalEditarDatosAierto=false;
 
       },
       err => {

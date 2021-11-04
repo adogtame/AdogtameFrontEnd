@@ -754,7 +754,13 @@ Modal en estado de animal
     max-height: 20em;
     position: fixed;
     display: grid;
-    grid-template-areas: "header header header" "main main main" "main main main" "main main main" "main main main" "main main main" "main main main";
+    grid-template-areas: "header header header" 
+	"main main main" 
+	"main main main" 
+	"main main main" 
+	"main main main" 
+	"main main main" 
+	"main main main";
     grid-template-rows: repeat(auto-fill, 1fr);
     border-top-right-radius: 0.4em;
     border-top-left-radius: 0.4em;
@@ -885,14 +891,14 @@ Modal en estado de animal
     width: 4.8em;
     background-color: #74cf77;
     margin-right: 1.7em;
-    margin-top: 2.6em;
+    margin-top: 2em;
     display: inline-block;
     border-radius: 3px;
 }
 
 .btn-cancelar {
     border-radius: 3px;
-    margin-top: 2.6em;
+    margin-top: 2em;
     cursor: pointer;
     color: #000;
     margin-left: 1.7em;
@@ -980,8 +986,8 @@ Estado pendiente modal
     z-index: 220;
     min-width: 30em;
     max-width: 30em;
-    min-height: 30em;
-    max-height: 30em;
+    min-height: 32em;
+    max-height: 32em;
     position: fixed;
     display: grid;
     grid-template-areas: "headerD headerD headerD" "mainD mainD mainD" "footD footD footD";
@@ -1011,12 +1017,16 @@ Estado pendiente modal
     grid-area: mainD;
     margin-left: .5em;
     overflow: scroll;
+    min-height: 23em;
+    max-height: 23em;
 }
 
 .grid-datos-medicos-foot {
     display: block;
     text-align: center;
     grid-area: footD;
+    min-height: 5.6em;
+    max-height: 5.6em;
 }
 
 .main-datos-medicos-vacunas {
@@ -1043,6 +1053,88 @@ Estado pendiente modal
     margin-top: 1em;
     margin-bottom: .3em;
 }
+
+
+
+
+
+.modal-editar-datos {
+    background-color: #fff2db;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 220;
+    min-width: 30em;
+    max-width: 30em;
+    min-height: 32em;
+    max-height: 32em;
+    position: fixed;
+    display: grid;
+    grid-template-areas: 
+	"headerED headerED headerED"
+	"mainED mainED mainED" 
+	"footED footED footED";
+    grid-template-rows: repeat(auto-fill, 1fr);
+    border-top-right-radius: 0.4em;
+    border-top-left-radius: 0.4em;
+    box-shadow: 3px 3px 4px rgba(149, 141, 141, 0.692), -3px 3px 5px rgba(149, 141, 141, 0.692), 0px 0px 10px rgba(149, 141, 141, 0.692);
+   
+}
+
+.grid-editar-datos-head {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    grid-area: headerED;
+    border-bottom: 0.1em solid rgb(168, 168, 168);
+    min-height: 3.4em;
+    max-height: 3.4em;
+}
+
+.grid-editar-datos-head p {
+    margin-top: .6em;
+    font-size: 0.8em;
+}
+
+.grid-editar-datos-main {
+    text-align: left;
+    grid-area: mainED;
+    margin-left: .5em;
+	min-height: 23em;
+	max-height: 23em;
+    overflow: scroll;
+}
+
+.grid-editar-datos-foot {
+    text-align: center;
+    grid-area: footED;
+    min-height: 5.6em;
+    max-height: 5.6em;
+}
+
+.editar-datos-inputText{
+	
+}
+
+.editar-datos-inputSelect {
+	
+}
+
+.editar-datos-inputDate {
+	
+}
+
+.grid-editar-datos-main label {
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-editar-datos-main h3 {
+    margin-top: .3em;
+    margin-bottom: .2em;
+}
+
+
+
+
+
 
 .overlay-gris {
     position: fixed;
