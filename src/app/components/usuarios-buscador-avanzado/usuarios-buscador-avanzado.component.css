@@ -365,70 +365,91 @@ ul li {
     .grid-container {
         margin: none;
         display: grid;
-        grid-template-areas: "aside aside aside" "header header header" "main main main" "footer footer footer";
+        grid-template-areas: "aside aside aside"
+		"header header header" 
+		"main main main" 
+		"footer footer footer";
         grid-template-rows: repeat(auto-fill, 1fr);
     }
     .grid-header {
-        width: 20em;
-        max-width: 20em;
+        width: 100%;
+        max-width: 100%;
         height: 4em;
         grid-area: header;
     }
     .grid-aside {
-        width: 20em;
-        min-height: 16em;
+        width: 100%;
         max-width: 100%;
+        min-height: 16em;
         grid-area: aside;
     }
     .grid-main {
-        width: 20em;
-        max-width: 20em;
+        width: 100%;
+        max-width: 100%;
         min-height: 50em;
         grid-area: main;
     }
     .grid-footer {
-        width: 20em;
-        max-width: 20em;
+        width: 100%;
+        max-width: 100%;
         height: 2em;
         grid-area: footer;
     }
     /* GRID ASIDE */
     .boton1 {
         display: block;
-        width: 14em;
+        width: 90vw;
         margin: none;
         padding: none;
     }
     /* Boton aplicar */
     .boton2 {
         display: block;
-        width: 14em;
+        width: 90vw;
         margin: none;
         padding: none;
     }
+
+	.btn-adoptados
+	{
+
+        display: block;
+        width: 90vw;
+        margin: none;
+        padding: none;
+	}
     /* GRID HEADER */
     .animal-buscador {
         margin-left: none;
         margin-top: none;
         height: 1.7em;
-        width: 18em;
-        min-width: 18em;
+        width: 90vw;
+        max-width: 90vw;
         font-size: 0.8em;
     }
     /* GRID MAIN */
     .container-animales {
-        grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(40vw, 1fr));
         grid-gap: 0.1em;
-        margin: 0.1em;
     }
+
+
+
+
     .animal-cont {
-        width: 8em;
+		margin-left: 0.1em;
+        min-width: 20vw;
+        max-width: 20vw;
     }
     .image-animal {
         height: 5.7em;
-        width: 8em;
+        min-width: 20vw;
+        max-width: 20vw;
     }
-    .image-animal:hover:after {}
+    .image-animal:hover {
+		
+		transform: scale(1);
+	}
     .image-animal:hover>img {}
     .animal-name {}
     .image-animal:hover>.animal-name {
@@ -458,14 +479,20 @@ ul li {
     }
     .animal-body {
         height: 1.2em;
-        width: 8em;
+        min-width: 100%;
+        max-width: 100%;
         opacity: 0.8;
         background: rgb(54, 50, 42);
-        transform: translatey(5.55em);
+        /* transform: translatey(5.55em); */
     }
     .animal-data>b {
         font-size: 1.em;
         color: rgb(243, 184, 136);
     }
     /* GRID FOOTER */
+	
+
+	.copyright-footer {
+		position:fixed;
+	}
 }
