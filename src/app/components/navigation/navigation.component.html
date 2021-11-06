@@ -40,17 +40,20 @@
     <a class="navbar-brand" routerLink="usuarios/principal">
       <img src="https://media-public.canva.com/hTZRQ/MAEGr_hTZRQ/1/s.png" alt="" >
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
       aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <button class="btn btn - boton2"
-            routerLink="usuarios/buscador-avanzado">En
-            adopcion </button>
-        </li>
+    </button> -->
+    <div>
+      <ul>
+        <ul class="navbar-nav posicion-izquierda">
+			<li class="nav-item en-adopcion">
+				<button class="btn btn - boton2"
+				  routerLink="usuarios/buscador-avanzado">En
+				  adopcion </button>
+			</li>
+		</ul>
+		
 
 
         <ng-container *ngIf="revelar==false as user; else login">
@@ -66,8 +69,8 @@
         </ng-container>
         <ng-template #login>
           <ul class="navbar-nav posicion-derecha" >
-            <li class="nav-item ">
-              <a style="font-size:26px; margin-right: 15px;" routerLink="usuarios/informes">
+            <li class="nav-item">
+              <a class="informes-a" routerLink="usuarios/informes">
                  <b> <i class="fas fa-info-circle"></i></b> </a>
             </li>
             <li class="nav-item active" id="notificaciones">
