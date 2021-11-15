@@ -252,9 +252,21 @@ export class NavigationComponent implements OnInit {
     this.UsuarioID = { user: "No logueado" };
     this.usuariosService.user.id = "";
     this.Usuario = [];
-    //notificacion
+	
+    //Cargaron mis animales
+    
+    this.animalesCargados = false;
+  
+  
+    //Notificacion
     this.notificacion = false;
+    this.isOpenNoti = false;
     this.notificacionesInteresados = [];
+    this.notificacionesContador = [];
+    this.notificacionesCargadas = false;
+  
+    this.rol = "";
+    this.animales = [];
     //this.nombreSubscription.unsubscribe();
   }
 
