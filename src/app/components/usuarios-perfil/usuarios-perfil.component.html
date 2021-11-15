@@ -212,7 +212,7 @@
                 <a data-bs-toggle="modal" data-bs-target="#exampleModal2" id="regAnimal" *ngIf="this.miUsuario==this.UsuarioID.id" >Registrar nuevo animal</a>
                 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <!-- Empieza Modal de registrar -->
-                    <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-dialog modal-dialog-scrollable" *ngIf="this.miUsuario==this.UsuarioID.id" >
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3 id="exampleModalLabel2">Registra un animal</h3>
