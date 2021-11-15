@@ -75,11 +75,11 @@
                 <ul class="nav nav-tabs nav-fill" role="tablist">
 
                     <li class="nav-item activecol-lg-4" role="presentation" *ngIf="Animal.idDador!= UsuarioID.user; else dador">
-                        <button class="nav-link" type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' " (click)="mostrarInteres()">
-              <p class="interes-mostrado-text" *ngIf="interes==true"><i class="fas fa-check"></i> Interes Mostrado</p>
-              <p class="mostrar-interes-text" *ngIf="interes==false"> Mostrar Interes </p>
+                        <button class="nav-link" type="button" role="tab" [ngClass]="interes ? 'interesMostrado' : 'interesMostrar' " (click)="mostrarInteres()" *ngIf=" estadoDelAnimal.estado === 'Disponible'">
+						<p class="interes-mostrado-text" *ngIf="interes==true"><i class="fas fa-check"></i> Interes Mostrado</p>
+						<p class="mostrar-interes-text" *ngIf="interes==false"> Mostrar Interes </p>
 
-            </button>
+						</button>
                     </li>
 
 
