@@ -252,11 +252,12 @@ export class NavigationComponent implements OnInit {
     this.UsuarioID = { user: "No logueado" };
     this.usuariosService.user.id = "";
     this.Usuario = [];
-	
+
     //Cargaron mis animales
     
     this.animalesCargados = false;
-  
+	this.isOpenPerfil = false;
+	this.isOpenAnimals = false;  
   
     //Notificacion
     this.notificacion = false;
