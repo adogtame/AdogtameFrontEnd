@@ -267,7 +267,7 @@ export class UsuariosService {
 
 		this.user = { id: "" };
 		localStorage.removeItem('token');
-		this.router.navigate(['usuarios/principal']);
+		this.router.navigate(['usuarios/buscador-avanzado']);
 	}
 
 

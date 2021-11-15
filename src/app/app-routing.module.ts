@@ -26,7 +26,7 @@ import {AuthGuard} from './auth.guard';
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'usuarios/principal',
+		redirectTo: 'usuarios/buscador-avanzado',
 		pathMatch: 'full'
 	},
 	{
