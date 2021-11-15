@@ -182,8 +182,8 @@
 				<div class="btn-group" role="group" >
 				<button type="button" class="btn btn - botonDatosMedicos" (click)="datosMedicos()"  *ngIf=" estadoDelAnimal.estado === 'Disponible'"> <b> Datos Medicos </b></button>
 				</div>
-				<button *ngIf="Animal.idDador == UsuarioID.user" type="button" 
-				class="btn btn-light botonDatosMedicos" (click)="editarDatos()" *ngIf=" estadoDelAnimal.estado === 'Disponible'"> 
+				<button *ngIf="Animal.idDador == UsuarioID.user && estadoDelAnimal.estado === 'Disponible'" type="button" 
+				class="btn btn-light botonDatosMedicos" (click)="editarDatos()"> 
 					<b>Editar datos <i class="fas fa-pencil-alt"></i> </b> </button>
 			</div>
 			</ng-container>
