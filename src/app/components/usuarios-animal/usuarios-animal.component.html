@@ -41,7 +41,7 @@
                     <app-upload-list [sujetoID]='AnimalID.id' [Pertenece]='ubi'> </app-upload-list>
                     <ng-container *ngIf="Animal.idDador ===  UsuarioID.user">
                         <label  type="button" class="subir" data-bs-toggle="modal" data-bs-target="#exampleModalFoto">
-							<i class="fas fa-camera" id="subir-foto" (click)="chekearAni()" *ngIf=" estadoDelAnimal.estado === 'Disponible'"></i>
+							<i class="fas fa-camera" id="subir-foto" (click)="chekearAni()" *ngIf="estadoDelAnimal.estado === 'Disponible'"></i>
             </label>
 			<!-- Modal -->
             <div class="modal fade" id="exampleModalFoto" tabindex="-1" aria-labelledby="exampleModalLabelFoto" aria-hidden="true" *ngIf=" estadoDelAnimal.estado === 'Disponible'">
