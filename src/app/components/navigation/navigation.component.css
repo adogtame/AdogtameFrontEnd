@@ -278,6 +278,11 @@ h1 {
     width: 100vw;
 }
 
+.navbar-brand {
+	cursor: default;
+}
+
+
 .navbar-brand img {
     height: 45px;
 }
